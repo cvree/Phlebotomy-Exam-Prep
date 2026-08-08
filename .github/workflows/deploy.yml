@@ -28,15 +28,6 @@ jobs:
           node-version: 22
           cache: npm
 
-      # One-time setup: Pages must be turned on for the repository before this
-      # can publish — Settings -> Pages -> Source: "GitHub Actions". The
-      # workflow token cannot create the Pages site itself (the API rejects it
-      # as "Resource not accessible by integration"), so `enablement: true` is
-      # deliberately not used here: it would only produce a confusing failure.
-      - name: Configure Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
       - run: npm ci
 
       # The site is only published if the checks that protect its correctness
@@ -49,10 +40,21 @@ jobs:
         run: npm run build
         env:
           # A project site is served from /<repo>, so the app needs a base path.
-          # Derived from the repository name rather than hardcoded.
+          # Both values are derived from the repository rather than hardcoded,
+          # so a fork or a rename keeps working.
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
-          # Drives canonical URLs, Open Graph tags, the sitemap, and robots.txt.
-          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
+          NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+
+      # Deliberately after the build: this is the one step that needs Pages to
+      # already be switched on for the repository, and putting it last means a
+      # run still proves the build and tests are green even when publishing is
+      # blocked.
+      #
+      # One-time setup: Settings -> Pages -> Build and deployment ->
+      # Source: "GitHub Actions". The workflow token is not permitted to create
+      # the Pages site itself, which is why this is not automated.
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
