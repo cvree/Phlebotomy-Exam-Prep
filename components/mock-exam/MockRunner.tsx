@@ -102,8 +102,9 @@ export function MockRunner({
 
     // Drop the start/restart parameter from the URL now the exam exists, so a
     // refresh — or a back-forward restore — resumes rather than re-rolling a
-    // brand new paper.
-    window.history.replaceState(null, "", "/mock-exam/session");
+    // brand new paper. Reuses the current pathname so this stays correct under
+    // a base path (GitHub Pages) and with trailing slashes.
+    window.history.replaceState(null, "", window.location.pathname);
 
     track("mock_exam_started", { questions: fresh.questionIds.length });
   }, [ready, repository, start, restart]);

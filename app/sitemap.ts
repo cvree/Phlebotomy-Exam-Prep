@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 
+// Emitted as a static file at build time (the app is a static export).
+export const dynamic = "force-static";
+
 /**
  * Only indexable, content-bearing routes appear here.
  *
