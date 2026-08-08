@@ -1,0 +1,68 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Lets you re-deploy from the Actions tab without pushing a commit.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deployments at once, but let an in-flight one finish rather
+# than cancelling it half-published.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          # Turns Pages on for the repository the first time this runs, so no
+          # manual setup step is needed.
+          enablement: true
+
+      - run: npm ci
+
+      # The site is only published if the checks that protect its correctness
+      # pass. A broken build should never reach a student.
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run test
+
+      - name: Build static export
+        run: npm run build
+        env:
+          # A project site is served from /<repo>, so the app needs a base path.
+          # Derived from the repository name rather than hardcoded.
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          # Drives canonical URLs, Open Graph tags, the sitemap, and robots.txt.
+          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

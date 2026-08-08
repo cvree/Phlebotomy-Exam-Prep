@@ -94,16 +94,42 @@ npm run typecheck
 ## Production build
 
 ```bash
-npm run build
-npm run start
+npm run build     # writes a static site to ./out
 ```
 
 `npm run check` runs typecheck, lint, tests, and the production build in
 sequence.
 
-Set `NEXT_PUBLIC_SITE_URL` at build time when deploying to a domain other than
-the default — canonical URLs, Open Graph tags, the sitemap, and robots.txt all
-read from it.
+## Deployment
+
+The app has no server logic — progress lives in the browser — so it builds to a
+**static export** in `./out` and can be hosted on any static host: GitHub Pages,
+Netlify, Cloudflare Pages, S3, or a plain nginx directory.
+
+Two build-time environment variables:
+
+| Variable | Purpose | Default |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical URLs, Open Graph tags, sitemap, robots.txt | `https://phlebotomyexamprep.app` |
+| `NEXT_PUBLIC_BASE_PATH` | Set when serving from a subdirectory rather than a domain root | empty |
+
+### GitHub Pages
+
+`.github/workflows/deploy.yml` builds and publishes on every push to `main`, and
+can be re-run manually from the Actions tab. It runs typecheck, lint, and tests
+first, so a broken build never reaches a student. The base path and site URL are
+derived from the repository, so nothing is hardcoded to one account.
+
+The workflow enables Pages itself on first run. If your organisation restricts
+that, enable it once under **Settings → Pages → Source: GitHub Actions** and
+re-run the workflow.
+
+### Anywhere else
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain npm run build
+# then serve ./out as static files
+```
 
 ---
 
