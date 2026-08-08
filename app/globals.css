@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens.
+ *
+ * Every colour in the product resolves through one of these variables, which
+ * is what makes the dark palette a single block of overrides rather than a
+ * `dark:` class on every element. Tube colours are the deliberate exception:
+ * they are data, they live in `data/tubes/tubes.ts`, and they are always
+ * accompanied by the colour's name in text.
+ */
+:root {
+  color-scheme: light;
+
+  --paper: #fbfaf8;
+  --surface: #ffffff;
+  --surface-muted: #f4f2ee;
+  --surface-sunken: #efece6;
+  --border: #e3ded4;
+  --border-strong: #cdc6b8;
+
+  --ink: #17211f;
+  --ink-muted: #5b6764;
+  --ink-subtle: #7d8783;
+
+  --primary: #0e6e63;
+  --primary-strong: #0a564d;
+  --primary-soft: #e4f1ef;
+  --primary-contrast: #ffffff;
+
+  --success: #14654a;
+  --success-soft: #e2f1e9;
+  --success-border: #a9d4c1;
+
+  --danger: #a32a21;
+  --danger-soft: #fbe9e6;
+  --danger-border: #e8b4ad;
+
+  --flag: #9a6410;
+  --flag-soft: #fbf0dd;
+  --flag-border: #e0c48c;
+
+  --focus: #0e6e63;
+
+  --radius-sm: 0.5rem;
+  --radius: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --shadow-card: 0 1px 2px rgb(23 33 31 / 0.04), 0 1px 3px rgb(23 33 31 / 0.06);
+  --shadow-lift: 0 4px 12px rgb(23 33 31 / 0.08), 0 1px 3px rgb(23 33 31 / 0.06);
+
+  --font-display: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino,
+    "Book Antiqua", Georgia, serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --paper: #0d1312;
+    --surface: #151d1b;
+    --surface-muted: #1b2423;
+    --surface-sunken: #101817;
+    --border: #2a3634;
+    --border-strong: #3b4a47;
+
+    --ink: #e9f0ee;
+    --ink-muted: #a2afab;
+    --ink-subtle: #83908c;
+
+    --primary: #56c3b1;
+    --primary-strong: #7ad6c5;
+    --primary-soft: #10312c;
+    --primary-contrast: #06201c;
+
+    --success: #63c99e;
+    --success-soft: #0f2a21;
+    --success-border: #2e5c48;
+
+    --danger: #f19086;
+    --danger-soft: #331714;
+    --danger-border: #6b342d;
+
+    --flag: #e3ac57;
+    --flag-soft: #2e2415;
+    --flag-border: #5d4a26;
+
+    --focus: #7ad6c5;
+
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-lift: 0 6px 16px rgb(0 0 0 / 0.45);
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-contrast: var(--primary-contrast);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-border: var(--success-border);
+
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-border: var(--danger-border);
+
+  --color-flag: var(--flag);
+  --color-flag-soft: var(--flag-soft);
+  --color-flag-border: var(--flag-border);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-card: var(--radius);
+  --radius-panel: var(--radius-lg);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  h4,
+  h5,
+  h6 {
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /*
+   * One focus treatment for the whole product. Visible on every interactive
+   * element, and never removed — keyboard users navigate the drills too.
+   */
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Comfortable tap targets on touch devices without bloating desktop UI. */
+  @media (pointer: coarse) {
+    button,
+    [role="button"],
+    a[data-touch-target],
+    input[type="radio"] + label {
+      min-height: 44px;
+    }
+  }
+
+  ::selection {
+    background-color: var(--primary-soft);
+    color: var(--ink);
+  }
+}
+
+@layer utilities {
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    max-width: 72rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  .container-prose {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    max-width: 46rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-prose {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  /* Long-form study content. Applied to article bodies. */
+  .prose-study {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .prose-study h2 {
+    font-size: 1.625rem;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-study h3 {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 650;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-study p {
+    margin-bottom: 1rem;
+    color: var(--ink-muted);
+  }
+
+  .prose-study ul,
+  .prose-study ol {
+    margin-bottom: 1rem;
+    padding-left: 1.25rem;
+    color: var(--ink-muted);
+  }
+
+  .prose-study ul {
+    list-style: disc;
+  }
+
+  .prose-study ol {
+    list-style: decimal;
+  }
+
+  .prose-study li {
+    margin-bottom: 0.375rem;
+    padding-left: 0.25rem;
+  }
+
+  .prose-study strong {
+    color: var(--ink);
+    font-weight: 650;
+  }
+
+  .prose-study a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Wide content — tables, sequences — scrolls inside itself, never the page. */
+  .scroll-x {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/*
+ * Reduced motion.
+ *
+ * The drills and the mock timer are the only animated surfaces, and none of
+ * their meaning is carried by motion, so it is safe to remove entirely.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
