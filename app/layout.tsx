@@ -3,8 +3,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/shared/SiteHeader";
 import { SiteFooter } from "@/components/shared/SiteFooter";
 import { StudyProgressProvider } from "@/components/progress/StudyProgressProvider";
-
-export const SITE_URL = "https://phlebotomyexamprep.app";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
     "explanations, an interactive order of draw drill, tube and additive " +
     "training, timed mock exams, and progress tracking that tells you what " +
     "to study next.",
-  applicationName: "Phlebotomy Exam Prep",
+  applicationName: SITE_NAME,
   authors: [{ name: "Phlebotomy Exam Prep" }],
   keywords: [
     "phlebotomy exam prep",
@@ -28,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    siteName: "Phlebotomy Exam Prep",
+    siteName: SITE_NAME,
     title: "Phlebotomy Exam Prep — know what to study before your CPT exam",
     description:
       "Practice questions with explanations, an interactive order of draw " +
