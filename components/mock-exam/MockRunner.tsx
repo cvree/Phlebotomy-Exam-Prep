@@ -19,7 +19,19 @@ const AUTOSAVE_INTERVAL_MS = 5000;
 
 type Phase = "loading" | "active" | "none";
 
-export function MockRunner({ startNew }: { startNew: boolean }) {
+/**
+ * @param start   Create an exam if none is in progress. Resuming always wins,
+ *                so refreshing the page you started from does not wipe it.
+ * @param restart Discard any exam in progress and start a fresh one. Only ever
+ *                set by the explicit "Start over instead" action.
+ */
+export function MockRunner({
+  start,
+  restart,
+}: {
+  start: boolean;
+  restart: boolean;
+}) {
   const router = useRouter();
   const { ready, repository, saveAttempts, saveMockResult } = useStudyProgress();
 
@@ -38,7 +50,7 @@ export function MockRunner({ startNew }: { startNew: boolean }) {
 
     const stored = repository.readMockSession();
 
-    if (stored && !stored.submitted && !startNew) {
+    if (stored && !stored.submitted && !restart) {
       // Reconcile the clock. The timer is stored as "seconds left at this
       // instant", so a closed tab, a sleeping phone, and a crash all resolve
       // the same way: subtract the wall-clock time that actually passed.
@@ -61,7 +73,7 @@ export function MockRunner({ startNew }: { startNew: boolean }) {
       return;
     }
 
-    if (!startNew) {
+    if (!start && !restart) {
       setPhase("none");
       return;
     }
@@ -87,8 +99,14 @@ export function MockRunner({ startNew }: { startNew: boolean }) {
     setSession(fresh);
     repository.writeMockSession(fresh);
     setPhase("active");
+
+    // Drop the start/restart parameter from the URL now the exam exists, so a
+    // refresh — or a back-forward restore — resumes rather than re-rolling a
+    // brand new paper.
+    window.history.replaceState(null, "", "/mock-exam/session");
+
     track("mock_exam_started", { questions: fresh.questionIds.length });
-  }, [ready, repository, startNew]);
+  }, [ready, repository, start, restart]);
 
   const questions = useMemo(
     () => (session ? resolveQuestions(session.questionIds) : []),

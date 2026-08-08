@@ -13,11 +13,10 @@ export default async function MockSessionPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const params = await searchParams;
-  const startNew = params.start === "1";
 
   return (
     <Suspense fallback={null}>
-      <MockRunner startNew={startNew} />
+      <MockRunner start={params.start === "1"} restart={params.restart === "1"} />
     </Suspense>
   );
 }

@@ -21,6 +21,12 @@ export function MockTimer({
   const remaining = useRef(secondsRemaining);
   remaining.current = secondsRemaining;
 
+  // Held in a ref so the interval is created once. Depending on `onTick`
+  // directly would tear the interval down and rebuild it on every render —
+  // including the render each tick causes.
+  const onTickRef = useRef(onTick);
+  onTickRef.current = onTick;
+
   useEffect(() => {
     lastRealTick.current = Date.now();
     const interval = window.setInterval(() => {
@@ -28,11 +34,11 @@ export function MockTimer({
       const elapsed = Math.floor((now - lastRealTick.current) / 1000);
       if (elapsed <= 0) return;
       lastRealTick.current = now;
-      onTick(Math.max(0, remaining.current - elapsed));
+      onTickRef.current(Math.max(0, remaining.current - elapsed));
     }, 1000);
 
     return () => window.clearInterval(interval);
-  }, [onTick]);
+  }, []);
 
   const minutes = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;

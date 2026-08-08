@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { QUESTIONS } from "@/data/questions";
 import { DOMAINS } from "@/data/certifications/domains";
-import { getOrderedTubes } from "@/data/tubes/tubes";
+import { getTube } from "@/data/tubes/tubes";
 import { NHA_CPT } from "@/data/certifications";
+import { CLSI_ORDER_OF_DRAW } from "@/data/study/orderOfDraw";
 import { TubeGlyph } from "@/components/shared/TubeGlyph";
 import { ButtonLink, Card } from "@/components/shared/ui";
 import { ReturningStudentPanel } from "@/components/home/ReturningStudentPanel";
@@ -64,15 +65,16 @@ const TOOLS = [
 ];
 
 export default function HomePage() {
-  const tubes = getOrderedTubes();
-
   return (
     <>
       <ReturningStudentPanel />
 
       <section className="border-b border-line">
-        <div className="container-page grid gap-10 py-12 sm:py-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-14">
-          <div>
+        {/* min-w-0 on both columns: the tube list below uses `truncate`, whose
+            nowrap text would otherwise inflate the grid track's min-content
+            size and push the whole hero wider than a phone screen. */}
+        <div className="container-page grid grid-cols-1 gap-10 py-12 sm:py-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-14">
+          <div className="min-w-0">
             <p className="text-sm font-semibold uppercase tracking-[0.09em] text-primary">
               Built for the {NHA_CPT.shortName}
             </p>
@@ -111,7 +113,7 @@ export default function HomePage() {
 
           {/* Product-truthful hero art: the actual order of draw, drawn from
               the same data the drill uses. */}
-          <div className="lg:justify-self-end">
+          <div className="min-w-0 lg:justify-self-end">
             <Card className="overflow-hidden">
               <div className="border-b border-line bg-surface-muted px-5 py-4">
                 <p className="text-xs font-bold uppercase tracking-[0.08em] text-ink-subtle">
@@ -119,26 +121,36 @@ export default function HomePage() {
                 </p>
                 <p className="mt-1 font-display text-xl">Order of draw</p>
               </div>
+              {/* Rendered from the sequence steps, not the tube list — several
+                  positions hold more than one tube, so numbering tubes would
+                  put the wrong number against Gold, Green, and Light green. */}
               <ol className="divide-y divide-[var(--border)]">
-                {tubes.slice(0, 6).map((tube, index) => (
-                  <li
-                    key={tube.id}
-                    className="flex items-center gap-3 px-4 py-2.5"
-                  >
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-soft font-display text-sm font-semibold text-primary">
-                      {index + 1}
-                    </span>
-                    <TubeGlyph tube={tube} size="sm" />
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-semibold text-ink">
-                        {tube.displayName}
+                {CLSI_ORDER_OF_DRAW.steps.map((step) => {
+                  const stepTubes = step.tubeIds.map(getTube);
+                  return (
+                    <li
+                      key={step.position}
+                      className="flex items-center gap-3 px-4 py-2.5"
+                    >
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-soft font-display text-sm font-semibold text-primary">
+                        {step.position}
                       </span>
-                      <span className="block truncate text-xs text-ink-muted">
-                        {tube.additive}
+                      <span className="flex shrink-0 -space-x-1.5">
+                        {stepTubes.map((tube) => (
+                          <TubeGlyph key={tube.id} tube={tube} size="sm" />
+                        ))}
                       </span>
-                    </span>
-                  </li>
-                ))}
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-sm font-semibold text-ink">
+                          {stepTubes.map((tube) => tube.displayName).join(" / ")}
+                        </span>
+                        <span className="block truncate text-xs text-ink-muted">
+                          {stepTubes[0]?.additive}
+                        </span>
+                      </span>
+                    </li>
+                  );
+                })}
               </ol>
               <div className="border-t border-line px-4 py-3">
                 <Link

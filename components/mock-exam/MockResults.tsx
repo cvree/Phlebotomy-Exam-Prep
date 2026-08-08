@@ -226,6 +226,7 @@ export function MockResults() {
                   ? "You didn't flag any questions during this exam. Flagging is useful when you want to come back to something before submitting."
                   : "A clean sheet. Switch to All to reread any question."
               }
+              headingLevel="h3"
             />
           </div>
         ) : (

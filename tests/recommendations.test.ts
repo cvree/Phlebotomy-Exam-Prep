@@ -49,6 +49,24 @@ describe("buildRecommendations", () => {
     expect(first?.reason).toMatch(/\d+% on recent questions/);
   });
 
+  it("hedges the wording when the weak area rests on a single attempt", () => {
+    // After one Quick 10, several areas have a single question behind them.
+    // Calling one of those "your weakest area" would overclaim.
+    const progress = progressWith(
+      attemptsFor({
+        domain: "patient-identification",
+        count: 1,
+        correctPattern: [false],
+      }),
+    );
+
+    const [first] = buildRecommendations(contextFor(progress));
+    expect(first?.id).toBe("weak-patient-identification");
+    expect(first?.reason).toContain("only 1 attempt");
+    expect(first?.reason).not.toContain("1 attempts");
+    expect(first?.reason).not.toContain("Your weakest area");
+  });
+
   it("suggests reviewing missed questions once enough have accumulated", () => {
     const progress = progressWith(
       attemptsFor({

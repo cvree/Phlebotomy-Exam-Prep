@@ -1,7 +1,7 @@
 import type { DomainMastery, Readiness, Recommendation } from "@/types/study";
 import type { StoredProgress } from "@/lib/storage/schema";
 import { domainName } from "@/data/certifications/domains";
-import { findUntouchedDomains, rankWeakest } from "./mastery";
+import { MASTERY_RULES, findUntouchedDomains, rankWeakest } from "./mastery";
 
 /**
  * "What should I study next?"
@@ -64,14 +64,22 @@ export function buildRecommendations(context: Context): Recommendation[] {
   const weakest = rankWeakest(mastery);
   const weakestDomain = weakest[0];
 
-  // 2. A weak area with real evidence behind it is the highest-value target.
+  // 2. A weak area is the highest-value target. The wording is graded by how
+  //    much evidence sits behind it — calling one wrong answer "your weakest
+  //    area" is an overclaim, and students notice.
   if (weakestDomain && weakestDomain.level !== "strong") {
+    const attempts = weakestDomain.attempts;
+    const plural = attempts === 1 ? "attempt" : "attempts";
+    const thinEvidence = attempts < MASTERY_RULES.minAttemptsForDeveloping;
+
     recommendations.push({
       id: `weak-${weakestDomain.domain}`,
       title: `Practise ${domainName(weakestDomain.domain)}`,
-      reason:
-        `Your weakest area: ${Math.round(weakestDomain.accuracy * 100)}% on ` +
-        `recent questions across ${weakestDomain.attempts} attempts.`,
+      reason: thinEvidence
+        ? `Your lowest score so far, though it's only ${attempts} ${plural}. ` +
+          "A few more will show whether it's a real gap."
+        : `Your weakest area: ${Math.round(weakestDomain.accuracy * 100)}% on ` +
+          `recent questions across ${attempts} ${plural}.`,
       ctaLabel: `Practise 10 ${domainName(weakestDomain.domain)} questions`,
       href: `/practice/session?mode=domain&domain=${weakestDomain.domain}&count=10`,
       priority: 1,

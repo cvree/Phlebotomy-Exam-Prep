@@ -59,7 +59,7 @@ export function MockSetup() {
               Resume exam
             </ButtonLink>
             <ButtonLink
-              href="/mock-exam/session?start=1"
+              href="/mock-exam/session?restart=1"
               variant="secondary"
               size="lg"
             >

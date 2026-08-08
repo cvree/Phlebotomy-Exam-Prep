@@ -233,15 +233,24 @@ export function EmptyState({
   description,
   action,
   secondaryAction,
+  /**
+   * The heading level to render. Defaults to `h2` so an empty state sitting
+   * directly under a page's `h1` does not skip a level; pass `h3` when the
+   * empty state is nested inside a section that already has an `h2`.
+   */
+  headingLevel: Heading = "h2",
 }: {
   title: string;
   description: string;
   action?: { href: string; label: string };
   secondaryAction?: { href: string; label: string };
+  headingLevel?: "h2" | "h3";
 }) {
   return (
     <div className="rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface-muted/60 px-5 py-8 text-center sm:px-8 sm:py-10">
-      <h3 className="font-sans text-lg font-semibold text-ink">{title}</h3>
+      <Heading className="font-sans text-lg font-semibold text-ink">
+        {title}
+      </Heading>
       <p className="mx-auto mt-2 max-w-md text-[0.9375rem] text-ink-muted">
         {description}
       </p>
