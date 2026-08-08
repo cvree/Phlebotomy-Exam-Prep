@@ -120,9 +120,13 @@ can be re-run manually from the Actions tab. It runs typecheck, lint, and tests
 first, so a broken build never reaches a student. The base path and site URL are
 derived from the repository, so nothing is hardcoded to one account.
 
-The workflow enables Pages itself on first run. If your organisation restricts
-that, enable it once under **Settings → Pages → Source: GitHub Actions** and
-re-run the workflow.
+**One-time setup.** Pages has to be switched on by a repository admin before the
+workflow can publish — the workflow's own token is not allowed to create the
+Pages site. Go to **Settings → Pages → Build and deployment → Source: GitHub
+Actions**, then re-run the latest workflow run. After that every push to `main`
+deploys automatically.
+
+The site is then served at `https://<owner>.github.io/<repo>/`.
 
 ### Anywhere else
 

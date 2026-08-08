@@ -28,13 +28,14 @@ jobs:
           node-version: 22
           cache: npm
 
+      # One-time setup: Pages must be turned on for the repository before this
+      # can publish — Settings -> Pages -> Source: "GitHub Actions". The
+      # workflow token cannot create the Pages site itself (the API rejects it
+      # as "Resource not accessible by integration"), so `enablement: true` is
+      # deliberately not used here: it would only produce a confusing failure.
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
-        with:
-          # Turns Pages on for the repository the first time this runs, so no
-          # manual setup step is needed.
-          enablement: true
 
       - run: npm ci
 
