@@ -226,14 +226,14 @@ export const ORDER_OF_DRAW_QUESTIONS = buildQuestions(
         a: "To reduce the total time the tourniquet is applied",
         b: "To prevent additive carryover between tubes and protect culture sterility",
         c: "To ensure tubes are centrifuged in the correct sequence",
-        d: "To standardise labeling across facilities",
+        d: "To standardize labeling across facilities",
       },
       correct: "b",
       explanation:
         "Two purposes, in priority order: keep blood cultures sterile, and " +
         "stop each tube's additive from contaminating the tube drawn after " +
         "it. Once you hold those two ideas, the sequence is derivable rather " +
-        "than memorised — which is why exam questions increasingly ask about " +
+        "than memorized — which is why exam questions increasingly ask about " +
         "the reasoning instead of the list.",
       why: {
         a: "A worthwhile goal, but it is not what the sequence is designed for.",

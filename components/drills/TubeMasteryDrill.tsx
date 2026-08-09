@@ -32,7 +32,11 @@ const ROUND_LENGTH = 8;
  * A round of multiple-choice items generated from the tube dataset. Feedback
  * is immediate and always includes the additive's *mechanism*, because "EDTA
  * chelates calcium" is what makes the order of draw derivable rather than
- * memorised.
+ * memorized.
+ *
+ * Four directions over the same engine — see `TUBE_DRILL_MODES`. Each is a
+ * projection of the tube record, so the UI below never needs to know which
+ * one is running.
  */
 export function TubeMasteryDrill() {
   const { ready, progress, saveDrillAttempt } = useStudyProgress();
@@ -134,7 +138,9 @@ export function TubeMasteryDrill() {
         </h1>
         <p className="mt-3 text-[1.0625rem] leading-relaxed text-ink-muted">
           Eight rapid questions on what is inside each tube and what it does.
-          Knowing the mechanism is what makes the order of draw make sense.
+          Four directions to run it — additive, tube, specimen type, or what
+          the tube is ordered for. Knowing the mechanism is what makes the
+          order of draw make sense.
         </p>
       </div>
 

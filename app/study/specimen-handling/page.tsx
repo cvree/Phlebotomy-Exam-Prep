@@ -121,7 +121,7 @@ export default function SpecimenHandlingStudyPage() {
         <h3>Chilled specimens</h3>
         <p>
           Some analytes continue to change in the tube because cells keep
-          metabolising. Chilling — typically an ice-water slurry rather than
+          metabolizing. Chilling — typically an ice-water slurry rather than
           solid ice, which can freeze and hemolyse the sample — slows that
           down. Ammonia and lactate are the classic examples, along with blood
           gases.

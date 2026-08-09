@@ -134,7 +134,7 @@ export const COMPLICATIONS_QUESTIONS = buildQuestions(
       why: {
         a: "A latex or contact reaction produces itching, redness, or hives rather than pinpoint hemorrhages.",
         c: "A loose tourniquet fails to distend the vein; it does not produce petechiae.",
-        d: "A hematoma is a localised collection of blood at the puncture site, not scattered pinpoint spots.",
+        d: "A hematoma is a localized collection of blood at the puncture site, not scattered pinpoint spots.",
       },
       tip: "Petechiae are a warning, not an injury. They tell you to hold pressure longer.",
       tags: ["petechiae", "bleeding", "assessment"],

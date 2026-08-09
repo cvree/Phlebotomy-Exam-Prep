@@ -31,13 +31,13 @@ const REVIEW_STAGES = [
   {
     status: "Draft",
     meaning: "Written but not checked by anyone.",
-    shown: "Labelled as draft wherever it appears.",
+    shown: "Labeled as draft wherever it appears.",
   },
   {
     status: "Needs review",
     meaning:
       "Complete and internally consistent, written from material taught consistently across mainstream phlebotomy curricula — but not yet checked by a qualified reviewer against the cited references.",
-    shown: "Labelled as awaiting review on every question and study page.",
+    shown: "Labeled as awaiting review on every question and study page.",
   },
   {
     status: "Reviewed",
@@ -84,7 +84,7 @@ export default function MethodologyPage() {
           That is partly an ethical position and partly a practical one:
           reproducing exam content violates certifying bodies&apos; terms and
           can invalidate a candidate&apos;s result. It also makes for worse
-          study material, because memorising specific items does not transfer
+          study material, because memorizing specific items does not transfer
           to a different form of the exam.
         </p>
 

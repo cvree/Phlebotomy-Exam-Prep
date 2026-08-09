@@ -44,7 +44,7 @@ export const PATIENT_PREP_QUESTIONS = buildQuestions(
         a: "Explain that the doctor ordered it and proceed",
         b: "Stop, do not draw, and report the refusal to the nurse and per facility policy",
         c: "Return in ten minutes and try again without discussion",
-        d: "Ask a family member to authorise the draw",
+        d: "Ask a family member to authorize the draw",
       },
       correct: "b",
       explanation:
@@ -54,7 +54,7 @@ export const PATIENT_PREP_QUESTIONS = buildQuestions(
         "often the patient's concern is answerable, but that conversation " +
         "belongs to the team, not to a forced draw.",
       why: {
-        a: "An order authorises the test; it does not override the patient's refusal.",
+        a: "An order authorizes the test; it does not override the patient's refusal.",
         c: "Repeated attempts to catch a patient off guard are coercive.",
         d: "Family members cannot consent for a competent adult.",
       },

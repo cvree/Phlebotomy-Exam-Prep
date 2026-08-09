@@ -55,7 +55,7 @@ export const TUBE_DRILL_MODES: TubeDrillModeConfig[] = [
     promptFor: (tube) => `What specimen type does the ${tube.displayName} tube produce?`,
     answerFor: (tube) => tube.specimenType,
     showsTubeInPrompt: true,
-    available: false,
+    available: true,
   },
   {
     id: "tube-to-use",
@@ -64,7 +64,7 @@ export const TUBE_DRILL_MODES: TubeDrillModeConfig[] = [
     promptFor: (tube) => `Which test is the ${tube.displayName} tube commonly used for?`,
     answerFor: (tube) => tube.commonUses[0] ?? "",
     showsTubeInPrompt: true,
-    available: false,
+    available: true,
   },
 ];
 

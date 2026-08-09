@@ -184,7 +184,7 @@ export function MockSetup() {
             </h2>
             <ul className="mt-2.5 space-y-2 text-sm text-ink-muted">
               <li>Sit it in one go, without notes.</li>
-              <li>Flag rather than agonise — come back at the end.</li>
+              <li>Flag rather than agonize — come back at the end.</li>
               <li>Read every explanation afterwards, including the ones you got right.</li>
             </ul>
           </Card>

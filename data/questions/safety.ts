@@ -193,7 +193,7 @@ export const SAFETY_QUESTIONS = buildQuestions(
         "finally disinfect the surface with an appropriate agent and the " +
         "correct contact time. Broken glass goes into the sharps container.",
       why: {
-        a: "Flooding the spill spreads it, and sweeping before absorbing aerosolises and smears the material.",
+        a: "Flooding the spill spreads it, and sweeping before absorbing aerosolizes and smears the material.",
         c: "Disinfectant is far less effective against organic load, and picking up glass by hand risks a laceration through the glove.",
         d: "The person who created the spill is responsible for containing it, and the spill remains a hazard while it waits.",
       },

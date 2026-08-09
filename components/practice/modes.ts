@@ -72,7 +72,7 @@ const COUNT_LIMITS = { min: 5, max: 60 } as const;
  * Parses a practice configuration out of URL search params.
  *
  * Defensive by design: these values come from a link a student can edit, so
- * anything unrecognised falls back rather than producing a broken session.
+ * anything unrecognized falls back rather than producing a broken session.
  */
 export function parsePracticeConfig(
   params: Record<string, string | string[] | undefined>,

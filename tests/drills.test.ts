@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
+  buildCompleteSequence,
   buildDrillCards,
+  buildFindMisplaced,
+  buildRound,
+  buildWhatComesNext,
+  findRemovableIndices,
+  gradeCompleteSequence,
   gradeOrder,
   isCorrectOrder,
   moveCard,
@@ -20,7 +26,8 @@ describe("order of draw drill", () => {
 
   it("builds one card per position, with its tubes attached", () => {
     expect(cards).toHaveLength(CLSI_ORDER_OF_DRAW.steps.length);
-    expect(cards.map((card) => card.position)).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(cards.map((card) => card.canonicalPosition)).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(cards.map((card) => card.rank)).toEqual([1, 2, 3, 4, 5, 6]);
     expect(cards.every((card) => card.tubes.length > 0)).toBe(true);
     expect(cards.every((card) => card.rationale.length > 20)).toBe(true);
   });
@@ -50,7 +57,7 @@ describe("order of draw drill", () => {
 
     const first = result.misplaced[0];
     expect(first?.placedAt).toBe(1);
-    expect(first?.card.position).toBe(6);
+    expect(first?.card.rank).toBe(6);
   });
 
   it("reports zero accuracy when the whole sequence is reversed", () => {
@@ -58,6 +65,203 @@ describe("order of draw drill", () => {
     const result = gradeOrder(reversed);
     expect(result.correctCount).toBe(0);
     expect(result.accuracy).toBe(0);
+  });
+});
+
+describe("buildRound", () => {
+  it("honours a fixed round size", () => {
+    for (const size of [4, 5, 6] as const) {
+      for (let seed = 0; seed < 20; seed += 1) {
+        const round = buildRound(seed, { size });
+        expect(round.size).toBe(size);
+        expect(round.cards).toHaveLength(size);
+      }
+    }
+  });
+
+  it("varies the round size when mixed", () => {
+    // The whole point of the mixed setting: a student cannot learn "six slots".
+    const sizes = new Set(
+      Array.from({ length: 60 }, (_, seed) => buildRound(seed).size),
+    );
+    expect(sizes.size).toBeGreaterThan(1);
+  });
+
+  it("ranks cards 1..n in canonical sequence order", () => {
+    for (let seed = 0; seed < 60; seed += 1) {
+      const { cards } = buildRound(seed);
+      expect(cards.map((card) => card.rank)).toEqual(
+        cards.map((_, index) => index + 1),
+      );
+      // Ranks follow the real sequence, so a subset is still ordered correctly
+      // relative to itself.
+      const canonical = cards.map((card) => card.canonicalPosition);
+      expect(canonical).toEqual(canonical.slice().sort((a, b) => a - b));
+      expect(new Set(canonical).size).toBe(canonical.length);
+    }
+  });
+
+  it("shows a non-empty subset of each position's real tubes", () => {
+    for (let seed = 0; seed < 60; seed += 1) {
+      for (const card of buildRound(seed).cards) {
+        expect(card.tubes.length).toBeGreaterThan(0);
+        expect(card.tubes.length).toBeLessThanOrEqual(card.allTubes.length);
+        const allIds = new Set(card.allTubes.map((tube) => tube.id));
+        expect(card.tubes.every((tube) => allIds.has(tube.id))).toBe(true);
+      }
+    }
+  });
+
+  it("varies how many tubes represent a multi-tube position", () => {
+    // Position 5 (EDTA) holds three interchangeable tubes. Always drawing all
+    // three makes the card a fixed silhouette to pattern-match instead of read.
+    const counts = new Set<number>();
+    for (let seed = 0; seed < 200; seed += 1) {
+      const card = buildRound(seed, { size: 6 }).cards.find(
+        (entry) => entry.canonicalPosition === 5,
+      );
+      if (card) counts.add(card.tubes.length);
+    }
+    expect(counts.size).toBeGreaterThan(1);
+  });
+
+  it("shows every tube when asked for the answer key", () => {
+    for (const card of buildRound(3, { size: 6, allTubes: true }).cards) {
+      expect(card.tubes).toEqual(card.allTubes);
+    }
+  });
+
+  it("is deterministic for a given seed", () => {
+    const describe1 = (seed: number) =>
+      buildRound(seed).cards.map(
+        (card) => `${card.rank}:${card.tubes.map((tube) => tube.id).join("+")}`,
+      );
+    expect(describe1(42)).toEqual(describe1(42));
+  });
+
+  it("grades a subset round against its own ranks", () => {
+    const { cards } = buildRound(11, { size: 4 });
+    expect(gradeOrder(cards).perfect).toBe(true);
+    expect(gradeOrder(cards.slice().reverse()).correctCount).toBe(0);
+  });
+});
+
+describe("what comes next", () => {
+  it("always offers the answer, with distinct options", () => {
+    for (let seed = 0; seed < 80; seed += 1) {
+      const round = buildWhatComesNext(seed);
+      const ids = round.options.map((option) => option.stepId);
+      expect(ids).toContain(round.answer.stepId);
+      expect(new Set(ids).size).toBe(ids.length);
+    }
+  });
+
+  it("shows a consecutive run ending immediately before the answer", () => {
+    for (let seed = 0; seed < 80; seed += 1) {
+      const { given, answer } = buildWhatComesNext(seed);
+      expect(given.length).toBeGreaterThan(0);
+      const positions = given.map((card) => card.canonicalPosition);
+      positions.forEach((position, index) => {
+        if (index > 0) expect(position).toBe(positions[index - 1]! + 1);
+      });
+      expect(positions[positions.length - 1]).toBe(answer.canonicalPosition - 1);
+    }
+  });
+
+  it("varies how much of the sequence it shows", () => {
+    const lengths = new Set(
+      Array.from({ length: 80 }, (_, seed) => buildWhatComesNext(seed).given.length),
+    );
+    expect(lengths.size).toBeGreaterThan(1);
+  });
+});
+
+describe("find the misplaced tube", () => {
+  it("has exactly one defensible answer every time", () => {
+    // "Out of place" means removing that one card restores order. An adjacent
+    // swap has two valid answers, so the generator must never produce one.
+    for (let seed = 0; seed < 120; seed += 1) {
+      const round = buildFindMisplaced(seed);
+      const solutions = findRemovableIndices(round.cards);
+      expect(solutions).toHaveLength(1);
+      expect(round.cards[solutions[0]!]?.stepId).toBe(round.misplacedStepId);
+    }
+  });
+
+  it("reports where the card was shown and where it belongs", () => {
+    for (let seed = 0; seed < 120; seed += 1) {
+      const round = buildFindMisplaced(seed);
+      const shown = round.cards[round.shownAt - 1];
+      expect(shown?.stepId).toBe(round.misplacedStepId);
+      expect(round.correctSlot).toBe(shown?.rank);
+      expect(round.shownAt).not.toBe(round.correctSlot);
+    }
+  });
+
+  it("does not leave the sequence already in order", () => {
+    for (let seed = 0; seed < 120; seed += 1) {
+      expect(isCorrectOrder(buildFindMisplaced(seed).cards)).toBe(false);
+    }
+  });
+});
+
+describe("complete the sequence", () => {
+  it("banks exactly the cards it removed", () => {
+    for (let seed = 0; seed < 80; seed += 1) {
+      const round = buildCompleteSequence(seed);
+      const gapRanks = round.slots
+        .filter((slot) => slot.card === null)
+        .map((slot) => slot.rank);
+      expect(gapRanks.length).toBeGreaterThanOrEqual(1);
+      expect(round.bank).toHaveLength(gapRanks.length);
+      expect(round.bank.map((card) => card.rank).sort()).toEqual(
+        gapRanks.slice().sort(),
+      );
+      // Never every slot — the point is filling gaps in a partial sequence.
+      expect(gapRanks.length).toBeLessThan(round.slots.length);
+    }
+  });
+
+  it("scores a fully correct fill as perfect", () => {
+    const round = buildCompleteSequence(5);
+    const placements = Object.fromEntries(
+      round.bank.map((card) => [card.rank, card.stepId]),
+    );
+    const result = gradeCompleteSequence(round, placements);
+    expect(result.perfect).toBe(true);
+    expect(result.accuracy).toBe(1);
+    expect(result.correct).toBe(round.bank.length);
+  });
+
+  it("gives partial credit and flags the wrong gap", () => {
+    // Find a round with at least two gaps so swapping produces two errors.
+    let round = buildCompleteSequence(5);
+    for (let seed = 5; round.bank.length < 2 && seed < 50; seed += 1) {
+      round = buildCompleteSequence(seed);
+    }
+    expect(round.bank.length).toBeGreaterThanOrEqual(2);
+
+    const [first, second] = round.bank;
+    const placements: Record<number, number> = Object.fromEntries(
+      round.bank.map((card) => [card.rank, card.stepId]),
+    );
+    // Swap two answers.
+    placements[first!.rank] = second!.stepId;
+    placements[second!.rank] = first!.stepId;
+
+    const result = gradeCompleteSequence(round, placements);
+    expect(result.perfect).toBe(false);
+    expect(result.correct).toBe(round.bank.length - 2);
+    expect(
+      result.gaps.filter((gap) => !gap.correct).map((gap) => gap.rank).sort(),
+    ).toEqual([first!.rank, second!.rank].sort());
+  });
+
+  it("counts an unfilled gap as wrong", () => {
+    const round = buildCompleteSequence(9);
+    const result = gradeCompleteSequence(round, {});
+    expect(result.correct).toBe(0);
+    expect(result.gaps.every((gap) => gap.placedStepId === null)).toBe(true);
   });
 });
 

@@ -290,7 +290,7 @@ export const TECHNIQUE_QUESTIONS = buildQuestions(
         "and both are recognized causes of needlestick injury and hemolysis. " +
         "Order of draw still applies during the transfer.",
       why: {
-        a: "Uncapping tubes aerosolises blood and destroys the vacuum that measures the fill volume.",
+        a: "Uncapping tubes aerosolizes blood and destroys the vacuum that measures the fill volume.",
         b: "Forcing blood through a needle shears red cells and hemolyses the specimen.",
         d: "Holding a tube while puncturing its stopper by hand is one of the highest-risk manoeuvres in the lab.",
       },

@@ -53,7 +53,7 @@ export const SPECIMEN_HANDLING_QUESTIONS = buildQuestions(
       correct: "b",
       explanation:
         "Ammonia is chilled — usually in an ice slurry — because it rises " +
-        "quickly at room temperature as cells continue to metabolise. Lactate " +
+        "quickly at room temperature as cells continue to metabolize. Lactate " +
         "and blood gases are treated similarly. Cold agglutinins, " +
         "cryofibrinogen, and cryoglobulin are the opposite case: they must be " +
         "kept at body temperature, because chilling makes the target " +
@@ -201,7 +201,7 @@ export const SPECIMEN_HANDLING_QUESTIONS = buildQuestions(
       id: "spe-008",
       subdomain: "Labelling",
       difficulty: 2,
-      stem: "A phlebotomist realises after leaving the patient's room that one tube was not labeled. What should be done?",
+      stem: "A phlebotomist realizes after leaving the patient's room that one tube was not labeled. What should be done?",
       choices: {
         a: "Label it now from the requisition still in hand",
         b: "Discard the tube and recollect after re-verifying the patient's identity",
@@ -220,7 +220,7 @@ export const SPECIMEN_HANDLING_QUESTIONS = buildQuestions(
         c: "The lab will reject it, and it should.",
         d: "The nurse did not witness the collection and cannot attest to the tube's contents.",
       },
-      tip: "If the label did not go on at the bedside, the specimen is not attributable. Recollect and apologise.",
+      tip: "If the label did not go on at the bedside, the specimen is not attributable. Recollect and apologize.",
       tags: ["labeling", "rejection", "patient-safety"],
     },
     {
