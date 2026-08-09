@@ -54,7 +54,7 @@ export function MockResults() {
           title="No mock exam results yet"
           description="Once you complete a mock exam, your score, domain breakdown, and full answer review will appear here."
           action={{ href: "/mock-exam", label: "Set up a mock exam" }}
-          secondaryAction={{ href: "/practice", label: "Practise first" }}
+          secondaryAction={{ href: "/practice", label: "Practice first" }}
         />
       </div>
     );

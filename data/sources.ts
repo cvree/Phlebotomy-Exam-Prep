@@ -46,11 +46,36 @@ export const SRC_CDC_HAND_HYGIENE: SourceReference = {
 };
 
 export const SRC_TEXTBOOK_CURRICULUM: SourceReference = {
-  label: "Standard phlebotomy programme curriculum (general)",
+  label: "Standard phlebotomy program curriculum (general)",
   note:
     "Reflects material taught consistently across mainstream phlebotomy " +
-    "textbooks and training programmes. Not attributed to a single edition, " +
+    "textbooks and training programs. Not attributed to a single edition, " +
     "and not verified against one.",
+};
+
+export const SRC_CA_BPC_1246: SourceReference = {
+  label:
+    "California Business and Professions Code §§ 1245–1246.5 (Clinical Laboratory Technology, certified phlebotomy technicians)",
+  publisher: "California Legislative Information",
+  url: "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=1246",
+  note:
+    "Statute cited by title and section number. Text not quoted, and specific " +
+    "clauses have not been checked against the current chaptered version by a " +
+    "reviewer — the Legislature can amend this section, so verify against the " +
+    "current statute before relying on a specific number cited here.",
+};
+
+export const SRC_CDPH_LFS: SourceReference = {
+  label:
+    "California Department of Public Health, Laboratory Field Services — Certified Phlebotomy Technician I and II certification",
+  publisher: "California Department of Public Health",
+  url: "https://www.cdph.ca.gov/Programs/OSPHLD/LFS/Pages/Phlebotomist-CPTI.aspx",
+  note:
+    "Program requirements (training hours, supervised procedure counts, fees, " +
+    "renewal) are set by CDPH and can change. This content has not been " +
+    "verified against a current CDPH publication by a reviewer — confirm " +
+    "specifics on the CDPH Laboratory Field Services site or by calling LFS " +
+    "before relying on an hour or procedure count cited here.",
 };
 
 export const SRC_MANUFACTURER_IFU: SourceReference = {
@@ -68,6 +93,8 @@ export const ALL_SOURCES: SourceReference[] = [
   SRC_OSHA_BBP,
   SRC_CDC_STANDARD_PRECAUTIONS,
   SRC_CDC_HAND_HYGIENE,
+  SRC_CA_BPC_1246,
+  SRC_CDPH_LFS,
   SRC_MANUFACTURER_IFU,
   SRC_TEXTBOOK_CURRICULUM,
 ];

@@ -222,7 +222,7 @@ export function TubeMasteryDrill() {
                       {current.promptTube.displayName}
                     </p>
                     <p className="text-sm text-ink-muted">
-                      Closure colour: {current.promptTube.colorNames.join(", ")}
+                      Closure color: {current.promptTube.colorNames.join(", ")}
                     </p>
                   </div>
                 </div>
@@ -287,8 +287,8 @@ export function TubeMasteryDrill() {
         </div>
 
         <aside className="space-y-5">
-          <Notice title="Colour is a convention">
-            Additives and closure colours vary between manufacturers, and some
+          <Notice title="Color is a convention">
+            Additives and closure colors vary between manufacturers, and some
             tubes — royal blue, tan, ACD — come in more than one version. Read
             the label band, and follow your facility&apos;s procedure manual.
           </Notice>
@@ -303,7 +303,7 @@ export function TubeMasteryDrill() {
                   href="/study/phlebotomy-tube-colors"
                   className="font-medium text-primary hover:underline"
                 >
-                  Tube colour & additive guide →
+                  Tube color & additive guide →
                 </Link>
               </li>
               <li>

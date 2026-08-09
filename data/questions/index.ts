@@ -8,6 +8,7 @@ import { ORDER_OF_DRAW_QUESTIONS } from "./orderOfDraw";
 import { SPECIMEN_HANDLING_QUESTIONS } from "./specimenHandling";
 import { COMPLICATIONS_QUESTIONS } from "./complications";
 import { SPECIAL_COLLECTIONS_QUESTIONS } from "./specialCollections";
+import { CALIFORNIA_QUESTIONS } from "./californiaRequirements";
 
 /**
  * The question bank.
@@ -26,6 +27,7 @@ export const QUESTIONS: Question[] = [
   ...SPECIMEN_HANDLING_QUESTIONS,
   ...COMPLICATIONS_QUESTIONS,
   ...SPECIAL_COLLECTIONS_QUESTIONS,
+  ...CALIFORNIA_QUESTIONS,
 ];
 
 const QUESTION_MAP = new Map(QUESTIONS.map((question) => [question.id, question]));

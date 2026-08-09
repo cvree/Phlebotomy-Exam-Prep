@@ -339,7 +339,7 @@ export function OrderOfDrawDrill() {
           </Card>
 
           <Notice title="Read the label, not the cap">
-            Tube colours are a convention that varies by manufacturer. Where
+            Tube colors are a convention that varies by manufacturer. Where
             your facility&apos;s procedure manual differs from what you learned
             in class, follow the manual.
           </Notice>
@@ -469,7 +469,7 @@ const ResultPanel = function ResultPanel({
           size="lg"
           className="flex-1"
         >
-          Practise the questions
+          Practice the questions
         </ButtonLink>
       </div>
     </div>

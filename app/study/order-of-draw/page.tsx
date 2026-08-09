@@ -47,14 +47,14 @@ export default function OrderOfDrawStudyPage() {
       sections={SECTIONS}
       practiceCta={{
         href: "/drills/order-of-draw",
-        label: "Practise Order of Draw",
+        label: "Practice Order of Draw",
         blurb:
           "Arrange the six positions from memory and find out precisely which tube you put in the wrong place — and why it belongs somewhere else.",
       }}
       related={[
         {
           href: "/study/phlebotomy-tube-colors",
-          label: "Tube colours & additives",
+          label: "Tube colors & additives",
           description:
             "What is inside each tube, what the additive does, and which specimen it produces.",
         },
@@ -281,7 +281,7 @@ export default function OrderOfDrawStudyPage() {
         <p>
           Royal blue, tan, and ACD tubes come in multiple additive versions, so
           they do not have one permanent slot in the sequence. Read the
-          label band — not the cap colour — to find out what is in the tube,
+          label band — not the cap color — to find out what is in the tube,
           then place it according to that additive.
         </p>
 
@@ -302,8 +302,8 @@ export default function OrderOfDrawStudyPage() {
 
       <StudySection id="mistakes" title="Common mistakes">
         <CommonMistake title="Trusting the cap instead of the label">
-          Closure colours are a manufacturer convention, not a standard. Two
-          facilities can stock differently-coloured tubes for the same test.
+          Closure colors are a manufacturer convention, not a standard. Two
+          facilities can stock differently-colored tubes for the same test.
           Read the label.
         </CommonMistake>
 

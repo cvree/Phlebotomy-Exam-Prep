@@ -8,7 +8,7 @@ import {
 } from "@/components/study/StudyArticle";
 
 export const metadata: Metadata = {
-  title: "Venipuncture complications — recognise, respond, prevent",
+  title: "Venipuncture complications — recognize, respond, prevent",
   description:
     "Hematoma, syncope, nerve involvement, arterial puncture, petechiae, " +
     "hemolysis, and failed draws: what each looks like, what to do the " +
@@ -45,7 +45,7 @@ export default function ComplicationsStudyPage() {
       sections={SECTIONS}
       practiceCta={{
         href: "/practice/session?mode=domain&domain=complications&count=10",
-        label: "Practise 10 complications questions",
+        label: "Practice 10 complications questions",
         blurb:
           "Scenario questions on syncope, hematoma, nerve involvement, and hemolysis — with the reasoning behind each correct response.",
       }}
@@ -84,7 +84,7 @@ export default function ComplicationsStudyPage() {
         </KeyPoint>
         <p>
           Almost every complication question is testing whether you will
-          prioritise the specimen over the patient. The answer is always no.
+          prioritize the specimen over the patient. The answer is always no.
         </p>
       </StudySection>
 
@@ -190,7 +190,7 @@ export default function ComplicationsStudyPage() {
           </li>
           <li>
             Never probe laterally with the needle. Blind sideways movement is a
-            recognised mechanism of nerve injury.
+            recognized mechanism of nerve injury.
           </li>
           <li>Limit yourself to two attempts before handing off.</li>
         </ul>
@@ -209,7 +209,7 @@ export default function ComplicationsStudyPage() {
           minutes — longer than a venous site, and longer still for
           anticoagulated patients. Notify the patient&apos;s nurse and your
           supervisor, and make sure the site is monitored for hematoma. If the
-          specimen is used, it must be labelled as arterial, because reference
+          specimen is used, it must be labeled as arterial, because reference
           ranges differ for several analytes.
         </p>
       </StudySection>

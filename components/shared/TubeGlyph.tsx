@@ -4,10 +4,10 @@ import { cx } from "./ui";
 /**
  * The collection tube illustration.
  *
- * Colour here is decoration. Every place this renders also renders the tube's
+ * Color here is decoration. Every place this renders also renders the tube's
  * name and additive as text, and the SVG itself carries no meaning for a
  * screen reader — hence `aria-hidden`. Nothing in the product requires a
- * student to distinguish two tubes by colour alone.
+ * student to distinguish two tubes by color alone.
  */
 export function TubeGlyph({
   tube,
@@ -78,7 +78,7 @@ export function TubeGlyph({
       />
 
       {/* Marbled closures get a second band so they are distinguishable in
-          greyscale and to viewers with colour-vision deficiencies. */}
+          greyscale and to viewers with color-vision deficiencies. */}
       {tube.colorNames.some((name) => name.includes("marbled")) ? (
         <rect x="2" y="10" width="26" height="4" fill={tube.swatch.label} fillOpacity="0.45" />
       ) : null}

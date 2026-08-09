@@ -147,7 +147,7 @@ export function SessionResults({
                   })}
                   className="mt-2 inline-block text-xs font-semibold text-primary hover:underline"
                 >
-                  Practise 10 more →
+                  Practice 10 more →
                 </Link>
               </li>
             ))}
@@ -189,7 +189,7 @@ export function SessionResults({
           size="lg"
           className="flex-1"
         >
-          Practise another {config.questionCount}
+          Practice another {config.questionCount}
         </ButtonLink>
         <ButtonLink href="/progress" variant="secondary" size="lg" className="flex-1">
           See your progress

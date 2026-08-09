@@ -15,9 +15,10 @@ const NAV_ITEMS = [
 
 const STUDY_ITEMS = [
   { href: "/study/order-of-draw", label: "Order of draw" },
-  { href: "/study/phlebotomy-tube-colors", label: "Tube colours & additives" },
+  { href: "/study/phlebotomy-tube-colors", label: "Tube colors & additives" },
   { href: "/study/specimen-handling", label: "Specimen handling" },
   { href: "/study/venipuncture-complications", label: "Complications" },
+  { href: "/study/california-requirements", label: "California requirements" },
 ];
 
 export function SiteHeader() {
@@ -104,7 +105,7 @@ export function SiteHeader() {
             href="/practice"
             className="hidden rounded-[var(--radius)] bg-primary px-4 py-2.5 text-sm font-semibold text-primary-contrast transition-colors hover:bg-primary-strong sm:inline-flex"
           >
-            Start practising
+            Start practicing
           </Link>
 
           <button
@@ -189,7 +190,7 @@ export function SiteHeader() {
               href="/practice"
               className="mt-4 flex min-h-12 items-center justify-center rounded-[var(--radius)] bg-primary px-4 font-semibold text-primary-contrast"
             >
-              Start practising
+              Start practicing
             </Link>
           </nav>
         </div>

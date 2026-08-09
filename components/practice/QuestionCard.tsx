@@ -108,7 +108,7 @@ export function QuestionCard({
                     {choice.text}
                   </span>
 
-                  {/* Correctness is never carried by colour alone. */}
+                  {/* Correctness is never carried by color alone. */}
                   {showCorrect ? (
                     <span className="mt-0.5 shrink-0 text-xs font-bold uppercase tracking-wide text-success">
                       Correct

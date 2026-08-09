@@ -8,7 +8,7 @@ import { ButtonLink, Card, Notice } from "@/components/shared/ui";
 export const metadata: Metadata = {
   title: "NHA CPT study hub — what to study and where to start",
   description:
-    "A study hub for the NHA Certified Phlebotomy Technician exam: nine " +
+    "A study hub for the NHA Certified Phlebotomy Technician exam: ten " +
     "study areas with practice questions and explanations, interactive " +
     "drills, a timed mock exam, and progress tracking that identifies your " +
     "weakest area.",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: "/nha-cpt",
     title: "NHA CPT study hub",
     description:
-      "Nine study areas, practice questions with explanations, drills, and a mock exam.",
+      "Ten study areas, practice questions with explanations, drills, and a mock exam.",
   },
 };
 
@@ -86,7 +86,7 @@ export default function NhaCptPage() {
           {[
             {
               title: "Week one — find the gaps",
-              body: "Quick 10 sessions across mixed areas until every one of the nine has some data behind it.",
+              body: "Quick 10 sessions across mixed areas until every one of the ten has some data behind it.",
               href: "/practice/session?mode=quick-10&count=10",
               cta: "Start Quick 10",
             },
@@ -100,7 +100,7 @@ export default function NhaCptPage() {
               title: "Week three — attack the weak areas",
               body: "Weak-area sessions and missed-question review, guided by your own mastery ratings.",
               href: "/practice/session?mode=weak-areas&count=15",
-              cta: "Practise weak areas",
+              cta: "Practice weak areas",
             },
             {
               title: "Week four — test under pressure",
@@ -134,11 +134,11 @@ export default function NhaCptPage() {
 
       <section className="mt-12" aria-labelledby="areas">
         <h2 id="areas" className="font-display text-3xl">
-          The nine study areas
+          The ten study areas
         </h2>
         <p className="mt-2 max-w-2xl text-[1.0625rem] leading-relaxed text-ink-muted">
           These are our study groupings, built from material phlebotomy
-          programmes teach consistently. They are{" "}
+          programs teach consistently. They are{" "}
           <strong>not</strong> {NHA_CPT.organizationShort}&apos;s published test
           plan, and we do not present them as such.
         </p>
@@ -175,7 +175,7 @@ export default function NhaCptPage() {
                     href={`/practice/session?mode=domain&domain=${domain.id}&count=10`}
                     className="text-sm font-semibold text-primary hover:underline"
                   >
-                    Practise 10 →
+                    Practice 10 →
                   </Link>
                   {domain.studyHref ? (
                     <Link
@@ -228,6 +228,11 @@ export default function NhaCptPage() {
               title: "Progress & readiness",
               body: "Mastery by area, a transparent readiness score, and what to do next.",
             },
+            {
+              href: "/study/california-requirements",
+              title: "California CPT1/CPT2 guide",
+              body: "What CDPH requires on top of this exam if you plan to work in California.",
+            },
           ].map((item) => (
             <li key={item.href}>
               <Card className="h-full">
@@ -255,7 +260,7 @@ export default function NhaCptPage() {
           and every question is tagged with the certifications it applies to.
           ASCP PBT and NCCT are planned. Much of the underlying material —
           order of draw, tube additives, specimen handling, complications —
-          is common across all of them, so practising here is not wasted
+          is common across all of them, so practicing here is not wasted
           whichever route you take.
         </p>
       </section>

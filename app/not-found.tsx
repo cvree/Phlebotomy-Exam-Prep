@@ -5,7 +5,7 @@ const SUGGESTIONS = [
   { href: "/practice", label: "Practice questions" },
   { href: "/drills/order-of-draw", label: "Order of Draw drill" },
   { href: "/study/order-of-draw", label: "Order of draw guide" },
-  { href: "/study/phlebotomy-tube-colors", label: "Tube colours & additives" },
+  { href: "/study/phlebotomy-tube-colors", label: "Tube colors & additives" },
   { href: "/mock-exam", label: "Mock exam" },
   { href: "/progress", label: "Your progress" },
 ];

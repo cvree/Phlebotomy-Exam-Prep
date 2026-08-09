@@ -9,7 +9,7 @@ import { DOMAINS } from "./domains";
  * has, so those fields are `undefined`, `examStructureVerified` is `false`, and
  * the UI renders a verification notice wherever exam structure is discussed.
  *
- * `mockExamFormat` is ours. It is a study format we chose, and it is labelled
+ * `mockExamFormat` is ours. It is a study format we chose, and it is labeled
  * that way everywhere it appears.
  */
 export const NHA_CPT: CertificationConfig = {

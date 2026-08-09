@@ -18,6 +18,7 @@ const ROUTES: { path: string; priority: number; changeFrequency: "weekly" | "mon
   { path: "/study/phlebotomy-tube-colors", priority: 0.9, changeFrequency: "monthly" },
   { path: "/study/specimen-handling", priority: 0.8, changeFrequency: "monthly" },
   { path: "/study/venipuncture-complications", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/study/california-requirements", priority: 0.9, changeFrequency: "monthly" },
   { path: "/practice", priority: 0.8, changeFrequency: "weekly" },
   { path: "/drills", priority: 0.7, changeFrequency: "monthly" },
   { path: "/drills/order-of-draw", priority: 0.8, changeFrequency: "monthly" },

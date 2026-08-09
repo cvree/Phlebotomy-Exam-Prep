@@ -120,9 +120,9 @@ export default function MethodologyPage() {
               .map(([status, count]) => `, with ${count} at ${status}`)
               .join("")}
             . They were written from material that mainstream phlebotomy
-            programmes teach consistently, but no qualified reviewer has yet
+            programs teach consistently, but no qualified reviewer has yet
             checked them against the cited references. Treat this content as a
-            study aid alongside your programme, not as a replacement for it or
+            study aid alongside your program, not as a replacement for it or
             for your facility&apos;s procedure manual.
           </p>
         </Notice>
@@ -175,23 +175,32 @@ export default function MethodologyPage() {
           Our mock exam is {NHA_CPT.mockExamFormat.questionCount} questions in{" "}
           {NHA_CPT.mockExamFormat.timeLimitMinutes} minutes. That is{" "}
           <strong>our</strong> practice format, chosen to be a useful length for
-          study, and it is labelled as such everywhere it appears. For anything
+          study, and it is labeled as such everywhere it appears. For anything
           official, go to the {NHA_CPT.organization} directly.
         </p>
 
-        <h2 id="domains">Where the nine study areas come from</h2>
+        <h2 id="domains">Where the ten study areas come from</h2>
         <p>
-          The nine areas are our own study taxonomy, built from material that
-          phlebotomy programmes teach consistently. They are not copied from any
+          The ten areas are our own study taxonomy, built from material that
+          phlebotomy programs teach consistently. They are not copied from any
           certifying body&apos;s published test plan, and the practice weighting
           we use to build mock exams is our editorial judgement rather than a
           published blueprint. Both facts are recorded in the data itself —{" "}
           <code>domainWeightsVerified</code> is <code>false</code>.
         </p>
+        <p>
+          One area, <strong>California Requirements</strong>, is different in
+          kind from the other nine: it covers state licensing law (the CDPH
+          CPT1/CPT2 pathway) rather than clinical technique. Hour counts,
+          procedure counts, fees, and forms are set by CDPH and can change.
+          This content is not legal advice — confirm current requirements
+          directly with CDPH Laboratory Field Services before relying on a
+          specific number from this site for an actual application.
+        </p>
 
         <h2 id="mastery">How mastery is calculated</h2>
         <p>
-          Each of the nine areas gets a mastery level from Not started to
+          Each of the ten areas gets a mastery level from Not started to
           Strong. Two design decisions drive the whole thing.
         </p>
         <p>
@@ -348,7 +357,7 @@ export default function MethodologyPage() {
         <ol>
           <li>No practice data yet → start with ten questions.</li>
           <li>
-            Your weakest area with real evidence behind it → practise it.
+            Your weakest area with real evidence behind it → practice it.
           </li>
           <li>
             {RECOMMENDATION_RULES.missedThreshold} or more questions still

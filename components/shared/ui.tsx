@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-/** Shared primitives. Deliberately small — anything with behaviour lives elsewhere. */
+/** Shared primitives. Deliberately small — anything with behavior lives elsewhere. */
 
 function cx(...values: (string | false | null | undefined)[]): string {
   return values.filter(Boolean).join(" ");
@@ -295,7 +295,7 @@ export function StatTile({
 }
 
 /**
- * A labelled proportion bar.
+ * A labeled proportion bar.
  *
  * `aria-hidden` on the bar itself: the number it depicts is always present as
  * text next to it, so announcing the graphic adds noise without information.

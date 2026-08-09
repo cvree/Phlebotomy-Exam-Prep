@@ -8,7 +8,7 @@ import {
 } from "@/components/study/StudyArticle";
 
 export const metadata: Metadata = {
-  title: "Specimen handling — labelling, transport, and rejection criteria",
+  title: "Specimen handling — labeling, transport, and rejection criteria",
   description:
     "What happens to a specimen after collection: required label elements, " +
     "mixing and clotting, chilled and light-protected specimens, transport " +
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 const SECTIONS = [
-  { id: "labelling", title: "Labelling" },
+  { id: "labeling", title: "Labelling" },
   { id: "temperature", title: "Temperature and light" },
   { id: "processing", title: "Mixing, clotting, centrifuging" },
   { id: "transport", title: "Transport and stability" },
@@ -43,14 +43,14 @@ export default function SpecimenHandlingStudyPage() {
       sections={SECTIONS}
       practiceCta={{
         href: "/practice/session?mode=domain&domain=specimen-handling&count=10",
-        label: "Practise 10 specimen handling questions",
+        label: "Practice 10 specimen handling questions",
         blurb:
-          "Certification-style questions on labelling, temperature requirements, transport limits, and rejection criteria — with explanations.",
+          "Certification-style questions on labeling, temperature requirements, transport limits, and rejection criteria — with explanations.",
       }}
       related={[
         {
           href: "/study/phlebotomy-tube-colors",
-          label: "Tube colours & additives",
+          label: "Tube colors & additives",
           description: "Which tube, which additive, and what it does.",
         },
         {
@@ -72,7 +72,7 @@ export default function SpecimenHandlingStudyPage() {
       reviewStatus="needs-review"
       sources={[SRC_CLSI_GP41, SRC_TEXTBOOK_CURRICULUM]}
     >
-      <StudySection id="labelling" title="Labelling">
+      <StudySection id="labeling" title="Labelling">
         <p>
           A label has one job: let anyone downstream establish whose specimen
           this is, when it was taken, and who took it. A specimen that cannot
@@ -97,7 +97,7 @@ export default function SpecimenHandlingStudyPage() {
         <h3>When to label</h3>
         <p>
           At the bedside, immediately after the draw, before leaving the
-          patient. Not before — a pre-labelled tube that gets filled from a
+          patient. Not before — a pre-labeled tube that gets filled from a
           different patient is one of the most dangerous errors in the
           discipline. Not after — every step away from the bedside is an
           opportunity for a mix-up you can no longer detect.
@@ -232,7 +232,7 @@ export default function SpecimenHandlingStudyPage() {
         </p>
         <ul>
           <li>
-            <strong>Unlabelled, mislabelled, or incompletely labelled.</strong>{" "}
+            <strong>Unlabelled, mislabeled, or incompletely labeled.</strong>{" "}
             The only error nobody downstream can fix.
           </li>
           <li>
@@ -264,7 +264,7 @@ export default function SpecimenHandlingStudyPage() {
       </StudySection>
 
       <StudySection id="faq" title="Quick answers">
-        <h3>When should tubes be labelled?</h3>
+        <h3>When should tubes be labeled?</h3>
         <p>
           At the bedside, immediately after collection, before leaving the
           patient. Never before the draw.
@@ -287,7 +287,7 @@ export default function SpecimenHandlingStudyPage() {
         <p>
           It raises potassium, LDH, and AST, because those are concentrated
           inside red cells. Serum or plasma appears pink to red rather than
-          straw-coloured.
+          straw-colored.
         </p>
       </StudySection>
     </StudyArticle>
