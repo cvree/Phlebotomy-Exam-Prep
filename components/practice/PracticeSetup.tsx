@@ -166,7 +166,7 @@ export function PracticeSetup() {
 
       <section className="mt-12" aria-labelledby="by-area">
         <h2 id="by-area" className="font-display text-2xl">
-          Practise one area
+          Practice one area
         </h2>
         <p className="mt-1.5 text-[0.9375rem] text-ink-muted">
           {ready && hasProgress
@@ -232,7 +232,7 @@ export function PracticeSetup() {
                       variant={selected ? "primary" : "secondary"}
                       size="sm"
                     >
-                      Practise {Math.min(count, available)}
+                      Practice {Math.min(count, available)}
                     </ButtonLink>
                     {domain.studyHref ? (
                       <Link

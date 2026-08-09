@@ -3,7 +3,7 @@
 A focused certification study platform for phlebotomy students. Built around one
 loop:
 
-> Learn → Practise → Get feedback → Find the weak area → Drill it → Test → Improve
+> Learn → Practice → Get feedback → Find the weak area → Drill it → Test → Improve
 
 The product promise is **know what to study before your phlebotomy certification
 exam**. Every session should leave a student knowing what they know, what they
@@ -11,7 +11,11 @@ are weak at, and what to do next — not just a percentage.
 
 The first certification is the **NHA Certified Phlebotomy Technician (CPT)**.
 Certification configuration is data, so ASCP PBT and NCCT can be added without
-restructuring the application.
+restructuring the application. The platform is built for California
+candidates specifically: alongside the national exam material, a dedicated
+"California Requirements" study area covers the CDPH Laboratory Field
+Services CPT1/CPT2 state licensing pathway that California layers on top of
+national certification.
 
 ---
 
@@ -19,7 +23,7 @@ restructuring the application.
 
 **Practice**
 
-- 94 original, certification-style questions across nine study areas
+- 238 original, certification-style questions across ten study areas
 - Immediate inline feedback: verdict, correct answer, full explanation, why the
   specific distractor you picked was wrong, and a memory tip where one helps
 - Session modes: Quick 10, all areas, a single area, weak areas, missed
@@ -55,9 +59,10 @@ restructuring the application.
 - Deterministic, explainable "what to study next" recommendations
 - Study streak, export to JSON, and reset
 
-**Study guides** — long-form pages on order of draw, tube colours and
-additives, specimen handling, and venipuncture complications, each linking
-directly into the matching practice or drill.
+**Study guides** — long-form pages on order of draw, tube colors and
+additives, specimen handling, venipuncture complications, and California
+CPT1/CPT2 licensing requirements, each linking directly into the matching
+practice or drill.
 
 ---
 
@@ -77,7 +82,7 @@ npm run test         # vitest, single run
 npm run test:watch   # watch mode
 ```
 
-131 tests cover the parts where a bug would quietly mislead a student: scoring,
+132 tests cover the parts where a bug would quietly mislead a student: scoring,
 question selection and session generation, mastery and readiness calculation,
 weak-area detection, recommendation rules, storage migrations, streak
 arithmetic, order-of-draw grading, and tube-drill generation. `tests/` also
@@ -149,7 +154,7 @@ components/
   study/                  Long-form article shell
   shared/                 Buttons, cards, badges, notices, tube illustration
 data/
-  certifications/         Certification config and the nine study areas
+  certifications/         Certification config and the ten study areas
   questions/              The question bank, one file per area
   tubes/                  Tube reference data
   study/                  Order-of-draw sequence
@@ -207,7 +212,8 @@ content violates certifying bodies' terms and can invalidate a candidate's
 result.
 
 **No affiliation.** This project is not affiliated with, endorsed by, or
-sponsored by the National Healthcareer Association, ASCP, or NCCT.
+sponsored by the National Healthcareer Association, ASCP, NCCT, or the
+California Department of Public Health (CDPH).
 
 **Everything carries a review status.** Questions, tube records, and the
 order-of-draw sequence each have a `reviewStatus` that is rendered wherever the
@@ -217,8 +223,8 @@ content appears:
 draft → needs-review → reviewed → published
 ```
 
-**All 94 questions currently sit at `needs-review`.** They were written from
-material that mainstream phlebotomy programmes teach consistently, but **no
+**All 238 questions currently sit at `needs-review`.** They were written from
+material that mainstream phlebotomy programs teach consistently, but **no
 qualified reviewer has checked them against the cited references.** The UI says
 so on every question. A test asserts that nothing has been promoted to
 `reviewed` without that work happening.
@@ -234,7 +240,7 @@ happened.
 passing score, and official domain weightings are `undefined` in
 `data/certifications/index.ts`, `examStructureVerified` is `false`, and the UI
 shows a verification notice wherever exam structure is discussed. The mock exam
-uses *our* practice format (50 questions, 60 minutes), labelled as ours
+uses *our* practice format (50 questions, 60 minutes), labeled as ours
 everywhere it appears.
 
 **Readiness is not a prediction.** Study readiness measures how much material a
@@ -245,13 +251,16 @@ against exam outcomes and the product never states a probability of passing.
 
 1. NHA CPT exam structure — question count, time limit, scoring, published
    domains and weightings, eligibility and retake policy
-2. Clinical review of all 94 questions by a qualified phlebotomy educator or
+2. Clinical review of all 238 questions by a qualified phlebotomy educator or
    MLS professional, against the cited standards
 3. Precise citations for each reviewed item, replacing the title-only references
 4. Tube additive details, draw volumes, and inversion counts against current
    manufacturer instructions for use
-5. The nine study areas, if they are ever to be described as mapping to a
+5. The ten study areas, if they are ever to be described as mapping to a
    published test plan
+6. California CPT1/CPT2 specifics (training hours, supervised-procedure
+   counts, fees, renewal cadence) against current CDPH Laboratory Field
+   Services publications — this content is not legal advice
 
 ---
 
@@ -260,7 +269,9 @@ against exam outcomes and the product never states a probability of passing.
 **Next**
 
 - Clinical review pass, moving content from `needs-review` to `reviewed`
-- Grow the bank toward 250–300 questions while holding the review standard
+- Human verification of the California CPT1/CPT2 specifics against current
+  CDPH publications
+- Continue growing the bank while holding the review standard
 - The remaining drill modes: what-comes-next, find-the-misplaced-tube, timed
   order of draw, and the two further tube directions
 - Spaced repetition on missed questions rather than simple re-queueing
@@ -275,8 +286,11 @@ against exam outcomes and the product never states a probability of passing.
 
 ---
 
-## Licence and disclaimer
+## License and disclaimer
 
-Educational content is provided for study purposes and is not clinical guidance.
-Always follow your training programme, your facility's procedure manual, and the
-instructions supplied with the equipment you use.
+Educational content is provided for study purposes and is not clinical guidance
+or legal advice. Always follow your training program, your facility's
+procedure manual, and the instructions supplied with the equipment you use.
+California licensing content describes the shape of the CDPH CPT1/CPT2
+pathway for study purposes only — confirm current requirements directly with
+CDPH Laboratory Field Services.

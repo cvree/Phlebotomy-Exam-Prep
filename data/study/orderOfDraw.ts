@@ -74,7 +74,7 @@ export const CLSI_ORDER_OF_DRAW: OrderOfDrawSequence = {
     },
   ],
   caveats: [
-    "Tube closure colour is a convention, not a rule. Additives and colours " +
+    "Tube closure color is a convention, not a rule. Additives and colors " +
       "vary by manufacturer, so read the label rather than trusting the cap.",
     "When a winged (butterfly) set is used and a coagulation tube is drawn " +
       "first, a discard tube may be needed to clear the air in the tubing so " +
@@ -99,5 +99,5 @@ export const ORDER_OF_DRAW_MNEMONIC = {
   note:
     "Mnemonics are scaffolding. Once the sequence is automatic, work on the " +
     "reason behind it — exam questions are more often about carryover than " +
-    "about reciting colours.",
+    "about reciting colors.",
 };

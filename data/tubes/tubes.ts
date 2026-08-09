@@ -8,10 +8,10 @@ import {
 /**
  * Blood collection tubes as study objects.
  *
- * Closure colour is a convention, not a guarantee: additives and colours vary
+ * Closure color is a convention, not a guarantee: additives and colors vary
  * by manufacturer, and some facilities stock tubes that do not match the
  * pattern below. Every surface that renders a tube also renders its additive
- * and colour *name*, so nothing depends on colour perception alone.
+ * and color *name*, so nothing depends on color perception alone.
  */
 
 const baseSources = [SRC_CLSI_GP41, SRC_MANUFACTURER_IFU, SRC_TEXTBOOK_CURRICULUM];
@@ -229,7 +229,7 @@ export const TUBES: Tube[] = [
     orderOfDrawPosition: 5,
     inversions: "8–10 inversions",
     specialHandling: [
-      "Blood bank labelling requirements are stricter than routine testing — " +
+      "Blood bank labeling requirements are stricter than routine testing — " +
         "many facilities require the collector's identifier and the exact " +
         "collection time on the tube",
     ],
@@ -320,7 +320,7 @@ export const TUBES: Tube[] = [
     specimenType: "Whole blood",
     commonUses: ["Blood lead levels"],
     caveats: [
-      "Availability and colour convention vary by manufacturer and facility.",
+      "Availability and color convention vary by manufacturer and facility.",
     ],
     sources: baseSources,
     reviewStatus: "needs-review",

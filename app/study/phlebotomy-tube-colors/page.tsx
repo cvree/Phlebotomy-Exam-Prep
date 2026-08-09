@@ -15,18 +15,18 @@ import {
 } from "@/components/study/StudyArticle";
 
 export const metadata: Metadata = {
-  title: "Phlebotomy tube colours and additives — full reference",
+  title: "Phlebotomy tube colors and additives — full reference",
   description:
-    "Every common blood collection tube: closure colour, additive, what the " +
+    "Every common blood collection tube: closure color, additive, what the " +
     "additive does, the specimen it produces, common tests, inversions, and " +
     "the handling details that get specimens rejected.",
   alternates: { canonical: "/study/phlebotomy-tube-colors" },
   openGraph: {
     type: "article",
     url: "/study/phlebotomy-tube-colors",
-    title: "Phlebotomy tube colours and additives",
+    title: "Phlebotomy tube colors and additives",
     description:
-      "Closure colour, additive, mechanism, specimen type, and common tests for every routine tube.",
+      "Closure color, additive, mechanism, specimen type, and common tests for every routine tube.",
   },
 };
 
@@ -43,8 +43,8 @@ export default function TubeColorsStudyPage() {
   return (
     <StudyArticle
       eyebrow="Study guide"
-      title="Tube colours & additives"
-      standfirst="Closure colour is a shorthand, not a specification. What actually matters is the additive, what it does to the blood, and therefore which tests the tube can serve — which is also what the harder questions are about."
+      title="Tube colors & additives"
+      standfirst="Closure color is a shorthand, not a specification. What actually matters is the additive, what it does to the blood, and therefore which tests the tube can serve — which is also what the harder questions are about."
       updated="August 2026"
       sections={SECTIONS}
       practiceCta={{
@@ -83,7 +83,7 @@ export default function TubeColorsStudyPage() {
       <StudySection id="reference" title="Tube reference">
         <p>
           Every tube below lists the additive first, because that is what
-          determines everything else. Colours listed are the common convention
+          determines everything else. Colors listed are the common convention
           — your facility may stock something different.
         </p>
 
@@ -170,7 +170,7 @@ export default function TubeColorsStudyPage() {
       <StudySection id="mechanisms" title="The four mechanisms">
         <p>
           There are only four things an additive can be doing. Sorting tubes by
-          mechanism is far more useful than sorting them by colour, because the
+          mechanism is far more useful than sorting them by color, because the
           mechanism explains which tests the tube can and cannot serve.
         </p>
 
@@ -301,12 +301,12 @@ export default function TubeColorsStudyPage() {
         <KeyPoint>
           An underfilled EDTA tube has the same problem in miniature: excess
           EDTA relative to blood draws water out of red cells and shrinks them,
-          which distorts the haematocrit and the cell indices.
+          which distorts the hematocrit and the cell indices.
         </KeyPoint>
       </StudySection>
 
       <StudySection id="mistakes" title="Common mistakes">
-        <CommonMistake title="Assuming colour equals additive">
+        <CommonMistake title="Assuming color equals additive">
           Royal blue tubes come with no additive, with EDTA, and with heparin.
           Yellow means SPS for cultures in one context and ACD for HLA typing
           in another. Read the label band.

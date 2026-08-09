@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const COLUMNS = [
   {
-    title: "Practise",
+    title: "Practice",
     links: [
       { href: "/practice", label: "Practice questions" },
       { href: "/mock-exam", label: "Mock exam" },
@@ -15,9 +15,10 @@ const COLUMNS = [
     title: "Study guides",
     links: [
       { href: "/study/order-of-draw", label: "Order of draw" },
-      { href: "/study/phlebotomy-tube-colors", label: "Tube colours & additives" },
+      { href: "/study/phlebotomy-tube-colors", label: "Tube colors & additives" },
       { href: "/study/specimen-handling", label: "Specimen handling" },
       { href: "/study/venipuncture-complications", label: "Venipuncture complications" },
+      { href: "/study/california-requirements", label: "California requirements" },
     ],
   },
   {
@@ -64,8 +65,9 @@ export function SiteFooter() {
             </strong>{" "}
             Phlebotomy Exam Prep is an independent study tool. It is not
             affiliated with, endorsed by, or sponsored by the National
-            Healthcareer Association (NHA), ASCP, or NCCT. NHA and CPT are the
-            property of their respective owners.
+            Healthcareer Association (NHA), ASCP, NCCT, or the California
+            Department of Public Health (CDPH). NHA and CPT are the property
+            of their respective owners.
           </p>
           <p>
             All questions are <strong className="font-semibold text-ink-muted">original
@@ -75,9 +77,13 @@ export function SiteFooter() {
           </p>
           <p>
             Educational content is provided for study purposes and is not
-            clinical guidance. Always follow your training programme, your
-            facility&apos;s procedure manual, and the instructions supplied with
-            the equipment you use.{" "}
+            clinical guidance or legal advice. Always follow your training
+            program, your facility&apos;s procedure manual, and the
+            instructions supplied with the equipment you use. California
+            licensing content describes the shape of the CDPH pathway for
+            study purposes only — confirm current requirements, forms, and
+            fees directly with CDPH Laboratory Field Services before relying
+            on anything here for an actual application.{" "}
             <Link href="/about/methodology" className="text-primary underline">
               How we write and review content
             </Link>

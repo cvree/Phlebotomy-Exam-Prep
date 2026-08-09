@@ -77,7 +77,7 @@ export function MockSetup() {
               <StatTile
                 label="Questions"
                 value={String(format.questionCount)}
-                detail="weighted across all nine areas"
+                detail="weighted across all ten areas"
               />
               <StatTile
                 label="Time limit"

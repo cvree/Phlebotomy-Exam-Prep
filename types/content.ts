@@ -10,7 +10,7 @@
 export type CertificationId = "nha-cpt" | "ascp-pbt" | "ncct-cpt";
 
 /**
- * Our study taxonomy. These are the areas *we* organise practice around.
+ * Our study taxonomy. These are the areas *we* organize practice around.
  * They are deliberately NOT presented as the official domain list of any
  * certifying body — see `CertificationConfig.domainWeightsVerified`.
  */
@@ -23,7 +23,8 @@ export type DomainId =
   | "order-of-draw"
   | "specimen-handling"
   | "complications"
-  | "special-collections";
+  | "special-collections"
+  | "california-requirements";
 
 /**
  * Editorial lifecycle for every piece of clinical content.
@@ -142,9 +143,9 @@ export type Tube = {
   id: string;
   /** e.g. "Lavender / purple". */
   displayName: string;
-  /** Closure colours, as words. Always shown as text, never colour alone. */
+  /** Closure colors, as words. Always shown as text, never color alone. */
   colorNames: string[];
-  /** CSS colours for the tube illustration. Decorative only. */
+  /** CSS colors for the tube illustration. Decorative only. */
   swatch: { cap: string; body: string; label: string };
   additive: string;
   additiveAction: string;

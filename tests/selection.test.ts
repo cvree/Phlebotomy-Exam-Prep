@@ -191,7 +191,7 @@ describe("buildMockExam", () => {
   it("spreads questions across every domain", () => {
     const paper = buildMockExam("nha-cpt", 50, 4);
     const domains = new Set(paper.map((q) => q.domain));
-    expect(domains.size).toBe(9);
+    expect(domains.size).toBe(10);
   });
 
   it("caps at the bank size when more are requested than exist", () => {

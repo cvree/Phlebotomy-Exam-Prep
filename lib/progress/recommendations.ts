@@ -52,7 +52,7 @@ export function buildRecommendations(context: Context): Recommendation[] {
         id: "first-session",
         title: "Start with ten questions",
         reason:
-          "Nothing to analyse yet. Ten mixed questions is enough for the " +
+          "Nothing to analyze yet. Ten mixed questions is enough for the " +
           "first read on your strongest and weakest areas.",
         ctaLabel: "Start Quick 10",
         href: "/practice/session?mode=quick-10&count=10",
@@ -74,13 +74,13 @@ export function buildRecommendations(context: Context): Recommendation[] {
 
     recommendations.push({
       id: `weak-${weakestDomain.domain}`,
-      title: `Practise ${domainName(weakestDomain.domain)}`,
+      title: `Practice ${domainName(weakestDomain.domain)}`,
       reason: thinEvidence
         ? `Your lowest score so far, though it's only ${attempts} ${plural}. ` +
           "A few more will show whether it's a real gap."
         : `Your weakest area: ${Math.round(weakestDomain.accuracy * 100)}% on ` +
           `recent questions across ${attempts} ${plural}.`,
-      ctaLabel: `Practise 10 ${domainName(weakestDomain.domain)} questions`,
+      ctaLabel: `Practice 10 ${domainName(weakestDomain.domain)} questions`,
       href: `/practice/session?mode=domain&domain=${weakestDomain.domain}&count=10`,
       priority: 1,
     });
@@ -214,7 +214,7 @@ export function buildRecommendations(context: Context): Recommendation[] {
       reason:
         "Everything is in reasonable shape. Mixed practice keeps all areas " +
         "warm rather than letting one drift.",
-      ctaLabel: "Practise 10 mixed questions",
+      ctaLabel: "Practice 10 mixed questions",
       href: "/practice/session?mode=all-domains&count=10",
       priority: 8,
     });

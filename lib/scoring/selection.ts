@@ -103,7 +103,7 @@ function filterForMode(
 
     case "missed":
       // Questions whose most recent answer was wrong. Once a question is
-      // answered correctly it leaves this pool, which is the behaviour that
+      // answered correctly it leaves this pool, which is the behavior that
       // makes "missed questions" a shrinking, finishable list.
       return pool.filter((question) => {
         const stat = stats[question.id];

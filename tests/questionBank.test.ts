@@ -82,7 +82,7 @@ describe("tube and sequence data", () => {
     expect(positions).toEqual([1, 2, 3, 4, 5, 6]);
   });
 
-  it("names a colour in text for every tube, so nothing depends on colour alone", () => {
+  it("names a color in text for every tube, so nothing depends on color alone", () => {
     for (const tube of TUBES) {
       expect(tube.colorNames.length).toBeGreaterThan(0);
       expect(tube.additive.length).toBeGreaterThan(0);

@@ -8,7 +8,7 @@
  * Privacy rule, enforced by the `AnalyticsProperties` type: event properties
  * are counts, identifiers of *content*, and enum-ish strings. No free text, no
  * answers a student gave, and nothing about the student themselves. This is a
- * healthcare-adjacent product and study behaviour is not something we want to
+ * healthcare-adjacent product and study behavior is not something we want to
  * accidentally start collecting.
  */
 

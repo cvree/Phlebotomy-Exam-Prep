@@ -78,7 +78,7 @@ export function ProgressDashboard() {
               },
               {
                 title: "Mastery by area",
-                body: "Nine areas, each rated from Not started to Strong — with the reasoning shown.",
+                body: "Ten areas, each rated from Not started to Strong — with the reasoning shown.",
               },
               {
                 title: "What to do next",
@@ -206,7 +206,7 @@ export function ProgressDashboard() {
                           })}
                           className="text-sm font-semibold text-primary hover:underline"
                         >
-                          Practise 10 →
+                          Practice 10 →
                         </Link>
                         {domain?.studyHref ? (
                           <Link

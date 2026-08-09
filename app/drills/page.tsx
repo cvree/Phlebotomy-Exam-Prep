@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Phlebotomy drills",
   description:
     "Interactive phlebotomy drills: arrange the order of draw, and master " +
-    "tube colours, additives, and what each one does.",
+    "tube colors, additives, and what each one does.",
   alternates: { canonical: "/drills" },
   openGraph: {
     title: "Phlebotomy drills",
@@ -128,7 +128,7 @@ export default function DrillsPage() {
             href="/study/phlebotomy-tube-colors"
             className="text-sm font-semibold text-primary hover:underline"
           >
-            Tube colours & additives →
+            Tube colors & additives →
           </Link>
         </div>
       </Card>

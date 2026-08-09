@@ -3,7 +3,7 @@ import type { DomainConfig, DomainId } from "@/types/content";
 /**
  * Our study taxonomy.
  *
- * These nine areas are how *we* organise practice and report mastery. They are
+ * These ten areas are how *we* organize practice and report mastery. They are
  * built from widely-taught phlebotomy curriculum areas, not copied from any
  * certifying body's published exam blueprint. `practiceWeight` is our own
  * editorial allocation and is flagged as unverified in the certification config.
@@ -23,14 +23,14 @@ export const DOMAINS: DomainConfig[] = [
       "Post-exposure response",
       "Biohazard, chemical, and fire safety basics",
     ],
-    practiceWeight: 0.14,
+    practiceWeight: 0.12,
   },
   {
     id: "patient-identification",
     name: "Patient Identification",
     shortName: "Patient ID",
     description:
-      "Two-identifier verification, requisition matching, and labelling at the bedside.",
+      "Two-identifier verification, requisition matching, and labeling at the bedside.",
     covers: [
       "Two independent patient identifiers",
       "Active versus passive identification",
@@ -87,7 +87,7 @@ export const DOMAINS: DomainConfig[] = [
       "Needle insertion angle and bevel orientation",
       "Capillary/dermal puncture technique",
     ],
-    practiceWeight: 0.14,
+    practiceWeight: 0.12,
   },
   {
     id: "order-of-draw",
@@ -99,12 +99,12 @@ export const DOMAINS: DomainConfig[] = [
       "The CLSI GP41 collection sequence",
       "Additive carryover and its effect on results",
       "Discard tubes with winged sets",
-      "Tube colour, additive, and specimen type",
+      "Tube color, additive, and specimen type",
       "Mixing and inversion requirements",
       "Tubes whose position varies by facility",
     ],
     studyHref: "/study/order-of-draw",
-    practiceWeight: 0.12,
+    practiceWeight: 0.11,
   },
   {
     id: "specimen-handling",
@@ -121,7 +121,7 @@ export const DOMAINS: DomainConfig[] = [
       "Specimen rejection criteria",
     ],
     studyHref: "/study/specimen-handling",
-    practiceWeight: 0.12,
+    practiceWeight: 0.11,
   },
   {
     id: "complications",
@@ -138,23 +138,40 @@ export const DOMAINS: DomainConfig[] = [
       "Failed draws and redirection limits",
     ],
     studyHref: "/study/venipuncture-complications",
-    practiceWeight: 0.12,
+    practiceWeight: 0.11,
   },
   {
     id: "special-collections",
     name: "Special Collections",
     shortName: "Special",
     description:
-      "Blood cultures, glucose tolerance, blood bank, paediatric and geriatric draws.",
+      "Blood cultures, glucose tolerance, blood bank, pediatric and geriatric draws.",
     covers: [
       "Blood culture site prep and volume",
       "Glucose tolerance testing",
       "Blood bank identification requirements",
       "Therapeutic drug monitoring timing",
-      "Paediatric and neonatal collection",
+      "Pediatric and neonatal collection",
       "Geriatric and difficult-access patients",
     ],
-    practiceWeight: 0.06,
+    practiceWeight: 0.05,
+  },
+  {
+    id: "california-requirements",
+    name: "California Requirements",
+    shortName: "California",
+    description:
+      "CDPH Certified Phlebotomy Technician (CPT1/CPT2) licensing, scope of practice, and supervision rules for practicing in California.",
+    covers: [
+      "Why national certification alone does not authorize a draw in California",
+      "CPT1 vs. CPT2: scope of practice and how to qualify for each",
+      "Training hours, supervised procedure counts, and CDPH-approved agencies",
+      "Applying to CDPH Laboratory Field Services and keeping a certificate current",
+      "Supervision and competency-verification requirements",
+      "Where state rules add to, rather than replace, federal and CLSI standards",
+    ],
+    studyHref: "/study/california-requirements",
+    practiceWeight: 0.08,
   },
 ];
 

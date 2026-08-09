@@ -33,7 +33,7 @@ export default function PricingPage() {
         </p>
         <div className="mt-6">
           <ButtonLink href="/practice/session?mode=quick-10&count=10" size="lg">
-            Start practising
+            Start practicing
           </ButtonLink>
         </div>
       </div>

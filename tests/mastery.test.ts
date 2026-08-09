@@ -67,7 +67,7 @@ describe("masteryLevelFor", () => {
 
   it("will not award a high level on thin evidence", () => {
     // Three perfect answers is not mastery, and this is the specific
-    // behaviour the product brief calls out.
+    // behavior the product brief calls out.
     expect(
       masteryLevelFor({
         attempts: 3,

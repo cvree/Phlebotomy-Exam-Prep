@@ -96,7 +96,7 @@ export function ReturningStudentPanel() {
                 Recommended next
               </p>
               <p className="mt-1 font-display text-xl leading-snug text-ink">
-                {primary?.title ?? "Keep practising"}
+                {primary?.title ?? "Keep practicing"}
               </p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
                 {primary?.reason ?? "Mixed practice keeps every area warm."}
@@ -114,7 +114,7 @@ export function ReturningStudentPanel() {
                 variant="secondary"
                 className="flex-1"
               >
-                Practise weak areas
+                Practice weak areas
               </ButtonLink>
             </div>
           </Card>

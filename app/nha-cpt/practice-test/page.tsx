@@ -157,7 +157,7 @@ export default function PracticeTestPage() {
           <p>
             Volume matters less than coverage. Answering 300 questions on the
             three areas you already enjoy is worth less than 100 spread across
-            all nine. The{" "}
+            all ten. The{" "}
             <Link href="/progress">progress page</Link> tracks coverage
             explicitly for this reason.
           </p>
@@ -165,7 +165,7 @@ export default function PracticeTestPage() {
           <h3>How do I know which area to study?</h3>
           <p>
             Answer questions and the app works it out. Mastery is tracked
-            separately for each of the nine areas, weighted toward recent
+            separately for each of the ten areas, weighted toward recent
             answers, and the recommendation on your progress page names the
             weakest one with the numbers behind it.
           </p>

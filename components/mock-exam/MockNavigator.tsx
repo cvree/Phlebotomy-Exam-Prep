@@ -6,7 +6,7 @@ import { cx } from "@/components/shared/ui";
 /**
  * Question grid.
  *
- * State is carried by shape and text as well as colour: answered cells are
+ * State is carried by shape and text as well as color: answered cells are
  * filled and announced as "answered", flagged cells carry a visible ⚑, and
  * every cell's accessible name states its status.
  */

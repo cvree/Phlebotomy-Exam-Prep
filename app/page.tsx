@@ -10,19 +10,22 @@ import { ButtonLink, Card } from "@/components/shared/ui";
 import { ReturningStudentPanel } from "@/components/home/ReturningStudentPanel";
 
 export const metadata: Metadata = {
-  title: "Phlebotomy Exam Prep — know what to study before your CPT exam",
+  title:
+    "Phlebotomy Exam Prep — CPT exam & California CPT1/CPT2 study platform",
   description:
-    "Free phlebotomy certification study platform. Practice questions with " +
-    "full explanations, an interactive order of draw drill, tube and " +
-    "additive training, timed mock exams, and progress tracking that tells " +
-    "you exactly what to study next. No sign-up.",
+    "Free phlebotomy certification study platform built for California " +
+    "candidates. Practice questions with full explanations, a dedicated " +
+    "California CDPH CPT1/CPT2 licensing guide, an interactive order of " +
+    "draw drill, tube and additive training, timed mock exams, and progress " +
+    "tracking that tells you exactly what to study next. No sign-up.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
-    title: "Know what to study before your phlebotomy certification exam",
+    title: "Know what to study before your phlebotomy exam — and your California license",
     description:
-      "Practice questions with explanations, order of draw and tube drills, " +
-      "mock exams, and weak-area detection. No sign-up needed.",
+      "Practice questions with explanations, a California CPT1/CPT2 " +
+      "licensing guide, order of draw and tube drills, mock exams, and " +
+      "weak-area detection. No sign-up needed.",
   },
 };
 
@@ -50,16 +53,23 @@ const TOOLS = [
   },
   {
     href: "/drills/tube-colors",
-    name: "Tube colours & additives",
+    name: "Tube colors & additives",
     description:
       "Rapid recall on what is in each tube and what the additive actually does — the mechanism behind the order of draw.",
     meta: "8-question rounds",
   },
   {
+    href: "/study/california-requirements",
+    name: "California CPT1/CPT2 guide",
+    description:
+      "What CDPH adds on top of a national exam: scope of practice, training and procedure requirements, supervision, and renewal.",
+    meta: "California-specific",
+  },
+  {
     href: "/progress",
     name: "Progress & readiness",
     description:
-      "Mastery across nine areas, a transparent readiness score, and one specific recommendation for what to study next.",
+      "Mastery across ten areas, a transparent readiness score, and one specific recommendation for what to study next.",
     meta: "Stored on your device",
   },
 ];
@@ -76,16 +86,17 @@ export default function HomePage() {
         <div className="container-page grid grid-cols-1 gap-10 py-12 sm:py-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-14">
           <div className="min-w-0">
             <p className="text-sm font-semibold uppercase tracking-[0.09em] text-primary">
-              Built for the {NHA_CPT.shortName}
+              Built for the {NHA_CPT.shortName} — and California licensing
             </p>
             <h1 className="mt-3 font-display text-4xl leading-[1.08] sm:text-5xl lg:text-[3.4rem]">
-              Know what to study before your phlebotomy exam.
+              Know what to study before your California phlebotomy exam.
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted">
               Most study sites tell you your score. This one tells you which
               area is letting you down, why you got a question wrong, and what
-              to do about it next. Start now — no account, no card, nothing to
-              set up.
+              to do about it next — plus the CDPH CPT1/CPT2 licensing steps
+              California adds on top of your national exam. Start now — no
+              account, no card, nothing to set up.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -97,17 +108,18 @@ export default function HomePage() {
                 Start NHA CPT practice
               </ButtonLink>
               <ButtonLink
-                href="/drills/order-of-draw"
+                href="/study/california-requirements"
                 variant="secondary"
                 size="lg"
               >
-                Practise order of draw
+                California licensing guide
               </ButtonLink>
             </div>
 
             <p className="mt-4 text-sm text-ink-subtle">
               {QUESTIONS.length} original practice questions · {DOMAINS.length}{" "}
-              study areas · progress saved in your browser
+              study areas, including California CPT1/CPT2 requirements ·
+              progress saved in your browser
             </p>
           </div>
 
@@ -168,7 +180,7 @@ export default function HomePage() {
       <section className="container-page py-12 sm:py-16" aria-labelledby="how">
         <div className="max-w-2xl">
           <h2 id="how" className="font-display text-3xl sm:text-4xl">
-            Learn, practise, find the gap, close it
+            Learn, practice, find the gap, close it
           </h2>
           <p className="mt-3 text-[1.0625rem] leading-relaxed text-ink-muted">
             Every session feeds the same loop. You answer questions, the app
@@ -181,13 +193,13 @@ export default function HomePage() {
           {[
             {
               step: "1",
-              title: "Practise",
+              title: "Practice",
               body: "Ten questions is enough to start. Every answer comes with the reasoning.",
             },
             {
               step: "2",
               title: "See the gap",
-              body: "Mastery is tracked across nine areas, weighted toward your recent answers.",
+              body: "Mastery is tracked across ten areas, weighted toward your recent answers.",
             },
             {
               step: "3",
@@ -253,10 +265,11 @@ export default function HomePage() {
       <section className="container-page py-12 sm:py-16" aria-labelledby="areas">
         <div className="max-w-2xl">
           <h2 id="areas" className="font-display text-3xl sm:text-4xl">
-            What you can practise
+            What you can practice
           </h2>
           <p className="mt-3 text-[1.0625rem] leading-relaxed text-ink-muted">
-            Nine study areas covering the material phlebotomy programmes teach.
+            Ten study areas covering the material phlebotomy programs teach —
+            including California&apos;s CDPH CPT1/CPT2 licensing requirements.
             These are our own study groupings, not a certifying body&apos;s
             published exam blueprint.
           </p>
@@ -276,7 +289,7 @@ export default function HomePage() {
                   href={`/practice/session?mode=domain&domain=${domain.id}&count=10`}
                   className="mt-3 inline-block text-sm font-semibold text-primary hover:underline"
                 >
-                  Practise 10 →
+                  Practice 10 →
                 </Link>
               </Card>
             </li>

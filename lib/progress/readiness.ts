@@ -18,7 +18,7 @@ import { MASTERY_ORDER } from "./mastery";
  */
 
 export const READINESS_WEIGHTS = {
-  /** Breadth: are you working across the syllabus, or only your favourites? */
+  /** Breadth: are you working across the syllabus, or only your favorites? */
   coverage: 30,
   /** Depth: recent accuracy, weighted by mastery level rather than raw %. */
   accuracy: 30,
@@ -173,7 +173,7 @@ export function calculateReadiness(
     components,
     limitingFactor: limiting
       ? `${limiting.label} is holding this back the most. ${limiting.detail}`
-      : "Keep practising across all areas.",
+      : "Keep practicing across all areas.",
   };
 }
 
