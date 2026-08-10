@@ -5,6 +5,7 @@ import type {
   SessionSummary,
   StudyStreak,
 } from "@/types/study";
+import type { VocabCardState, VocabSessionSummary } from "@/types/vocab";
 import type { StoredProgress } from "@/lib/storage/schema";
 
 /**
@@ -87,6 +88,67 @@ export function recordMockResult(
     ...progress,
     mockResults: [...progress.mockResults, result],
   };
+}
+
+/**
+ * Applies graded vocabulary reviews.
+ *
+ * The new card states arrive already computed — `gradeCard` in
+ * `lib/vocab/scheduler.ts` owns the scheduling maths, and this only writes the
+ * result. Keeping the two apart is what lets the schedule be tested by
+ * asserting on dates without a storage layer in the way.
+ */
+export function recordVocabReviews(
+  progress: StoredProgress,
+  cards: VocabCardState[],
+): StoredProgress {
+  if (cards.length === 0) return progress;
+
+  const next = { ...progress.vocab.cards };
+  for (const card of cards) {
+    next[card.termId] = card;
+  }
+
+  return {
+    ...progress,
+    vocab: { ...progress.vocab, cards: next },
+  };
+}
+
+export function recordVocabSession(
+  progress: StoredProgress,
+  summary: VocabSessionSummary,
+): StoredProgress {
+  const matchBests = { ...progress.vocab.matchBests };
+
+  if (summary.mode === "match" && summary.matchMs !== undefined) {
+    const previous = matchBests[summary.setId];
+    if (previous === undefined || summary.matchMs < previous) {
+      matchBests[summary.setId] = summary.matchMs;
+    }
+  }
+
+  return {
+    ...progress,
+    vocab: {
+      ...progress.vocab,
+      sessions: [...progress.vocab.sessions, summary],
+      matchBests,
+    },
+    streak: updateStreak(progress.streak, summary.completedAt),
+  };
+}
+
+/** Clears the schedule for one set without touching the rest of the bank. */
+export function resetVocabSet(
+  progress: StoredProgress,
+  termIds: string[],
+): StoredProgress {
+  const cards = { ...progress.vocab.cards };
+  for (const termId of termIds) {
+    delete cards[termId];
+  }
+  return { ...progress, vocab: { ...progress.vocab, cards } };
 }
 
 /** YYYY-MM-DD in the viewer's local timezone — a "study day" is a local day. */

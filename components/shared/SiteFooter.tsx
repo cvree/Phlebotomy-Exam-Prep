@@ -5,6 +5,8 @@ const COLUMNS = [
     title: "Practice",
     links: [
       { href: "/practice", label: "Practice questions" },
+      { href: "/vocabulary", label: "Vocabulary trainer" },
+      { href: "/vocabulary/review", label: "Daily vocabulary review" },
       { href: "/mock-exam", label: "Mock exam" },
       { href: "/drills/order-of-draw", label: "Order of Draw drill" },
       { href: "/drills/tube-colors", label: "Tube Mastery drill" },

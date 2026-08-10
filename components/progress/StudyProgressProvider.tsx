@@ -18,6 +18,7 @@ import type {
   Recommendation,
   SessionSummary,
 } from "@/types/study";
+import type { VocabCardState, VocabSessionSummary } from "@/types/vocab";
 import type { StoredProgress } from "@/lib/storage/schema";
 import { createEmptyProgress } from "@/lib/storage/schema";
 import {
@@ -29,6 +30,9 @@ import {
   recordDrillAttempt,
   recordMockResult,
   recordSession,
+  recordVocabReviews,
+  recordVocabSession,
+  resetVocabSet,
 } from "@/lib/progress/mutations";
 import { calculateAllMastery } from "@/lib/progress/mastery";
 import { calculateReadiness } from "@/lib/progress/readiness";
@@ -53,6 +57,11 @@ type StudyProgressValue = {
   saveSession: (summary: SessionSummary) => void;
   saveDrillAttempt: (attempt: DrillAttempt) => void;
   saveMockResult: (result: MockResult) => void;
+  /** Persists already-scheduled vocabulary cards. */
+  saveVocabReviews: (cards: VocabCardState[]) => void;
+  saveVocabSession: (summary: VocabSessionSummary) => void;
+  /** Forgets the schedule for the given terms, so they start over. */
+  resetVocabTerms: (termIds: string[]) => void;
   resetProgress: () => void;
   exportProgress: () => void;
 };
@@ -119,6 +128,30 @@ export function StudyProgressProvider({ children }: { children: ReactNode }) {
     [repository],
   );
 
+  const saveVocabReviews = useCallback(
+    (cards: VocabCardState[]) => {
+      if (cards.length === 0) return;
+      repository.update((current) => recordVocabReviews(current, cards));
+    },
+    [repository],
+  );
+
+  const saveVocabSession = useCallback(
+    (summary: VocabSessionSummary) => {
+      repository.update((current) => recordVocabSession(current, summary));
+    },
+    [repository],
+  );
+
+  const resetVocabTerms = useCallback(
+    (termIds: string[]) => {
+      if (termIds.length === 0) return;
+      repository.update((current) => resetVocabSet(current, termIds));
+      track("vocab_set_reset", { terms: termIds.length });
+    },
+    [repository],
+  );
+
   const resetProgress = useCallback(() => {
     repository.reset();
     track("progress_reset");
@@ -151,6 +184,9 @@ export function StudyProgressProvider({ children }: { children: ReactNode }) {
       saveSession,
       saveDrillAttempt,
       saveMockResult,
+      saveVocabReviews,
+      saveVocabSession,
+      resetVocabTerms,
       resetProgress,
       exportProgress,
     }),
@@ -165,6 +201,9 @@ export function StudyProgressProvider({ children }: { children: ReactNode }) {
       saveSession,
       saveDrillAttempt,
       saveMockResult,
+      saveVocabReviews,
+      saveVocabSession,
+      resetVocabTerms,
       resetProgress,
       exportProgress,
     ],

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { NHA_CPT } from "@/data/certifications";
 import { QUESTIONS, getReviewStatusSummary } from "@/data/questions";
+import { VOCAB_TERMS, getVocabReviewStatusSummary } from "@/data/vocab";
 import { ALL_SOURCES } from "@/data/sources";
 import { MASTERY_RULES } from "@/lib/progress/mastery";
 import {
@@ -54,6 +55,7 @@ const REVIEW_STAGES = [
 
 export default function MethodologyPage() {
   const summary = getReviewStatusSummary();
+  const vocabSummary = getVocabReviewStatusSummary();
 
   return (
     <div className="container-prose py-10 sm:py-14">
@@ -124,6 +126,15 @@ export default function MethodologyPage() {
             checked them against the cited references. Treat this content as a
             study aid alongside your program, not as a replacement for it or
             for your facility&apos;s procedure manual.
+          </p>
+          <p className="mt-2.5">
+            The same applies to the {VOCAB_TERMS.length} vocabulary terms:{" "}
+            {Object.entries(vocabSummary)
+              .map(([status, count]) => `${count} at ${status}`)
+              .join(", ")}
+            . Definitions are written in our own words at the level a
+            phlebotomy student needs them, and none is copied from a textbook,
+            a glossary, or a commercial study set.
           </p>
         </Notice>
       </div>
