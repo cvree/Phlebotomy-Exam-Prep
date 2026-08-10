@@ -20,6 +20,7 @@ import {
   cx,
 } from "@/components/shared/ui";
 import { RecommendationCard } from "./RecommendationCard";
+import { VocabProgressCard } from "./VocabProgressCard";
 import { ReadinessMeter } from "./ReadinessMeter";
 
 export function ProgressDashboard() {
@@ -64,6 +65,14 @@ export function ProgressDashboard() {
             action={{ href: practiceHref("quick-10", { count: 10 }), label: "Start 10 questions" }}
             secondaryAction={{ href: "/drills/order-of-draw", label: "Try the Order of Draw drill" }}
           />
+        </div>
+
+        {/*
+          Vocabulary tracks separately from question attempts, so a student who
+          has only used the trainer still has something real to see here.
+        */}
+        <div className="mt-6 max-w-sm">
+          <VocabProgressCard />
         </div>
 
         <section className="mt-10" aria-labelledby="what-appears">
@@ -265,6 +274,8 @@ export function ProgressDashboard() {
 
         <aside className="space-y-5">
           <ReadinessMeter readiness={readiness} />
+
+          <VocabProgressCard />
 
           <Card className="p-4">
             <h2 className="font-sans text-sm font-bold uppercase tracking-[0.08em] text-ink-subtle">

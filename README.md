@@ -41,6 +41,35 @@ national certification.
   (tube → additive, additive → tube), explaining the mechanism after every
   answer. Two further modes are declared and disabled.
 
+**Vocabulary**
+
+- 181 original term definitions across ten areas — word parts, blood and its
+  components, tube additives, blood disorders (polycythemia vera,
+  thrombocytopenia, hemochromatosis…), vein anatomy, procedure and equipment,
+  complications, specimen handling, lab tests and departments, and
+  safety/compliance
+- Every term carries what it *is*, what it is **part of** (EDTA belongs to the
+  lavender tube; the median cubital vein belongs to the antecubital fossa), the
+  word parts it is built from, why it matters at the chairside, a mnemonic
+  where one helps, and the terms it is genuinely confused with
+- Thirteen sets: three curated (a 51-term starter deck, sound-alikes, the full
+  glossary) and one per area, each with its own page
+- Five study modes per set:
+  - **Flashcards** — flip with a tap or the space bar, grade with 1–4, term- or
+    definition-first, shuffle
+  - **Learn** — adaptive rounds; recognition first, promoted to typed recall
+    once a term has been right twice in a row, with missed terms re-queued
+    before the round ends
+  - **Write** — typed recall throughout, with spelling near-misses graded
+    "close" rather than wrong, and an "I was right" override
+  - **Match** — six pairs against the clock, with a best time per set
+  - **Test** — mixed multiple-choice, true/false, and written questions with no
+    feedback until submit
+- **Spaced repetition** across everything: an SM-2 derivative schedules each
+  term individually, and `/vocabulary/review` mixes what is due from every set
+- A searchable glossary — search covers the term, its abbreviations, and its
+  definition, so "purple tube" finds EDTA
+
 **Mock exam**
 
 - Full-length timed paper with no correctness, answers, or explanations until
@@ -149,6 +178,7 @@ app/                      Routes (App Router). Pages are thin; logic lives below
 components/
   practice/               Question card, explanation panel, setup, results
   drills/                 Order of Draw and Tube Mastery
+  vocab/                  Hub, set studio, five study modes, glossary browser
   mock-exam/              Runner, timer, navigator, results
   progress/               Dashboard, readiness meter, recommendations, provider
   study/                  Long-form article shell
@@ -157,16 +187,19 @@ data/
   certifications/         Certification config and the ten study areas
   questions/              The question bank, one file per area
   tubes/                  Tube reference data
+  vocab/                  Vocabulary bank, categories, and set definitions
   study/                  Order-of-draw sequence
   sources.ts              Shared reference pointers
 lib/
   scoring/                Session generation and scoring
   progress/               Mastery, readiness, recommendations, mutations
   drills/                 Drill logic, independent of React
+  vocab/                  Spaced-repetition scheduler, answer matching,
+                          item generation, and progress rollups
   storage/                Driver, schema, migrations, repository
   analytics/              Event definitions and a pluggable sink
   entitlements/           Feature gating seam
-types/                    Content and study domain types
+types/                    Content, study, and vocabulary domain types
 tests/                    Vitest suites
 ```
 
@@ -211,19 +244,24 @@ certification exam. No brain dumps, no recalled exam content. Reproducing exam
 content violates certifying bodies' terms and can invalidate a candidate's
 result.
 
+**Vocabulary definitions are original too.** All 181 term definitions are
+written in our own words at the level a phlebotomy student needs them. Nothing
+is copied from a textbook, a published glossary, or a commercial study set.
+
 **No affiliation.** This project is not affiliated with, endorsed by, or
 sponsored by the National Healthcareer Association, ASCP, NCCT, or the
 California Department of Public Health (CDPH).
 
-**Everything carries a review status.** Questions, tube records, and the
-order-of-draw sequence each have a `reviewStatus` that is rendered wherever the
-content appears:
+**Everything carries a review status.** Questions, tube records, vocabulary
+terms, and the order-of-draw sequence each have a `reviewStatus` that is
+rendered wherever the content appears:
 
 ```
 draft → needs-review → reviewed → published
 ```
 
-**All 238 questions currently sit at `needs-review`.** They were written from
+**All 238 questions and all 181 vocabulary terms currently sit at
+`needs-review`.** They were written from
 material that mainstream phlebotomy programs teach consistently, but **no
 qualified reviewer has checked them against the cited references.** The UI says
 so on every question. A test asserts that nothing has been promoted to
@@ -251,8 +289,9 @@ against exam outcomes and the product never states a probability of passing.
 
 1. NHA CPT exam structure — question count, time limit, scoring, published
    domains and weightings, eligibility and retake policy
-2. Clinical review of all 238 questions by a qualified phlebotomy educator or
-   MLS professional, against the cited standards
+2. Clinical review of all 238 questions and 181 vocabulary definitions by a
+   qualified phlebotomy educator or MLS professional, against the cited
+   standards
 3. Precise citations for each reviewed item, replacing the title-only references
 4. Tube additive details, draw volumes, and inversion counts against current
    manufacturer instructions for use
@@ -274,7 +313,9 @@ against exam outcomes and the product never states a probability of passing.
 - Continue growing the bank while holding the review standard
 - The remaining drill modes: what-comes-next, find-the-misplaced-tube, timed
   order of draw, and the two further tube directions
-- Spaced repetition on missed questions rather than simple re-queueing
+- Extend the vocabulary scheduler to the question bank, so missed questions are
+  spaced rather than simply re-queued
+- Audio pronunciation for the terms that carry a phonetic respelling
 
 **Later**
 

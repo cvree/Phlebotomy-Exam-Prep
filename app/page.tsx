@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { QUESTIONS } from "@/data/questions";
+import { VOCAB_TERMS } from "@/data/vocab";
 import { DOMAINS } from "@/data/certifications/domains";
 import { getTube } from "@/data/tubes/tubes";
 import { NHA_CPT } from "@/data/certifications";
@@ -43,6 +44,13 @@ const TOOLS = [
     description:
       "A full-length timed paper with no feedback until you submit. Autosaves, so a closed tab doesn't cost you the attempt.",
     meta: `${NHA_CPT.mockExamFormat.questionCount} questions · ${NHA_CPT.mockExamFormat.timeLimitMinutes} min`,
+  },
+  {
+    href: "/vocabulary",
+    name: "Vocabulary trainer",
+    description:
+      "Flashcards, adaptive rounds, typed recall, and a matching game over every term you are expected to know — with spaced review that brings a term back just before you would forget it.",
+    meta: `${VOCAB_TERMS.length} terms`,
   },
   {
     href: "/drills/order-of-draw",

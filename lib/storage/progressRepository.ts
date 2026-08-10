@@ -169,6 +169,13 @@ export function trim(progress: StoredProgress): StoredProgress {
     sessions: tail(progress.sessions, LIMITS.sessions),
     drills: tail(progress.drills, LIMITS.drills),
     mockResults: tail(progress.mockResults, LIMITS.mockResults),
+    vocab: {
+      ...progress.vocab,
+      // Card state is never trimmed: it is one small object per term, bounded
+      // by the size of the bank, and losing it would silently reset a
+      // student's review schedule.
+      sessions: tail(progress.vocab.sessions, LIMITS.vocabSessions),
+    },
   };
 }
 

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
+import { VOCAB_SETS } from "@/data/vocab/sets";
 
 // Emitted as a static file at build time (the app is a static export).
 export const dynamic = "force-static";
@@ -20,6 +21,13 @@ const ROUTES: { path: string; priority: number; changeFrequency: "weekly" | "mon
   { path: "/study/venipuncture-complications", priority: 0.8, changeFrequency: "monthly" },
   { path: "/study/california-requirements", priority: 0.9, changeFrequency: "monthly" },
   { path: "/practice", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/vocabulary", priority: 0.9, changeFrequency: "weekly" },
+  // One entry per vocabulary set. Generated so a new set is never missed.
+  ...VOCAB_SETS.map((set) => ({
+    path: `/vocabulary/${set.id}`,
+    priority: set.kind === "curated" ? 0.8 : 0.7,
+    changeFrequency: "monthly" as const,
+  })),
   { path: "/drills", priority: 0.7, changeFrequency: "monthly" },
   { path: "/drills/order-of-draw", priority: 0.8, changeFrequency: "monthly" },
   { path: "/drills/tube-colors", priority: 0.8, changeFrequency: "monthly" },

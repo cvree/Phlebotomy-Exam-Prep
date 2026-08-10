@@ -112,6 +112,31 @@ export default function DrillsPage() {
       <DrillHistory />
 
       <Card className="mt-8 p-5">
+        <h2 className="font-display text-xl">
+          Struggling with the words rather than the sequence?
+        </h2>
+        <p className="mt-1.5 text-[0.9375rem] text-ink-muted">
+          The vocabulary trainer covers every additive, condition, and
+          complication as a studiable term — with flashcards, typed recall, and
+          a review schedule that brings each one back before you forget it.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link
+            href="/vocabulary/tube-additives"
+            className="text-sm font-semibold text-primary hover:underline"
+          >
+            Tubes, additives &amp; anticoagulants set →
+          </Link>
+          <Link
+            href="/vocabulary"
+            className="text-sm font-semibold text-primary hover:underline"
+          >
+            All vocabulary sets →
+          </Link>
+        </div>
+      </Card>
+
+      <Card className="mt-5 p-5">
         <h2 className="font-display text-xl">Prefer to read first?</h2>
         <p className="mt-1.5 text-[0.9375rem] text-ink-muted">
           The study guides cover the same material in full, with the caveats

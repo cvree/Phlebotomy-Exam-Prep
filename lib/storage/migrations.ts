@@ -1,7 +1,9 @@
 import {
   PROGRESS_SCHEMA_VERSION,
   createEmptyProgress,
+  createEmptyVocab,
   type StoredProgress,
+  type StoredVocab,
 } from "./schema";
 
 /**
@@ -42,8 +44,24 @@ function migrateV1ToV2(input: UnknownRecord): UnknownRecord {
   };
 }
 
+/**
+ * v2 → v3: the vocabulary trainer was added.
+ *
+ * Nothing existing changes shape, so this only has to introduce the key. A
+ * student who had progress before vocabulary shipped keeps every attempt,
+ * session, drill, and their streak.
+ */
+function migrateV2ToV3(input: UnknownRecord): UnknownRecord {
+  return {
+    ...input,
+    version: 3,
+    vocab: isRecord(input.vocab) ? input.vocab : createEmptyVocab(),
+  };
+}
+
 const STEPS: Record<number, (input: UnknownRecord) => UnknownRecord> = {
   1: migrateV1ToV2,
+  2: migrateV2ToV3,
 };
 
 export type MigrationOutcome = {
@@ -130,5 +148,21 @@ export function normaliseProgress(
               : null,
         }
       : empty.streak,
+    vocab: normaliseVocab(input.vocab),
+  };
+}
+
+function normaliseVocab(input: unknown): StoredVocab {
+  if (!isRecord(input)) {
+    return createEmptyVocab();
+  }
+  return {
+    cards: isRecord(input.cards)
+      ? (input.cards as StoredVocab["cards"])
+      : {},
+    sessions: asArray(input.sessions),
+    matchBests: isRecord(input.matchBests)
+      ? (input.matchBests as StoredVocab["matchBests"])
+      : {},
   };
 }

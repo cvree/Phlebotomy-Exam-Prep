@@ -8,6 +8,7 @@ import { cx } from "./ui";
 const NAV_ITEMS = [
   { href: "/nha-cpt", label: "NHA CPT" },
   { href: "/practice", label: "Practice" },
+  { href: "/vocabulary", label: "Vocabulary" },
   { href: "/drills", label: "Drills" },
   { href: "/mock-exam", label: "Mock exam" },
   { href: "/progress", label: "Progress" },
