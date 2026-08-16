@@ -35,8 +35,9 @@ export default function DrillsPage() {
         </h1>
         <p className="mt-3 text-[1.0625rem] leading-relaxed text-ink-muted">
           Some things need to be automatic rather than worked out. These two
-          drills are short enough to do between other things and specific
-          enough to show you exactly what has not stuck.
+          drills — {ORDER_OF_DRAW_MODES.length + TUBE_DRILL_MODES.length} modes
+          between them — are short enough to do between other things and
+          specific enough to show you exactly what has not stuck.
         </p>
       </div>
 
@@ -51,16 +52,21 @@ export default function DrillsPage() {
             <h2 className="font-display text-2xl">Order of Draw</h2>
             <p className="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-ink-muted">
               Arrange the {CLSI_ORDER_OF_DRAW.steps.length} collection
-              positions in the correct sequence. Drag, tap to swap, or use the
-              move buttons — then find out precisely which tube you put in the
-              wrong place, and why it belongs where it does.
+              positions in the correct sequence, continue a draw already under
+              way, audit a tray someone else built, or fill the gaps in a
+              part-finished sequence. Every answer tells you which tube was
+              wrong and why it belongs where it does.
             </p>
             <ul className="mt-4 space-y-1.5 text-sm text-ink-muted">
               {ORDER_OF_DRAW_MODES.map((mode) => (
-                <li key={mode.id} className="flex items-center gap-2">
-                  <Badge tone={mode.available ? "success" : "neutral"}>
-                    {mode.available ? "Live" : "Soon"}
-                  </Badge>
+                <li key={mode.id} className="flex items-start gap-2">
+                  {mode.available ? (
+                    <span aria-hidden="true" className="text-primary">
+                      ✓
+                    </span>
+                  ) : (
+                    <Badge tone="neutral">Soon</Badge>
+                  )}
                   <span>{mode.name}</span>
                 </li>
               ))}
@@ -84,16 +90,21 @@ export default function DrillsPage() {
           <div className="flex flex-1 flex-col p-5">
             <h2 className="font-display text-2xl">Tube & additive mastery</h2>
             <p className="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-ink-muted">
-              Eight fast questions on what each tube contains and what the
-              additive actually does. Every answer explains the mechanism, so
+              Eight fast questions in whichever direction you need: tube to
+              additive, additive to tube, tube to specimen type, or tube to the
+              test it is ordered for. Every answer explains the mechanism, so
               the order of draw stops being a list you memorise.
             </p>
             <ul className="mt-4 space-y-1.5 text-sm text-ink-muted">
               {TUBE_DRILL_MODES.map((mode) => (
-                <li key={mode.id} className="flex items-center gap-2">
-                  <Badge tone={mode.available ? "success" : "neutral"}>
-                    {mode.available ? "Live" : "Soon"}
-                  </Badge>
+                <li key={mode.id} className="flex items-start gap-2">
+                  {mode.available ? (
+                    <span aria-hidden="true" className="text-primary">
+                      ✓
+                    </span>
+                  ) : (
+                    <Badge tone="neutral">Soon</Badge>
+                  )}
                   <span>{mode.name}</span>
                 </li>
               ))}

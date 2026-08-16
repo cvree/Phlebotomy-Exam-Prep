@@ -114,8 +114,12 @@ export function TubeMasteryDrill() {
     headingRef.current?.focus();
   }, [index, questions, answers, saveDrillAttempt, modeId, startedAt]);
 
+  // Scoped to the mode on screen: four directions through the same dataset
+  // are four different skills, and averaging them hides which one is weak.
   const history = ready
-    ? progress.drills.filter((drill) => drill.drill === "tube-colors")
+    ? progress.drills.filter(
+        (drill) => drill.drill === "tube-colors" && drill.mode === modeId,
+      )
     : [];
   const recent = history.slice(-5);
   const recentAccuracy =
@@ -140,7 +144,11 @@ export function TubeMasteryDrill() {
 
       {ready && history.length > 0 ? (
         <dl className="mt-6 grid grid-cols-3 gap-3">
-          <StatTile label="Rounds" value={String(history.length)} />
+          <StatTile
+            label="Rounds"
+            value={String(history.length)}
+            detail={mode.name}
+          />
           <StatTile
             label="Recent accuracy"
             value={`${Math.round(recentAccuracy * 100)}%`}
@@ -164,23 +172,17 @@ export function TubeMasteryDrill() {
                 <button
                   key={entry.id}
                   type="button"
-                  disabled={!entry.available}
                   onClick={() => startRound(entry.id)}
-                  title={
-                    entry.available ? entry.description : "Coming soon"
-                  }
+                  title={entry.description}
+                  aria-pressed={modeId === entry.id}
                   className={cx(
                     "min-h-11 rounded-[var(--radius)] border-2 px-3.5 text-sm font-semibold transition-colors",
                     modeId === entry.id
                       ? "border-primary bg-primary-soft text-primary"
                       : "border-line bg-surface text-ink-muted hover:border-line-strong",
-                    !entry.available && "cursor-not-allowed opacity-45",
                   )}
                 >
                   {entry.name}
-                  {!entry.available ? (
-                    <span className="ml-1.5 text-xs font-normal">soon</span>
-                  ) : null}
                 </button>
               ))}
             </div>

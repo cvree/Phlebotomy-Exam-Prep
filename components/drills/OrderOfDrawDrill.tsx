@@ -4,17 +4,22 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { CLSI_ORDER_OF_DRAW, ORDER_OF_DRAW_MNEMONIC } from "@/data/study/orderOfDraw";
 import {
+  ORDER_OF_DRAW_MODES,
+  buildCompleteSequence,
   buildDrillCards,
+  buildMisplacedRound,
+  buildNextInSequence,
+  getOrderOfDrawMode,
   gradeOrder,
-  moveCard,
   shuffleCards,
-  swapCards,
+  type ChoiceRoundGrade,
+  type CompleteSequenceGrade,
   type DrillCard,
+  type OrderOfDrawMode,
   type OrderOfDrawResult,
 } from "@/lib/drills/orderOfDraw";
 import { track } from "@/lib/analytics";
 import { useStudyProgress } from "@/components/progress/StudyProgressProvider";
-import { TubeGlyph } from "@/components/shared/TubeGlyph";
 import {
   Badge,
   Button,
@@ -25,122 +30,139 @@ import {
   cx,
 } from "@/components/shared/ui";
 import { ReviewStatusNote } from "@/components/shared/ReviewStatusNote";
+import { ArrangeBoard } from "./orderOfDraw/ArrangeBoard";
+import { CompleteSequence } from "./orderOfDraw/CompleteSequence";
+import { FindMisplaced } from "./orderOfDraw/FindMisplaced";
+import { WhatComesNext } from "./orderOfDraw/WhatComesNext";
 
 /**
  * Order of Draw drill.
  *
- * Three interchangeable ways to reorder, all driving the same state:
- *
- * 1. Drag and drop — pointer devices.
- * 2. Tap a card to pick it up, tap another to swap — touch, and the fallback
- *    for anyone who cannot drag.
- * 3. Move-up / move-down buttons on every row — keyboard, screen readers, and
- *    anyone who finds the other two fiddly.
- *
- * Nothing is reachable *only* by dragging, which is the point.
+ * Four ways to work the same six positions, because knowing the sequence is
+ * four separate skills: building it, continuing it mid-draw, auditing someone
+ * else's, and reasoning about what belongs between two known tubes. Each mode
+ * records its own attempts, so the stats above the board describe the mode
+ * being practised rather than an average across all of them.
  */
 export function OrderOfDrawDrill() {
   const { ready, progress, saveDrillAttempt } = useStudyProgress();
   const baseCards = useMemo(() => buildDrillCards(), []);
 
+  const [modeId, setModeId] = useState<OrderOfDrawMode>("arrange");
+  const [seed, setSeed] = useState(1);
   const [cards, setCards] = useState<DrillCard[]>([]);
-  const [picked, setPicked] = useState<number | null>(null);
   const [result, setResult] = useState<OrderOfDrawResult | null>(null);
-  const [startedAt, setStartedAt] = useState<number>(0);
+  const [roundGrade, setRoundGrade] = useState<ChoiceRoundGrade | null>(null);
+  const [startedAt, setStartedAt] = useState(0);
   const [announcement, setAnnouncement] = useState("");
-  const dragIndex = useRef<number | null>(null);
   const resultRef = useRef<HTMLDivElement>(null);
 
-  const reset = useCallback(() => {
-    setCards(shuffleCards(baseCards, Date.now()));
-    setPicked(null);
-    setResult(null);
-    setStartedAt(Date.now());
-    setAnnouncement("");
-    track("order_draw_started", { mode: "arrange" });
-  }, [baseCards]);
+  const mode = getOrderOfDrawMode(modeId);
+
+  const startRound = useCallback(
+    (nextMode: OrderOfDrawMode = modeId) => {
+      const now = Date.now();
+      setModeId(nextMode);
+      setSeed(now);
+      setCards(shuffleCards(baseCards, now));
+      setResult(null);
+      setRoundGrade(null);
+      setStartedAt(now);
+      setAnnouncement("");
+      track("order_draw_started", { mode: nextMode });
+    },
+    [baseCards, modeId],
+  );
 
   useEffect(() => {
-    reset();
-  }, [reset]);
+    startRound("arrange");
+    // Only on mount: a round is started, not restarted, when the page opens.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const applyMove = useCallback(
-    (from: number, to: number) => {
-      setCards((current) => {
-        const next = moveCard(current, from, to);
-        const moved = current[from];
-        if (moved) {
-          setAnnouncement(`${moved.name} moved to position ${to + 1}.`);
-        }
-        return next;
+  const record = useCallback(
+    (grade: {
+      accuracy: number;
+      total: number;
+      correct: number;
+      perfect: boolean;
+    }) => {
+      saveDrillAttempt({
+        id: `ood-${Date.now()}`,
+        drill: "order-of-draw",
+        mode: modeId,
+        accuracy: grade.accuracy,
+        total: grade.total,
+        correct: grade.correct,
+        perfect: grade.perfect,
+        durationMs: startedAt ? Date.now() - startedAt : undefined,
+        at: new Date().toISOString(),
       });
-      setPicked(null);
+      track("order_draw_completed", {
+        mode: modeId,
+        correct: grade.correct,
+        total: grade.total,
+        perfect: grade.perfect,
+      });
     },
-    [],
+    [modeId, saveDrillAttempt, startedAt],
   );
 
-  const handleCardTap = useCallback(
-    (index: number) => {
-      if (result) return;
-      if (picked === null) {
-        setPicked(index);
-        const card = cards[index];
-        setAnnouncement(
-          card
-            ? `${card.name} picked up from position ${index + 1}. Choose a position to swap with.`
-            : "",
-        );
-        return;
-      }
-      if (picked === index) {
-        setPicked(null);
-        setAnnouncement("Put back down.");
-        return;
-      }
-      setCards((current) => swapCards(current, picked, index));
-      const a = cards[picked];
-      const b = cards[index];
-      if (a && b) {
-        setAnnouncement(`Swapped ${a.name} and ${b.name}.`);
-      }
-      setPicked(null);
-    },
-    [picked, cards, result],
-  );
-
-  const submit = useCallback(() => {
+  const submitArrangement = useCallback(() => {
     const graded = gradeOrder(cards);
     setResult(graded);
-    setPicked(null);
-
-    saveDrillAttempt({
-      id: `ood-${Date.now()}`,
-      drill: "order-of-draw",
-      mode: "arrange",
+    record({
       accuracy: graded.accuracy,
       total: graded.total,
       correct: graded.correctCount,
       perfect: graded.perfect,
-      durationMs: startedAt ? Date.now() - startedAt : undefined,
-      at: new Date().toISOString(),
     });
+  }, [cards, record]);
 
-    track("order_draw_completed", {
-      mode: "arrange",
-      correct: graded.correctCount,
-      total: graded.total,
-      perfect: graded.perfect,
-    });
-  }, [cards, saveDrillAttempt, startedAt]);
+  const finishChoiceRound = useCallback(
+    (grade: ChoiceRoundGrade) => {
+      setRoundGrade(grade);
+      record(grade);
+    },
+    [record],
+  );
+
+  const finishGapRound = useCallback(
+    (grade: CompleteSequenceGrade) => {
+      record(grade);
+    },
+    [record],
+  );
 
   useEffect(() => {
-    if (result) {
+    if (result || roundGrade) {
       resultRef.current?.focus();
     }
-  }, [result]);
+  }, [result, roundGrade]);
+
+  const nextItems = useMemo(
+    () => (modeId === "what-comes-next" ? buildNextInSequence(seed) : []),
+    [modeId, seed],
+  );
+  const misplacedItems = useMemo(
+    () =>
+      modeId === "find-misplaced"
+        ? buildMisplacedRound(mode.roundLength, seed)
+        : [],
+    [mode.roundLength, modeId, seed],
+  );
+  const gapItem = useMemo(
+    () =>
+      modeId === "complete-sequence"
+        ? buildCompleteSequence(mode.roundLength, seed)
+        : null,
+    [mode.roundLength, modeId, seed],
+  );
 
   const history = ready
-    ? progress.drills.filter((drill) => drill.drill === "order-of-draw")
+    ? progress.drills.filter(
+        (drill) => drill.drill === "order-of-draw" && drill.mode === modeId,
+      )
     : [];
   const perfectCount = history.filter((drill) => drill.perfect).length;
   const recent = history.slice(-5);
@@ -166,14 +188,17 @@ export function OrderOfDrawDrill() {
           Order of Draw
         </h1>
         <p className="mt-3 text-[1.0625rem] leading-relaxed text-ink-muted">
-          Put the six collection positions in the order they are drawn. Drag
-          them, tap two cards to swap, or use the move buttons — whichever is
-          easier on the device you&apos;re holding.
+          {mode.instruction}
         </p>
       </div>
 
       {ready && history.length > 0 ? (
-        <dl className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <dl
+          className={cx(
+            "mt-6 grid grid-cols-2 gap-3",
+            modeId === "arrange" ? "sm:grid-cols-4" : "sm:grid-cols-3",
+          )}
+        >
           <StatTile label="Attempts" value={String(history.length)} />
           <StatTile label="Perfect runs" value={String(perfectCount)} />
           <StatTile
@@ -181,145 +206,113 @@ export function OrderOfDrawDrill() {
             value={`${Math.round(recentAccuracy * 100)}%`}
             detail={`last ${recent.length}`}
           />
-          <StatTile
-            label="Best time"
-            value={bestTime ? formatDuration(bestTime) : "—"}
-            detail="perfect runs only"
-          />
+          {modeId === "arrange" ? (
+            <StatTile
+              label="Best time"
+              value={bestTime ? formatDuration(bestTime) : "—"}
+              detail="perfect runs only"
+            />
+          ) : null}
         </dl>
       ) : null}
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
         <div>
+          <fieldset className="mb-5">
+            <legend className="mb-2.5 text-sm font-semibold text-ink">
+              Drill mode
+            </legend>
+            <div className="flex flex-wrap gap-2">
+              {ORDER_OF_DRAW_MODES.map((entry) => (
+                <button
+                  key={entry.id}
+                  type="button"
+                  onClick={() => startRound(entry.id)}
+                  title={entry.description}
+                  aria-pressed={modeId === entry.id}
+                  className={cx(
+                    "min-h-11 rounded-[var(--radius)] border-2 px-3.5 text-sm font-semibold transition-colors",
+                    modeId === entry.id
+                      ? "border-primary bg-primary-soft text-primary"
+                      : "border-line bg-surface text-ink-muted hover:border-line-strong",
+                  )}
+                >
+                  {entry.shortName}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+
           <p aria-live="polite" className="sr-only">
             {announcement}
           </p>
 
-          {picked !== null ? (
-            <p className="mb-3 rounded-[var(--radius)] bg-primary-soft px-3.5 py-2.5 text-sm font-medium text-primary">
-              Card picked up. Tap another position to swap, or tap it again to
-              put it back.
-            </p>
+          {modeId === "arrange" ? (
+            <>
+              <ArrangeBoard
+                cards={cards}
+                result={result}
+                onChange={setCards}
+                announce={setAnnouncement}
+              />
+              {!result ? (
+                <Button
+                  size="lg"
+                  onClick={submitArrangement}
+                  className="mt-6 w-full sm:w-auto"
+                >
+                  Check my order
+                </Button>
+              ) : (
+                <ArrangeResult
+                  result={result}
+                  onRetry={() => startRound("arrange")}
+                  ref={resultRef}
+                />
+              )}
+            </>
           ) : null}
 
-          <ol className="space-y-2.5">
-            {cards.map((card, index) => {
-              const cardResult = result?.results[index];
-              const isPicked = picked === index;
+          {modeId === "what-comes-next" ? (
+            roundGrade ? (
+              <RoundSummary
+                grade={roundGrade}
+                onRetry={() => startRound("what-comes-next")}
+                ref={resultRef}
+              />
+            ) : (
+              <WhatComesNext
+                key={seed}
+                items={nextItems}
+                onComplete={finishChoiceRound}
+              />
+            )
+          ) : null}
 
-              return (
-                <li
-                  key={card.stepId}
-                  draggable={!result}
-                  onDragStart={() => {
-                    dragIndex.current = index;
-                  }}
-                  onDragOver={(event) => {
-                    if (!result) event.preventDefault();
-                  }}
-                  onDrop={(event) => {
-                    event.preventDefault();
-                    if (dragIndex.current === null || result) return;
-                    applyMove(dragIndex.current, index);
-                    dragIndex.current = null;
-                  }}
-                  onDragEnd={() => {
-                    dragIndex.current = null;
-                  }}
-                  className={cx(
-                    "flex items-stretch gap-2 rounded-[var(--radius-lg)] border-2 bg-surface",
-                    "transition-colors",
-                    !result && !isPicked && "border-line",
-                    !result && isPicked && "border-primary bg-primary-soft",
-                    cardResult?.correct && "border-success bg-success-soft",
-                    cardResult && !cardResult.correct && "border-danger bg-danger-soft",
-                  )}
-                >
-                  <div className="flex shrink-0 items-center justify-center pl-3">
-                    <span
-                      className={cx(
-                        "flex h-8 w-8 items-center justify-center rounded-full",
-                        "font-display text-base font-semibold",
-                        cardResult?.correct
-                          ? "bg-success text-white"
-                          : cardResult
-                            ? "bg-danger text-white"
-                            : "bg-surface-muted text-ink-muted",
-                      )}
-                    >
-                      {index + 1}
-                    </span>
-                  </div>
+          {modeId === "find-misplaced" ? (
+            roundGrade ? (
+              <RoundSummary
+                grade={roundGrade}
+                onRetry={() => startRound("find-misplaced")}
+                ref={resultRef}
+              />
+            ) : (
+              <FindMisplaced
+                key={seed}
+                items={misplacedItems}
+                onComplete={finishChoiceRound}
+              />
+            )
+          ) : null}
 
-                  <button
-                    type="button"
-                    onClick={() => handleCardTap(index)}
-                    disabled={Boolean(result)}
-                    className="flex min-h-16 flex-1 items-center gap-3 px-2 py-3 text-left disabled:cursor-default"
-                  >
-                    <span className="flex shrink-0 -space-x-2">
-                      {card.tubes.slice(0, 3).map((tube) => (
-                        <TubeGlyph key={tube.id} tube={tube} size="sm" />
-                      ))}
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-[0.9375rem] font-semibold leading-snug text-ink">
-                        {card.name}
-                      </span>
-                      <span className="mt-0.5 block text-xs leading-snug text-ink-muted">
-                        {card.tubes.map((tube) => tube.displayName).join(" · ")}
-                      </span>
-                      {cardResult && !cardResult.correct ? (
-                        <span className="mt-1 block text-xs font-bold uppercase tracking-wide text-danger">
-                          Should be position {card.position}
-                        </span>
-                      ) : null}
-                      {cardResult?.correct ? (
-                        <span className="mt-1 block text-xs font-bold uppercase tracking-wide text-success">
-                          Correct position
-                        </span>
-                      ) : null}
-                    </span>
-                  </button>
-
-                  {!result ? (
-                    <div className="flex shrink-0 flex-col justify-center gap-1 pr-2">
-                      <button
-                        type="button"
-                        onClick={() => applyMove(index, index - 1)}
-                        disabled={index === 0}
-                        className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-sm)] border border-line text-ink-muted disabled:opacity-30"
-                      >
-                        <span className="sr-only">
-                          Move {card.name} up to position {index}
-                        </span>
-                        <span aria-hidden="true">↑</span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => applyMove(index, index + 1)}
-                        disabled={index === cards.length - 1}
-                        className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-sm)] border border-line text-ink-muted disabled:opacity-30"
-                      >
-                        <span className="sr-only">
-                          Move {card.name} down to position {index + 2}
-                        </span>
-                        <span aria-hidden="true">↓</span>
-                      </button>
-                    </div>
-                  ) : null}
-                </li>
-              );
-            })}
-          </ol>
-
-          {!result ? (
-            <Button size="lg" onClick={submit} className="mt-6 w-full sm:w-auto">
-              Check my order
-            </Button>
-          ) : (
-            <ResultPanel result={result} onRetry={reset} ref={resultRef} />
-          )}
+          {modeId === "complete-sequence" && gapItem ? (
+            <CompleteSequence
+              key={gapItem.id}
+              item={gapItem}
+              onComplete={finishGapRound}
+              onRestart={() => startRound("complete-sequence")}
+            />
+          ) : null}
         </div>
 
         <aside className="space-y-5">
@@ -336,6 +329,20 @@ export function OrderOfDrawDrill() {
             <p className="mt-3 text-xs leading-relaxed text-ink-subtle">
               {ORDER_OF_DRAW_MNEMONIC.note}
             </p>
+          </Card>
+
+          <Card className="p-4">
+            <h2 className="font-sans text-sm font-bold uppercase tracking-[0.08em] text-ink-subtle">
+              This mode
+            </h2>
+            <p className="mt-2 text-sm font-semibold text-ink">{mode.name}</p>
+            <p className="mt-1 text-sm text-ink-muted">{mode.description}</p>
+            {modeId === "arrange" ? (
+              <p className="mt-3 text-xs leading-relaxed text-ink-subtle">
+                Drag a card with the grip, or press space on it and use the
+                arrow keys. Tapping two cards swaps them.
+              </p>
+            ) : null}
           </Card>
 
           <Notice title="Read the label, not the cap">
@@ -386,7 +393,63 @@ export function OrderOfDrawDrill() {
   );
 }
 
-const ResultPanel = function ResultPanel({
+/** Result panel for the choose-one modes. */
+function RoundSummary({
+  grade,
+  onRetry,
+  ref,
+}: {
+  grade: ChoiceRoundGrade;
+  onRetry: () => void;
+  ref: React.Ref<HTMLDivElement>;
+}) {
+  return (
+    <div
+      ref={ref}
+      tabIndex={-1}
+      className={cx(
+        "rounded-[var(--radius-lg)] border-2 p-4 sm:p-5",
+        grade.perfect
+          ? "border-success-border bg-success-soft"
+          : "border-line bg-surface",
+      )}
+    >
+      <div className="flex flex-wrap items-center gap-2.5">
+        <h2
+          className={cx(
+            "font-display text-2xl",
+            grade.perfect ? "text-success" : "text-ink",
+          )}
+        >
+          {grade.correct} of {grade.total} correct
+        </h2>
+        {grade.perfect ? <Badge tone="success">Clean round</Badge> : null}
+      </div>
+
+      <p className="mt-2 text-[0.9375rem] text-ink-muted">
+        {grade.perfect
+          ? "Every decision right. Try the arrangement mode against the clock, or move on to the questions."
+          : "The rationale under each answer is the part worth re-reading — carryover is what the exam asks about."}
+      </p>
+
+      <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
+        <Button size="lg" onClick={onRetry} className="flex-1">
+          Another round
+        </Button>
+        <ButtonLink
+          href="/practice/session?mode=domain&domain=order-of-draw&count=10"
+          variant="secondary"
+          size="lg"
+          className="flex-1"
+        >
+          Practice the questions
+        </ButtonLink>
+      </div>
+    </div>
+  );
+}
+
+const ArrangeResult = function ArrangeResult({
   result,
   onRetry,
   ref,
