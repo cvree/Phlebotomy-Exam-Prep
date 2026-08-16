@@ -33,13 +33,18 @@ national certification.
 
 **Drills**
 
-- **Order of Draw** — arrange the six CLSI collection positions. Three
-  interchangeable interactions: drag and drop, tap two cards to swap, and
-  move-up/move-down buttons on every row. Grades per position, names what was
-  misplaced, and explains why each position sits where it does.
-- **Tube & additive mastery** — eight-question rounds in two directions
-  (tube → additive, additive → tube), explaining the mechanism after every
-  answer. Two further modes are declared and disabled.
+- **Order of Draw** — four modes over the six CLSI collection positions:
+  arrange the sequence, continue a draw already under way, find the one tube
+  out of place, and fill the gaps in a part-built sequence. Every answer names
+  what was misplaced and explains why each position sits where it does.
+  Arranging offers three interchangeable interactions: a pointer drag where
+  the card lifts and the list opens a slot for it, tap two cards to swap, and
+  move-up/move-down buttons on every row. The drag is also fully operable from
+  the keyboard — space lifts, arrows move, escape restores.
+- **Tube & additive mastery** — eight-question rounds in four directions
+  (tube → additive, additive → tube, tube → specimen type, tube → common use),
+  explaining the mechanism after every answer. Distractors that are as true as
+  the answer are rejected, so no question has two defensible options.
 
 **Vocabulary**
 
@@ -311,8 +316,7 @@ against exam outcomes and the product never states a probability of passing.
 - Human verification of the California CPT1/CPT2 specifics against current
   CDPH publications
 - Continue growing the bank while holding the review standard
-- The remaining drill modes: what-comes-next, find-the-misplaced-tube, timed
-  order of draw, and the two further tube directions
+- A timed order-of-draw mode, now that the four untimed ones are in place
 - Extend the vocabulary scheduler to the question bank, so missed questions are
   spaced rather than simply re-queued
 - Audio pronunciation for the terms that carry a phonetic respelling
