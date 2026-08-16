@@ -1,11 +1,21 @@
 "use client";
 
 import { useStudyProgress } from "@/components/progress/StudyProgressProvider";
+import { ORDER_OF_DRAW_MODES } from "@/lib/drills/orderOfDraw";
+import { TUBE_DRILL_MODES } from "@/lib/drills/tubeMastery";
 import { Card, StatTile } from "@/components/shared/ui";
 
 const DRILL_NAMES: Record<string, string> = {
   "order-of-draw": "Order of Draw",
   "tube-colors": "Tube Mastery",
+};
+
+/** Mode labels, read from the mode configs so they cannot drift apart. */
+const MODE_NAMES: Record<string, string> = {
+  ...Object.fromEntries(
+    ORDER_OF_DRAW_MODES.map((mode) => [mode.id, mode.name]),
+  ),
+  ...Object.fromEntries(TUBE_DRILL_MODES.map((mode) => [mode.id, mode.name])),
 };
 
 /**
@@ -66,6 +76,10 @@ export function DrillHistory() {
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-ink">
                   {DRILL_NAMES[attempt.drill] ?? attempt.drill}
+                  <span className="font-normal text-ink-muted">
+                    {" · "}
+                    {MODE_NAMES[attempt.mode] ?? attempt.mode}
+                  </span>
                 </p>
                 <p className="text-xs text-ink-subtle">
                   {new Date(attempt.at).toLocaleString(undefined, {

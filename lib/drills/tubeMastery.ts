@@ -26,6 +26,13 @@ export type TubeDrillModeConfig = {
   answerFor: (tube: Tube) => string;
   /** True when the *prompt* is the tube, so the card can show its illustration. */
   showsTubeInPrompt: boolean;
+  /**
+   * Rejects a candidate distractor that would make the question unfair —
+   * one a knowledgeable student could argue is also correct. Text-level
+   * de-duplication cannot catch these: "K2 EDTA" and "K2 or K3 EDTA" are
+   * different strings that answer the same question.
+   */
+  excludeDistractor?: (subject: Tube, candidate: Tube) => boolean;
   available: boolean;
 };
 
@@ -37,6 +44,7 @@ export const TUBE_DRILL_MODES: TubeDrillModeConfig[] = [
     promptFor: (tube) => `Which additive does the ${tube.displayName} tube contain?`,
     answerFor: (tube) => tube.additive,
     showsTubeInPrompt: true,
+    excludeDistractor: sharesAdditiveFamily,
     available: true,
   },
   {
@@ -46,6 +54,7 @@ export const TUBE_DRILL_MODES: TubeDrillModeConfig[] = [
     promptFor: (tube) => `Which tube contains ${lowerFirst(tube.additive)}?`,
     answerFor: (tube) => tube.displayName,
     showsTubeInPrompt: false,
+    excludeDistractor: sharesAdditiveFamily,
     available: true,
   },
   {
@@ -53,9 +62,13 @@ export const TUBE_DRILL_MODES: TubeDrillModeConfig[] = [
     name: "Tube → Specimen type",
     description: "Serum, plasma, or whole blood?",
     promptFor: (tube) => `What specimen type does the ${tube.displayName} tube produce?`,
-    answerFor: (tube) => tube.specimenType,
+    // Collapsed to the three answers a student is asked to choose between.
+    // Offering "Whole blood" beside "Whole blood (sterile)" would point at the
+    // culture bottle rather than test whether the mechanism is understood.
+    answerFor: (tube) =>
+      tube.specimenType.startsWith("Whole blood") ? "Whole blood" : tube.specimenType,
     showsTubeInPrompt: true,
-    available: false,
+    available: true,
   },
   {
     id: "tube-to-use",
@@ -64,9 +77,87 @@ export const TUBE_DRILL_MODES: TubeDrillModeConfig[] = [
     promptFor: (tube) => `Which test is the ${tube.displayName} tube commonly used for?`,
     answerFor: (tube) => tube.commonUses[0] ?? "",
     showsTubeInPrompt: true,
-    available: false,
+    excludeDistractor: sharesClinicalUse,
+    available: true,
   },
 ];
+
+/**
+ * Additive families, as the words that identify them in a label.
+ *
+ * Four tubes carry EDTA and three carry a citrate; asking "which tube contains
+ * K2 EDTA?" while offering three other EDTA tubes has no defensible answer.
+ * Distractors are drawn from a different family instead.
+ */
+const ADDITIVE_FAMILIES = [
+  "edta",
+  "heparin",
+  "citrate",
+  "fluoride",
+  "oxalate",
+  "polyanethol",
+  "sps",
+  "dextrose",
+  "clot activator",
+];
+
+function additiveFamilies(tube: Tube): string[] {
+  const text = tube.additive.toLowerCase();
+  return ADDITIVE_FAMILIES.filter((family) => text.includes(family));
+}
+
+function sharesAdditiveFamily(subject: Tube, candidate: Tube): boolean {
+  const families = new Set(additiveFamilies(subject));
+  return additiveFamilies(candidate).some((family) => families.has(family));
+}
+
+/** Words too generic to signal that two tests are the same test. */
+const USE_STOPWORDS = new Set([
+  "and",
+  "for",
+  "the",
+  "with",
+  "testing",
+  "tests",
+  "test",
+  "studies",
+  "levels",
+  "routine",
+  "rapid",
+  "turnaround",
+  "blood",
+  "screen",
+]);
+
+function keywordsOf(text: string): Set<string> {
+  return new Set(
+    text
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter((word) => word.length >= 5 && !USE_STOPWORDS.has(word)),
+  );
+}
+
+/**
+ * True when a candidate's headline use is also a fair answer for the subject —
+ * either because the subject lists it too, or because the two read as the same
+ * order ("routine chemistry" beside "chemistry panels").
+ */
+function sharesClinicalUse(subject: Tube, candidate: Tube): boolean {
+  const candidateAnswer = candidate.commonUses[0] ?? "";
+  const subjectAnswer = subject.commonUses[0] ?? "";
+  const normalize = (text: string) => text.trim().toLowerCase();
+
+  if (subject.commonUses.some((use) => normalize(use) === normalize(candidateAnswer))) {
+    return true;
+  }
+  if (candidate.commonUses.some((use) => normalize(use) === normalize(subjectAnswer))) {
+    return true;
+  }
+
+  const subjectWords = keywordsOf(subjectAnswer);
+  return [...keywordsOf(candidateAnswer)].some((word) => subjectWords.has(word));
+}
 
 export function getTubeDrillMode(id: TubeDrillMode): TubeDrillModeConfig {
   const mode = TUBE_DRILL_MODES.find((entry) => entry.id === id);
@@ -92,10 +183,10 @@ const OPTION_COUNT = 4;
 /**
  * Builds a round of questions.
  *
- * Distractors are drawn from other tubes and de-duplicated by *answer text*,
- * not by tube. Several tubes legitimately share an answer — lavender and pink
- * are both EDTA — and offering two options that read the same makes a question
- * unanswerable.
+ * Distractors are drawn from other tubes and filtered twice: by *answer text*,
+ * because several tubes legitimately share an answer — lavender and pink are
+ * both EDTA — and by the mode's own fairness rule, which rejects options that
+ * read differently but are just as true.
  */
 export function buildTubeDrill(
   mode: TubeDrillModeConfig,
@@ -115,6 +206,7 @@ export function buildTubeDrill(
     for (const candidate of shuffle(eligible, createRandom(seed + index + 1))) {
       if (distractors.length >= OPTION_COUNT - 1) break;
       if (candidate.id === tube.id) continue;
+      if (mode.excludeDistractor?.(tube, candidate)) continue;
       const text = mode.answerFor(candidate);
       if (usedText.has(text)) continue;
       usedText.add(text);
@@ -147,7 +239,11 @@ function buildTeaching(tube: Tube): string {
   const position = tube.orderOfDrawPosition
     ? ` It is drawn at position ${tube.orderOfDrawPosition} in the order of draw.`
     : " Its position in the order of draw depends on which additive version is stocked.";
-  return `${tube.displayName}: ${tube.additive}. ${tube.additiveAction}${position}`;
+  const specimen = ` The specimen is ${tube.specimenType.toLowerCase()}`;
+  const use = tube.commonUses[0]
+    ? `, typically ordered for ${lowerFirst(tube.commonUses[0])}.`
+    : ".";
+  return `${tube.displayName}: ${tube.additive}. ${tube.additiveAction}${specimen}${use}${position}`;
 }
 
 export type TubeDrillGrade = {
