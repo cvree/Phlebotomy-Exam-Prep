@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   description:
     "Free phlebotomy certification study tool. Practice questions with " +
-    "explanations, an interactive order of draw drill, tube and additive " +
+    "explanations, interactive order of draw and tube drills, vocabulary " +
     "training, timed mock exams, and progress tracking that tells you what " +
     "to study next.",
   applicationName: SITE_NAME,
@@ -30,9 +30,8 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Phlebotomy Exam Prep — know what to study before your CPT exam",
     description:
-      "Practice questions with explanations, an interactive order of draw " +
-      "drill, tube mastery training, and progress tracking that tells you " +
-      "what to study next.",
+      "Practice with explanations, train vocabulary and core procedures, " +
+      "and use readiness tracking to decide what to study next.",
     locale: "en_US",
   },
   twitter: {
@@ -50,11 +49,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  // Zoom is never disabled. Students read explanations on small screens.
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfaf8" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d1312" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f2ea" },
+    { media: "(prefers-color-scheme: dark)", color: "#101614" },
   ],
 };
 

@@ -1,87 +1,83 @@
 @import "tailwindcss";
 
-/*
- * Design tokens.
- *
- * Every colour in the product resolves through one of these variables, which
- * is what makes the dark palette a single block of overrides rather than a
- * `dark:` class on every element. Tube colours are the deliberate exception:
- * they are data, they live in `data/tubes/tubes.ts`, and they are always
- * accompanied by the colour's name in text.
- */
 :root {
   color-scheme: light;
 
-  --paper: #fbfaf8;
-  --surface: #ffffff;
-  --surface-muted: #f4f2ee;
-  --surface-sunken: #efece6;
-  --border: #e3ded4;
-  --border-strong: #cdc6b8;
+  --paper: #f5f2ea;
+  --surface: #fffdf8;
+  --surface-muted: #ece8df;
+  --surface-sunken: #e5dfd3;
+  --border: #d7d0c3;
+  --border-strong: #bcb2a2;
 
-  --ink: #17211f;
-  --ink-muted: #5b6764;
-  --ink-subtle: #7d8783;
+  --ink: #17201e;
+  --ink-muted: #55615e;
+  --ink-subtle: #79817e;
 
-  --primary: #0e6e63;
-  --primary-strong: #0a564d;
-  --primary-soft: #e4f1ef;
+  --primary: #0c665c;
+  --primary-strong: #084e47;
+  --primary-soft: #dcebe7;
   --primary-contrast: #ffffff;
 
   --success: #14654a;
   --success-soft: #e2f1e9;
   --success-border: #a9d4c1;
 
-  --danger: #a32a21;
-  --danger-soft: #fbe9e6;
-  --danger-border: #e8b4ad;
+  --danger: #9d3028;
+  --danger-soft: #f8e7e3;
+  --danger-border: #dfa9a3;
 
-  --flag: #9a6410;
-  --flag-soft: #fbf0dd;
-  --flag-border: #e0c48c;
+  --flag: #8b5a0d;
+  --flag-soft: #f6ead1;
+  --flag-border: #d9bd82;
 
-  --focus: #0e6e63;
+  --focus: #0c665c;
 
-  --radius-sm: 0.5rem;
-  --radius: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
+  --radius-sm: 0.28rem;
+  --radius: 0.48rem;
+  --radius-lg: 0.7rem;
+  --radius-xl: 1.05rem;
 
-  --shadow-card: 0 1px 2px rgb(23 33 31 / 0.04), 0 1px 3px rgb(23 33 31 / 0.06);
-  --shadow-lift: 0 4px 12px rgb(23 33 31 / 0.08), 0 1px 3px rgb(23 33 31 / 0.06);
+  --shadow-card: 0 1px 0 rgb(23 32 30 / 0.05), 0 5px 16px rgb(23 32 30 / 0.045);
+  --shadow-lift: 0 2px 0 rgb(23 32 30 / 0.06), 0 18px 45px rgb(23 32 30 / 0.11);
 
   --font-display: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino,
     "Book Antiqua", Georgia, serif;
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --workbench: #17201e;
+  --workbench-ink: #f4f1e8;
+  --workbench-muted: #aeb8b4;
+  --workbench-accent: #88c8bc;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
 
-    --paper: #0d1312;
-    --surface: #151d1b;
-    --surface-muted: #1b2423;
-    --surface-sunken: #101817;
-    --border: #2a3634;
-    --border-strong: #3b4a47;
+    --paper: #101614;
+    --surface: #171e1c;
+    --surface-muted: #1d2623;
+    --surface-sunken: #0d1311;
+    --border: #2d3935;
+    --border-strong: #45534f;
 
-    --ink: #e9f0ee;
-    --ink-muted: #a2afab;
-    --ink-subtle: #83908c;
+    --ink: #edf1ed;
+    --ink-muted: #adb7b3;
+    --ink-subtle: #89938f;
 
-    --primary: #56c3b1;
-    --primary-strong: #7ad6c5;
-    --primary-soft: #10312c;
-    --primary-contrast: #06201c;
+    --primary: #75cdbc;
+    --primary-strong: #98dfd1;
+    --primary-soft: #12332d;
+    --primary-contrast: #08211c;
 
     --success: #63c99e;
     --success-soft: #0f2a21;
     --success-border: #2e5c48;
 
-    --danger: #f19086;
+    --danger: #ee968d;
     --danger-soft: #331714;
     --danger-border: #6b342d;
 
@@ -89,10 +85,14 @@
     --flag-soft: #2e2415;
     --flag-border: #5d4a26;
 
-    --focus: #7ad6c5;
+    --focus: #98dfd1;
+    --shadow-card: 0 1px 0 rgb(0 0 0 / 0.4), 0 8px 18px rgb(0 0 0 / 0.18);
+    --shadow-lift: 0 2px 0 rgb(0 0 0 / 0.4), 0 20px 48px rgb(0 0 0 / 0.32);
 
-    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
-    --shadow-lift: 0 6px 16px rgb(0 0 0 / 0.45);
+    --workbench: #090e0d;
+    --workbench-ink: #edf1ed;
+    --workbench-muted: #9eaaa6;
+    --workbench-accent: #75cdbc;
   }
 }
 
@@ -141,9 +141,11 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    background: var(--paper);
   }
 
   body {
+    min-width: 320px;
     background-color: var(--paper);
     color: var(--ink);
     font-family: var(--font-sans);
@@ -151,14 +153,18 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    background-image:
+      linear-gradient(rgb(23 32 30 / 0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(23 32 30 / 0.012) 1px, transparent 1px);
+    background-size: 100% 2rem, 2rem 100%;
   }
 
   h1,
   h2,
   h3 {
     font-family: var(--font-display);
-    letter-spacing: -0.015em;
-    line-height: 1.15;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
     text-wrap: balance;
   }
 
@@ -173,17 +179,12 @@
     text-wrap: pretty;
   }
 
-  /*
-   * One focus treatment for the whole product. Visible on every interactive
-   * element, and never removed — keyboard users navigate the drills too.
-   */
   :focus-visible {
     outline: 2px solid var(--focus);
-    outline-offset: 2px;
-    border-radius: 4px;
+    outline-offset: 3px;
+    border-radius: 3px;
   }
 
-  /* Comfortable tap targets on touch devices without bloating desktop UI. */
   @media (pointer: coarse) {
     button,
     [role="button"],
@@ -204,7 +205,7 @@
     width: 100%;
     margin-inline: auto;
     padding-inline: 1rem;
-    max-width: 72rem;
+    max-width: 76rem;
   }
 
   @media (min-width: 640px) {
@@ -213,11 +214,17 @@
     }
   }
 
+  @media (min-width: 1280px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
   .container-prose {
     width: 100%;
     margin-inline: auto;
     padding-inline: 1rem;
-    max-width: 46rem;
+    max-width: 48rem;
   }
 
   @media (min-width: 640px) {
@@ -226,23 +233,34 @@
     }
   }
 
-  /* Long-form study content. Applied to article bodies. */
+  .section-code {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
   .prose-study {
     font-size: 1.0625rem;
-    line-height: 1.7;
+    line-height: 1.75;
   }
 
   .prose-study h2 {
-    font-size: 1.625rem;
-    margin-top: 2.5rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.75rem;
+    margin-top: 2.75rem;
+    margin-bottom: 0.8rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border-strong);
   }
 
   .prose-study h3 {
     font-family: var(--font-sans);
     font-size: 1.125rem;
-    font-weight: 650;
-    margin-top: 1.75rem;
+    font-weight: 750;
+    margin-top: 1.9rem;
     margin-bottom: 0.5rem;
   }
 
@@ -258,13 +276,8 @@
     color: var(--ink-muted);
   }
 
-  .prose-study ul {
-    list-style: disc;
-  }
-
-  .prose-study ol {
-    list-style: decimal;
-  }
+  .prose-study ul { list-style: disc; }
+  .prose-study ol { list-style: decimal; }
 
   .prose-study li {
     margin-bottom: 0.375rem;
@@ -273,32 +286,197 @@
 
   .prose-study strong {
     color: var(--ink);
-    font-weight: 650;
+    font-weight: 700;
   }
 
   .prose-study a {
     color: var(--primary);
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-underline-offset: 3px;
   }
 
-  /* Wide content — tables, sequences — scrolls inside itself, never the page. */
   .scroll-x {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 }
 
-/*
- * Reduced motion.
- *
- * The drills and the mock timer are the only animated surfaces, and none of
- * their meaning is carried by motion, so it is safe to remove entirely.
- */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+.workbench-hero {
+  position: relative;
+  overflow: clip;
+  background:
+    radial-gradient(circle at 88% 18%, rgb(12 102 92 / 0.09), transparent 23rem),
+    linear-gradient(180deg, var(--surface) 0%, var(--paper) 82%);
+}
+
+.workbench-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.52;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent calc(8.333% - 1px),
+    var(--border) calc(8.333% - 1px),
+    var(--border) 8.333%
+  );
+  mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.55), transparent 72%);
+}
+
+.specimen-label {
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  padding: 0.55rem 0.7rem;
+  box-shadow: 3px 3px 0 var(--surface-sunken);
+}
+
+.lab-sheet,
+.release-sheet {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+}
+
+.lab-sheet::after,
+.release-sheet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 31px,
+    rgb(121 129 126 / 0.07) 31px,
+    rgb(121 129 126 / 0.07) 32px
+  );
+  mix-blend-mode: multiply;
+}
+
+.lab-sheet > *,
+.release-sheet > * {
+  position: relative;
+  z-index: 1;
+}
+
+.status-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
+  padding: 0.2rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.process-rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.process-step {
+  min-width: 0;
+  padding: 1.25rem 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-strong);
+  border-right: 1px solid var(--border-strong);
+  transition: background-color 160ms ease;
+}
+
+.process-step:first-child { border-left: 1px solid var(--border-strong); }
+.process-step:hover { background: var(--surface-muted); }
+
+.workbench-dark {
+  --border: rgb(255 255 255 / 0.17);
+  background:
+    radial-gradient(circle at 10% 10%, rgb(136 200 188 / 0.09), transparent 22rem),
+    var(--workbench);
+}
+
+.tool-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgb(255 255 255 / 0.17);
+  border-left: 1px solid rgb(255 255 255 / 0.17);
+}
+
+.tool-slot {
+  min-height: 18rem;
+  border-right: 1px solid rgb(255 255 255 / 0.17);
+  border-bottom: 1px solid rgb(255 255 255 / 0.17);
+  background: rgb(255 255 255 / 0.015);
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.tool-slot:hover {
+  background: rgb(255 255 255 / 0.055);
+}
+
+.tool-slot-featured {
+  grid-column: span 2;
+  background: rgb(136 200 188 / 0.06);
+}
+
+.domain-row {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--border-strong);
+  transition: padding-left 160ms ease, background-color 160ms ease;
+}
+
+.domain-row:hover {
+  padding-left: 0.65rem;
+  background: linear-gradient(90deg, var(--surface-muted), transparent 82%);
+}
+
+@media (max-width: 900px) {
+  .process-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .process-step:nth-child(3) { border-left: 1px solid var(--border-strong); }
+  .tool-matrix { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tool-slot-featured { grid-column: span 2; }
+}
+
+@media (max-width: 640px) {
+  body {
+    background-image: linear-gradient(rgb(23 32 30 / 0.018) 1px, transparent 1px);
+    background-size: 100% 2rem;
   }
+
+  .workbench-hero::before { display: none; }
+
+  .process-rail { grid-template-columns: 1fr; }
+  .process-step,
+  .process-step:first-child,
+  .process-step:nth-child(3) { border-left: 1px solid var(--border-strong); }
+
+  .tool-matrix { grid-template-columns: 1fr; }
+  .tool-slot-featured { grid-column: span 1; }
+  .tool-slot { min-height: 15rem; }
+
+  .domain-row {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .domain-row > :last-child {
+    grid-column: 2;
+  }
+
+  .domain-row:hover { padding-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 
   *,
   *::before,
