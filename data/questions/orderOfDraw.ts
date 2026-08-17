@@ -675,5 +675,757 @@ export const ORDER_OF_DRAW_QUESTIONS = buildQuestions(
       tip: "Calcium-chelating anticoagulant, good cell morphology, cap between blue and violet: that is EDTA, and EDTA sits at position five.",
       tags: ["edta", "tube-identity", "application"],
     },
+    {
+      id: "ood-026",
+      subdomain: "Carryover",
+      difficulty: 3,
+      stem: "A lavender EDTA tube is drawn before a green heparin tube. Which result is most likely to be falsely affected?",
+      choices: {
+        a: "Sodium, falsely decreased",
+        b: "Potassium, falsely increased, and calcium, falsely decreased",
+        c: "Glucose, falsely increased",
+        d: "Albumin, falsely increased",
+      },
+      correct: "b",
+      explanation:
+        "EDTA is usually supplied as a potassium salt that chelates calcium, so " +
+        "carryover adds potassium to the next tube and strips calcium from it. " +
+        "Both errors point the wrong way clinically — a falsely high potassium " +
+        "can trigger an urgent workup on a patient whose potassium is normal.",
+      why: {
+        a: "EDTA carryover does not lower sodium; the classic pattern is high potassium with low calcium.",
+        c: "Glucose is affected by delayed separation and by fluoride tubes, not by EDTA carryover.",
+        d: "Albumin is not meaningfully affected by EDTA carryover.",
+      },
+      tip: "EDTA carryover = potassium up, calcium down. That pair is the signature of an out-of-order draw.",
+      tags: ["carryover", "edta", "potassium"],
+    },
+    {
+      id: "ood-027",
+      subdomain: "Carryover",
+      difficulty: 3,
+      stem: "Why is the coagulation tube drawn before serum tubes containing a clot activator?",
+      choices: {
+        a: "Coagulation tests are usually ordered as urgent",
+        b: "Clot activator carried into the citrate tube would accelerate clotting and distort coagulation results",
+        c: "Serum tubes hold more volume and would empty the vein",
+        d: "The citrate tube has a stronger vacuum",
+      },
+      correct: "b",
+      explanation:
+        "Serum tubes contain silica or another clot activator, and even a trace " +
+        "carried into a citrate tube starts clotting the very specimen whose " +
+        "clotting time is being measured. Drawing coagulation before any " +
+        "activator-containing tube removes that possibility.",
+      why: {
+        a: "Clinical urgency does not set the sequence; additive interference does.",
+        c: "The order is about additive contamination, not about how much blood a tube holds.",
+        d: "Vacuum strength varies by fill volume and plays no part in the sequence.",
+      },
+      tip: "Anything that helps blood clot must never reach the tube that measures how long clotting takes.",
+      tags: ["carryover", "clot-activator", "coagulation"],
+    },
+    {
+      id: "ood-028",
+      subdomain: "Tube identity",
+      difficulty: 2,
+      stem: "Which tube is used for a complete blood count (CBC)?",
+      choices: {
+        a: "Light blue sodium citrate",
+        b: "Lavender EDTA",
+        c: "Gray sodium fluoride/potassium oxalate",
+        d: "Gold serum separator",
+      },
+      correct: "b",
+      explanation:
+        "EDTA preserves cell shape and size well enough for accurate counting " +
+        "and for a readable blood film, which is why the lavender tube is the " +
+        "hematology tube. A CBC, a differential, and a hemoglobin A1c all come " +
+        "from it.",
+      why: {
+        a: "Light blue citrate is the coagulation tube — PT, INR, and aPTT.",
+        c: "Gray tops preserve glucose; their additives are unsuitable for cell counts.",
+        d: "A serum separator produces serum, which by definition has no cells left in it.",
+      },
+      tip: "Lavender = hematology. CBC, differential, A1c, sedimentation rate in some systems.",
+      tags: ["edta", "cbc", "tube-identity"],
+    },
+    {
+      id: "ood-029",
+      subdomain: "Tube identity",
+      difficulty: 2,
+      stem: "Which tube is required for a PT/INR?",
+      choices: {
+        a: "Lavender EDTA",
+        b: "Light blue sodium citrate, filled to the line",
+        c: "Green heparin",
+        d: "Red no-additive",
+      },
+      correct: "b",
+      explanation:
+        "Coagulation testing uses sodium citrate, whose calcium binding is " +
+        "reversible — the laboratory adds calcium back to start the reaction it " +
+        "times. That only works if the 9:1 blood-to-citrate ratio is correct, " +
+        "which is why the tube must be filled to the line.",
+      why: {
+        a: "EDTA binds calcium irreversibly and cannot be used for clot-based assays.",
+        c: "Heparin inhibits thrombin and would invalidate a clotting time.",
+        d: "A tube with no anticoagulant produces a clotted specimen, not plasma for coagulation testing.",
+      },
+      tip: "Blue top, full to the line. Citrate's calcium binding is reversible — that's why coagulation uses it.",
+      tags: ["sodium-citrate", "pt-inr", "tube-identity"],
+    },
+    {
+      id: "ood-030",
+      subdomain: "Tube identity",
+      difficulty: 2,
+      stem: "Which tube preserves glucose by inhibiting glycolysis?",
+      choices: {
+        a: "Gray sodium fluoride with potassium oxalate",
+        b: "Lavender EDTA",
+        c: "Gold serum separator",
+        d: "Light blue sodium citrate",
+      },
+      correct: "a",
+      explanation:
+        "Sodium fluoride blocks the glycolytic pathway, so red cells stop " +
+        "consuming glucose in the tube, and potassium oxalate anticoagulates. " +
+        "That combination is why the gray top is used for glucose tolerance " +
+        "testing and lactate, and why it sits last in the sequence.",
+      why: {
+        b: "EDTA prevents clotting but does not stop cells metabolizing glucose.",
+        c: "Serum glucose falls if the specimen is not separated promptly, which is the problem a gray tube solves.",
+        d: "Citrate is a coagulation anticoagulant with no antiglycolytic action.",
+      },
+      tip: "Gray = glucose guardian. Fluoride stops glycolysis; oxalate stops clotting.",
+      tags: ["gray-tube", "glucose", "glycolysis"],
+    },
+    {
+      id: "ood-031",
+      subdomain: "Sequence",
+      difficulty: 2,
+      stem: "Which sequence correctly orders these four tubes?",
+      choices: {
+        a: "Lavender EDTA, light blue citrate, gold serum separator, green heparin",
+        b: "Light blue citrate, gold serum separator, green heparin, lavender EDTA",
+        c: "Gold serum separator, light blue citrate, lavender EDTA, green heparin",
+        d: "Green heparin, lavender EDTA, light blue citrate, gold serum separator",
+      },
+      correct: "b",
+      explanation:
+        "After the sterile blood culture the sequence runs citrate, then serum " +
+        "tubes, then heparin, then EDTA, then the glycolytic inhibitor tube. " +
+        "Each additive is placed so that carryover into the tubes that follow " +
+        "does the least harm.",
+      why: {
+        a: "EDTA is near the end of the sequence, not the beginning.",
+        c: "Serum tubes follow the citrate tube, not the other way round.",
+        d: "This reverses the sequence almost completely.",
+      },
+      tip: "Cultures, blue, red/gold, green, lavender, gray. Learn it as a list and the individual questions answer themselves.",
+      tags: ["sequence", "order-of-draw", "clsi"],
+    },
+    {
+      id: "ood-032",
+      subdomain: "Blood cultures",
+      difficulty: 2,
+      stem: "Why do blood culture bottles come first in the order of draw?",
+      choices: {
+        a: "They require the largest volume of blood",
+        b: "They must remain sterile, and drawing them first minimizes the chance of contamination",
+        c: "Their additive would interfere with every subsequent tube",
+        d: "They must be incubated within one minute of collection",
+      },
+      correct: "b",
+      explanation:
+        "A blood culture answers whether there are organisms in the patient's " +
+        "bloodstream, so a contaminating skin organism can send a patient down " +
+        "an unnecessary antibiotic course. Collecting first, straight after a " +
+        "rigorous skin prep, keeps the specimen as clean as possible.",
+      why: {
+        a: "Volume matters for culture sensitivity but is not why they lead the sequence.",
+        c: "SPS carryover is a consideration, but sterility is the reason cultures are first.",
+        d: "Transport times are measured in hours, not a minute.",
+      },
+      tip: "Sterility first. A contaminated culture is worse than no culture — it triggers treatment the patient does not need.",
+      tags: ["blood-cultures", "sterility", "sequence"],
+    },
+    {
+      id: "ood-033",
+      subdomain: "Capillary order",
+      difficulty: 3,
+      stem: "How does the order of collection for capillary (dermal) specimens differ from venipuncture?",
+      choices: {
+        a: "It is identical to the venipuncture order",
+        b: "EDTA is collected first, then other additive tubes, then serum",
+        c: "Serum is collected first, then EDTA",
+        d: "There is no defined order for capillary collection",
+      },
+      correct: "b",
+      explanation:
+        "Capillary blood begins clotting at the puncture immediately, so the " +
+        "EDTA specimen — the one most sensitive to clots and platelet clumping — " +
+        "is filled first. Other additive containers follow, and serum " +
+        "containers come last because a clotted specimen is what they need " +
+        "anyway.",
+      why: {
+        a: "The two orders differ, and applying the venipuncture sequence to a heel stick produces clotted hematology specimens.",
+        c: "Collecting serum first is the venipuncture logic applied where it does not fit.",
+        d: "There is a defined capillary order, and it exists precisely because of rapid clotting at the site.",
+      },
+      tip: "Capillary flips it: EDTA first, serum last. Venipuncture is the opposite.",
+      tags: ["capillary-collection", "microcollection", "order"],
+    },
+    {
+      id: "ood-034",
+      subdomain: "Tube identity",
+      difficulty: 3,
+      stem: "A pink-topped tube is most commonly used for which purpose?",
+      choices: {
+        a: "Trace element analysis",
+        b: "Blood bank testing such as type and screen",
+        c: "Coagulation studies",
+        d: "Glucose tolerance testing",
+      },
+      correct: "b",
+      explanation:
+        "Pink tubes contain EDTA like lavender tubes but carry labeling designed " +
+        "for transfusion service requirements, so they are commonly designated " +
+        "for type and screen and crossmatch work. Because the additive is EDTA, " +
+        "they occupy the same position in the sequence as the lavender tube.",
+      why: {
+        a: "Trace element work uses a royal blue tube manufactured to be free of contaminating metals.",
+        c: "Coagulation studies require sodium citrate in a light blue tube.",
+        d: "Glucose tolerance testing uses gray tubes with an antiglycolytic additive.",
+      },
+      tip: "Pink is EDTA wearing a blood bank label — same additive, same position in the order.",
+      tags: ["pink-tube", "blood-bank", "edta"],
+    },
+    {
+      id: "ood-035",
+      subdomain: "Tube identity",
+      difficulty: 3,
+      stem: "Which tube is specified for trace element or heavy metal testing?",
+      choices: {
+        a: "Royal blue, manufactured to be free of contaminating trace metals",
+        b: "Light blue sodium citrate",
+        c: "Green sodium heparin",
+        d: "Red no-additive glass",
+      },
+      correct: "a",
+      explanation:
+        "Royal blue tubes are made from materials certified low in trace metals, " +
+        "because the quantities being measured are small enough that metal " +
+        "leaching from an ordinary stopper or tube wall would swamp the result. " +
+        "They come in several additive versions, so the required one is checked " +
+        "against the test.",
+      why: {
+        b: "A light blue citrate tube is for coagulation and is not metal-free certified.",
+        c: "An ordinary green tube offers no assurance about trace metal contamination.",
+        d: "A standard red tube is not manufactured to trace-metal specifications.",
+      },
+      tip: "Royal blue for trace metals — the tube itself has to be clean, not just the specimen.",
+      tags: ["royal-blue", "trace-elements", "tube-identity"],
+    },
+    {
+      id: "ood-036",
+      subdomain: "Discard tubes",
+      difficulty: 3,
+      stem: "In which situation is a discard tube required?",
+      choices: {
+        a: "Before every venipuncture, as a routine first step",
+        b: "When a winged set is used and the first tube drawn is a coagulation tube",
+        c: "Whenever more than three tubes are collected",
+        d: "When a patient has fragile veins",
+      },
+      correct: "b",
+      explanation:
+        "The discard tube exists to fill the air-filled dead space in a winged " +
+        "set's tubing. Without it, that air consumes part of the citrate tube's " +
+        "measured vacuum and the tube ends up underfilled with the wrong " +
+        "blood-to-additive ratio.",
+      why: {
+        a: "A discard tube is not part of every draw; it is used for a specific reason.",
+        c: "Tube count has no bearing on whether a discard tube is needed.",
+        d: "Vein fragility affects needle and technique choice, not the dead-space problem.",
+      },
+      tip: "Discard tube = filling the tubing's dead space, and only when a coagulation tube would otherwise be first.",
+      tags: ["discard-tube", "winged-set", "dead-space"],
+    },
+    {
+      id: "ood-037",
+      subdomain: "Carryover",
+      difficulty: 3,
+      stem: "What is additive carryover?",
+      choices: {
+        a: "Additive left in the vein after the draw",
+        b: "Transfer of additive from one tube into the next through the needle",
+        c: "Additive that settles at the bottom of a tube",
+        d: "Additive degrading over the tube's shelf life",
+      },
+      correct: "b",
+      explanation:
+        "Blood and additive can travel back along the needle when a tube is " +
+        "removed and reach the next tube attached to it. Tiny quantities are " +
+        "enough to alter a result, which is the entire reason the order of draw " +
+        "exists.",
+      why: {
+        a: "Additive does not remain in the patient's vein; the transfer happens inside the collection device.",
+        c: "Settling within a tube is addressed by mixing and is a different issue.",
+        d: "Expiry affects additive performance but is not carryover.",
+      },
+      tip: "Carryover happens inside the needle, between tubes. Sequence is the only control for it.",
+      tags: ["carryover", "contamination", "order-of-draw"],
+    },
+    {
+      id: "ood-038",
+      subdomain: "Tube identity",
+      difficulty: 2,
+      stem: "A green-topped tube contains which anticoagulant?",
+      choices: {
+        a: "Sodium citrate",
+        b: "Heparin, as lithium, sodium, or ammonium salt",
+        c: "EDTA",
+        d: "Sodium fluoride",
+      },
+      correct: "b",
+      explanation:
+        "Green tubes contain heparin, which enhances antithrombin and so blocks " +
+        "thrombin and factor Xa. Plasma is available quickly because no clotting " +
+        "time is needed, which makes heparin tubes common for chemistry and " +
+        "STAT electrolytes.",
+      why: {
+        a: "Sodium citrate is in the light blue coagulation tube.",
+        c: "EDTA is in the lavender and pink tubes.",
+        d: "Sodium fluoride is in the gray tube.",
+      },
+      tip: "Green = heparin = fast plasma chemistry. The salt matters: lithium heparin is not used for a lithium level.",
+      tags: ["heparin", "green-tube", "tube-identity"],
+    },
+    {
+      id: "ood-039",
+      subdomain: "Sequence",
+      difficulty: 3,
+      stem: "A draw is ordered for a CBC, a PT/INR, and a basic metabolic panel on a serum separator. What is the correct fill order?",
+      choices: {
+        a: "CBC, PT/INR, metabolic panel",
+        b: "PT/INR (light blue), metabolic panel (gold), CBC (lavender)",
+        c: "Metabolic panel, CBC, PT/INR",
+        d: "PT/INR, CBC, metabolic panel",
+      },
+      correct: "b",
+      explanation:
+        "Translate each test to its tube and apply the sequence: light blue " +
+        "citrate for the PT/INR, then the gold serum separator for the metabolic " +
+        "panel, then lavender EDTA for the CBC. Reversing the last two risks " +
+        "EDTA carryover into the chemistry tube and a falsely raised potassium.",
+      why: {
+        a: "Starting with the EDTA tube puts the most damaging carryover at the front of the sequence.",
+        c: "Serum tubes come after the coagulation tube, not before.",
+        d: "The EDTA tube must follow the serum tube, not precede it.",
+      },
+      tip: "Convert tests to tube colors first, then order the colors. That two-step habit answers most of these.",
+      tags: ["sequence", "application", "tube-selection"],
+    },
+    {
+      id: "ood-040",
+      subdomain: "Mixing",
+      difficulty: 2,
+      stem: "Approximately how many inversions do sodium citrate tubes typically require?",
+      choices: {
+        a: "None — citrate mixes on its own",
+        b: "About 3 to 4 gentle inversions",
+        c: "About 20 vigorous shakes",
+        d: "Exactly 10 inversions, the same as every additive tube",
+      },
+      correct: "b",
+      explanation:
+        "Citrate tubes are usually inverted a small number of times — commonly " +
+        "three or four — immediately after filling. Inversion counts vary by " +
+        "tube type and manufacturer, so the instructions supplied with the tubes " +
+        "in use are the authority.",
+      why: {
+        a: "An unmixed citrate tube can clot, which invalidates coagulation testing.",
+        c: "Shaking hemolyzes the specimen and activates platelets.",
+        d: "Counts differ by tube type; EDTA and heparin tubes generally need more inversions than citrate.",
+      },
+      tip: "Different tubes, different inversion counts. Check the manufacturer's instructions rather than guessing.",
+      tags: ["mixing", "inversions", "sodium-citrate"],
+      sources: [SRC_MANUFACTURER_IFU, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "ood-041",
+      subdomain: "Tube identity",
+      difficulty: 3,
+      stem: "What does the gel in a serum separator tube do?",
+      choices: {
+        a: "It prevents the blood from clotting",
+        b: "It forms a barrier between serum and cells during centrifugation",
+        c: "It preserves glucose",
+        d: "It sterilizes the specimen",
+      },
+      correct: "b",
+      explanation:
+        "The gel has a density between that of the cells and the serum, so " +
+        "centrifugation drives it into the middle where it sets as a physical " +
+        "barrier. That stops cellular constituents continuing to leak into the " +
+        "serum during transport and storage.",
+      why: {
+        a: "Serum separator tubes contain a clot activator; they are designed for the blood to clot.",
+        c: "Glucose preservation is the gray tube's job, using sodium fluoride.",
+        d: "The gel has no antimicrobial function.",
+      },
+      tip: "Gel is a density barrier, not an additive. It separates after spinning, and never before.",
+      tags: ["serum-separator", "gel", "centrifugation"],
+    },
+    {
+      id: "ood-042",
+      subdomain: "Sequence",
+      difficulty: 3,
+      stem: "A phlebotomist realizes mid-draw that they filled the lavender tube before the gold serum tube. What should they do?",
+      choices: {
+        a: "Continue and say nothing, since the blood is from the same patient",
+        b: "Recollect the affected tube, and report the sequence error per facility policy",
+        c: "Relabel the tubes to appear in the correct order",
+        d: "Discard both tubes and cancel the tests",
+      },
+      correct: "b",
+      explanation:
+        "The specimen at risk is the one drawn after the EDTA tube, so it is " +
+        "recollected in the correct sequence and the error is reported so the " +
+        "laboratory can interpret anything already in progress. Sequence errors " +
+        "are one of the more common preanalytical problems, and they are " +
+        "correctable when they are declared.",
+      why: {
+        a: "Silence leaves a potentially contaminated specimen to be reported as valid.",
+        c: "Relabeling to disguise the sequence is falsification and does nothing about the contamination.",
+        d: "Discarding everything and cancelling is disproportionate — the affected tube is recollected.",
+      },
+      tip: "Own the sequence error and recollect the affected tube. It is far cheaper than a falsely high potassium.",
+      tags: ["error-handling", "sequence", "recollection"],
+    },
+    {
+      id: "ood-043",
+      subdomain: "Tube identity",
+      difficulty: 2,
+      stem: "Which additive is in a light blue tube?",
+      choices: {
+        a: "3.2% sodium citrate",
+        b: "Potassium EDTA",
+        c: "Lithium heparin",
+        d: "Silica clot activator",
+      },
+      correct: "a",
+      explanation:
+        "Light blue tubes contain buffered sodium citrate, most commonly at " +
+        "3.2%, at a fixed ratio of nine parts blood to one part anticoagulant. " +
+        "The concentration and the ratio are both part of what makes the " +
+        "coagulation result interpretable.",
+      why: {
+        b: "Potassium EDTA is the lavender tube's additive.",
+        c: "Lithium heparin belongs to the green tube.",
+        d: "A silica clot activator is found in serum tubes, not in citrate tubes.",
+      },
+      tip: "Light blue = 3.2% sodium citrate at 9:1. The ratio is why the fill line is non-negotiable.",
+      tags: ["sodium-citrate", "light-blue", "tube-identity"],
+    },
+    {
+      id: "ood-044",
+      subdomain: "Sequence",
+      difficulty: 3,
+      stem: "Why does the glycolytic inhibitor (gray) tube come last?",
+      choices: {
+        a: "Its additives would interfere with several tests if carried into earlier tubes",
+        b: "It takes the longest to fill",
+        c: "Glucose is the least urgent test",
+        d: "It is the only tube that must be chilled",
+      },
+      correct: "a",
+      explanation:
+        "Sodium fluoride and potassium oxalate are potent interferents: " +
+        "fluoride inhibits enzymes used in other assays and oxalate can distort " +
+        "cell morphology and add potassium. Putting the tube last means nothing " +
+        "follows it for the additive to contaminate.",
+      why: {
+        b: "Fill time has no bearing on sequence.",
+        c: "Clinical urgency does not determine collection order.",
+        d: "Some glucose and lactate specimens are chilled, but that is a handling requirement, not the reason for the position.",
+      },
+      tip: "The most damaging additives go last, where nothing follows them.",
+      tags: ["gray-tube", "sequence", "carryover"],
+    },
+    {
+      id: "ood-045",
+      subdomain: "Tube identity",
+      difficulty: 3,
+      stem: "Which tube type contains sodium polyanethol sulfonate (SPS)?",
+      choices: {
+        a: "The gray glucose tube",
+        b: "The blood culture bottle or yellow SPS tube",
+        c: "The gold serum separator",
+        d: "The lavender EDTA tube",
+      },
+      correct: "b",
+      explanation:
+        "SPS anticoagulates and, importantly for culture, reduces the activity " +
+        "of complement, phagocytes, and some antibiotics so organisms can " +
+        "survive to grow. That is why it is the additive in blood culture " +
+        "collection, which comes first in the sequence.",
+      why: {
+        a: "Gray tubes contain sodium fluoride with an oxalate anticoagulant.",
+        c: "Serum separators contain a clot activator and gel.",
+        d: "Lavender tubes contain EDTA.",
+      },
+      tip: "SPS protects organisms so they can grow. That is a culture additive, and cultures go first.",
+      tags: ["sps", "blood-cultures", "tube-identity"],
+    },
+    {
+      id: "ood-046",
+      subdomain: "Application",
+      difficulty: 3,
+      stem: "A phlebotomist has only one tube's worth of blood and orders for both a CBC and a potassium level. What is the correct action?",
+      choices: {
+        a: "Fill the lavender tube and let the laboratory run both from it",
+        b: "Collect the correct tube for each test, recollecting if necessary, because EDTA invalidates a potassium result",
+        c: "Fill a gold tube and run the CBC from the serum",
+        d: "Split the specimen between two tubes after collection",
+      },
+      correct: "b",
+      explanation:
+        "Each test needs its own specimen type. EDTA is a potassium salt, so a " +
+        "potassium measured from a lavender tube reads dramatically high, and a " +
+        "CBC cannot be performed on serum because the cells are gone. There is " +
+        "no way around collecting both tubes.",
+      why: {
+        a: "Potassium from an EDTA tube is uninterpretable, not merely approximate.",
+        c: "Serum contains no cells to count, so a CBC is impossible from it.",
+        d: "Pouring blood between tubes gives the wrong additive ratio and an unknown specimen history.",
+      },
+      tip: "Never run a potassium off an EDTA tube. The additive is a potassium salt.",
+      tags: ["edta", "potassium", "tube-selection"],
+    },
+    {
+      id: "ood-047",
+      subdomain: "Sequence",
+      difficulty: 2,
+      stem: "Which tube immediately follows the serum tubes in the order of draw?",
+      choices: {
+        a: "Lavender EDTA",
+        b: "Green heparin",
+        c: "Gray sodium fluoride",
+        d: "Light blue sodium citrate",
+      },
+      correct: "b",
+      explanation:
+        "Heparin tubes come fourth, after the serum tubes and before the EDTA " +
+        "tube. The overall run is cultures, citrate, serum, heparin, EDTA, then " +
+        "the glycolytic inhibitor tube.",
+      why: {
+        a: "EDTA comes after heparin, at position five.",
+        c: "The gray tube is last.",
+        d: "Citrate precedes the serum tubes rather than following them.",
+      },
+      tip: "Serum then heparin then EDTA. Heparin sits between the two, which is the step people skip.",
+      tags: ["sequence", "heparin", "order-of-draw"],
+    },
+    {
+      id: "ood-048",
+      subdomain: "Tube identity",
+      difficulty: 3,
+      stem: "Why is a lithium heparin tube unsuitable for a lithium level?",
+      choices: {
+        a: "Heparin destroys lithium in the specimen",
+        b: "The additive itself contains lithium, which falsely raises the result",
+        c: "Lithium levels require serum, and heparin tubes cannot produce serum",
+        d: "Lithium binds to the tube's gel barrier",
+      },
+      correct: "b",
+      explanation:
+        "The anticoagulant is a lithium salt, so measuring lithium from that " +
+        "tube measures the additive as well as the patient. The same logic " +
+        "applies to sodium heparin and sodium levels, and to potassium EDTA and " +
+        "potassium levels.",
+      why: {
+        a: "The additive adds lithium rather than destroying it.",
+        c: "The specimen type is not the primary objection; the additive's own lithium content is.",
+        d: "Gel does not selectively bind lithium.",
+      },
+      tip: "Read the salt, not just the color. Lithium heparin, sodium heparin, and potassium EDTA each rule out their own analyte.",
+      tags: ["lithium", "heparin", "additive-interference"],
+    },
+    {
+      id: "ood-049",
+      subdomain: "Sequence",
+      difficulty: 3,
+      stem: "A patient needs blood cultures from two sites plus a CBC and a chemistry panel. Which describes the correct approach?",
+      choices: {
+        a: "Draw the CBC first while the vein is fresh, then the cultures",
+        b: "Draw the culture set from each prepared site first, then the remaining tubes in order of draw",
+        c: "Draw all routine tubes first and the cultures last to save antiseptic",
+        d: "Draw the chemistry panel between the two culture sets",
+      },
+      correct: "b",
+      explanation:
+        "Cultures lead at each site, immediately after that site's antiseptic " +
+        "preparation, and the routine tubes follow in the normal sequence. " +
+        "Interleaving routine tubes between culture collections adds " +
+        "opportunities to contaminate a specimen whose whole value depends on " +
+        "sterility.",
+      why: {
+        a: "Drawing routine tubes first defeats the sterile preparation performed for the culture.",
+        c: "Antiseptic supplies are not a consideration that outweighs culture contamination.",
+        d: "Breaking up the culture collection introduces contamination risk between sets.",
+      },
+      tip: "Cultures first at every site, then everything else in order. Never interleave.",
+      tags: ["blood-cultures", "sequence", "application"],
+    },
+    {
+      id: "ood-050",
+      subdomain: "Tube identity",
+      difficulty: 2,
+      stem: "A red-topped tube with no additive produces which specimen type?",
+      choices: {
+        a: "Plasma",
+        b: "Serum",
+        c: "Whole blood",
+        d: "Buffy coat",
+      },
+      correct: "b",
+      explanation:
+        "With no anticoagulant the specimen clots, and centrifugation leaves " +
+        "serum above the clot. Serum lacks fibrinogen and the other factors " +
+        "consumed in clotting, which is precisely why it suits many chemistry " +
+        "and serology assays.",
+      why: {
+        a: "Plasma requires an anticoagulant to prevent clotting.",
+        c: "Whole blood requires an anticoagulant to remain unclotted and mixed.",
+        d: "The buffy coat is the white cell and platelet layer in a spun anticoagulated specimen.",
+      },
+      tip: "No additive → it clots → you get serum. Anticoagulant → no clot → you get plasma.",
+      tags: ["red-tube", "serum", "tube-identity"],
+    },
+    {
+      id: "ood-051",
+      subdomain: "Application",
+      difficulty: 3,
+      stem: "Why must a serum tube be allowed to clot fully before centrifugation?",
+      choices: {
+        a: "Clotting improves the gel barrier's color",
+        b: "Spinning an incompletely clotted specimen produces fibrin strands that interfere with testing and can clog analyzers",
+        c: "Early centrifugation destroys the additive",
+        d: "The clot must be weighed before separation",
+      },
+      correct: "b",
+      explanation:
+        "Serum tubes need a full clotting time — commonly around 30 minutes at " +
+        "room temperature, longer for anticoagulated patients — before spinning. " +
+        "Spinning early leaves fibrin forming in the separated serum, which " +
+        "produces erroneous results and blocks instrument probes.",
+      why: {
+        a: "The gel's appearance is irrelevant to the requirement.",
+        c: "Centrifugation does not destroy a clot activator.",
+        d: "Nothing about the process involves weighing the clot.",
+      },
+      tip: "Let serum tubes clot fully before you spin. Latent fibrin is the price of rushing it.",
+      tags: ["serum", "clotting-time", "centrifugation"],
+    },
+    {
+      id: "ood-052",
+      subdomain: "Sequence",
+      difficulty: 2,
+      stem: "Where does a sodium citrate tube used for an erythrocyte sedimentation rate sit in the order of draw?",
+      choices: {
+        a: "First, before blood cultures",
+        b: "With the other citrate tubes, in the coagulation position",
+        c: "Last, after the gray tube",
+        d: "It has no position and may be drawn at any point",
+      },
+      correct: "b",
+      explanation:
+        "Position in the sequence follows the additive, not the test. A " +
+        "sedimentation rate tube containing sodium citrate takes the citrate " +
+        "position, just as a pink EDTA blood bank tube takes the EDTA position.",
+      why: {
+        a: "Nothing precedes the sterile blood culture collection.",
+        c: "The last position belongs to the glycolytic inhibitor tube.",
+        d: "Every additive tube has a position determined by what it contains.",
+      },
+      tip: "The additive sets the position, not the test name. Match the chemistry and the sequence follows.",
+      tags: ["esr", "sodium-citrate", "sequence"],
+    },
+    {
+      id: "ood-053",
+      subdomain: "Carryover",
+      difficulty: 3,
+      stem: "Which pairing correctly identifies an additive and the analyte its carryover most distorts?",
+      choices: {
+        a: "Sodium fluoride carryover falsely raises calcium",
+        b: "Potassium EDTA carryover falsely raises potassium",
+        c: "Silica clot activator carryover falsely lowers glucose",
+        d: "Sodium citrate carryover falsely raises hemoglobin",
+      },
+      correct: "b",
+      explanation:
+        "EDTA is supplied as a potassium salt, so any carried into the next tube " +
+        "adds measurable potassium while chelating the calcium already there. " +
+        "This is the single most cited consequence of a sequence error.",
+      why: {
+        a: "Fluoride carryover interferes with enzyme assays; it does not raise calcium.",
+        c: "Clot activator carryover affects coagulation testing rather than glucose.",
+        d: "Citrate carryover dilutes and interferes with coagulation results rather than raising hemoglobin.",
+      },
+      tip: "If you remember one carryover pairing, make it EDTA and potassium.",
+      tags: ["carryover", "edta", "potassium"],
+    },
+    {
+      id: "ood-054",
+      subdomain: "Application",
+      difficulty: 3,
+      stem: "A requisition asks for a lactic acid level. Which tube and handling requirement usually applies?",
+      choices: {
+        a: "A lavender EDTA tube at room temperature",
+        b: "A gray sodium fluoride tube, often with prompt transport and specific handling",
+        c: "A gold serum separator held at room temperature for an hour",
+        d: "A light blue citrate tube protected from light",
+      },
+      correct: "b",
+      explanation:
+        "Lactate rises in the tube as cells keep metabolizing, so a glycolytic " +
+        "inhibitor is used and the specimen is moved promptly under the " +
+        "handling the laboratory specifies. Tourniquet time and fist clenching " +
+        "also raise lactate, so collection technique matters as much as the tube.",
+      why: {
+        a: "EDTA does not stop glycolysis, so lactate would continue to climb.",
+        c: "Serum standing at room temperature is exactly the condition that falsifies a lactate.",
+        d: "Light protection addresses bilirubin, not lactate.",
+      },
+      tip: "Lactate: gray tube, minimal tourniquet time, no fist pumping, move it fast.",
+      tags: ["lactic-acid", "gray-tube", "handling"],
+    },
+    {
+      id: "ood-055",
+      subdomain: "Sequence",
+      difficulty: 2,
+      stem: "What is the underlying principle behind the entire order of draw?",
+      choices: {
+        a: "Filling the largest tubes while the vein flow is strongest",
+        b: "Arranging tubes so that additive carried between them does the least damage to results",
+        c: "Placing the most urgent tests first",
+        d: "Grouping tubes by cap color for easier handling",
+      },
+      correct: "b",
+      explanation:
+        "Every position in the sequence is a decision about which contamination " +
+        "matters most: sterile specimens first, then the tube whose test is most " +
+        "sensitive to added clot activator, and the most interfering additives " +
+        "at the end where nothing follows them.",
+      why: {
+        a: "Tube volume plays no part in the sequence.",
+        c: "Urgency is handled by how the specimen is transported and prioritized, not by fill order.",
+        d: "Color is a label for the additive; the additive is what actually drives the order.",
+      },
+      tip: "Ask \"what would this additive do to the next tube?\" and the whole sequence becomes derivable.",
+      tags: ["order-of-draw", "principles", "carryover"],
+    },
   ],
 );

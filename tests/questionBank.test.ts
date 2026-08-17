@@ -6,7 +6,8 @@ import {
   getQuestionsForCertification,
   resolveQuestions,
 } from "@/data/questions";
-import { DOMAIN_IDS } from "@/data/certifications/domains";
+import { DOMAINS, DOMAIN_IDS } from "@/data/certifications/domains";
+import { MOCK_EXAM_FORMS } from "@/data/certifications";
 import { TUBES } from "@/data/tubes/tubes";
 import { CLSI_ORDER_OF_DRAW } from "@/data/study/orderOfDraw";
 
@@ -26,6 +27,57 @@ describe("question bank integrity", () => {
     const counts = countQuestionsByDomain("nha-cpt");
     for (const domain of DOMAIN_IDS) {
       expect(counts[domain] ?? 0).toBeGreaterThanOrEqual(10);
+    }
+  });
+
+  it("holds enough questions in every area for three full-length papers", () => {
+    // A student sitting repeated mock exams should meet new material each
+    // time. The longest form allocates by `practiceWeight`, so each area needs
+    // roughly three papers' worth of its own share before repeats begin.
+    const longest = Math.max(
+      ...MOCK_EXAM_FORMS.map((form) => form.questionCount),
+    );
+    const weightTotal = DOMAINS.reduce(
+      (sum, domain) => sum + domain.practiceWeight,
+      0,
+    );
+    const counts = countQuestionsByDomain("nha-cpt");
+
+    for (const domain of DOMAINS) {
+      const perPaper = Math.ceil(
+        (domain.practiceWeight / weightTotal) * longest,
+      );
+      expect(
+        counts[domain.id] ?? 0,
+        `${domain.id} needs ${perPaper * 3} for three full papers`,
+      ).toBeGreaterThanOrEqual(perPaper * 3);
+    }
+  });
+
+  it("writes distractor explanations for the great majority of questions", () => {
+    // A wrong answer without a reason is a score, not feedback. This is a
+    // floor rather than a requirement on every item, because a handful of
+    // recall questions have distractors that need no explaining.
+    const withWhy = QUESTIONS.filter(
+      (question) => Object.keys(question.choiceExplanations ?? {}).length > 0,
+    );
+    expect(withWhy.length / QUESTIONS.length).toBeGreaterThan(0.9);
+  });
+
+  it("gives every question four answer choices", () => {
+    const wrongCount = QUESTIONS.filter(
+      (question) => question.choices.length !== 4,
+    );
+    expect(wrongCount.map((question) => question.id)).toEqual([]);
+  });
+
+  it("spreads questions across all three difficulty levels in every domain", () => {
+    for (const domain of DOMAIN_IDS) {
+      const inDomain = QUESTIONS.filter((question) => question.domain === domain);
+      const levels = new Set(inDomain.map((question) => question.difficulty));
+      expect(levels.size, `${domain} difficulty spread`).toBeGreaterThanOrEqual(
+        2,
+      );
     }
   });
 

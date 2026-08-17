@@ -170,6 +170,8 @@ export type ActivePracticeSession = {
 export type ActiveMockSession = {
   id: string;
   certificationId: CertificationId;
+  /** Which mock exam form this paper was built from. Absent on older sessions. */
+  formId?: string;
   questionIds: string[];
   index: number;
   answers: Record<string, string>;
@@ -187,6 +189,8 @@ export type ActiveMockSession = {
 export type MockResult = {
   id: string;
   certificationId: CertificationId;
+  /** Which mock exam form was sat. Absent on results saved before forms existed. */
+  formId?: string;
   questionIds: string[];
   answers: Record<string, string>;
   flagged: string[];

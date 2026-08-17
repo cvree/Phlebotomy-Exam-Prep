@@ -62,7 +62,7 @@ export function selectQuestions(
   const random = createRandom(context.seed);
   const stats = context.progress.questionStats;
 
-  const primary = filterForMode(config, pool, stats, context);
+  const primary = filterForMode(config, pool, stats, context, random);
   const chosen = shuffle(primary, random).slice(0, config.questionCount);
 
   if (chosen.length >= config.questionCount) {
@@ -87,6 +87,7 @@ function filterForMode(
   pool: Question[],
   stats: Record<string, QuestionStat>,
   context: SelectionContext,
+  random: () => number,
 ): Question[] {
   switch (config.mode) {
     case "quick-10":
@@ -113,23 +114,106 @@ function filterForMode(
     case "weak-areas": {
       const weakest = rankWeakest(context.mastery)
         .filter((entry) => entry.level !== "strong")
-        .slice(0, 3)
+        .slice(0, WEAK_AREA_DOMAINS)
         .map((entry) => entry.domain);
 
       if (weakest.length === 0) {
         return pool;
       }
 
-      const inWeakAreas = pool.filter((question) =>
-        weakest.includes(question.domain),
-      );
-      // Prefer questions that have not been mastered in those areas.
-      const unmastered = inWeakAreas.filter(
-        (question) => (stats[question.id]?.streak ?? 0) < 2,
-      );
-      return unmastered.length > 0 ? unmastered : inWeakAreas;
+      // Share out the session by rank rather than pooling the weak areas
+      // together. Pooling lets bank size decide the mix — the area with the
+      // most questions written for it wins — which is not what a student asked
+      // for when they picked "my weak areas".
+      const quotas = allocateByRank(weakest.length, config.questionCount);
+      const selected: Question[] = [];
+
+      weakest.forEach((domainId, rank) => {
+        const inDomain = pool.filter((question) => question.domain === domainId);
+        // Prefer questions that have not been mastered in this area.
+        const unmastered = inDomain.filter(
+          (question) => (stats[question.id]?.streak ?? 0) < 2,
+        );
+        const ordered = shuffle(
+          unmastered.length > 0 ? unmastered : inDomain,
+          random,
+        );
+        selected.push(...ordered.slice(0, quotas[rank] ?? 0));
+      });
+
+      // Short quotas (a small area, or one nearly mastered) are topped up from
+      // the other weak areas before `selectQuestions` reaches for the wider
+      // pool, so a weak-areas session stays a weak-areas session.
+      if (selected.length < config.questionCount) {
+        const takenIds = new Set(selected.map((question) => question.id));
+        const rest = pool.filter(
+          (question) =>
+            weakest.includes(question.domain) && !takenIds.has(question.id),
+        );
+        selected.push(...shuffle(rest, random));
+      }
+
+      return selected;
     }
   }
+}
+
+/** How many areas a weak-areas session spreads across. */
+const WEAK_AREA_DOMAINS = 3;
+
+/**
+ * Splits `total` across `count` ranked buckets, weighted toward rank 0.
+ *
+ * Weights run count, count-1, … 1, so three areas split a twelve-question
+ * session 6/4/2: the weakest area gets the most attention without the other
+ * two disappearing. Largest-remainder allocation keeps the parts summing to
+ * exactly `total`.
+ */
+export function allocateByRank(count: number, total: number): number[] {
+  if (count <= 0 || total <= 0) return [];
+
+  const weights = Array.from({ length: count }, (_, i) => count - i);
+  const weightTotal = weights.reduce((sum, weight) => sum + weight, 0);
+
+  const exact = weights.map((weight) => (weight / weightTotal) * total);
+  const quotas = exact.map((value) => Math.floor(value));
+  let allocated = quotas.reduce((sum, value) => sum + value, 0);
+
+  const byRemainder = exact
+    .map((value, index) => ({ index, remainder: value - Math.floor(value) }))
+    .sort((a, b) => b.remainder - a.remainder);
+
+  for (const entry of byRemainder) {
+    if (allocated >= total) break;
+    quotas[entry.index] = (quotas[entry.index] ?? 0) + 1;
+    allocated += 1;
+  }
+
+  return quotas;
+}
+
+export type MockExamOptions = {
+  /**
+   * Questions the student has already seen on recent mock papers. They are
+   * used only after fresh ones in the same domain run out, so consecutive
+   * papers are new material rather than a reshuffle of the same fifty.
+   */
+  recentQuestionIds?: string[];
+};
+
+/**
+ * Question ids used by the most recent mock exams.
+ *
+ * Reaches back over `paperCount` papers rather than only the last one, so
+ * sitting three exams in a week gives three genuinely different papers.
+ */
+export function recentMockQuestionIds(
+  progress: StoredProgress,
+  paperCount = 3,
+): string[] {
+  return progress.mockResults
+    .slice(-paperCount)
+    .flatMap((result) => result.questionIds);
 }
 
 /**
@@ -138,14 +222,21 @@ function filterForMode(
  * Distribution follows each domain's `practiceWeight` using largest-remainder
  * allocation, so the counts always sum to exactly the requested total instead
  * of drifting by a question or two from rounding.
+ *
+ * Within a domain, questions the student has not met on a recent paper are
+ * offered first. That keeps repeat papers fresh while never shortening one:
+ * once a domain's fresh questions are exhausted the recent ones are used, so
+ * the paper is always the full requested length.
  */
 export function buildMockExam(
   certificationId: CertificationId,
   questionCount: number,
   seed: number,
+  options: MockExamOptions = {},
 ): Question[] {
   const pool = getQuestionsForCertification(certificationId);
   const random = createRandom(seed);
+  const recent = new Set(options.recentQuestionIds ?? []);
 
   const byDomain = new Map<string, Question[]>();
   for (const question of pool) {
@@ -197,7 +288,12 @@ export function buildMockExam(
   const paper: Question[] = [];
   for (const entry of allocations) {
     const questions = shuffle(byDomain.get(entry.domainId) ?? [], random);
-    paper.push(...questions.slice(0, entry.base));
+    // Stable partition: fresh questions first, recently-seen ones behind them.
+    // Both halves stay shuffled, so a repeat paper is not a predictable
+    // re-run of the last one's leftovers.
+    const fresh = questions.filter((question) => !recent.has(question.id));
+    const seen = questions.filter((question) => recent.has(question.id));
+    paper.push(...[...fresh, ...seen].slice(0, entry.base));
   }
 
   return shuffle(paper, random);

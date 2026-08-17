@@ -183,11 +183,17 @@ export default function MethodologyPage() {
           ))}
         </ul>
         <p>
-          Our mock exam is {NHA_CPT.mockExamFormat.questionCount} questions in{" "}
-          {NHA_CPT.mockExamFormat.timeLimitMinutes} minutes. That is{" "}
-          <strong>our</strong> practice format, chosen to be a useful length for
-          study, and it is labeled as such everywhere it appears. For anything
-          official, go to the {NHA_CPT.organization} directly.
+          Our mock exam comes in three lengths —{" "}
+          {NHA_CPT.mockExam.forms
+            .map(
+              (form) =>
+                `${form.questionCount} questions in ${form.timeLimitMinutes} minutes`,
+            )
+            .join(", ")}
+          . Those are <strong>our</strong> practice formats, chosen to be useful
+          lengths for study, and they are labeled as such everywhere they
+          appear. For anything official, go to the {NHA_CPT.organization}{" "}
+          directly.
         </p>
 
         <h2 id="domains">Where the ten study areas come from</h2>

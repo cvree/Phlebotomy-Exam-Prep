@@ -646,5 +646,660 @@ export const PATIENT_PREP_QUESTIONS = buildQuestions(
       tip: "Plain language, accurate expectations, right-sized detail — that's what actually calms a first-time patient.",
       tags: ["communication", "first-time-patient", "consent"],
     },
+    {
+      id: "pre-025",
+      subdomain: "Fasting",
+      difficulty: 1,
+      stem: "A patient asks whether they may drink water before a fasting blood test. What is the correct guidance?",
+      choices: {
+        a: "No fluids of any kind are permitted",
+        b: "Water is generally permitted and encouraged unless the ordering provider specifies otherwise",
+        c: "Only sports drinks are permitted, to prevent dehydration",
+        d: "Water is permitted only in the final hour before the draw",
+      },
+      correct: "b",
+      explanation:
+        "Plain water is normally allowed during a fast and helps: a dehydrated " +
+        "patient has veins that are harder to find and analytes that are " +
+        "relatively concentrated. What is excluded is anything with calories or " +
+        "metabolic effect — food, juice, sweetened or caffeinated drinks, and " +
+        "in many protocols gum and mints.",
+      why: {
+        a: "Prohibiting water makes collection harder and can affect results through hemoconcentration.",
+        c: "A sports drink contains sugar and electrolytes and breaks the fast outright.",
+        d: "There is no such restriction; water is permitted throughout the fasting period.",
+      },
+      tip: "Water yes, everything else no. Dehydration makes both the stick and the results worse.",
+      tags: ["fasting", "hydration", "patient-instructions"],
+    },
+    {
+      id: "pre-026",
+      subdomain: "Fasting",
+      difficulty: 2,
+      stem: "Which best describes the basal state referred to in laboratory reference ranges?",
+      choices: {
+        a: "Any time at least four hours after a meal",
+        b: "The resting, fasting condition early in the morning, roughly 12 hours after the last meal",
+        c: "The state immediately following moderate exercise",
+        d: "Any time the patient reports feeling well",
+      },
+      correct: "b",
+      explanation:
+        "The basal state is the body at rest after an overnight fast, typically " +
+        "sampled early in the morning before activity or food. Many reference " +
+        "ranges were established on basal-state specimens, which is why fasting " +
+        "morning collection is specified for the tests most affected by " +
+        "digestion and activity.",
+      why: {
+        a: "A four-hour gap in the middle of an active day is not a basal state.",
+        c: "Exercise shifts several analytes and is the opposite of the resting condition.",
+        d: "Subjective wellbeing has no relationship to metabolic state.",
+      },
+      tip: "Basal = rested, fasting, early morning. That is the condition many reference ranges assume.",
+      tags: ["basal-state", "fasting", "reference-ranges"],
+    },
+    {
+      id: "pre-027",
+      subdomain: "Consent",
+      difficulty: 2,
+      stem: "A patient rolls up their sleeve and extends their arm when the phlebotomist explains the draw. What type of consent is this?",
+      choices: {
+        a: "Informed consent",
+        b: "Implied consent",
+        c: "Expressed written consent",
+        d: "Consent by proxy",
+      },
+      correct: "b",
+      explanation:
+        "Implied consent is communicated by the patient's actions rather than " +
+        "their words — extending an arm after an explanation is the classic " +
+        "example. It is valid for a routine venipuncture that has been " +
+        "explained, and it can be withdrawn at any point.",
+      why: {
+        a: "Informed consent involves a discussion of risks, benefits, and alternatives, typically for more invasive procedures.",
+        c: "Nothing was written or signed here.",
+        d: "Consent by proxy is given by an authorized decision-maker for a patient who cannot consent.",
+      },
+      tip: "Explain, then watch. An extended arm is implied consent; a withdrawn arm is a refusal.",
+      tags: ["consent", "implied-consent", "patient-rights"],
+    },
+    {
+      id: "pre-028",
+      subdomain: "Consent",
+      difficulty: 3,
+      stem: "A 15-year-old arrives alone for a routine draw ordered by their pediatrician. What is the appropriate step?",
+      choices: {
+        a: "Proceed — the order is sufficient authorization",
+        b: "Follow facility policy on minors, which generally requires consent from a parent or legal guardian unless a recognized exception applies",
+        c: "Ask the teenager to sign a consent form on their own behalf",
+        d: "Refuse all collection from anyone under 18 under any circumstances",
+      },
+      correct: "b",
+      explanation:
+        "Minors generally cannot consent for themselves, so a parent or legal " +
+        "guardian consents. Exceptions exist — emancipated minors and certain " +
+        "categories of care that vary by state — and they are defined by policy " +
+        "and law rather than judged at the drawing chair.",
+      why: {
+        a: "A physician's order authorizes the test, not the consent to perform it on a minor.",
+        c: "A minor's signature does not constitute valid consent unless a recognized exception applies.",
+        d: "Minors are drawn routinely with appropriate consent; a blanket refusal is not the standard.",
+      },
+      tip: "Minor means guardian consent, unless policy names an exception. Check the policy, don't improvise.",
+      tags: ["consent", "minors", "legal"],
+    },
+    {
+      id: "pre-029",
+      subdomain: "Positioning",
+      difficulty: 2,
+      stem: "A patient tells the phlebotomist they fainted at their last blood draw. What is the appropriate positioning?",
+      choices: {
+        a: "Seated in a standard chair, with the draw performed quickly",
+        b: "Reclined or lying down, with the patient monitored throughout",
+        c: "Standing, so the patient can sit down if they feel unwell",
+        d: "Seated on a high stool for better access",
+      },
+      correct: "b",
+      explanation:
+        "A history of syncope changes the plan before the needle appears. " +
+        "Reclining removes the distance to fall, keeps blood flow to the brain, " +
+        "and lets the phlebotomist watch for early signs — pallor, sweating, " +
+        "yawning — while there is still time to respond.",
+      why: {
+        a: "Speed does not prevent a vasovagal response, and a standard chair still allows a fall.",
+        c: "Never draw from a standing patient; a faint from standing height risks a serious head injury.",
+        d: "A high stool increases the fall distance, which is the opposite of what this patient needs.",
+      },
+      tip: "History of fainting? Lie them down. Never draw anyone standing up.",
+      tags: ["syncope", "positioning", "patient-safety"],
+    },
+    {
+      id: "pre-030",
+      subdomain: "Site assessment",
+      difficulty: 3,
+      stem: "A patient has an IV running in the left forearm and a dialysis fistula in the right arm. Where should the phlebotomist look for a site?",
+      choices: {
+        a: "Above the IV in the left arm",
+        b: "Consult the nurse or provider — neither arm is straightforward, and hand or alternative sites may be required",
+        c: "Directly from the fistula, which is designed for vascular access",
+        d: "From the fistula arm, below the fistula",
+      },
+      correct: "b",
+      explanation:
+        "A fistula arm is off limits for venipuncture entirely, and an arm with " +
+        "a running IV is at best a constrained option. With both arms " +
+        "compromised the collection is discussed with the patient's nurse or " +
+        "provider, who may authorize a hand vein, a site below a stopped IV, or " +
+        "collection by another route.",
+      why: {
+        a: "Drawing above an IV samples infusing fluid rather than the patient's blood.",
+        c: "A fistula is never used for venipuncture — the risk of clotting or infecting it is unacceptable.",
+        d: "The whole fistula limb is avoided, not just the fistula itself.",
+      },
+      tip: "Fistula arm: no draws, no tourniquet, no blood pressure cuff. When both arms are compromised, ask.",
+      tags: ["fistula", "iv-line", "site-selection"],
+    },
+    {
+      id: "pre-031",
+      subdomain: "Site assessment",
+      difficulty: 3,
+      stem: "A patient had a mastectomy with lymph node removal on the right side four years ago. What is the correct approach to site selection?",
+      choices: {
+        a: "The restriction expires after two years, so either arm is acceptable",
+        b: "Avoid the affected side and use the unaffected arm; if both sides are affected, seek provider guidance",
+        c: "Use the affected side but avoid a tourniquet",
+        d: "Use the affected side only for small-volume draws",
+      },
+      correct: "b",
+      explanation:
+        "Lymph node removal impairs drainage on that side indefinitely, leaving " +
+        "the limb prone to lymphedema and slower to clear infection. The " +
+        "unaffected arm is used; where both sides are affected, the provider " +
+        "decides and may authorize a specific site.",
+      why: {
+        a: "There is no expiry — the lymphatic drainage does not return.",
+        c: "Omitting the tourniquet does not address the infection and lymphedema risk from the puncture itself.",
+        d: "Volume is not the issue; the breach of the skin barrier on that side is.",
+      },
+      tip: "Mastectomy with node removal means that arm is out — permanently, not for a couple of years.",
+      tags: ["mastectomy", "lymphedema", "site-selection"],
+    },
+    {
+      id: "pre-032",
+      subdomain: "Timing",
+      difficulty: 2,
+      stem: "A therapeutic drug monitoring order specifies a trough level. When is the specimen collected?",
+      choices: {
+        a: "Thirty minutes after the dose is given",
+        b: "Immediately before the next scheduled dose",
+        c: "At the midpoint between two doses",
+        d: "At any convenient time, since the laboratory adjusts for timing",
+      },
+      correct: "b",
+      explanation:
+        "A trough is the lowest concentration in the dosing interval, so it is " +
+        "drawn immediately before the next dose — it answers whether the drug " +
+        "stays above the therapeutic threshold. A peak, drawn a specified " +
+        "interval after administration, answers whether it climbs into toxic " +
+        "range.",
+      why: {
+        a: "That window describes a peak for some drugs, which is the opposite measurement.",
+        c: "A midpoint value corresponds to neither the trough nor the peak and cannot be interpreted against either range.",
+        d: "The laboratory cannot correct a level for unknown timing; the collection time defines what the number means.",
+      },
+      tip: "Trough = just before the next dose, the low point. Peak = a set time after the dose, the high point.",
+      tags: ["therapeutic-drug-monitoring", "trough", "timing"],
+    },
+    {
+      id: "pre-033",
+      subdomain: "Timing",
+      difficulty: 2,
+      stem: "A cortisol level is ordered for 0800. Why does the collection time matter?",
+      choices: {
+        a: "Cortisol is unstable at room temperature after mid-morning",
+        b: "Cortisol follows a diurnal rhythm, so results are interpreted against the time of day they were drawn",
+        c: "The laboratory only runs cortisol in the morning",
+        d: "Morning collection avoids interference from food",
+      },
+      correct: "b",
+      explanation:
+        "Cortisol peaks in the early morning and falls through the day, so a " +
+        "value only means something when the collection time is known. That is " +
+        "why the order names a specific time and why the actual collection time " +
+        "goes on the label.",
+      why: {
+        a: "The reason for timing is physiological variation, not specimen instability.",
+        c: "Laboratory scheduling does not drive the clinical timing of the collection.",
+        d: "Fasting is a separate consideration and is not what makes cortisol time-dependent.",
+      },
+      tip: "Diurnal analytes — cortisol chief among them — are judged against the clock. Draw at the time ordered, and record it.",
+      tags: ["diurnal-variation", "cortisol", "timing"],
+    },
+    {
+      id: "pre-034",
+      subdomain: "Patient factors",
+      difficulty: 3,
+      stem: "A patient arrives having just walked briskly for twenty minutes. Why might this matter for their results?",
+      choices: {
+        a: "Exercise has no measurable effect on laboratory results",
+        b: "Recent exercise can transiently change several analytes, so the patient should rest before collection where the test is affected",
+        c: "Exercise permanently alters the reference range for that patient",
+        d: "Exercise only affects results if the patient is fasting",
+      },
+      correct: "b",
+      explanation:
+        "Physical activity transiently shifts a number of analytes, including " +
+        "muscle enzymes and some electrolytes and hormones. Where the test is " +
+        "sensitive to it, a short rest before collection brings the patient " +
+        "closer to the basal state the reference range assumes.",
+      why: {
+        a: "The effects are well described and are the reason rest is part of standard preparation.",
+        c: "The changes are transient, not a permanent shift in the patient's baseline.",
+        d: "The effect of activity is independent of whether the patient has eaten.",
+      },
+      tip: "Let an active patient sit and settle. Basal state means rested, not just unfed.",
+      tags: ["exercise", "preanalytical", "basal-state"],
+    },
+    {
+      id: "pre-035",
+      subdomain: "Patient factors",
+      difficulty: 3,
+      stem: "How does prolonged standing before a draw affect certain analyte concentrations?",
+      choices: {
+        a: "It dilutes the blood, lowering concentrations of large molecules",
+        b: "It shifts fluid out of the vessels, raising the measured concentration of proteins and protein-bound substances",
+        c: "It has no effect once the tourniquet is applied",
+        d: "It affects only glucose and electrolytes",
+      },
+      correct: "b",
+      explanation:
+        "Upright posture moves water out of the vascular space, leaving the " +
+        "cells and larger molecules that cannot cross the vessel wall relatively " +
+        "concentrated. Proteins, protein-bound analytes, and cellular counts can " +
+        "read higher than they would in a patient who has been seated or supine.",
+      why: {
+        a: "The fluid shift concentrates rather than dilutes the remaining plasma.",
+        c: "A tourniquet adds its own hemoconcentration on top; it does not cancel the postural effect.",
+        d: "The effect falls on protein-bound and cellular components, not on small freely-diffusing molecules.",
+      },
+      tip: "Standing concentrates. Seat the patient for a few minutes before drawing when posture-sensitive tests are ordered.",
+      tags: ["posture", "hemoconcentration", "preanalytical"],
+    },
+    {
+      id: "pre-036",
+      subdomain: "Patient interaction",
+      difficulty: 1,
+      stem: "What is the first thing a phlebotomist should do when entering an outpatient drawing room to meet a patient?",
+      choices: {
+        a: "Apply the tourniquet to save time",
+        b: "Introduce themselves, state their role, and explain what they are there to do",
+        c: "Lay out tubes so the patient can see what is coming",
+        d: "Ask what the patient's diagnosis is",
+      },
+      correct: "b",
+      explanation:
+        "The encounter opens with an introduction: who you are, what your role " +
+        "is, and what you are about to do. It establishes the interaction, sets " +
+        "expectations for a patient who may be anxious, and leads naturally into " +
+        "identification and consent.",
+      why: {
+        a: "Nothing touches the patient before identification and an explanation.",
+        c: "Displaying equipment before any explanation tends to increase anxiety rather than reduce it.",
+        d: "Diagnosis is not the phlebotomist's business to ask about and has no bearing on the collection.",
+      },
+      tip: "Introduce, explain, identify, consent — in that order, before anything touches the patient.",
+      tags: ["communication", "introduction", "professionalism"],
+    },
+    {
+      id: "pre-037",
+      subdomain: "Patient factors",
+      difficulty: 2,
+      stem: "A patient mentions they are extremely anxious about needles and has a history of panic during draws. What is a reasonable approach?",
+      choices: {
+        a: "Complete the draw as fast as possible without discussion",
+        b: "Recline the patient, talk them through what will happen, use distraction, and be prepared to stop",
+        c: "Tell the patient the needle will not hurt at all",
+        d: "Have a colleague hold the patient's arm firmly throughout",
+      },
+      correct: "b",
+      explanation:
+        "Anxiety is managed rather than rushed past: positioning that makes a " +
+        "faint safe, an honest description of what is coming, distraction, and " +
+        "a stated willingness to pause. A patient who knows they can stop is " +
+        "usually far more able to continue.",
+      why: {
+        a: "Speed without explanation heightens the loss of control that drives the anxiety.",
+        c: "A promise the patient will not feel anything is untrue and destroys trust at the first sensation.",
+        d: "Restraint escalates panic and creates a safety risk with a needle in play.",
+      },
+      tip: "Recline, explain, distract, and mean it when you say you'll stop if they need you to.",
+      tags: ["anxiety", "needle-phobia", "communication"],
+    },
+    {
+      id: "pre-038",
+      subdomain: "Fasting",
+      difficulty: 2,
+      stem: "A patient states they fasted overnight but chewed sugar-free gum on the way in. How should the phlebotomist handle a fasting glucose order?",
+      choices: {
+        a: "Proceed silently — sugar-free gum contains no sugar",
+        b: "Report the gum per facility policy, since chewing stimulates digestive activity that can affect results",
+        c: "Cancel the test outright",
+        d: "Have the patient wait two hours and then draw",
+      },
+      correct: "b",
+      explanation:
+        "Chewing triggers digestive responses regardless of the sugar content, " +
+        "so many protocols treat gum as breaking a fast. The phlebotomist's job " +
+        "is to document and communicate what the patient actually did, not to " +
+        "decide unilaterally whether it counted.",
+      why: {
+        a: "Sugar-free does not mean metabolically inert; the chewing itself is the issue.",
+        c: "Cancelling is the ordering provider's decision, informed by what is documented.",
+        d: "Inventing a waiting period is not a defined protocol and delays care on a guess.",
+      },
+      tip: "Anything in the mouth gets documented. Whether it invalidates the test is the provider's call.",
+      tags: ["fasting", "gum", "documentation"],
+    },
+    {
+      id: "pre-039",
+      subdomain: "Privacy",
+      difficulty: 2,
+      stem: "A patient's family member asks the phlebotomist which tests are being collected. What is the appropriate response?",
+      choices: {
+        a: "List the tests, since the family member is present in the room",
+        b: "Politely refer the question to the patient or the care team",
+        c: "Explain that the tests are confidential and cannot be discussed with anyone",
+        d: "Answer only if the patient appears not to object",
+      },
+      correct: "b",
+      explanation:
+        "Health information belongs to the patient. The phlebotomist does not " +
+        "become the source for a family member's questions, even a well-meaning " +
+        "one in the room; the question goes to the patient themselves or to the " +
+        "clinicians responsible for their care.",
+      why: {
+        a: "Physical presence does not make someone authorized to receive health information.",
+        c: "The information is not undiscussable — it simply is not the phlebotomist's to disclose.",
+        d: "Reading a patient's expression is not the same as their authorization.",
+      },
+      tip: "Redirect rather than disclose. The patient owns the information; you are not its distributor.",
+      tags: ["privacy", "hipaa", "communication"],
+    },
+    {
+      id: "pre-040",
+      subdomain: "Site assessment",
+      difficulty: 2,
+      stem: "Before applying a tourniquet, the phlebotomist notices extensive scarring across the antecubital area of both arms. What is the concern?",
+      choices: {
+        a: "Scarred tissue is more painful but otherwise unaffected",
+        b: "Scarred veins are difficult to penetrate and can yield poor-quality specimens, so an alternative site should be considered",
+        c: "Scarring prevents the tourniquet from working",
+        d: "Scarring means the patient must be drawn by a physician",
+      },
+      correct: "b",
+      explanation:
+        "Scarred and sclerosed veins are hard, poorly elastic, and difficult to " +
+        "enter, and blood flow through them is often inadequate — the result is " +
+        "a failed draw or a specimen of poor quality. An alternative site such " +
+        "as a hand vein is considered instead.",
+      why: {
+        a: "Discomfort is not the main issue; the vessel's usability is.",
+        c: "The tourniquet still functions; the vein is the problem.",
+        d: "Scarred sites are within a phlebotomist's scope; the decision is about site selection.",
+      },
+      tip: "Feel before you commit. A hard, cord-like vein under scarred skin will fight you and may still give a poor specimen.",
+      tags: ["scarring", "sclerosed-veins", "site-selection"],
+    },
+    {
+      id: "pre-041",
+      subdomain: "Test preparation",
+      difficulty: 3,
+      stem: "For a two-hour postprandial glucose, when is the specimen collected?",
+      choices: {
+        a: "Two hours after the patient wakes up",
+        b: "Two hours after the patient begins the specified meal or glucose load",
+        c: "Two hours after arriving at the collection site",
+        d: "Two hours after the fasting specimen is drawn, regardless of when the patient ate",
+      },
+      correct: "b",
+      explanation:
+        "\"Postprandial\" means after eating, and the clock starts when the " +
+        "patient begins the meal or glucose drink, not when they finish, arrive, " +
+        "or wake. Timing from the wrong point makes the value " +
+        "uninterpretable against the reference range.",
+      why: {
+        a: "Waking has no relationship to a glucose challenge.",
+        c: "Arrival time is a scheduling detail, not a physiological starting point.",
+        d: "The interval runs from the meal, and a fasting draw may have preceded it by any amount of time.",
+      },
+      tip: "The clock starts at the first bite or the first sip — record that time, not the arrival time.",
+      tags: ["postprandial", "glucose", "timing"],
+    },
+    {
+      id: "pre-042",
+      subdomain: "Patient factors",
+      difficulty: 2,
+      stem: "A patient reports smoking a cigarette in the parking lot before a fasting draw. Why is this worth documenting?",
+      choices: {
+        a: "Smoking has no effect on any laboratory value",
+        b: "Smoking can transiently affect several analytes and is generally not permitted during a fast",
+        c: "Smoking only matters for respiratory tests",
+        d: "Documentation is required for billing purposes",
+      },
+      correct: "b",
+      explanation:
+        "Nicotine has measurable short-term physiological effects and smoking is " +
+        "generally excluded during a fasting period along with food and drink. " +
+        "The phlebotomist documents what the patient reports so the result can " +
+        "be interpreted in light of it.",
+      why: {
+        a: "Transient effects on several analytes are well described.",
+        c: "The effects are systemic, not confined to any one type of testing.",
+        d: "The reason is clinical interpretation, not billing.",
+      },
+      tip: "Fasting means nothing but water — no food, no drink, no gum, no cigarettes.",
+      tags: ["smoking", "fasting", "preanalytical"],
+    },
+    {
+      id: "pre-043",
+      subdomain: "Positioning",
+      difficulty: 2,
+      stem: "How should the patient's arm be positioned for an antecubital venipuncture?",
+      choices: {
+        a: "Bent at the elbow so the veins bulge",
+        b: "Extended in a straight line from shoulder to wrist, supported and slightly downward",
+        c: "Raised above the level of the heart",
+        d: "Rotated so the palm faces down",
+      },
+      correct: "b",
+      explanation:
+        "A straight, supported arm angled slightly downward gives a stable " +
+        "surface to anchor the vein, keeps the vein from rolling, and lets the " +
+        "tube fill without blood running back along the needle. An armrest or " +
+        "pillow does the supporting so the patient does not have to hold it.",
+      why: {
+        a: "A bent elbow kinks the vessel and removes the firm surface needed to anchor the skin.",
+        c: "Elevating the arm above heart level reduces venous filling.",
+        d: "A palm-down forearm rotates the antecubital veins away from the approach.",
+      },
+      tip: "Straight, supported, slightly downhill. The patient should never be holding their own arm up.",
+      tags: ["positioning", "arm-position", "technique"],
+    },
+    {
+      id: "pre-044",
+      subdomain: "Test preparation",
+      difficulty: 3,
+      stem: "A patient scheduled for a glucose tolerance test asks whether they may leave the facility between draws. What is the correct guidance?",
+      choices: {
+        a: "They may leave as long as they return on time",
+        b: "They should remain at the facility, resting, and avoid eating, drinking anything but water, smoking, or exercising",
+        c: "They may leave if they take a light snack with them",
+        d: "They may leave for the first hour only",
+      },
+      correct: "b",
+      explanation:
+        "The test measures how the body clears a defined glucose load over a " +
+        "fixed period, so the conditions have to hold for the whole period. " +
+        "Eating, smoking, and activity all alter the curve, and staying on site " +
+        "also means help is at hand if the patient becomes unwell.",
+      why: {
+        a: "Punctual return does nothing about what the patient did while away.",
+        c: "A snack invalidates the test outright — the glucose load is supposed to be the only intake.",
+        d: "The requirement covers the full duration, not part of it.",
+      },
+      tip: "GTT means stay, rest, and nothing but water — for the entire test, not just between the last two draws.",
+      tags: ["glucose-tolerance-test", "patient-instructions", "timing"],
+    },
+    {
+      id: "pre-045",
+      subdomain: "Site assessment",
+      difficulty: 2,
+      stem: "Why should the phlebotomist ask about prior draw experiences before starting?",
+      choices: {
+        a: "It is required by law in every state",
+        b: "Prior fainting, difficult access, or a preferred arm change how the draw is planned",
+        c: "It fills time while the tourniquet is applied",
+        d: "It establishes whether the patient can be billed",
+      },
+      correct: "b",
+      explanation:
+        "Patients often know things that would take several failed attempts to " +
+        "discover: which arm works, that they faint, that a particular site has " +
+        "never produced a specimen. Asking turns their experience into a better " +
+        "plan and fewer sticks.",
+      why: {
+        a: "This is good practice everywhere, not a universal statutory requirement.",
+        c: "The question is asked before the tourniquet, as part of planning the draw.",
+        d: "Billing is unrelated to collection planning.",
+      },
+      tip: "Ask which arm usually works. The patient has been at more of their own draws than you have.",
+      tags: ["patient-history", "site-selection", "communication"],
+    },
+    {
+      id: "pre-046",
+      subdomain: "Test preparation",
+      difficulty: 2,
+      stem: "A lipid panel is ordered with fasting required. Roughly how long is the fast typically specified?",
+      choices: {
+        a: "2 to 4 hours",
+        b: "9 to 12 hours",
+        c: "24 hours",
+        d: "48 hours",
+      },
+      correct: "b",
+      explanation:
+        "A fasting lipid panel conventionally follows an overnight fast in the " +
+        "range of nine to twelve hours, because triglycerides rise after a meal " +
+        "and take hours to return to baseline. The exact requirement comes from " +
+        "the ordering provider and facility protocol.",
+      why: {
+        a: "A few hours is not long enough for postprandial triglycerides to clear.",
+        c: "A full day of fasting is not required and introduces unnecessary risk for the patient.",
+        d: "Two days of fasting is neither required nor safe as a routine instruction.",
+      },
+      tip: "Overnight — roughly 9 to 12 hours — is the usual lipid fast. Water is still allowed.",
+      tags: ["fasting", "lipid-panel", "patient-instructions"],
+    },
+    {
+      id: "pre-047",
+      subdomain: "Patient interaction",
+      difficulty: 2,
+      stem: "A patient asks what the results of their test will mean. How should the phlebotomist respond?",
+      choices: {
+        a: "Give a general interpretation of the test's normal range",
+        b: "Explain that the ordering provider will discuss results, and offer to note the question for the care team",
+        c: "Decline to answer and change the subject",
+        d: "Give an opinion but state that it is not medical advice",
+      },
+      correct: "b",
+      explanation:
+        "Interpreting results is outside a phlebotomist's scope, and an " +
+        "offhand explanation can frighten or falsely reassure a patient who " +
+        "does not have the rest of their clinical picture. Referring the " +
+        "question to the provider answers it honestly and keeps the patient's " +
+        "concern from being dismissed.",
+      why: {
+        a: "Reference ranges without clinical context routinely mislead patients.",
+        c: "Ignoring a patient's concern leaves them anxious and unanswered.",
+        d: "A disclaimer does not put interpretation back inside the phlebotomist's scope.",
+      },
+      tip: "Redirect, don't interpret — and make sure the question reaches someone who can answer it.",
+      tags: ["scope-of-practice", "communication", "professionalism"],
+    },
+    {
+      id: "pre-048",
+      subdomain: "Patient factors",
+      difficulty: 3,
+      stem: "An infant cries vigorously throughout a collection. Which result is most likely to be affected?",
+      choices: {
+        a: "Sodium",
+        b: "White blood cell count",
+        c: "Albumin",
+        d: "Cholesterol",
+      },
+      correct: "b",
+      explanation:
+        "Vigorous crying transiently raises the white blood cell count in " +
+        "infants, sometimes substantially. Knowing that a specimen was collected " +
+        "during hard crying helps the laboratory and clinician interpret an " +
+        "unexpectedly high count rather than chase it.",
+      why: {
+        a: "Sodium is tightly regulated and not meaningfully shifted by crying.",
+        c: "Albumin changes with posture and hydration over longer periods, not with a brief episode of crying.",
+        d: "Cholesterol reflects longer-term metabolic factors, not acute distress.",
+      },
+      tip: "A screaming infant can push the WBC count up. Calm the baby where you can, and note it when you can't.",
+      tags: ["pediatric", "crying", "preanalytical"],
+    },
+    {
+      id: "pre-049",
+      subdomain: "Test preparation",
+      difficulty: 2,
+      stem: "Which patient instruction is appropriate for a scheduled fasting draw the following morning?",
+      choices: {
+        a: "\"Skip your morning medications as well as food.\"",
+        b: "\"Nothing to eat or drink except water after [time]; continue your medications unless your provider told you otherwise.\"",
+        c: "\"Fast, and drink coffee only if you take it black.\"",
+        d: "\"Fast for as long as you comfortably can.\"",
+      },
+      correct: "b",
+      explanation:
+        "The instruction is specific about the cutoff, permits water, and leaves " +
+        "medication decisions with the prescriber. Telling a patient to withhold " +
+        "medications is a clinical instruction outside a phlebotomist's scope " +
+        "and can cause real harm.",
+      why: {
+        a: "Advising a patient to skip prescribed medication is outside scope and potentially dangerous.",
+        c: "Coffee, black or otherwise, breaks the fast.",
+        d: "A vague instruction produces a fast of unknown length, which cannot be interpreted.",
+      },
+      tip: "Be specific about time, allow water, and never tell a patient to hold a medication.",
+      tags: ["patient-instructions", "fasting", "scope-of-practice"],
+    },
+    {
+      id: "pre-050",
+      subdomain: "Positioning",
+      difficulty: 2,
+      stem: "A patient in a wheelchair arrives for an outpatient draw. What is the safest approach?",
+      choices: {
+        a: "Ask the patient to transfer into the drawing chair without assistance",
+        b: "Lock the wheelchair's brakes and draw with the arm supported, or transfer with assistance if the patient prefers and it is safe",
+        c: "Draw with the arm resting on the wheelchair's armrest and no other support",
+        d: "Decline the draw and reschedule for an inpatient setting",
+      },
+      correct: "b",
+      explanation:
+        "Brakes are locked so the chair cannot move mid-procedure, and the arm " +
+        "is supported on a firm surface. Whether the patient transfers is their " +
+        "call and depends on what is safe — an unassisted transfer risks a fall " +
+        "that has nothing to do with the blood draw.",
+      why: {
+        a: "An unassisted transfer risks a fall and is not required for the draw.",
+        c: "An unbraked chair can roll, and an armrest alone rarely gives a stable, straight arm.",
+        d: "A wheelchair is not a barrier to outpatient collection.",
+      },
+      tip: "Lock the brakes, support the arm, and never make a patient transfer just for your convenience.",
+      tags: ["wheelchair", "positioning", "patient-safety"],
+    },
   ],
 );

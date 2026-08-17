@@ -695,5 +695,751 @@ export const SPECIMEN_HANDLING_QUESTIONS = buildQuestions(
       tip: "Any mismatch between label and requisition — even one letter — is a hard stop, not a judgment call.",
       tags: ["rejection", "labeling", "name-mismatch", "patient-identification"],
     },
+    {
+      id: "spe-026",
+      subdomain: "Centrifugation",
+      difficulty: 2,
+      stem: "Why must a centrifuge be loaded with tubes balanced across from each other?",
+      choices: {
+        a: "To make unloading easier",
+        b: "An unbalanced rotor vibrates, which can break tubes and damage the instrument",
+        c: "To ensure both tubes spin for the same length of time",
+        d: "Balancing changes the separation quality of the gel",
+      },
+      correct: "b",
+      explanation:
+        "A rotor spinning off-balance transmits severe vibration through the " +
+        "instrument. Tubes break, specimens are lost, aerosols are generated, " +
+        "and the centrifuge itself can be damaged. Tubes of equal size and fill " +
+        "are placed opposite each other, using a water-filled balance tube when " +
+        "the count is odd.",
+      why: {
+        a: "Convenience is not the reason; mechanical safety is.",
+        c: "Every tube in the rotor spins for the same duration regardless of placement.",
+        d: "Gel separation depends on speed and time, not on rotor balance.",
+      },
+      tip: "Equal weight, directly opposite. An odd number means a balance tube, not a guess.",
+      tags: ["centrifugation", "balancing", "safety"],
+    },
+    {
+      id: "spe-027",
+      subdomain: "Centrifugation",
+      difficulty: 3,
+      stem: "Why should a gel serum separator tube not be re-spun after the barrier has formed?",
+      choices: {
+        a: "The tube's vacuum would be lost",
+        b: "Re-spinning can force cellular constituents through or past the barrier, altering results",
+        c: "The gel dissolves on a second spin",
+        d: "It causes the specimen to clot a second time",
+      },
+      correct: "b",
+      explanation:
+        "Once the barrier has set, a second spin can drive analytes from the " +
+        "cells below into the serum above — potassium and LDH in particular. The " +
+        "serum that was already separated is no longer the specimen the " +
+        "laboratory thinks it is.",
+      why: {
+        a: "Vacuum is irrelevant once the tube has been filled and spun.",
+        c: "The gel does not dissolve; the problem is what passes it.",
+        d: "The specimen has already clotted; clotting is not repeated.",
+      },
+      tip: "One spin per gel tube. If more serum is needed, collect again rather than re-spinning.",
+      tags: ["centrifugation", "gel-barrier", "specimen-integrity"],
+    },
+    {
+      id: "spe-028",
+      subdomain: "Temperature",
+      difficulty: 2,
+      stem: "Which specimen is typically transported chilled?",
+      choices: {
+        a: "A complete blood count",
+        b: "An ammonia level",
+        c: "A cold agglutinin titer",
+        d: "A potassium on whole blood",
+      },
+      correct: "b",
+      explanation:
+        "Ammonia rises quickly in a specimen at room temperature as amino acids " +
+        "break down, so it goes on ice or into a chilled transport and moves to " +
+        "the laboratory immediately. Lactate and blood gases sit in the same " +
+        "category.",
+      why: {
+        a: "A CBC is held at room temperature; chilling can affect cell indices.",
+        c: "Cold agglutinins must be kept warm at 37°C — chilling is exactly what ruins that specimen.",
+        d: "Chilling whole blood drives potassium out of the cells and falsely raises the result.",
+      },
+      tip: "Chill ammonia, lactate, and blood gases. Warm cold agglutinins and cryoglobulins. Never chill a potassium on whole blood.",
+      tags: ["chilled-specimen", "ammonia", "transport"],
+    },
+    {
+      id: "spe-029",
+      subdomain: "Temperature",
+      difficulty: 3,
+      stem: "A cryoglobulin specimen is collected. How must it be handled?",
+      choices: {
+        a: "On ice, transported immediately",
+        b: "Kept at 37°C from collection until it is processed",
+        c: "Frozen immediately after collection",
+        d: "At room temperature with no special handling",
+      },
+      correct: "b",
+      explanation:
+        "Cryoglobulins precipitate when the specimen cools, so a specimen " +
+        "allowed to drop toward room temperature loses the very protein being " +
+        "measured. It is collected into pre-warmed tubes and kept at body " +
+        "temperature through transport and processing.",
+      why: {
+        a: "Ice causes the precipitation that makes the result falsely low or negative.",
+        c: "Freezing is the most extreme version of the same error.",
+        d: "Room temperature is below body temperature, and the precipitation begins there.",
+      },
+      tip: "\"Cryo\" means it reacts to cold — so keep it warm. Same for cold agglutinins.",
+      tags: ["cryoglobulin", "warmed-specimen", "transport"],
+    },
+    {
+      id: "spe-030",
+      subdomain: "Light protection",
+      difficulty: 2,
+      stem: "Besides bilirubin, which analyte commonly requires protection from light?",
+      choices: {
+        a: "Sodium",
+        b: "Vitamin B12 and folate",
+        c: "Hemoglobin A1c",
+        d: "Blood urea nitrogen",
+      },
+      correct: "b",
+      explanation:
+        "Light-sensitive analytes degrade on exposure, so the specimen is " +
+        "wrapped in foil or collected into an amber container. Bilirubin is the " +
+        "one everybody remembers; vitamin B12, folate, carotene, and porphyrins " +
+        "belong on the same list.",
+      why: {
+        a: "Sodium is unaffected by light exposure.",
+        c: "Hemoglobin A1c is stable in ordinary lighting.",
+        d: "BUN requires no light protection.",
+      },
+      tip: "Light-sensitive: bilirubin, B12, folate, carotene, porphyrins. Foil or amber, immediately.",
+      tags: ["light-protection", "bilirubin", "vitamin-b12"],
+    },
+    {
+      id: "spe-031",
+      subdomain: "Processing time",
+      difficulty: 3,
+      stem: "Within roughly what time should serum or plasma be separated from cells for most routine chemistry testing?",
+      choices: {
+        a: "Within 30 minutes",
+        b: "Within about 2 hours of collection",
+        c: "Within 8 hours",
+        d: "Within 24 hours",
+      },
+      correct: "b",
+      explanation:
+        "Two hours is the widely taught limit. Cells left in contact with serum " +
+        "or plasma keep metabolizing — glucose falls, potassium leaks out, LDH " +
+        "rises — so separation stops the specimen from drifting away from the " +
+        "patient's actual values.",
+      why: {
+        a: "Thirty minutes is tighter than the routine standard, though some individual analytes do require it.",
+        c: "Eight hours in contact with cells produces substantial analyte shifts.",
+        d: "A day of contact makes several chemistry results meaningless.",
+      },
+      tip: "Two hours to separate. After that the cells have been quietly rewriting the result.",
+      tags: ["processing-time", "separation", "preanalytical"],
+    },
+    {
+      id: "spe-032",
+      subdomain: "Analyte stability",
+      difficulty: 3,
+      stem: "What happens to glucose in an unseparated tube left at room temperature?",
+      choices: {
+        a: "It rises steadily as cells release glucose",
+        b: "It falls, because blood cells continue to metabolize it",
+        c: "It stays constant for 24 hours",
+        d: "It converts to lactate only in a fluoride tube",
+      },
+      correct: "b",
+      explanation:
+        "Red and white cells keep consuming glucose after collection, so an " +
+        "unseparated specimen loses glucose over time — roughly a few percent " +
+        "per hour at room temperature. Prompt separation or a sodium fluoride " +
+        "tube is what prevents a falsely low result.",
+      why: {
+        a: "Cells consume glucose rather than releasing it.",
+        c: "Measurable decline begins within the first hour.",
+        d: "Fluoride is what stops glycolysis; without it the conversion proceeds faster, not only in that tube.",
+      },
+      tip: "Glucose falls in the tube. Fluoride or fast separation — one or the other.",
+      tags: ["glucose", "glycolysis", "stability"],
+    },
+    {
+      id: "spe-033",
+      subdomain: "Hemolysis",
+      difficulty: 3,
+      stem: "Which group of results is most affected by hemolysis?",
+      choices: {
+        a: "Potassium, LDH, and AST, all falsely increased",
+        b: "Sodium and chloride, both falsely increased",
+        c: "Albumin and total protein, both falsely decreased",
+        d: "Glucose, falsely increased",
+      },
+      correct: "a",
+      explanation:
+        "Hemolysis releases the contents of red cells into the plasma or serum. " +
+        "Potassium, LDH, and AST are far more concentrated inside the cell than " +
+        "outside, so even mild hemolysis raises them noticeably — and a falsely " +
+        "high potassium can prompt urgent treatment the patient does not need.",
+      why: {
+        b: "Sodium and chloride concentrations are similar inside and outside the cell, so hemolysis barely moves them.",
+        c: "Protein measurements are not the primary casualties of hemolysis.",
+        d: "Glucose is affected by delayed separation rather than by cell rupture.",
+      },
+      tip: "Whatever is concentrated inside red cells goes up when they break: potassium, LDH, AST, magnesium.",
+      tags: ["hemolysis", "potassium", "specimen-quality"],
+    },
+    {
+      id: "spe-034",
+      subdomain: "Hemolysis",
+      difficulty: 2,
+      stem: "Which collection practice is a common cause of hemolysis?",
+      choices: {
+        a: "Allowing the alcohol to dry fully before puncture",
+        b: "Vigorously shaking additive tubes after collection",
+        c: "Filling tubes to the indicated volume",
+        d: "Using a 21 gauge needle for an adult draw",
+      },
+      correct: "b",
+      explanation:
+        "Shaking ruptures red cells outright. So does drawing through too fine a " +
+        "needle, forcing blood from a syringe, drawing through a hematoma, " +
+        "prolonged tourniquet time, and puncturing before the alcohol has dried.",
+      why: {
+        a: "Letting alcohol dry prevents hemolysis rather than causing it.",
+        c: "Correct fill volume protects the additive ratio and does not hemolyze the specimen.",
+        d: "A 21 gauge needle is the routine choice and is not associated with hemolysis.",
+      },
+      tip: "Gentle inversions, not shaking. Most hemolysis is created at the bedside, not in the laboratory.",
+      tags: ["hemolysis", "mixing", "collection-technique"],
+    },
+    {
+      id: "spe-035",
+      subdomain: "Rejection criteria",
+      difficulty: 2,
+      stem: "Which finding requires a specimen to be rejected rather than tested?",
+      choices: {
+        a: "A tube filled slightly above the indicated line",
+        b: "A clotted EDTA specimen submitted for a CBC",
+        c: "A specimen that arrived ten minutes after collection",
+        d: "A tube labeled with the collector's initials",
+      },
+      correct: "b",
+      explanation:
+        "Clots in an EDTA specimen consume platelets and cells, so counts read " +
+        "falsely low and the film is unreadable. There is no correction for it: " +
+        "the specimen is rejected and recollected.",
+      why: {
+        a: "Slight overfilling is generally acceptable in tubes without a fixed ratio requirement.",
+        c: "Ten minutes is well within routine transport expectations.",
+        d: "Collector identification is required on the label, not a defect.",
+      },
+      tip: "A clot in a lavender tube is an automatic redraw. Mix it properly the first time.",
+      tags: ["rejection", "clotted-specimen", "cbc"],
+    },
+    {
+      id: "spe-036",
+      subdomain: "Chain of custody",
+      difficulty: 3,
+      stem: "What does a chain of custody document establish?",
+      choices: {
+        a: "That the patient consented to testing",
+        b: "A documented record of every person who handled the specimen from collection to result",
+        c: "That the laboratory is accredited",
+        d: "The billing responsibility for the test",
+      },
+      correct: "b",
+      explanation:
+        "Chain of custody records who collected the specimen, who handled it, " +
+        "and when each transfer took place, with a tamper-evident seal at each " +
+        "stage. It is required where a result may be used in a legal or " +
+        "employment proceeding — forensic and workplace drug testing above all.",
+      why: {
+        a: "Consent is separate documentation and does not track specimen handling.",
+        c: "Accreditation is a laboratory credential, not a specimen record.",
+        d: "Billing is administrative and unrelated to custody.",
+      },
+      tip: "Chain of custody answers one question: can anyone prove this specimen was never out of documented control?",
+      tags: ["chain-of-custody", "forensic", "drug-testing"],
+    },
+    {
+      id: "spe-037",
+      subdomain: "Chain of custody",
+      difficulty: 3,
+      stem: "During a chain-of-custody collection, the phlebotomist is called away before sealing the specimen. What is the correct action?",
+      choices: {
+        a: "Leave the specimen at the station and seal it on returning",
+        b: "Complete the sealing and documentation before leaving, or the collection is invalid",
+        c: "Ask a colleague to seal it and sign the form",
+        d: "Seal it later and back-date the form to the collection time",
+      },
+      correct: "b",
+      explanation:
+        "The chain is only as good as its weakest moment. A specimen left " +
+        "unsealed and unattended cannot be certified as untampered, which is the " +
+        "entire point of the process, so the sealing and paperwork are completed " +
+        "before anything else takes the collector's attention.",
+      why: {
+        a: "An unattended, unsealed specimen breaks the chain irreparably.",
+        c: "A colleague cannot attest to a collection they did not witness.",
+        d: "Back-dating documentation is falsification and would invalidate the result and the collector's standing.",
+      },
+      tip: "Seal and sign before you do anything else. An unattended specimen is a broken chain.",
+      tags: ["chain-of-custody", "documentation", "integrity"],
+    },
+    {
+      id: "spe-038",
+      subdomain: "Transport",
+      difficulty: 2,
+      stem: "Why are some specimens prohibited from travel through a pneumatic tube system?",
+      choices: {
+        a: "The tube system is too slow for urgent specimens",
+        b: "Acceleration and impact in the system can hemolyze specimens or agitate ones that must stay undisturbed",
+        c: "Pneumatic systems are not permitted to carry biohazardous material",
+        d: "The tubes cannot accommodate blood collection tubes",
+      },
+      correct: "b",
+      explanation:
+        "The forces of launching, travelling, and landing agitate a specimen " +
+        "considerably. That can hemolyze red cells or disturb specimens whose " +
+        "integrity depends on being left alone, so facility policy names which " +
+        "specimens must be hand-carried.",
+      why: {
+        a: "Pneumatic systems are used precisely because they are fast.",
+        c: "They routinely carry properly contained biological specimens.",
+        d: "The carriers are designed to hold collection tubes.",
+      },
+      tip: "Know your facility's do-not-tube list. Agitation is the reason, and hand-carrying is the fix.",
+      tags: ["pneumatic-tube", "transport", "hemolysis"],
+    },
+    {
+      id: "spe-039",
+      subdomain: "Aliquoting",
+      difficulty: 3,
+      stem: "What is the essential requirement when preparing an aliquot from a primary specimen?",
+      choices: {
+        a: "The aliquot tube may be labeled with the test name only",
+        b: "The aliquot carries the same patient identification as the primary tube, and specimens are never combined",
+        c: "Aliquots from two tubes on the same patient may be pooled to obtain adequate volume",
+        d: "The aliquot does not need to be labeled if it is tested immediately",
+      },
+      correct: "b",
+      explanation:
+        "An aliquot is a portion of one specimen, and it carries the same " +
+        "identification as the tube it came from. Pooling two tubes — even from " +
+        "the same patient — produces a specimen of unknown age and unknown " +
+        "additive ratio that no result can be trusted from.",
+      why: {
+        a: "A test name is not patient identification.",
+        c: "Combining tubes destroys the traceability and the additive ratio of both.",
+        d: "An unlabeled tube on a bench is exactly how specimens get mixed up.",
+      },
+      tip: "One primary, one aliquot, same identifiers, never pooled.",
+      tags: ["aliquot", "labeling", "specimen-integrity"],
+    },
+    {
+      id: "spe-040",
+      subdomain: "Analyte stability",
+      difficulty: 3,
+      stem: "Why should a whole blood specimen for potassium not be refrigerated before separation?",
+      choices: {
+        a: "Refrigeration causes the specimen to clot",
+        b: "Cold inhibits the cell membrane pump, allowing potassium to leak out and falsely raise the result",
+        c: "Refrigeration destroys potassium",
+        d: "Cold makes the tube's gel barrier fail",
+      },
+      correct: "b",
+      explanation:
+        "The sodium-potassium pump that keeps potassium inside the cell needs " +
+        "energy, and cooling slows it. Potassium leaks into the plasma, and the " +
+        "reported value can be substantially higher than the patient's true one.",
+      why: {
+        a: "Anticoagulated specimens do not clot when chilled, and serum specimens have already clotted.",
+        c: "Potassium is an element and is not destroyed by cooling.",
+        d: "Gel behaves normally at refrigerator temperatures.",
+      },
+      tip: "Chilling whole blood pushes potassium out of the cells. Separate first, then chill if the assay needs it.",
+      tags: ["potassium", "refrigeration", "stability"],
+    },
+    {
+      id: "spe-041",
+      subdomain: "Labeling",
+      difficulty: 2,
+      stem: "A 24-hour urine collection arrives with the start time recorded but no end time. What is the concern?",
+      choices: {
+        a: "There is none — the volume is what matters",
+        b: "Without the full collection interval the result cannot be expressed per unit time, so it may be uninterpretable",
+        c: "The specimen must be discarded because urine cannot be stored",
+        d: "The laboratory can estimate the interval from the volume",
+      },
+      correct: "b",
+      explanation:
+        "A timed collection reports an amount excreted over a defined period. " +
+        "Without both endpoints the denominator is unknown and the result cannot " +
+        "be calculated, so the collection interval is documented as carefully as " +
+        "the specimen itself.",
+      why: {
+        a: "Volume alone means nothing without the interval it was collected over.",
+        c: "Urine specimens are routinely stored with appropriate preservation and refrigeration.",
+        d: "Volume varies enormously between patients and cannot substitute for a recorded interval.",
+      },
+      tip: "A timed collection is a rate. Miss an endpoint and there is no rate to report.",
+      tags: ["timed-collection", "urine", "documentation"],
+    },
+    {
+      id: "spe-042",
+      subdomain: "Rejection criteria",
+      difficulty: 2,
+      stem: "A specimen arrives in a tube whose expiration date has passed. What should happen?",
+      choices: {
+        a: "Test it, since expiration affects only the tube's appearance",
+        b: "Reject and recollect, because the additive and vacuum are no longer guaranteed",
+        c: "Test it but flag the result as approximate",
+        d: "Re-spin it to compensate",
+      },
+      correct: "b",
+      explanation:
+        "An expired tube may have lost vacuum — giving an underfilled tube and " +
+        "the wrong additive ratio — and the additive itself is no longer " +
+        "guaranteed to perform. Checking expiry dates during restocking is what " +
+        "prevents this reaching a patient.",
+      why: {
+        a: "Expiry affects vacuum and additive performance, not just appearance.",
+        c: "There is no defensible way to qualify a result from an unreliable tube.",
+        d: "Centrifugation cannot compensate for a failed additive or short fill.",
+      },
+      tip: "Rotate stock and check dates when you restock the tray. An expired tube is a wasted stick.",
+      tags: ["expired-tube", "rejection", "quality"],
+    },
+    {
+      id: "spe-043",
+      subdomain: "Processing",
+      difficulty: 2,
+      stem: "Why are tube stoppers left in place during centrifugation?",
+      choices: {
+        a: "To keep the tubes upright in the rotor",
+        b: "To prevent aerosol formation, evaporation, and contamination",
+        c: "To help the gel barrier form",
+        d: "To maintain the tube's vacuum for a second draw",
+      },
+      correct: "b",
+      explanation:
+        "Spinning an open tube throws an invisible aerosol of blood into the " +
+        "centrifuge chamber and the room. The stopper contains it, and it also " +
+        "prevents evaporation and airborne contamination of the specimen.",
+      why: {
+        a: "The rotor's cups hold tubes upright regardless of the stopper.",
+        c: "Gel separates by density during the spin; the stopper plays no part.",
+        d: "The vacuum is spent once the tube is filled and is not reusable.",
+      },
+      tip: "Stoppers stay on. An open tube in a centrifuge aerosolizes blood you cannot see.",
+      tags: ["centrifugation", "aerosol", "safety"],
+    },
+    {
+      id: "spe-044",
+      subdomain: "Transport",
+      difficulty: 2,
+      stem: "How should specimens be positioned during transport?",
+      choices: {
+        a: "Horizontally, to prevent the gel from shifting",
+        b: "Upright, with the stopper up",
+        c: "Inverted, to keep the additive mixed",
+        d: "Position does not affect specimen quality",
+      },
+      correct: "b",
+      explanation:
+        "Upright transport promotes complete clot formation in serum tubes, " +
+        "reduces agitation of the specimen against the stopper, and limits the " +
+        "hemolysis and stopper contact that come from sloshing on its side.",
+      why: {
+        a: "Horizontal transport allows blood to contact the stopper and increases agitation.",
+        c: "Inverting encourages the specimen to sit against the stopper for the whole journey.",
+        d: "Orientation measurably affects clot formation and hemolysis rates.",
+      },
+      tip: "Stopper up, all the way to the laboratory.",
+      tags: ["transport", "tube-position", "specimen-integrity"],
+    },
+    {
+      id: "spe-045",
+      subdomain: "Rejection criteria",
+      difficulty: 3,
+      stem: "A chemistry specimen is described by the laboratory as \"lipemic.\" What does this mean?",
+      choices: {
+        a: "It contains visible red discoloration from ruptured cells",
+        b: "It appears milky or turbid from a high concentration of lipids",
+        c: "It has a yellow-brown color from elevated bilirubin",
+        d: "It has formed a fibrin clot",
+      },
+      correct: "b",
+      explanation:
+        "Lipemia is turbidity from circulating lipids, most often because the " +
+        "patient did not fast. It interferes optically with many assays, which " +
+        "is why the fasting requirement exists and why the laboratory notes it.",
+      why: {
+        a: "Red discoloration describes hemolysis.",
+        c: "Yellow-brown discoloration describes an icteric specimen from raised bilirubin.",
+        d: "A fibrin clot is a separate defect from turbidity.",
+      },
+      tip: "Hemolyzed = red. Icteric = yellow. Lipemic = milky, and usually means the patient ate.",
+      tags: ["lipemia", "specimen-appearance", "fasting"],
+    },
+    {
+      id: "spe-046",
+      subdomain: "Storage",
+      difficulty: 2,
+      stem: "A specimen requires frozen storage before transport. What is the correct practice?",
+      choices: {
+        a: "Freeze the whole blood tube immediately after collection",
+        b: "Separate the serum or plasma into an aliquot tube first, then freeze",
+        c: "Freeze the specimen with the gel barrier intact",
+        d: "Chill rather than freeze, since freezing always damages specimens",
+      },
+      correct: "b",
+      explanation:
+        "Freezing whole blood ruptures red cells wholesale, so the specimen is " +
+        "separated and the serum or plasma is transferred to an aliquot tube " +
+        "before it goes into the freezer. Freezing a primary gel tube is also " +
+        "avoided because the tube can crack and the barrier is not designed for " +
+        "it.",
+      why: {
+        a: "Freezing whole blood hemolyzes it completely.",
+        c: "Primary tubes with gel are not intended for freezing and can fracture.",
+        d: "Freezing is appropriate and required for certain analytes when performed on separated specimens.",
+      },
+      tip: "Separate, then freeze. Never freeze whole blood.",
+      tags: ["freezing", "storage", "aliquot"],
+    },
+    {
+      id: "spe-047",
+      subdomain: "STAT handling",
+      difficulty: 2,
+      stem: "A specimen is ordered STAT. What does this change about handling?",
+      choices: {
+        a: "Nothing — STAT applies only to how quickly the result is reported",
+        b: "It is transported and processed with priority, and identified as STAT so the laboratory sees it immediately",
+        c: "It may skip the order of draw",
+        d: "It may be collected without full patient identification to save time",
+      },
+      correct: "b",
+      explanation:
+        "STAT changes the urgency of transport and processing, and the specimen " +
+        "is marked so it is not left in a rack with routine work. What it never " +
+        "changes is the collection standard: identification, order of draw, and " +
+        "labeling are performed in full.",
+      why: {
+        a: "The whole handling path is accelerated, not just the reporting.",
+        c: "Additive carryover does not become harmless because a test is urgent.",
+        d: "Urgency never justifies collecting from an unverified patient — a fast wrong result is worse than a slow right one.",
+      },
+      tip: "STAT speeds up transport, never the standards. Identification and order of draw are unchanged.",
+      tags: ["stat", "priority", "transport"],
+    },
+    {
+      id: "spe-048",
+      subdomain: "Processing",
+      difficulty: 3,
+      stem: "A tube arrives with a visible fibrin strand in the separated serum. What does this most likely indicate?",
+      choices: {
+        a: "The specimen was hemolyzed during collection",
+        b: "The tube was centrifuged before clotting was complete",
+        c: "The tube was overfilled",
+        d: "The specimen was chilled during transport",
+      },
+      correct: "b",
+      explanation:
+        "Fibrin appearing in serum after separation means clotting was still in " +
+        "progress when the tube was spun. The remedy is to allow the full " +
+        "clotting time — commonly around 30 minutes, longer for patients on " +
+        "anticoagulants — before centrifugation.",
+      why: {
+        a: "Hemolysis colors the serum red; it does not produce fibrin strands.",
+        c: "Overfilling affects additive ratios rather than causing latent fibrin.",
+        d: "Chilling slows clotting but the strands specifically indicate a premature spin.",
+      },
+      tip: "Latent fibrin means you spun too early. Give the clot its full time.",
+      tags: ["fibrin", "clotting-time", "centrifugation"],
+    },
+    {
+      id: "spe-049",
+      subdomain: "Documentation",
+      difficulty: 2,
+      stem: "A phlebotomist notices a specimen was collected 40 minutes ago and is still on the counter. What should be done?",
+      choices: {
+        a: "Discard it, since any delay invalidates a specimen",
+        b: "Deliver it promptly and report the delay, so the laboratory can judge whether it is still acceptable",
+        c: "Refrigerate it and deliver at the end of the shift",
+        d: "Deliver it without comment, since the label carries the collection time",
+      },
+      correct: "b",
+      explanation:
+        "The laboratory decides acceptability against each test's stability " +
+        "requirements, and it can only do that if it knows what happened. " +
+        "Delivering promptly and stating the delay lets that judgment be made " +
+        "for the specific tests ordered.",
+      why: {
+        a: "Many analytes are still within their stability window at 40 minutes; discarding costs the patient another stick unnecessarily.",
+        c: "Adding hours of delay compounds the problem, and refrigeration is wrong for some analytes.",
+        d: "A time on a label is easy to miss, and an explicit report is what prompts the check.",
+      },
+      tip: "Deliver fast, say what happened. The laboratory can only account for a delay it knows about.",
+      tags: ["delay", "communication", "stability"],
+    },
+    {
+      id: "spe-050",
+      subdomain: "Rejection criteria",
+      difficulty: 2,
+      stem: "What does \"QNS\" mean on a rejected specimen report?",
+      choices: {
+        a: "Quality not standardized",
+        b: "Quantity not sufficient",
+        c: "Questionable specimen source",
+        d: "Quick negative screen",
+      },
+      correct: "b",
+      explanation:
+        "QNS means there was not enough specimen to perform the testing ordered. " +
+        "It is prevented by knowing the volume each test needs, filling tubes to " +
+        "their indicated line, and collecting an additional tube when several " +
+        "tests share one specimen type.",
+      why: {
+        a: "This is not a recognized laboratory abbreviation.",
+        c: "Source concerns are described directly rather than by this abbreviation.",
+        d: "QNS is a rejection reason, not a screening result.",
+      },
+      tip: "QNS = quantity not sufficient = another needle for the patient. Fill to the line.",
+      tags: ["qns", "rejection", "fill-volume"],
+    },
+    {
+      id: "spe-051",
+      subdomain: "Transport",
+      difficulty: 3,
+      stem: "How should a specimen requiring chilled transport be packed?",
+      choices: {
+        a: "Buried directly in dry ice",
+        b: "In a slurry of ice and water, or a chilled transport container, so cooling is even",
+        c: "On a single ice cube in the bottom of the bag",
+        d: "In a freezer until transport",
+      },
+      correct: "b",
+      explanation:
+        "An ice-and-water slurry surrounds the tube evenly and holds it near " +
+        "0°C without freezing it. Ice cubes alone leave warm gaps and can freeze " +
+        "the spots they touch, and freezing a whole blood specimen hemolyzes it.",
+      why: {
+        a: "Dry ice is far colder than required and will freeze a specimen meant only to be chilled.",
+        c: "One cube cools unevenly and melts long before the specimen arrives.",
+        d: "A freezer converts a chilled requirement into a frozen one and ruptures the cells.",
+      },
+      tip: "Chilled means an ice-water slurry, not a frozen brick. Even cooling, no freezing.",
+      tags: ["chilled-transport", "ice-slurry", "handling"],
+    },
+    {
+      id: "spe-052",
+      subdomain: "Analyte stability",
+      difficulty: 3,
+      stem: "Which specimen is most time-critical after collection?",
+      choices: {
+        a: "A hemoglobin A1c",
+        b: "An arterial blood gas or an ammonia level",
+        c: "A cholesterol",
+        d: "A thyroid-stimulating hormone",
+      },
+      correct: "b",
+      explanation:
+        "Blood gases and ammonia change measurably within minutes as metabolism " +
+        "continues in the specimen. Both go on ice where protocol requires and " +
+        "travel immediately, often hand-carried rather than sent through a tube " +
+        "system.",
+      why: {
+        a: "A1c reflects glycated hemoglobin and is stable for a considerable period.",
+        c: "Cholesterol is comparatively stable in a properly handled specimen.",
+        d: "TSH is stable enough for routine transport times.",
+      },
+      tip: "Blood gases and ammonia are minutes-critical. Walk them over.",
+      tags: ["blood-gas", "ammonia", "urgency"],
+    },
+    {
+      id: "spe-053",
+      subdomain: "Rejection criteria",
+      difficulty: 3,
+      stem: "Which of these is the single most serious specimen defect?",
+      choices: {
+        a: "A slightly hemolyzed chemistry specimen",
+        b: "An unlabeled or mislabeled specimen",
+        c: "A specimen delivered 30 minutes after collection",
+        d: "A specimen transported upright rather than horizontally",
+      },
+      correct: "b",
+      explanation:
+        "Every other defect degrades a result that still belongs to the right " +
+        "patient. A mislabeled specimen attaches a result to the wrong person, " +
+        "which can lead directly to a wrong treatment — which is why it is the " +
+        "one defect with no work-around.",
+      why: {
+        a: "Hemolysis compromises specific analytes and is usually detected and flagged.",
+        c: "Thirty minutes is within the routine window for most tests.",
+        d: "Upright is the correct orientation, so this is not a defect at all.",
+      },
+      tip: "Identification errors are the ones that harm patients. Everything else is a quality problem.",
+      tags: ["mislabeling", "rejection", "patient-safety"],
+    },
+    {
+      id: "spe-054",
+      subdomain: "Processing",
+      difficulty: 2,
+      stem: "What should be done if a specimen tube cracks inside the centrifuge?",
+      choices: {
+        a: "Continue the run and clean up afterwards",
+        b: "Stop the centrifuge, let aerosols settle, then clean up with PPE using mechanical means for the glass",
+        c: "Open the lid immediately to see the damage",
+        d: "Rinse the chamber with water while it is still spinning down",
+      },
+      correct: "b",
+      explanation:
+        "A break inside a spinning centrifuge fills the chamber with aerosolized " +
+        "blood. The rotor is stopped and the lid stays closed for a period so " +
+        "aerosols can settle, then the cleanup is performed with appropriate PPE, " +
+        "removing glass with forceps or another mechanical device rather than " +
+        "gloved fingers.",
+      why: {
+        a: "Continuing to spin keeps generating aerosol and spreads contamination further.",
+        c: "Opening immediately releases the aerosol directly into the operator's breathing zone.",
+        d: "Water on a spinning rotor is both an electrical and a splash hazard.",
+      },
+      tip: "Stop, wait, then clean with PPE. The invisible aerosol is the hazard, not the visible glass.",
+      tags: ["centrifuge", "breakage", "aerosol"],
+    },
+    {
+      id: "spe-055",
+      subdomain: "Documentation",
+      difficulty: 2,
+      stem: "Which information does the laboratory rely on the collector to record accurately?",
+      choices: {
+        a: "The patient's diagnosis",
+        b: "The collection date and time, and any deviation such as a difficult draw or a non-fasting patient",
+        c: "The expected result range",
+        d: "The ordering physician's schedule",
+      },
+      correct: "b",
+      explanation:
+        "The collector is the only person who knows what actually happened at " +
+        "the bedside: when the specimen was taken, whether the draw was " +
+        "difficult, whether the patient had eaten, whether the tourniquet was on " +
+        "longer than usual. That context is often what explains an odd result.",
+      why: {
+        a: "Diagnosis comes from the clinical record, not from the collector.",
+        c: "Reference ranges belong to the laboratory's assay, not the collection.",
+        d: "Physician scheduling has no bearing on the specimen.",
+      },
+      tip: "You are the laboratory's eyes at the bedside. Note the deviations — they explain the surprises.",
+      tags: ["documentation", "preanalytical", "communication"],
+    },
   ],
 );

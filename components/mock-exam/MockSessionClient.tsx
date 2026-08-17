@@ -16,6 +16,7 @@ export function MockSessionClient() {
     <MockRunner
       start={searchParams.get("start") === "1"}
       restart={searchParams.get("restart") === "1"}
+      formId={searchParams.get("form") ?? undefined}
     />
   );
 }

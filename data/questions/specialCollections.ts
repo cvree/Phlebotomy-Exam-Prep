@@ -673,5 +673,605 @@ export const SPECIAL_COLLECTIONS_QUESTIONS = buildQuestions(
       tip: "Point-of-care glucose is fast and good for trending; a laboratory venous glucose is the accuracy check when it really counts.",
       tags: ["point-of-care", "glucose", "laboratory-testing"],
     },
+    {
+      id: "spc-025",
+      subdomain: "Blood cultures",
+      difficulty: 3,
+      stem: "Why are blood cultures typically collected as two sets from two separate sites?",
+      choices: {
+        a: "To double the volume available for testing",
+        b: "To help distinguish true bacteremia from skin contamination, and to improve detection",
+        c: "Because one site rarely yields enough blood",
+        d: "To allow one set to be discarded if it clots",
+      },
+      correct: "b",
+      explanation:
+        "An organism growing in both sets points to genuine bloodstream " +
+        "infection; one growing in a single bottle is more likely to be skin " +
+        "flora picked up during collection. Multiple sets also raise the chance " +
+        "of detecting intermittent bacteremia.",
+      why: {
+        a: "Volume matters for sensitivity, but the two-site design is about interpreting the result.",
+        c: "A single site typically yields adequate volume; that is not the reason for two sets.",
+        d: "Culture bottles are not discarded on that basis.",
+      },
+      tip: "Two sites, two sets. Growth in both means infection; growth in one often means contamination.",
+      tags: ["blood-cultures", "contamination", "bacteremia"],
+    },
+    {
+      id: "spc-026",
+      subdomain: "Blood cultures",
+      difficulty: 3,
+      stem: "What is the most important factor affecting the sensitivity of a blood culture?",
+      choices: {
+        a: "The brand of antiseptic used",
+        b: "The volume of blood inoculated into the bottles",
+        c: "The gauge of the needle",
+        d: "The time of day the specimen is collected",
+      },
+      correct: "b",
+      explanation:
+        "Organisms can be sparse in the bloodstream, so the volume of blood " +
+        "cultured is the single biggest determinant of whether they are found. " +
+        "Underfilled bottles are one of the commonest reasons a culture misses a " +
+        "real infection.",
+      why: {
+        a: "Antiseptic choice affects contamination rates, not the ability to detect a true positive.",
+        c: "Needle gauge does not meaningfully change culture yield.",
+        d: "Timing relative to fever spikes has been studied, but volume dominates.",
+      },
+      tip: "Fill the bottles to the marked volume. Underfilling is the most common reason a culture misses the organism.",
+      tags: ["blood-cultures", "volume", "sensitivity"],
+    },
+    {
+      id: "spc-027",
+      subdomain: "Blood cultures",
+      difficulty: 3,
+      stem: "After the site has been prepared with antiseptic for a blood culture, the phlebotomist is unsure of the vein's location. What should be done?",
+      choices: {
+        a: "Re-palpate with a gloved finger and proceed",
+        b: "Re-prepare the site with antiseptic before palpating again, or palpate only above and below the prepared area",
+        c: "Proceed without palpating and hope for the best",
+        d: "Palpate through a sterile gauze pad, which requires no re-preparation",
+      },
+      correct: "b",
+      explanation:
+        "Touching a prepared site recontaminates it. Either the site is prepared " +
+        "again with the full contact time, or palpation stays outside the " +
+        "prepared field. The whole value of a culture rests on the specimen not " +
+        "picking up skin flora.",
+      why: {
+        a: "A glove is not sterile and recontaminates the prepared skin.",
+        c: "Guessing at the vein risks a failed stick and a repeat of the whole preparation.",
+        d: "Gauze is a barrier but the pressure through it can still transfer organisms, and it is not a recognized substitute for re-preparation.",
+      },
+      tip: "Once it's prepped, don't touch it. Palpate first, or prep again.",
+      tags: ["blood-cultures", "sterile-technique", "palpation"],
+    },
+    {
+      id: "spc-028",
+      subdomain: "Newborn screening",
+      difficulty: 3,
+      stem: "How is a newborn screening filter paper card correctly filled?",
+      choices: {
+        a: "Layer several drops on each circle to ensure saturation",
+        b: "Apply a single large drop to each circle, allowing it to soak through and fill the circle from one application",
+        c: "Fill only the first circle and let the laboratory divide it",
+        d: "Press the card directly against the heel puncture",
+      },
+      correct: "b",
+      explanation:
+        "Each circle is filled from a single free-falling drop that soaks " +
+        "through the paper evenly. Layering drops creates uneven saturation and " +
+        "invalidates the specimen, and pressing the card to the skin compresses " +
+        "the fibers and contaminates the sample with tissue fluid.",
+      why: {
+        a: "Layering produces uneven saturation and is a standard rejection reason.",
+        c: "The circles correspond to separate tests and all required circles must be filled.",
+        d: "Contact with the skin compresses the paper and adds tissue fluid.",
+      },
+      tip: "One drop per circle, soaked through, air dried flat. No layering, no touching the paper to skin.",
+      tags: ["newborn-screening", "filter-paper", "collection-technique"],
+    },
+    {
+      id: "spc-029",
+      subdomain: "Newborn screening",
+      difficulty: 2,
+      stem: "How is a newborn screening card handled after collection?",
+      choices: {
+        a: "Sealed in a plastic bag immediately while still wet",
+        b: "Air dried horizontally, away from heat and direct sunlight, before packaging",
+        c: "Placed in a warming device to dry faster",
+        d: "Refrigerated immediately",
+      },
+      correct: "b",
+      explanation:
+        "The card dries flat in open air, away from heat, sunlight, and other " +
+        "cards. Sealing a wet card traps moisture and degrades the specimen; " +
+        "heating alters the analytes the screen is looking for.",
+      why: {
+        a: "Trapped moisture ruins the specimen and encourages microbial growth.",
+        c: "Heat degrades the analytes being screened for.",
+        d: "Refrigeration before drying causes condensation on the card.",
+      },
+      tip: "Flat, open air, no heat, no sunlight, no stacking — then package.",
+      tags: ["newborn-screening", "drying", "handling"],
+    },
+    {
+      id: "spc-030",
+      subdomain: "Blood donation",
+      difficulty: 2,
+      stem: "What distinguishes an autologous donation from an allogeneic donation?",
+      choices: {
+        a: "Autologous blood is donated by a relative",
+        b: "Autologous blood is donated by the patient for their own later use",
+        c: "Autologous blood is collected only in emergencies",
+        d: "Autologous blood is drawn from an artery",
+      },
+      correct: "b",
+      explanation:
+        "In an autologous donation the patient donates their own blood in " +
+        "advance, typically before scheduled surgery, and receives it back if " +
+        "needed. Allogeneic donation is blood given by one person for transfusion " +
+        "to another, and a directed donation from a named relative is a variant " +
+        "of that.",
+      why: {
+        a: "A relative's donation is a directed allogeneic donation, not autologous.",
+        c: "Autologous donation is planned ahead of elective procedures, not an emergency measure.",
+        d: "Donation is venous, not arterial.",
+      },
+      tip: "Auto = self. The patient banks their own blood before surgery.",
+      tags: ["blood-donation", "autologous", "transfusion"],
+    },
+    {
+      id: "spc-031",
+      subdomain: "Therapeutic phlebotomy",
+      difficulty: 3,
+      stem: "Therapeutic phlebotomy is used as treatment for which conditions?",
+      choices: {
+        a: "Iron deficiency anemia and dehydration",
+        b: "Polycythemia vera and hereditary hemochromatosis",
+        c: "Thrombocytopenia and hemophilia",
+        d: "Leukopenia and neutropenia",
+      },
+      correct: "b",
+      explanation:
+        "Removing blood is the treatment when there is too much of something: " +
+        "red cell mass in polycythemia vera, or iron in hemochromatosis, where " +
+        "repeated removal draws down iron stores. The order comes from a " +
+        "physician and specifies the volume.",
+      why: {
+        a: "Removing blood from an iron-deficient or dehydrated patient would worsen both conditions.",
+        c: "Removing blood from a patient with a bleeding disorder is the opposite of what is needed.",
+        d: "Low white cell counts are not treated by removing blood.",
+      },
+      tip: "Therapeutic phlebotomy treats too much: too many red cells, or too much iron.",
+      tags: ["therapeutic-phlebotomy", "polycythemia", "hemochromatosis"],
+    },
+    {
+      id: "spc-032",
+      subdomain: "Legal collections",
+      difficulty: 3,
+      stem: "Why is an alcohol-based antiseptic avoided when collecting a legal blood alcohol specimen?",
+      choices: {
+        a: "Alcohol wipes are not sterile enough for legal collections",
+        b: "Residual alcohol could contaminate the specimen and be challenged as the source of the result",
+        c: "Alcohol reacts with the tube additive",
+        d: "It would delay the collection",
+      },
+      correct: "b",
+      explanation:
+        "Whether or not enough alcohol transfers to change the number, its use " +
+        "gives a defense a straightforward challenge to the result. A " +
+        "non-alcohol antiseptic such as an aqueous povidone-iodine or " +
+        "benzalkonium preparation removes that argument entirely.",
+      why: {
+        a: "Sterility is not the issue; the specific contaminant is.",
+        c: "The concern is the analyte being measured, not a reaction with the additive.",
+        d: "Timing is unrelated to the choice of antiseptic here.",
+      },
+      tip: "Never clean with alcohol when alcohol is the analyte. Use a non-alcohol antiseptic.",
+      tags: ["blood-alcohol", "forensic", "antiseptic"],
+    },
+    {
+      id: "spc-033",
+      subdomain: "Legal collections",
+      difficulty: 3,
+      stem: "What must accompany a forensic drug screen specimen?",
+      choices: {
+        a: "A physician's handwritten note",
+        b: "A completed chain-of-custody form and a tamper-evident seal, with the donor's identity verified by photo identification",
+        c: "The patient's insurance card",
+        d: "A copy of the laboratory's accreditation certificate",
+      },
+      correct: "b",
+      explanation:
+        "Forensic and workplace testing requires documented custody at every " +
+        "step, tamper-evident sealing performed in the donor's presence, and " +
+        "identity verified with photo identification. A result whose custody " +
+        "cannot be proven is a result that will not stand up.",
+      why: {
+        a: "A clinical note does not establish custody.",
+        c: "Insurance is administrative and unrelated to specimen integrity.",
+        d: "Accreditation is a laboratory credential and travels with the laboratory, not the specimen.",
+      },
+      tip: "Photo ID, sealed in front of the donor, signed at every transfer. That's the chain.",
+      tags: ["chain-of-custody", "drug-screen", "forensic"],
+    },
+    {
+      id: "spc-034",
+      subdomain: "Pediatric collection",
+      difficulty: 3,
+      stem: "Why is dermal puncture generally preferred over venipuncture in infants under one year?",
+      choices: {
+        a: "Capillary results are more accurate in infants",
+        b: "It avoids the risks of deep venipuncture in small limbs and limits the volume removed",
+        c: "Infants have no accessible veins",
+        d: "Dermal puncture is painless",
+      },
+      correct: "b",
+      explanation:
+        "An infant's blood volume is small and the accessible veins are deep " +
+        "relative to their size, so venipuncture carries more risk and removes " +
+        "more blood than the testing requires. Microcollection from a heel " +
+        "puncture answers most questions with far less taken.",
+      why: {
+        a: "Some capillary values differ from venous ones; accuracy is not the reason.",
+        c: "Infants do have accessible veins, but reaching them safely is more difficult.",
+        d: "A dermal puncture still hurts; it is simply lower risk and lower volume.",
+      },
+      tip: "Small patient, small volume. Heel stick first in infants under a year.",
+      tags: ["pediatric", "dermal-puncture", "infant"],
+    },
+    {
+      id: "spc-035",
+      subdomain: "Pediatric collection",
+      difficulty: 2,
+      stem: "What is the appropriate approach to a frightened school-age child needing a venipuncture?",
+      choices: {
+        a: "Tell the child it will not hurt at all",
+        b: "Explain honestly in age-appropriate terms, offer limited choices, and use a caregiver's support and distraction",
+        c: "Have several staff hold the child down immediately",
+        d: "Perform the draw while the child is distracted, without any explanation",
+      },
+      correct: "b",
+      explanation:
+        "Honest, simple explanation plus a small amount of control — which arm, " +
+        "whether to watch or look away — reduces distress far more than either " +
+        "false reassurance or surprise. A caregiver's presence and distraction " +
+        "help; gentle immobilization is for safety, not a first resort.",
+      why: {
+        a: "A promise that proves false destroys trust for this draw and every future one.",
+        c: "Immediate physical restraint escalates fear and is reserved for safety when other approaches fail.",
+        d: "Performing a procedure by surprise breaches trust and increases movement risk.",
+      },
+      tip: "Be honest, give a small choice, bring the caregiver in. Restraint is a last resort for safety.",
+      tags: ["pediatric", "communication", "distraction"],
+    },
+    {
+      id: "spc-036",
+      subdomain: "Geriatric collection",
+      difficulty: 3,
+      stem: "Which adjustment is appropriate for an older adult with thin, fragile skin and small veins?",
+      choices: {
+        a: "Apply the tourniquet more tightly to distend the veins",
+        b: "Consider a winged set with a smaller tube, minimal tourniquet pressure or a blood pressure cuff at low pressure, and gentle anchoring",
+        c: "Use a larger gauge needle to collect faster",
+        d: "Slap the site firmly to raise the vein",
+      },
+      correct: "b",
+      explanation:
+        "Fragile veins and skin call for less force everywhere: gentler " +
+        "tourniquet pressure, a smaller tube so the vacuum does not collapse the " +
+        "vessel, careful anchoring that does not tear the skin, and a winged set " +
+        "for control. Adhesive removal deserves the same care.",
+      why: {
+        a: "Excess tourniquet pressure can rupture fragile vessels and bruise thin skin.",
+        c: "A larger needle in a small fragile vein is more likely to go through it.",
+        d: "Slapping is never appropriate; it bruises and can rupture capillaries.",
+      },
+      tip: "Less pressure everywhere: tourniquet, vacuum, anchoring, and tape.",
+      tags: ["geriatric", "fragile-veins", "technique"],
+    },
+    {
+      id: "spc-037",
+      subdomain: "Glucose tolerance",
+      difficulty: 3,
+      stem: "During a three-hour glucose tolerance test, the patient vomits the glucose drink 20 minutes in. What should happen?",
+      choices: {
+        a: "Continue the test and note the vomiting on the requisition",
+        b: "Stop the test and notify the ordering provider, since the glucose load was not retained",
+        c: "Give a second dose of the glucose solution and restart the clock",
+        d: "Substitute a sugary snack of equivalent content",
+      },
+      correct: "b",
+      explanation:
+        "The test measures the response to a known, retained glucose load. If " +
+        "the load was not kept down, nothing that follows can be interpreted. " +
+        "The test is stopped and the provider decides whether to reschedule.",
+      why: {
+        a: "Continuing produces a curve that means nothing, at the cost of several more needle sticks.",
+        c: "Re-dosing and restarting is a clinical decision, not the phlebotomist's to make.",
+        d: "An improvised substitute is not the standardized load the test requires.",
+      },
+      tip: "No retained load, no test. Stop and let the provider decide.",
+      tags: ["glucose-tolerance-test", "protocol", "communication"],
+    },
+    {
+      id: "spc-038",
+      subdomain: "Blood bank",
+      difficulty: 3,
+      stem: "Why do transfusion service specimens usually have a limited window of validity before crossmatching?",
+      choices: {
+        a: "Red cells lyse within hours of collection",
+        b: "Recent transfusion or pregnancy can stimulate new antibodies, so an older specimen may not reflect the patient's current status",
+        c: "EDTA degrades within 24 hours",
+        d: "The laboratory's instruments cannot process older specimens",
+      },
+      correct: "b",
+      explanation:
+        "A patient who has been transfused or pregnant recently can develop new " +
+        "red cell antibodies quickly. A specimen collected days earlier may miss " +
+        "them, so transfusion services require a recent specimen — often within " +
+        "three days for such patients.",
+      why: {
+        a: "Properly stored specimens do not lyse within the validity window.",
+        c: "EDTA remains effective well beyond a day.",
+        d: "The limit is immunological, not instrumental.",
+      },
+      tip: "The specimen expires because the patient's antibodies can change, not because the blood spoils.",
+      tags: ["blood-bank", "crossmatch", "antibodies"],
+    },
+    {
+      id: "spc-039",
+      subdomain: "Point-of-care testing",
+      difficulty: 2,
+      stem: "Why must quality control be run on a point-of-care instrument?",
+      choices: {
+        a: "It is optional if the device is new",
+        b: "To confirm the device and reagents are performing correctly before patient results are reported",
+        c: "To calibrate the patient's expectations",
+        d: "Only when a result appears abnormal",
+      },
+      correct: "b",
+      explanation:
+        "Quality control materials with known values verify that the meter and " +
+        "its strips are producing accurate results at that moment. Results are " +
+        "not reported from a device whose control has failed, and the runs are " +
+        "documented as required by the facility and regulation.",
+      why: {
+        a: "New devices require quality control like any other, at the intervals specified.",
+        c: "Quality control concerns the instrument, not the patient conversation.",
+        d: "Waiting for an abnormal result means the failure is discovered after results have been reported.",
+      },
+      tip: "Controls before patients. A failed control means the device is out until it is fixed.",
+      tags: ["point-of-care", "quality-control", "documentation"],
+    },
+    {
+      id: "spc-040",
+      subdomain: "Special tests",
+      difficulty: 3,
+      stem: "A cold agglutinin specimen is collected. What handling does it require?",
+      choices: {
+        a: "Transport on ice",
+        b: "Collection into a pre-warmed tube and maintenance at 37°C until processed",
+        c: "Immediate freezing",
+        d: "Protection from light",
+      },
+      correct: "b",
+      explanation:
+        "Cold agglutinins bind red cells as the specimen cools, so antibody " +
+        "that has attached to the cells is no longer measurable in the serum. " +
+        "The tube is pre-warmed and kept at body temperature all the way to " +
+        "processing.",
+      why: {
+        a: "Chilling is precisely what causes the antibody to be lost from the serum.",
+        c: "Freezing is an extreme version of the same error.",
+        d: "Light exposure is not the concern for this analyte.",
+      },
+      tip: "Cold agglutinins and cryoglobulins both need to stay warm. \"Cold\" in the name is the warning.",
+      tags: ["cold-agglutinin", "warmed-specimen", "handling"],
+    },
+    {
+      id: "spc-041",
+      subdomain: "Blood cultures",
+      difficulty: 2,
+      stem: "When both aerobic and anaerobic culture bottles are collected from a syringe draw, which is generally inoculated first?",
+      choices: {
+        a: "The aerobic bottle, so trapped air does not enter the anaerobic bottle",
+        b: "The anaerobic bottle, always",
+        c: "Whichever is picked up first",
+        d: "Both simultaneously using a splitter",
+      },
+      correct: "a",
+      explanation:
+        "With a syringe, any air in it is expelled into the first bottle " +
+        "inoculated — so the aerobic bottle goes first, keeping air out of the " +
+        "anaerobic bottle where oxygen would inhibit the organisms being sought. " +
+        "The order differs when a direct-draw adapter is used, so facility " +
+        "protocol governs.",
+      why: {
+        b: "Anaerobic-first is the pattern for a direct-draw set, not for a syringe with residual air.",
+        c: "The sequence exists for a reason and is not arbitrary.",
+        d: "Simultaneous splitting is not standard practice for culture collection.",
+      },
+      tip: "Syringe: aerobic first, so the air goes where it does no harm. Follow your facility's protocol.",
+      tags: ["blood-cultures", "aerobic", "anaerobic"],
+    },
+    {
+      id: "spc-042",
+      subdomain: "Special tests",
+      difficulty: 3,
+      stem: "A peak drug level is ordered for a medication given intravenously. What determines when the specimen is collected?",
+      choices: {
+        a: "Immediately as the infusion starts",
+        b: "The interval after the dose specified for that drug, since peak timing is drug-specific",
+        c: "Exactly 60 minutes after the dose for every drug",
+        d: "At the same time as the trough",
+      },
+      correct: "b",
+      explanation:
+        "Peak timing varies by drug and route, so the protocol for that " +
+        "medication defines the interval. Collecting at the wrong moment " +
+        "produces a number that will be interpreted as a peak when it is not, " +
+        "and dosing decisions follow from it.",
+      why: {
+        a: "Sampling at the start of the infusion captures the pre-dose level, not the peak.",
+        c: "A single universal interval does not apply across drugs and routes.",
+        d: "The trough is a separate collection immediately before the next dose.",
+      },
+      tip: "Peaks are drug-specific. Check the protocol, and record the actual collection time.",
+      tags: ["therapeutic-drug-monitoring", "peak", "timing"],
+    },
+    {
+      id: "spc-043",
+      subdomain: "Blood donation",
+      difficulty: 2,
+      stem: "Which screening step is part of qualifying a volunteer blood donor?",
+      choices: {
+        a: "A fasting glucose",
+        b: "A hemoglobin or hematocrit check, vital signs, and a health history questionnaire",
+        c: "A chest radiograph",
+        d: "A coagulation panel",
+      },
+      correct: "b",
+      explanation:
+        "Donor screening protects both the donor and the recipient: a " +
+        "hemoglobin or hematocrit check confirms the donor can safely give a " +
+        "unit, vital signs confirm they are well enough on the day, and the " +
+        "health history identifies risks to the recipient.",
+      why: {
+        a: "Fasting glucose is not part of routine donor qualification.",
+        c: "Imaging is not part of blood donor screening.",
+        d: "Coagulation testing is not a routine donor screening test.",
+      },
+      tip: "Hemoglobin, vitals, history. Protecting the donor and the recipient at the same time.",
+      tags: ["blood-donation", "donor-screening", "eligibility"],
+    },
+    {
+      id: "spc-044",
+      subdomain: "Pediatric collection",
+      difficulty: 3,
+      stem: "Why is a heel puncture unsuitable for an ambulatory toddler?",
+      choices: {
+        a: "The heel has no capillary supply after infancy",
+        b: "Once a child bears weight, the heel's tissue changes and a finger puncture becomes the appropriate site",
+        c: "Toddlers cannot tolerate any dermal puncture",
+        d: "Heel punctures are prohibited by regulation after six months",
+      },
+      correct: "b",
+      explanation:
+        "Heel puncture is for infants who are not yet walking. Once a child " +
+        "bears weight, the heel tissue thickens and the puncture becomes both " +
+        "less productive and more painful, so the finger is used instead — the " +
+        "same site as for an adult, with an appropriate lancet depth.",
+      why: {
+        a: "The heel retains a blood supply; the tissue simply changes character.",
+        c: "Toddlers are routinely collected by finger puncture.",
+        d: "The transition follows the child's development, not a fixed regulatory age.",
+      },
+      tip: "Not walking yet? Heel. Walking? Finger.",
+      tags: ["pediatric", "heel-stick", "site-selection"],
+    },
+    {
+      id: "spc-045",
+      subdomain: "Special tests",
+      difficulty: 3,
+      stem: "A patient is scheduled for a lactose tolerance test. What is the general structure of the collection?",
+      choices: {
+        a: "A single random specimen",
+        b: "A fasting baseline specimen, then timed specimens after a measured lactose load",
+        c: "Specimens collected only after symptoms appear",
+        d: "A 24-hour urine collection with no blood draws",
+      },
+      correct: "b",
+      explanation:
+        "Tolerance tests share one shape: establish a fasting baseline, give a " +
+        "measured load, then sample at defined intervals to see how the body " +
+        "handles it. Timing is what makes the curve interpretable, so the actual " +
+        "collection times are recorded.",
+      why: {
+        a: "A single value cannot show a response over time.",
+        c: "Symptom-triggered sampling produces uncontrolled timing and no comparable baseline.",
+        d: "The test is a timed series of blood specimens.",
+      },
+      tip: "Every tolerance test: baseline, load, timed specimens. Record every actual time.",
+      tags: ["tolerance-test", "lactose", "timed-collection"],
+    },
+    {
+      id: "spc-046",
+      subdomain: "Special tests",
+      difficulty: 2,
+      stem: "Which specimen requires the patient to be in a specific position for a defined period before collection?",
+      choices: {
+        a: "A complete blood count",
+        b: "A renin or aldosterone level, where posture affects the result",
+        c: "A hemoglobin A1c",
+        d: "A basic metabolic panel",
+      },
+      correct: "b",
+      explanation:
+        "Renin and aldosterone respond to posture, so the requisition specifies " +
+        "whether the patient should be upright or supine and for how long " +
+        "beforehand. Collecting without honoring that produces a value that " +
+        "cannot be compared with the reference range.",
+      why: {
+        a: "A CBC has no posture requirement.",
+        c: "A1c reflects months of glycemic control and is unaffected by posture.",
+        d: "A routine metabolic panel carries no positioning requirement.",
+      },
+      tip: "Posture-sensitive tests exist. When the requisition specifies a position and a time, that instruction is part of the test.",
+      tags: ["posture", "aldosterone", "special-handling"],
+    },
+    {
+      id: "spc-047",
+      subdomain: "Dialysis patients",
+      difficulty: 3,
+      stem: "A patient with a dialysis fistula in the left arm needs a routine draw. Where is the specimen collected?",
+      choices: {
+        a: "From the fistula, which provides excellent access",
+        b: "From the opposite arm, avoiding the fistula limb entirely",
+        c: "From below the fistula in the same arm",
+        d: "From above the fistula in the same arm",
+      },
+      correct: "b",
+      explanation:
+        "The whole fistula limb is protected: no venipuncture, no tourniquet, " +
+        "no blood pressure cuff. The fistula is the patient's lifeline for " +
+        "dialysis, and clotting or infecting it has serious consequences, so the " +
+        "opposite arm is used.",
+      why: {
+        a: "Only dialysis staff access a fistula, and never for routine specimen collection.",
+        c: "The restriction covers the entire limb, not just the fistula site.",
+        d: "Above the fistula is still the fistula limb, and a tourniquet there is prohibited.",
+      },
+      tip: "Fistula arm: nothing. No needle, no tourniquet, no cuff. Use the other arm.",
+      tags: ["dialysis", "fistula", "site-selection"],
+    },
+    {
+      id: "spc-048",
+      subdomain: "Special tests",
+      difficulty: 3,
+      stem: "Which collection detail matters most for an ammonia level?",
+      choices: {
+        a: "The patient must be standing",
+        b: "Minimal tourniquet time, no fist clenching, and immediate chilled transport",
+        c: "The specimen must be protected from light",
+        d: "The specimen must be collected in a serum separator tube",
+      },
+      correct: "b",
+      explanation:
+        "Ammonia rises quickly in a specimen and is affected by muscle activity " +
+        "during collection, so the tourniquet time is short, the patient does not " +
+        "pump their fist, and the tube goes on ice and travels immediately. " +
+        "Delay is the most common reason an ammonia comes back falsely high.",
+      why: {
+        a: "There is no standing requirement for ammonia.",
+        c: "Light protection applies to bilirubin and several vitamins, not to ammonia.",
+        d: "Ammonia is collected into a specified anticoagulated tube, not a serum separator.",
+      },
+      tip: "Ammonia: quick, calm, cold. Short tourniquet, no fist pumping, straight onto ice.",
+      tags: ["ammonia", "handling", "collection-technique"],
+    },
   ],
 );

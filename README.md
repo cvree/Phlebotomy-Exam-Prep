@@ -23,7 +23,8 @@ national certification.
 
 **Practice**
 
-- 238 original, certification-style questions across ten study areas
+- 513 original, certification-style questions across ten study areas, deep
+  enough that three consecutive full-length mock exams share no question
 - Immediate inline feedback: verdict, correct answer, full explanation, why the
   specific distractor you picked was wrong, and a memory tip where one helps
 - Session modes: Quick 10, all areas, a single area, weak areas, missed
@@ -77,8 +78,13 @@ national certification.
 
 **Mock exam**
 
-- Full-length timed paper with no correctness, answers, or explanations until
-  submission
+- Three timed papers to choose from — a 25-question quick paper, the
+  50-question standard paper, and a 100-question full-length paper in two
+  hours — all weighted across the ten study areas
+- Every paper prefers questions you have not met on your last three exams, so
+  repeat sittings are new material rather than a reshuffle. Freshness never
+  shortens a paper: once an area's unseen questions run out, seen ones fill it
+- No correctness, answers, or explanations until submission
 - Wall-clock timer that survives a sleeping phone or a closed tab
 - Question grid with answered/flagged state, flagging, previous/next, autosave,
   resume, submit confirmation, and an unanswered-question warning
@@ -116,12 +122,14 @@ npm run test         # vitest, single run
 npm run test:watch   # watch mode
 ```
 
-132 tests cover the parts where a bug would quietly mislead a student: scoring,
-question selection and session generation, mastery and readiness calculation,
-weak-area detection, recommendation rules, storage migrations, streak
-arithmetic, order-of-draw grading, and tube-drill generation. `tests/` also
-asserts structural integrity of the question bank, so a content mistake fails CI
-rather than reaching a student.
+257 tests cover the parts where a bug would quietly mislead a student: scoring,
+question selection and session generation, mock exam paper construction and
+freshness, mastery and readiness calculation, weak-area detection,
+recommendation rules, storage migrations, streak arithmetic, order-of-draw
+grading, and tube-drill generation. `tests/` also asserts structural integrity
+of the question bank and that every area stays deep enough for three
+full-length mock exams, so a content mistake fails CI rather than reaching a
+student.
 
 ## Linting and types
 
@@ -265,7 +273,7 @@ rendered wherever the content appears:
 draft → needs-review → reviewed → published
 ```
 
-**All 238 questions and all 181 vocabulary terms currently sit at
+**All 513 questions and all 181 vocabulary terms currently sit at
 `needs-review`.** They were written from
 material that mainstream phlebotomy programs teach consistently, but **no
 qualified reviewer has checked them against the cited references.** The UI says
@@ -283,8 +291,8 @@ happened.
 passing score, and official domain weightings are `undefined` in
 `data/certifications/index.ts`, `examStructureVerified` is `false`, and the UI
 shows a verification notice wherever exam structure is discussed. The mock exam
-uses *our* practice format (50 questions, 60 minutes), labeled as ours
-everywhere it appears.
+offers *our* practice formats (25/30, 50/60, and 100/120 questions and
+minutes), labeled as ours everywhere they appear.
 
 **Readiness is not a prediction.** Study readiness measures how much material a
 student has demonstrated recently across the syllabus. It is not validated
@@ -294,7 +302,7 @@ against exam outcomes and the product never states a probability of passing.
 
 1. NHA CPT exam structure — question count, time limit, scoring, published
    domains and weightings, eligibility and retake policy
-2. Clinical review of all 238 questions and 181 vocabulary definitions by a
+2. Clinical review of all 513 questions and 181 vocabulary definitions by a
    qualified phlebotomy educator or MLS professional, against the cited
    standards
 3. Precise citations for each reviewed item, replacing the title-only references

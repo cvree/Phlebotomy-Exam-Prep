@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { MockResult } from "@/types/study";
 import { resolveQuestions } from "@/data/questions";
 import { domainName } from "@/data/certifications/domains";
-import { NHA_CPT } from "@/data/certifications";
+import { NHA_CPT, getMockExamForm } from "@/data/certifications";
 import { isCorrect } from "@/lib/scoring/score";
 import { track } from "@/lib/analytics";
 import { useStudyProgress } from "@/components/progress/StudyProgressProvider";
@@ -91,6 +91,7 @@ export function MockResults() {
         {result.correct} out of {result.total}
       </h1>
       <p className="mt-2 text-ink-muted">
+        {getMockExamForm(NHA_CPT, result.formId).name} ·{" "}
         {Math.round(percent * 100)}% · finished in{" "}
         {formatDuration(result.secondsUsed)} of{" "}
         {formatDuration(result.durationSeconds)}

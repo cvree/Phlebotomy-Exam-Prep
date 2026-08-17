@@ -635,5 +635,650 @@ export const ANATOMY_QUESTIONS = buildQuestions(
       tip: "Proximal = closer to the trunk. Medial = toward the midline. Antecubital = front of the elbow.",
       tags: ["terminology", "anatomical-directions", "antecubital"],
     },
+    {
+      id: "ana-025",
+      subdomain: "Blood composition",
+      difficulty: 1,
+      stem: "Approximately what proportion of whole blood is plasma?",
+      choices: {
+        a: "About 25%",
+        b: "About 45%",
+        c: "About 55%",
+        d: "About 75%",
+      },
+      correct: "c",
+      explanation:
+        "Whole blood is roughly 55% plasma and 45% formed elements — red cells, " +
+        "white cells, and platelets. That split is visible in a spun tube, where " +
+        "the packed cell column is the hematocrit and the fluid above it is the " +
+        "plasma.",
+      why: {
+        a: "A quarter is far too little; plasma is the larger of the two fractions.",
+        b: "45% is the formed-element fraction, not the plasma fraction.",
+        d: "Three-quarters would leave too little room for the cellular components.",
+      },
+      tip: "55 fluid, 45 cells. Spin a tube and you can see the ratio.",
+      tags: ["blood-composition", "plasma", "hematocrit"],
+    },
+    {
+      id: "ana-026",
+      subdomain: "Blood composition",
+      difficulty: 2,
+      stem: "What is the essential difference between plasma and serum?",
+      choices: {
+        a: "Serum contains fibrinogen; plasma does not",
+        b: "Plasma contains fibrinogen and clotting factors; serum is what remains after clotting, so it lacks them",
+        c: "Plasma is obtained from a serum separator tube",
+        d: "Serum contains red cells; plasma does not",
+      },
+      correct: "b",
+      explanation:
+        "Plasma comes from an anticoagulated tube, so clotting never happens and " +
+        "fibrinogen and the other clotting factors stay in solution. Serum comes " +
+        "from a tube allowed to clot, so those factors are consumed in the clot " +
+        "and the liquid poured off lacks them.",
+      why: {
+        a: "This reverses the relationship — fibrinogen is consumed in forming the clot that produces serum.",
+        c: "A serum separator tube produces serum, as its name says; plasma comes from anticoagulated tubes.",
+        d: "Neither plasma nor serum contains red cells once the specimen is properly separated.",
+      },
+      tip: "Plasma = anticoagulated, keeps fibrinogen. Serum = clotted, fibrinogen used up. Plasma also gives slightly more volume.",
+      tags: ["plasma", "serum", "fibrinogen"],
+    },
+    {
+      id: "ana-027",
+      subdomain: "Blood cells",
+      difficulty: 2,
+      stem: "Which white blood cell is normally the most abundant in adult peripheral blood?",
+      choices: {
+        a: "Lymphocyte",
+        b: "Neutrophil",
+        c: "Monocyte",
+        d: "Eosinophil",
+      },
+      correct: "b",
+      explanation:
+        "Neutrophils are the most numerous white cells in normal adult blood and " +
+        "are the first responders to bacterial infection. Lymphocytes come " +
+        "second, followed by monocytes, then eosinophils and basophils in small " +
+        "numbers.",
+      why: {
+        a: "Lymphocytes are the second most common in adults, though they predominate in young children.",
+        c: "Monocytes are present in modest numbers, well below neutrophils.",
+        d: "Eosinophils normally make up only a small percentage of white cells.",
+      },
+      tip: "Never Let Monkeys Eat Bananas — Neutrophils, Lymphocytes, Monocytes, Eosinophils, Basophils, most to least.",
+      tags: ["white-blood-cells", "neutrophils", "differential"],
+    },
+    {
+      id: "ana-028",
+      subdomain: "Blood cells",
+      difficulty: 2,
+      stem: "What is the approximate lifespan of a normal red blood cell in circulation?",
+      choices: {
+        a: "About 24 hours",
+        b: "About 10 days",
+        c: "About 120 days",
+        d: "About 2 years",
+      },
+      correct: "c",
+      explanation:
+        "Red cells circulate for roughly 120 days before being removed, mostly " +
+        "in the spleen. That turnover is why a hemoglobin A1c reflects average " +
+        "glucose over the preceding two to three months — it is limited by how " +
+        "long the cells have been around to be glycated.",
+      why: {
+        a: "A single day describes neither red cells nor most other blood cells.",
+        b: "Roughly ten days is closer to the lifespan of a platelet.",
+        d: "No circulating red cell lasts anywhere near two years.",
+      },
+      tip: "RBC ≈ 120 days, platelets ≈ 10 days. The 120 is why A1c looks back about three months.",
+      tags: ["red-blood-cells", "lifespan", "hemoglobin-a1c"],
+    },
+    {
+      id: "ana-029",
+      subdomain: "Hemostasis",
+      difficulty: 3,
+      stem: "Which sequence describes the stages of hemostasis after a vessel is injured?",
+      choices: {
+        a: "Coagulation, vascular spasm, platelet plug, fibrinolysis",
+        b: "Vascular spasm, platelet plug formation, coagulation, fibrinolysis",
+        c: "Platelet plug formation, fibrinolysis, vascular spasm, coagulation",
+        d: "Fibrinolysis, coagulation, platelet plug, vascular spasm",
+      },
+      correct: "b",
+      explanation:
+        "The vessel constricts first, platelets adhere and aggregate into a " +
+        "temporary plug, the coagulation cascade lays down fibrin to reinforce " +
+        "it, and once the vessel has healed fibrinolysis dissolves the clot " +
+        "away. Each stage buys time for the next.",
+      why: {
+        a: "Coagulation reinforces a plug that must exist first; it does not lead.",
+        c: "Dissolving the clot before it forms is self-defeating.",
+        d: "Fibrinolysis is the final stage, not the first.",
+      },
+      tip: "Squeeze, plug, cement, clean up. Spasm → platelets → fibrin → fibrinolysis.",
+      tags: ["hemostasis", "coagulation", "platelets"],
+    },
+    {
+      id: "ana-030",
+      subdomain: "Vascular anatomy",
+      difficulty: 2,
+      stem: "How can an artery be distinguished from a vein during site assessment?",
+      choices: {
+        a: "An artery feels softer and collapses under light pressure",
+        b: "An artery pulsates, has a thicker elastic wall, and is usually deeper",
+        c: "An artery is always visible through the skin",
+        d: "An artery sits closest to the surface in the antecubital fossa",
+      },
+      correct: "b",
+      explanation:
+        "Arteries carry blood under pressure, so they pulse under the finger, " +
+        "have thick muscular and elastic walls, and generally run deeper than " +
+        "the superficial veins used for venipuncture. A pulse under the " +
+        "fingertip is a stop signal, not a target.",
+      why: {
+        a: "Veins are the soft, easily compressed vessels; arteries resist compression.",
+        c: "Arteries are typically deeper and less visible than superficial veins.",
+        d: "The superficial veins are closest to the surface; the brachial artery lies deeper and more medially.",
+      },
+      tip: "If it pulses, it's an artery — move on. Feel before you stick, every time.",
+      tags: ["arteries", "veins", "palpation"],
+    },
+    {
+      id: "ana-031",
+      subdomain: "Vascular anatomy",
+      difficulty: 3,
+      stem: "Why is the basilic vein generally the last choice among the antecubital veins?",
+      choices: {
+        a: "It is too small to yield an adequate specimen",
+        b: "It lies near the median nerve and the brachial artery, and tends to roll",
+        c: "It is a superficial artery rather than a vein",
+        d: "It collapses under normal vacuum pressure",
+      },
+      correct: "b",
+      explanation:
+        "The basilic vein sits on the medial side of the antecubital fossa, " +
+        "close to the median nerve and the brachial artery, and it is less well " +
+        "anchored than the median cubital. That combination means a missed stick " +
+        "there carries a higher chance of nerve injury or arterial puncture.",
+      why: {
+        a: "Size is not the objection — the basilic is often prominent and usable.",
+        c: "The basilic is a vein; the nearby artery is the brachial.",
+        d: "Collapse under vacuum is a technique and vessel-condition issue, not what makes the basilic a last resort.",
+      },
+      tip: "Median cubital first, cephalic second, basilic last — the nerve and the artery are the reason for the order.",
+      tags: ["basilic-vein", "median-nerve", "site-selection"],
+    },
+    {
+      id: "ana-032",
+      subdomain: "Vascular anatomy",
+      difficulty: 2,
+      stem: "Which layer of a blood vessel wall is in direct contact with flowing blood?",
+      choices: {
+        a: "Tunica adventitia (externa)",
+        b: "Tunica media",
+        c: "Tunica intima",
+        d: "Basement lamina of the epidermis",
+      },
+      correct: "c",
+      explanation:
+        "The tunica intima is the innermost layer, lined with endothelium that " +
+        "the blood actually touches. The tunica media is the muscular middle " +
+        "layer responsible for constriction and dilation, and the tunica " +
+        "adventitia is the fibrous outer coat that anchors the vessel.",
+      why: {
+        a: "The adventitia is the outermost connective tissue layer.",
+        b: "The media is the muscular middle layer and does not contact the blood.",
+        d: "That structure belongs to skin, not to a blood vessel.",
+      },
+      tip: "Intima inside, media in the middle, adventitia outside.",
+      tags: ["vessel-anatomy", "tunica-intima", "histology"],
+    },
+    {
+      id: "ana-033",
+      subdomain: "Circulation",
+      difficulty: 2,
+      stem: "Blood returning from the body enters which chamber of the heart first?",
+      choices: {
+        a: "Left atrium",
+        b: "Right atrium",
+        c: "Left ventricle",
+        d: "Right ventricle",
+      },
+      correct: "b",
+      explanation:
+        "Deoxygenated blood returns through the venae cavae into the right " +
+        "atrium, passes to the right ventricle, and is pumped to the lungs. " +
+        "Oxygenated blood comes back to the left atrium, then the left " +
+        "ventricle, which drives it out to the body.",
+      why: {
+        a: "The left atrium receives oxygenated blood returning from the lungs.",
+        c: "The left ventricle is the systemic pump, at the end of the circuit rather than the start.",
+        d: "The right ventricle receives blood from the right atrium, one step later.",
+      },
+      tip: "Right side takes blood to the lungs, left side sends it to the body. Atrium receives, ventricle pumps.",
+      tags: ["heart", "circulation", "cardiovascular"],
+    },
+    {
+      id: "ana-034",
+      subdomain: "Blood cells",
+      difficulty: 2,
+      stem: "What is the primary function of platelets?",
+      choices: {
+        a: "Transporting oxygen to tissues",
+        b: "Forming the initial plug at a site of vessel injury",
+        c: "Producing antibodies against pathogens",
+        d: "Carrying carbon dioxide back to the lungs",
+      },
+      correct: "b",
+      explanation:
+        "Platelets — thrombocytes — adhere to exposed collagen at an injury, " +
+        "activate, and aggregate into the temporary plug that stops bleeding " +
+        "while the coagulation cascade builds a fibrin mesh around it.",
+      why: {
+        a: "Oxygen transport is the red cell's job, performed by hemoglobin.",
+        c: "Antibody production belongs to B lymphocytes and plasma cells.",
+        d: "Carbon dioxide transport involves red cells and plasma, not platelets.",
+      },
+      tip: "Platelets plug, red cells carry oxygen, white cells defend.",
+      tags: ["platelets", "hemostasis", "blood-cells"],
+    },
+    {
+      id: "ana-035",
+      subdomain: "Blood types",
+      difficulty: 2,
+      stem: "A patient is blood type O negative. What does this mean?",
+      choices: {
+        a: "Their red cells carry both A and B antigens and no Rh antigen",
+        b: "Their red cells carry neither A nor B antigens and no Rh(D) antigen",
+        c: "Their plasma contains no antibodies",
+        d: "They can receive blood from any donor type",
+      },
+      correct: "b",
+      explanation:
+        "Type O means the red cells carry neither the A nor the B antigen, and " +
+        "Rh negative means the D antigen is absent as well. Because there is " +
+        "nothing on the cells for a recipient's antibodies to attack, O negative " +
+        "red cells are the universal donor for red cell transfusion.",
+      why: {
+        a: "That describes AB, which carries both antigens.",
+        c: "Type O plasma contains both anti-A and anti-B antibodies.",
+        d: "O negative is the universal red cell donor, not the universal recipient — that is AB positive.",
+      },
+      tip: "O negative gives to everyone; AB positive receives from everyone.",
+      tags: ["blood-types", "abo", "rh-factor"],
+    },
+    {
+      id: "ana-036",
+      subdomain: "Vascular anatomy",
+      difficulty: 2,
+      stem: "Which veins are commonly used when the antecubital veins are unsuitable?",
+      choices: {
+        a: "The dorsal metacarpal veins on the back of the hand",
+        b: "The femoral vein in the groin",
+        c: "The jugular vein in the neck",
+        d: "The veins on the palm side of the wrist",
+      },
+      correct: "a",
+      explanation:
+        "The dorsal metacarpal veins on the back of the hand are the standard " +
+        "alternative once the antecubital area is ruled out. They are smaller, " +
+        "so a smaller needle or a winged set is used, and the technique adjusts " +
+        "for the shallower angle.",
+      why: {
+        b: "Femoral access is a physician-level procedure, not within a phlebotomist's scope.",
+        c: "Jugular collection is performed by specially trained clinicians, typically in neonates.",
+        d: "The palm side of the wrist is avoided because of nerve and tendon proximity.",
+      },
+      tip: "Antecubital first, dorsal hand second. Wrist underside, femoral, and jugular are not yours.",
+      tags: ["hand-veins", "alternative-sites", "site-selection"],
+    },
+    {
+      id: "ana-037",
+      subdomain: "Blood cells",
+      difficulty: 3,
+      stem: "Which protein inside the red blood cell binds and carries oxygen?",
+      choices: {
+        a: "Albumin",
+        b: "Hemoglobin",
+        c: "Fibrinogen",
+        d: "Globulin",
+      },
+      correct: "b",
+      explanation:
+        "Hemoglobin is the iron-containing protein filling the red cell. Each " +
+        "molecule binds oxygen in the lungs and releases it in the tissues, and " +
+        "its concentration is what a hemoglobin measurement reports.",
+      why: {
+        a: "Albumin is a plasma protein that maintains oncotic pressure and transports various substances.",
+        c: "Fibrinogen is a plasma clotting protein, converted to fibrin during coagulation.",
+        d: "Globulins are a plasma protein group that includes antibodies.",
+      },
+      tip: "Hemoglobin is inside the cell; albumin, fibrinogen, and globulins are out in the plasma.",
+      tags: ["hemoglobin", "red-blood-cells", "oxygen-transport"],
+    },
+    {
+      id: "ana-038",
+      subdomain: "Capillary anatomy",
+      difficulty: 3,
+      stem: "How does the composition of capillary blood differ from venous blood?",
+      choices: {
+        a: "It is identical in every respect",
+        b: "It is a mixture of arterial and venous blood plus interstitial and intracellular fluid",
+        c: "It contains no white blood cells",
+        d: "It is purely arterial blood",
+      },
+      correct: "b",
+      explanation:
+        "A dermal puncture samples blood from the capillary bed, so it mixes " +
+        "arterial and venous blood with a small contribution of interstitial and " +
+        "intracellular fluid. That is why some capillary values differ from " +
+        "venous ones and why the specimen source is noted.",
+      why: {
+        a: "Several analytes differ measurably between capillary and venous specimens.",
+        c: "White cells are present in capillary blood.",
+        d: "Capillary blood is mixed, with a modest arterial predominance in a warmed site — not purely arterial.",
+      },
+      tip: "Capillary blood is a blend. Note the source, because some values legitimately differ from venous.",
+      tags: ["capillary-blood", "dermal-puncture", "specimen-source"],
+    },
+    {
+      id: "ana-039",
+      subdomain: "Body systems",
+      difficulty: 2,
+      stem: "Creatinine and blood urea nitrogen are used primarily to assess which body system?",
+      choices: {
+        a: "The hepatic system",
+        b: "The urinary (renal) system",
+        c: "The endocrine system",
+        d: "The respiratory system",
+      },
+      correct: "b",
+      explanation:
+        "Both are nitrogenous waste products cleared by the kidneys, so their " +
+        "concentrations in blood reflect how well the kidneys are filtering. " +
+        "Rising levels suggest reduced renal clearance.",
+      why: {
+        a: "Liver assessment relies on ALT, AST, bilirubin, and albumin.",
+        c: "Endocrine assessment uses hormone measurements such as TSH and cortisol.",
+        d: "Respiratory function is assessed with blood gases, not with nitrogenous wastes.",
+      },
+      tip: "Creatinine and BUN mean kidneys. ALT, AST, bilirubin mean liver.",
+      tags: ["renal", "creatinine", "bun"],
+    },
+    {
+      id: "ana-040",
+      subdomain: "Blood cells",
+      difficulty: 2,
+      stem: "Where are blood cells primarily produced in an adult?",
+      choices: {
+        a: "The spleen",
+        b: "The red bone marrow",
+        c: "The liver",
+        d: "The thymus",
+      },
+      correct: "b",
+      explanation:
+        "Hematopoiesis in adults takes place in red bone marrow, chiefly in the " +
+        "flat bones and the ends of long bones. The liver and spleen perform " +
+        "this role in the fetus and can resume it in some disease states, but " +
+        "marrow is the normal adult site.",
+      why: {
+        a: "The spleen filters blood and removes aged red cells rather than producing them in health.",
+        c: "The liver is a fetal site of blood formation, not the adult one.",
+        d: "The thymus is where T lymphocytes mature, not where blood cells are produced.",
+      },
+      tip: "Adults make blood in red marrow. The liver and spleen did that job before birth.",
+      tags: ["hematopoiesis", "bone-marrow", "blood-cells"],
+    },
+    {
+      id: "ana-041",
+      subdomain: "Terminology",
+      difficulty: 2,
+      stem: "What does the term \"distal\" mean?",
+      choices: {
+        a: "Closer to the point of attachment or the trunk",
+        b: "Farther from the point of attachment or the trunk",
+        c: "Toward the midline of the body",
+        d: "Toward the back of the body",
+      },
+      correct: "b",
+      explanation:
+        "Distal describes a position farther from the trunk or from a limb's " +
+        "attachment — the fingers are distal to the wrist, which is distal to " +
+        "the elbow. Proximal is its opposite, and both are used constantly in " +
+        "describing where a site sits on a limb.",
+      why: {
+        a: "That is the definition of proximal.",
+        c: "Toward the midline is medial.",
+        d: "Toward the back is posterior or dorsal.",
+      },
+      tip: "Distal = distant from the trunk. Proximal = pressed toward it.",
+      tags: ["terminology", "anatomical-directions"],
+    },
+    {
+      id: "ana-042",
+      subdomain: "Circulation",
+      difficulty: 3,
+      stem: "Which statement about veins is correct?",
+      choices: {
+        a: "Veins carry blood away from the heart under high pressure",
+        b: "Veins carry blood toward the heart and many contain valves that prevent backflow",
+        c: "Veins have thicker muscular walls than arteries",
+        d: "Veins never carry oxygenated blood",
+      },
+      correct: "b",
+      explanation:
+        "Veins return blood to the heart at low pressure, which is why many — " +
+        "especially in the limbs — carry one-way valves that stop blood falling " +
+        "backward between muscular contractions. A valve encountered during a " +
+        "draw is one cause of a vein that will not yield blood.",
+      why: {
+        a: "Carrying blood away from the heart under high pressure describes arteries.",
+        c: "Arteries have the thicker, more muscular walls; vein walls are comparatively thin.",
+        d: "The pulmonary veins carry oxygenated blood from the lungs to the heart.",
+      },
+      tip: "Veins go toward the heart, have valves, and are thin-walled. The pulmonary vein is the oxygenated exception.",
+      tags: ["veins", "valves", "circulation"],
+    },
+    {
+      id: "ana-043",
+      subdomain: "Vascular anatomy",
+      difficulty: 3,
+      stem: "In the common \"H\" pattern of antecubital veins, which vein connects the cephalic and basilic veins?",
+      choices: {
+        a: "The brachial vein",
+        b: "The median cubital vein",
+        c: "The radial vein",
+        d: "The axillary vein",
+      },
+      correct: "b",
+      explanation:
+        "In the H pattern the median cubital vein runs diagonally between the " +
+        "cephalic vein laterally and the basilic vein medially, forming the " +
+        "crossbar. Its central position, size, and anchoring are what make it " +
+        "the first-choice site.",
+      why: {
+        a: "The brachial vein is a deep vessel running with the brachial artery, not part of the superficial pattern.",
+        c: "The radial vein is a deep forearm vessel, not part of the antecubital surface pattern.",
+        d: "The axillary vein lies at the shoulder, well above the antecubital fossa.",
+      },
+      tip: "In an H, the median cubital is the crossbar joining cephalic to basilic — and it's your first choice.",
+      tags: ["median-cubital", "h-pattern", "antecubital"],
+    },
+    {
+      id: "ana-044",
+      subdomain: "Blood cells",
+      difficulty: 2,
+      stem: "An elevated eosinophil count is most often associated with which condition?",
+      choices: {
+        a: "Acute bacterial infection",
+        b: "Allergic reactions and parasitic infections",
+        c: "Iron deficiency",
+        d: "Dehydration",
+      },
+      correct: "b",
+      explanation:
+        "Eosinophils rise in allergic and parasitic conditions. Acute bacterial " +
+        "infection typically drives neutrophils up instead, and viral infection " +
+        "more often raises lymphocytes — which is why the differential count is " +
+        "informative beyond the total white count.",
+      why: {
+        a: "A neutrophil rise is the classic response to acute bacterial infection.",
+        c: "Iron deficiency shows in red cell indices, not in the eosinophil count.",
+        d: "Dehydration concentrates all cell lines relatively rather than selectively raising eosinophils.",
+      },
+      tip: "Eosinophils: allergies and parasites. Neutrophils: bacteria. Lymphocytes: viruses.",
+      tags: ["eosinophils", "differential", "white-blood-cells"],
+    },
+    {
+      id: "ana-045",
+      subdomain: "Terminology",
+      difficulty: 2,
+      stem: "The suffix \"-emia\" refers to what?",
+      choices: {
+        a: "A condition of the blood",
+        b: "Inflammation",
+        c: "Surgical removal",
+        d: "Excessive discharge",
+      },
+      correct: "a",
+      explanation:
+        "\"-emia\" denotes a blood condition, which is why it appears in anemia, " +
+        "leukemia, bacteremia, and hyperglycemia. Recognizing it makes " +
+        "unfamiliar terms on a requisition readable rather than memorized.",
+      why: {
+        b: "Inflammation is \"-itis\", as in phlebitis.",
+        c: "Surgical removal is \"-ectomy\", as in splenectomy.",
+        d: "Excessive discharge is \"-rrhea\".",
+      },
+      tip: "-emia = blood, -itis = inflammation, -ectomy = removal, -ology = study of.",
+      tags: ["terminology", "word-parts", "suffixes"],
+    },
+    {
+      id: "ana-046",
+      subdomain: "Hemostasis",
+      difficulty: 3,
+      stem: "Why do EDTA and sodium citrate prevent a specimen from clotting?",
+      choices: {
+        a: "They destroy platelets",
+        b: "They bind calcium, which the coagulation cascade requires",
+        c: "They inhibit thrombin directly",
+        d: "They lower the specimen's pH below the range where clotting occurs",
+      },
+      correct: "b",
+      explanation:
+        "Both are chelators: they bind the calcium ions that several steps of " +
+        "the coagulation cascade depend on, so the cascade cannot proceed. " +
+        "Heparin works by a different mechanism — it enhances antithrombin and " +
+        "so inhibits thrombin and factor Xa.",
+      why: {
+        a: "Platelets remain present and are counted from an EDTA specimen; that is what makes it the hematology tube.",
+        c: "Direct thrombin inhibition is not how calcium chelators act; heparin's mechanism is the antithrombin route.",
+        d: "Neither works through a pH shift.",
+      },
+      tip: "EDTA and citrate grab calcium. Heparin boosts antithrombin. Different mechanisms, different uses.",
+      tags: ["anticoagulants", "calcium", "coagulation"],
+    },
+    {
+      id: "ana-047",
+      subdomain: "Vascular anatomy",
+      difficulty: 3,
+      stem: "Which structure lies close enough to the medial antecubital area to make an inadvertent puncture there particularly serious?",
+      choices: {
+        a: "The ulnar nerve at the wrist",
+        b: "The median nerve and the brachial artery",
+        c: "The radial artery",
+        d: "The cephalic vein",
+      },
+      correct: "b",
+      explanation:
+        "The median nerve and the brachial artery run near the basilic vein on " +
+        "the medial side of the antecubital fossa. Puncturing either can produce " +
+        "lasting nerve injury or significant arterial bleeding, which is why the " +
+        "medial approach is the last one attempted.",
+      why: {
+        a: "The ulnar nerve is a concern at the wrist rather than in the medial antecubital area.",
+        c: "The radial artery is at the wrist and is used for arterial sampling by trained staff.",
+        d: "The cephalic vein is a lateral vein and is a routine, comparatively safe alternative.",
+      },
+      tip: "Medial antecubital = nerve and artery territory. That is why basilic is last.",
+      tags: ["median-nerve", "brachial-artery", "complications"],
+    },
+    {
+      id: "ana-048",
+      subdomain: "Blood composition",
+      difficulty: 2,
+      stem: "A hematocrit result of 45% means what?",
+      choices: {
+        a: "45% of the blood volume is plasma",
+        b: "45% of the blood volume is packed red cells",
+        c: "45% of red cells are abnormally shaped",
+        d: "The hemoglobin is 45 g/dL",
+      },
+      correct: "b",
+      explanation:
+        "Hematocrit is the proportion of blood volume occupied by packed red " +
+        "cells. It moves with hydration as well as with red cell mass, which is " +
+        "why a dehydrated patient can show a falsely elevated value.",
+      why: {
+        a: "That is the remaining fraction — plasma — not the hematocrit itself.",
+        c: "Red cell shape abnormalities are reported on a blood film, not by hematocrit.",
+        d: "A hemoglobin of 45 g/dL is not physiologically possible; the units and the measurement differ.",
+      },
+      tip: "Hematocrit = packed red cell fraction. Dehydration pushes it up without adding a single cell.",
+      tags: ["hematocrit", "red-blood-cells", "blood-composition"],
+    },
+    {
+      id: "ana-049",
+      subdomain: "Body systems",
+      difficulty: 2,
+      stem: "The lymphatic system's role most relevant to phlebotomy site selection is what?",
+      choices: {
+        a: "It produces red blood cells",
+        b: "It drains interstitial fluid, so impaired drainage after node removal makes a limb prone to swelling and infection",
+        c: "It regulates blood pressure directly",
+        d: "It transports oxygen to tissues",
+      },
+      correct: "b",
+      explanation:
+        "Lymphatics return interstitial fluid to circulation and filter it " +
+        "through nodes. When nodes are removed or damaged, drainage on that side " +
+        "is impaired — the limb swells more readily and clears infection less " +
+        "well, which is why that arm is avoided for venipuncture.",
+      why: {
+        a: "Red cells are produced in bone marrow.",
+        c: "Blood pressure regulation is primarily cardiovascular, renal, and endocrine.",
+        d: "Oxygen transport belongs to red cells in the bloodstream.",
+      },
+      tip: "Nodes removed means drainage impaired, and impaired drainage is why that arm stays out of the plan.",
+      tags: ["lymphatic-system", "mastectomy", "site-selection"],
+    },
+    {
+      id: "ana-050",
+      subdomain: "Skin anatomy",
+      difficulty: 3,
+      stem: "During a dermal puncture, which skin layer must the lancet reach to obtain blood?",
+      choices: {
+        a: "The epidermis only",
+        b: "The dermis, where the capillary beds lie",
+        c: "The subcutaneous fat layer",
+        d: "The periosteum of the underlying bone",
+      },
+      correct: "b",
+      explanation:
+        "The capillary beds that supply a dermal puncture sit in the dermis, " +
+        "beneath the avascular epidermis. Lancet depth is chosen to reach them " +
+        "without going deeper — reaching bone risks osteomyelitis, which is the " +
+        "reason heel puncture depth is limited in infants.",
+      why: {
+        a: "The epidermis has no blood vessels, so a puncture confined to it yields nothing.",
+        c: "Passing into subcutaneous fat is deeper than needed and increases injury risk without improving flow.",
+        d: "Contacting bone is a recognized complication to be avoided, not a target.",
+      },
+      tip: "Deep enough for the dermis, never deep enough for bone. That's why lancet depth is specified.",
+      tags: ["dermal-puncture", "skin-anatomy", "capillary-collection"],
+    },
   ],
 );

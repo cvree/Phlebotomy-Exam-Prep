@@ -682,5 +682,924 @@ export const SAFETY_QUESTIONS = buildQuestions(
       tags: ["disinfection", "contact-time", "chemical-safety"],
       sources: [SRC_TEXTBOOK_CURRICULUM],
     },
+    {
+      id: "saf-026",
+      subdomain: "Hand hygiene",
+      difficulty: 2,
+      stem: "A phlebotomist is collecting from a patient in contact precautions for Clostridioides difficile. After removing gloves, which hand hygiene method is required?",
+      choices: {
+        a: "Alcohol-based hand rub, because it acts faster than soap",
+        b: "Soap and running water, because alcohol does not kill the spores",
+        c: "Either method, since gloves were worn throughout",
+        d: "Alcohol-based hand rub followed by a glove change",
+      },
+      correct: "b",
+      explanation:
+        "C. difficile forms spores, and alcohol-based hand rubs do not " +
+        "inactivate them. Washing with soap and running water physically " +
+        "removes spores from the skin through friction and rinsing, which is " +
+        "why soap and water is specified after caring for a patient with C. " +
+        "difficile even when gloves were worn.",
+      why: {
+        a: "Speed is irrelevant when the agent does not work on the organism in question.",
+        c: "Gloves reduce contamination but do not eliminate it — hands are routinely contaminated during removal.",
+        d: "New gloves over spore-contaminated hands does nothing about the spores already on the skin.",
+      },
+      tip: "Spores beat alcohol. C. difficile and norovirus mean soap, water, and friction.",
+      tags: ["hand-hygiene", "c-difficile", "spores"],
+      sources: [SRC_CDC_HAND_HYGIENE, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-027",
+      subdomain: "Hand hygiene",
+      difficulty: 1,
+      stem: "When are hands washed with soap and running water rather than cleaned with an alcohol-based hand rub?",
+      choices: {
+        a: "Whenever gloves are about to be put on",
+        b: "Only at the start and end of a shift",
+        c: "When hands are visibly soiled",
+        d: "Only when a sink happens to be closer than a dispenser",
+      },
+      correct: "c",
+      explanation:
+        "Alcohol-based rubs are the routine choice for hands that are not " +
+        "visibly dirty, because they are faster, more accessible, and gentler " +
+        "on skin. Visible soil — blood, other body fluids, or dirt — defeats " +
+        "an alcohol rub, so those hands are washed with soap and running water.",
+      why: {
+        a: "Hand hygiene before gloving can be performed with a rub when hands are not visibly soiled.",
+        b: "Hand hygiene is performed at many points during a shift, not just its boundaries.",
+        d: "The choice is driven by the state of the hands and the organism involved, never by convenience.",
+      },
+      tip: "Visibly soiled, or spores involved? Soap and water. Otherwise, rub.",
+      tags: ["hand-hygiene", "standard-precautions"],
+      sources: [SRC_CDC_HAND_HYGIENE, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-028",
+      subdomain: "PPE",
+      difficulty: 2,
+      stem: "Which sequence describes the correct order for putting on PPE before entering an isolation room?",
+      choices: {
+        a: "Gloves, gown, mask, eye protection",
+        b: "Gown, mask or respirator, eye protection, gloves",
+        c: "Mask, gloves, gown, eye protection",
+        d: "Eye protection, gloves, gown, mask",
+      },
+      correct: "b",
+      explanation:
+        "Donning works from the inside out and ends with the hands: the gown " +
+        "goes on first, then the mask or respirator, then eye protection, and " +
+        "gloves last so they can be pulled over the gown cuffs. Putting gloves " +
+        "on early means handling straps and ties with gloved hands and leaving " +
+        "the cuff-to-glove seam open.",
+      why: {
+        a: "Gloves are last, not first — they seal over the gown cuffs.",
+        c: "The gown goes on before the mask so its ties can be reached without contaminating gloved hands.",
+        d: "Eye protection sits over the mask straps, so the mask goes on first, and gloves are still last.",
+      },
+      tip: "On: gown, mask, eyes, gloves. Off: gloves, eyes, gown, mask — dirtiest first, mask last and outside the room.",
+      tags: ["ppe", "donning", "isolation"],
+      sources: [SRC_CDC_STANDARD_PRECAUTIONS, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-029",
+      subdomain: "Transmission-based precautions",
+      difficulty: 2,
+      stem: "A requisition is for a patient in airborne precautions for suspected tuberculosis. What respiratory protection is required?",
+      choices: {
+        a: "A surgical mask worn by the phlebotomist",
+        b: "A fit-tested N95 or higher-level respirator",
+        c: "A surgical mask worn by the patient only",
+        d: "No respiratory protection if the draw takes under five minutes",
+      },
+      correct: "b",
+      explanation:
+        "Airborne precautions cover organisms that stay suspended in small " +
+        "droplet nuclei and travel on air currents, so a loose surgical mask is " +
+        "not enough. A fit-tested N95 or higher respirator, worn correctly, is " +
+        "required, and the room's negative-pressure door stays closed.",
+      why: {
+        a: "A surgical mask does not seal to the face and is not rated to filter droplet nuclei.",
+        c: "Masking the patient helps contain source droplets but does not protect the phlebotomist entering the room.",
+        d: "Airborne particles do not respect a stopwatch; protection is required for any entry.",
+      },
+      tip: "Airborne (TB, measles, varicella) = fit-tested N95. Droplet (flu, pertussis) = surgical mask. Contact (MRSA, C. diff) = gown and gloves.",
+      tags: ["airborne-precautions", "tuberculosis", "n95"],
+      sources: [SRC_CDC_STANDARD_PRECAUTIONS, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-030",
+      subdomain: "Transmission-based precautions",
+      difficulty: 2,
+      stem: "Which category of transmission-based precautions applies to a patient colonized with MRSA?",
+      choices: {
+        a: "Airborne precautions",
+        b: "Droplet precautions",
+        c: "Contact precautions",
+        d: "Protective isolation",
+      },
+      correct: "c",
+      explanation:
+        "MRSA spreads by direct and indirect contact — hands, equipment, and " +
+        "environmental surfaces — so contact precautions apply. That means a " +
+        "gown and gloves for the encounter, and equipment that is either " +
+        "dedicated to the room or disinfected before it leaves.",
+      why: {
+        a: "Airborne precautions are for organisms carried in droplet nuclei, such as tuberculosis.",
+        b: "Droplet precautions address large respiratory droplets over a short distance, not contact spread.",
+        d: "Protective isolation shields an immunocompromised patient from the outside world; it does not describe MRSA.",
+      },
+      tip: "MRSA, VRE, C. difficile: contact precautions. Gown and gloves on, equipment wiped down before it leaves.",
+      tags: ["contact-precautions", "mrsa", "isolation"],
+      sources: [SRC_CDC_STANDARD_PRECAUTIONS, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-031",
+      subdomain: "Sharps safety",
+      difficulty: 1,
+      stem: "At what point is a sharps container replaced?",
+      choices: {
+        a: "When items reach the manufacturer's fill line, roughly two-thirds to three-quarters full",
+        b: "Only when nothing more can be forced into it",
+        c: "At the end of every shift, regardless of how full it is",
+        d: "When the outside of the container becomes visibly soiled",
+      },
+      correct: "a",
+      explanation:
+        "Containers are sealed and replaced at the fill line — commonly around " +
+        "two-thirds to three-quarters full — because an overfilled container " +
+        "forces the next user's hand toward protruding sharps. Waiting until " +
+        "nothing else fits guarantees exactly the exposure the container exists " +
+        "to prevent.",
+      why: {
+        b: "Forcing items into a full container is a leading cause of needlestick injury.",
+        c: "Containers are changed by fill level, not by the clock; a barely-used container is not replaced.",
+        d: "External soiling is a separate problem and does not define when a container is full.",
+      },
+      tip: "Seal at the fill line, not at the brim. Never push a sharp past resistance.",
+      tags: ["sharps", "disposal", "needlestick"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-032",
+      subdomain: "Engineering controls",
+      difficulty: 3,
+      stem: "A self-sheathing needle and a rule prohibiting recapping are examples of which two types of control, respectively?",
+      choices: {
+        a: "Work practice control and engineering control",
+        b: "Engineering control and work practice control",
+        c: "Both are engineering controls",
+        d: "Both are personal protective equipment",
+      },
+      correct: "b",
+      explanation:
+        "Engineering controls isolate or remove the hazard through the device " +
+        "itself — a self-sheathing needle, a sharps container, a splash shield. " +
+        "Work practice controls change how the task is performed, such as " +
+        "prohibiting recapping or requiring hand hygiene. Engineering controls " +
+        "are preferred because they do not depend on anyone remembering.",
+      why: {
+        a: "The two are reversed: the device is the engineering control and the rule is the work practice control.",
+        c: "A prohibition on recapping is a behavior rule, not a physical device.",
+        d: "PPE is worn on the body and is the last line of defense, not the first.",
+      },
+      tip: "Engineering = the device does the protecting. Work practice = the person does. PPE = the barrier you wear.",
+      tags: ["engineering-controls", "work-practice-controls", "osha"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-033",
+      subdomain: "Bloodborne pathogens",
+      difficulty: 2,
+      stem: "Under the OSHA Bloodborne Pathogens Standard, what is the employer's obligation regarding hepatitis B vaccination for at-risk employees?",
+      choices: {
+        a: "It must be offered at no cost after training, and may be declined in writing",
+        b: "It is mandatory and employment can be conditioned on receiving it",
+        c: "It must be offered, with the employee paying a share of the cost",
+        d: "It is offered only after an employee sustains an exposure",
+      },
+      correct: "a",
+      explanation:
+        "The vaccination series is made available at no cost to employees with " +
+        "occupational exposure risk, after they receive bloodborne pathogens " +
+        "training and within a short window of assignment. An employee may " +
+        "decline, but must sign a declination form and can request the vaccine " +
+        "later at any time while still covered.",
+      why: {
+        b: "Employees may decline; what is required is that the offer be made and documented.",
+        c: "The employer bears the full cost — no share is passed to the employee.",
+        d: "The vaccine is offered proactively; post-exposure prophylaxis is a separate obligation.",
+      },
+      tip: "Offered free, offered early, declinable in writing, and available later if the employee changes their mind.",
+      tags: ["hepatitis-b", "vaccination", "osha"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-034",
+      subdomain: "Bloodborne pathogens",
+      difficulty: 2,
+      stem: "Which bloodborne pathogen carries the highest risk of transmission from a single needlestick involving an infected source patient?",
+      choices: {
+        a: "HIV",
+        b: "Hepatitis C virus",
+        c: "Hepatitis B virus",
+        d: "All three carry an identical risk",
+      },
+      correct: "c",
+      explanation:
+        "Hepatitis B is the most transmissible of the three by needlestick, " +
+        "which is precisely why an effective vaccine is offered to every worker " +
+        "with exposure risk. Hepatitis C carries an intermediate risk with no " +
+        "vaccine available, and HIV the lowest of the three.",
+      why: {
+        a: "HIV transmission risk from a percutaneous exposure is the lowest of the three.",
+        b: "Hepatitis C sits between hepatitis B and HIV in transmission risk.",
+        d: "The three differ substantially, which is why vaccination and follow-up protocols differ.",
+      },
+      tip: "By needlestick risk: HBV > HCV > HIV. Only HBV has a vaccine — take it.",
+      tags: ["bloodborne-pathogens", "hepatitis-b", "exposure-risk"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-035",
+      subdomain: "Exposure response",
+      difficulty: 2,
+      stem: "Under the Bloodborne Pathogens Standard, who pays for post-exposure evaluation and follow-up after an occupational needlestick?",
+      choices: {
+        a: "The employee, through their own health insurance",
+        b: "The employer, at no cost to the employee",
+        c: "The source patient's insurance carrier",
+        d: "It is split between employer and employee",
+      },
+      correct: "b",
+      explanation:
+        "Post-exposure evaluation, testing, prophylaxis, and follow-up are " +
+        "provided at no cost to the exposed employee, at a reasonable time and " +
+        "place, and by a licensed healthcare professional. Cost must never be a " +
+        "reason an exposure goes unreported.",
+      why: {
+        a: "Shifting the cost to the employee is exactly what the standard forbids.",
+        c: "The source patient bears no responsibility for the exposed worker's care.",
+        d: "There is no employee share; the full cost sits with the employer.",
+      },
+      tip: "Free, prompt, and confidential — the three features that make reporting an exposure the easy choice.",
+      tags: ["exposure-response", "osha", "post-exposure"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-036",
+      subdomain: "Biohazard spills",
+      difficulty: 2,
+      stem: "A tube of blood breaks on the floor of the drawing room. After putting on gloves, what is the correct sequence for cleaning it up?",
+      choices: {
+        a: "Pour disinfectant over the spill, then sweep the glass into a bag",
+        b: "Absorb the liquid, remove glass with forceps or a brush and dustpan into a sharps container, then disinfect the area",
+        c: "Wipe the area with disinfectant, then pick up the glass by hand",
+        d: "Cover the spill with paper towels and report it for housekeeping to handle",
+      },
+      correct: "b",
+      explanation:
+        "Liquid is absorbed first so the spill is contained, broken glass is " +
+        "picked up with a mechanical device — never gloved fingers — and " +
+        "discarded as a sharp, and only then is the area disinfected with an " +
+        "appropriate agent for the required contact time.",
+      why: {
+        a: "Flooding the spill spreads it, and broken glass is never swept into an ordinary bag.",
+        c: "Picking up glass by hand risks a contaminated laceration, gloves or not.",
+        d: "The person who breaks a specimen is responsible for containing it; blood spills are not left for someone else to find.",
+      },
+      tip: "Absorb, remove sharps mechanically, disinfect, then dispose of everything as biohazard waste.",
+      tags: ["spill-cleanup", "broken-glass", "biohazard"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-037",
+      subdomain: "Biohazard spills",
+      difficulty: 2,
+      stem: "Which disinfectant preparation is commonly specified for decontaminating a blood spill on a hard surface?",
+      choices: {
+        a: "A 1:10 dilution of household bleach, prepared for use",
+        b: "70% isopropyl alcohol",
+        c: "Plain detergent and hot water",
+        d: "A 1:1000 dilution of bleach",
+      },
+      correct: "a",
+      explanation:
+        "A freshly prepared 1:10 dilution of household bleach — or another " +
+        "EPA-registered tuberculocidal disinfectant — is the standard choice " +
+        "for blood spills. Bleach solutions lose potency over time, so they are " +
+        "prepared for use rather than kept indefinitely, and the surface must " +
+        "stay wet for the labeled contact time.",
+      why: {
+        b: "Alcohol evaporates quickly, is not the recommended agent for blood spills, and does not penetrate organic material well.",
+        c: "Detergent cleans but does not disinfect; blood spills require a registered disinfectant.",
+        d: "That dilution is far too weak for a blood spill on a surface.",
+      },
+      tip: "1:10 bleach, made fresh, left wet for the labeled contact time.",
+      tags: ["disinfection", "bleach", "spill-cleanup"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-038",
+      subdomain: "Chain of infection",
+      difficulty: 2,
+      stem: "Performing hand hygiene between patients breaks which link in the chain of infection?",
+      choices: {
+        a: "The susceptible host",
+        b: "The mode of transmission",
+        c: "The infectious agent",
+        d: "The portal of entry",
+      },
+      correct: "b",
+      explanation:
+        "Hands are the classic vehicle carrying organisms from one patient to " +
+        "the next, so cleaning them interrupts the mode of transmission. The " +
+        "chain needs every link to stay intact — agent, reservoir, portal of " +
+        "exit, mode of transmission, portal of entry, susceptible host — so " +
+        "breaking any one of them stops the infection.",
+      why: {
+        a: "Protecting the host is what vaccination and treating underlying illness address.",
+        c: "The organism itself still exists; hand hygiene removes it from the route, not from the world.",
+        d: "Covering a wound or using a barrier addresses the portal of entry.",
+      },
+      tip: "Six links: agent, reservoir, portal of exit, transmission, portal of entry, host. Break any one and there is no infection.",
+      tags: ["chain-of-infection", "hand-hygiene", "transmission"],
+      sources: [SRC_CDC_STANDARD_PRECAUTIONS, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-039",
+      subdomain: "Work area rules",
+      difficulty: 1,
+      stem: "Which activity is prohibited in an area where blood specimens are handled?",
+      choices: {
+        a: "Labeling tubes at the bench",
+        b: "Applying lip balm or handling contact lenses",
+        c: "Writing on a requisition",
+        d: "Wearing a laboratory coat",
+      },
+      correct: "b",
+      explanation:
+        "Eating, drinking, smoking, applying cosmetics or lip balm, and " +
+        "handling contact lenses are prohibited wherever there is a reasonable " +
+        "likelihood of occupational exposure. All of them move a hand to the " +
+        "face or mouth, which is precisely the route contamination takes.",
+      why: {
+        a: "Labeling at the bench is routine work, done with gloves and hand hygiene.",
+        c: "Paperwork is expected work; it is kept away from specimen contact but is not prohibited.",
+        d: "A laboratory coat is protective equipment, and is required rather than prohibited.",
+      },
+      tip: "Nothing that brings a hand to your mouth or eyes. That covers food, drink, cosmetics, lip balm, and contacts.",
+      tags: ["work-practice-controls", "osha", "contamination"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-040",
+      subdomain: "Work area rules",
+      difficulty: 1,
+      stem: "A coworker asks to keep their lunch in the refrigerator used for chilled specimens because it is the nearest one. What is the correct response?",
+      choices: {
+        a: "Allow it if the food is sealed in a bag",
+        b: "Allow it only for the duration of one shift",
+        c: "Decline — food and drink are never stored where blood or specimens are kept",
+        d: "Allow it if the food is on a separate shelf from the specimens",
+      },
+      correct: "c",
+      explanation:
+        "Food and drink are never stored in refrigerators, freezers, shelves, " +
+        "cabinets, or on countertops where blood or other potentially " +
+        "infectious material is kept. Bags, shelves, and time limits do not " +
+        "change the rule, because contamination transfers through handles, " +
+        "surfaces, and leaks rather than direct stacking.",
+      why: {
+        a: "A sealed bag does not stop the hands that open the door from transferring contamination.",
+        b: "The prohibition has no time allowance built into it.",
+        d: "Shelf separation inside a shared unit is not a recognized control.",
+      },
+      tip: "Specimen refrigerators hold specimens. There is no version of this that is acceptable.",
+      tags: ["work-practice-controls", "specimen-storage", "osha"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-041",
+      subdomain: "Fire safety",
+      difficulty: 2,
+      stem: "The RACE acronym guides response to a fire. What does the R stand for?",
+      choices: {
+        a: "Report the fire to the switchboard",
+        b: "Rescue anyone in immediate danger",
+        c: "Restrict access to the corridor",
+        d: "Retrieve the nearest extinguisher",
+      },
+      correct: "b",
+      explanation:
+        "RACE runs Rescue, Alarm, Confine, Extinguish or Evacuate. People come " +
+        "first: anyone in immediate danger is moved, then the alarm is raised, " +
+        "then doors are closed to confine the fire, and only then is a small " +
+        "fire fought — or the area evacuated if it is not small.",
+      why: {
+        a: "Raising the alarm is the A, and it comes after moving anyone in immediate danger.",
+        c: "Confining the fire by closing doors is the C, the third step.",
+        d: "Extinguishing is the last step, and only for a fire small enough to fight safely.",
+      },
+      tip: "RACE for the response, PASS for the extinguisher: Pull, Aim, Squeeze, Sweep.",
+      tags: ["fire-safety", "race", "emergency"],
+      sources: [SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-042",
+      subdomain: "Chemical safety",
+      difficulty: 2,
+      stem: "Where does a phlebotomist find the handling, storage, and first-aid information for a chemical used in the drawing area?",
+      choices: {
+        a: "The safety data sheet (SDS) for that chemical",
+        b: "The facility's exposure control plan",
+        c: "The manufacturer's tube insert",
+        d: "The infection control manual",
+      },
+      correct: "a",
+      explanation:
+        "A safety data sheet accompanies every hazardous chemical and covers " +
+        "identification, hazards, composition, first-aid measures, handling and " +
+        "storage, exposure controls, and disposal. Employers must keep them " +
+        "accessible to employees during every shift.",
+      why: {
+        b: "The exposure control plan addresses bloodborne pathogens, not chemical hazards.",
+        c: "A tube insert describes the tube and its additive, not general chemical hazards.",
+        d: "Infection control covers organisms; chemical hazard information lives in the SDS.",
+      },
+      tip: "Chemical question? SDS. Bloodborne question? Exposure control plan.",
+      tags: ["chemical-safety", "sds", "hazard-communication"],
+      sources: [SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-043",
+      subdomain: "Chemical safety",
+      difficulty: 2,
+      stem: "When a dilution requires mixing acid and water, which order is correct and why?",
+      choices: {
+        a: "Water into acid, so the acid is not disturbed",
+        b: "Acid into water, so heat is dissipated and splattering is limited",
+        c: "Either order, provided the container is glass",
+        d: "Either order, provided a fume hood is used",
+      },
+      correct: "b",
+      explanation:
+        "Acid is always added to water. The reaction releases heat, and the " +
+        "larger volume of water absorbs it; pouring water into concentrated " +
+        "acid concentrates that heat at the surface and can boil and spatter " +
+        "corrosive liquid back at the person mixing it.",
+      why: {
+        a: "This is the dangerous direction, and the reason has nothing to do with disturbing the acid.",
+        c: "Glassware does not change the chemistry of the exothermic reaction.",
+        d: "A hood captures vapor but does not prevent a spattering burn.",
+      },
+      tip: "Do as you oughta — add acid to water.",
+      tags: ["chemical-safety", "dilution", "acid"],
+      sources: [SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-044",
+      subdomain: "Waste handling",
+      difficulty: 1,
+      stem: "A used gauze pad with a small amount of dried blood on it is discarded into which container?",
+      choices: {
+        a: "The sharps container",
+        b: "A biohazard (regulated medical waste) container",
+        c: "The regular waste basket, since it is not saturated",
+        d: "The chemical waste bin",
+      },
+      correct: "b",
+      explanation:
+        "Blood-contaminated non-sharp items go into a labeled biohazard " +
+        "container. Facility policy defines exactly which lightly-soiled items " +
+        "must be treated as regulated waste, and the safe default for anything " +
+        "carrying visible blood is the biohazard container.",
+      why: {
+        a: "Sharps containers are reserved for needles, lancets, and broken glass — filling them with gauze wastes capacity.",
+        c: "Guessing about saturation is not the phlebotomist's call to make at the bedside; visible blood goes in biohazard waste.",
+        d: "Chemical waste streams are for chemicals, not blood-contaminated material.",
+      },
+      tip: "Sharps in sharps. Anything else with blood on it goes in biohazard. Everything else is trash.",
+      tags: ["waste-disposal", "biohazard", "regulated-waste"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-045",
+      subdomain: "PPE",
+      difficulty: 2,
+      stem: "A patient reports a latex allergy. Which change is required before the draw?",
+      choices: {
+        a: "Use nitrile gloves and a non-latex tourniquet, and check the bandage material",
+        b: "Use latex gloves but double-glove for a barrier",
+        c: "Use latex gloves and wash hands before contact",
+        d: "No change is required — glove latex does not touch the patient",
+      },
+      correct: "a",
+      explanation:
+        "Every item that may touch the patient is swapped for a latex-free " +
+        "alternative: gloves, tourniquet, and adhesive bandage. Tourniquets are " +
+        "the item most often forgotten, and they sit against skin under " +
+        "pressure for the length of the draw.",
+      why: {
+        b: "Doubling a latex glove doubles the latex; it does not create a latex-free barrier.",
+        c: "Hand hygiene has no effect on the latex proteins in the glove itself.",
+        d: "Gloves contact the patient's arm directly throughout the procedure.",
+      },
+      tip: "Latex allergy means gloves, tourniquet, and bandage all change — the tourniquet is the one people forget.",
+      tags: ["latex-allergy", "ppe", "tourniquet"],
+      sources: [SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-046",
+      subdomain: "Sharps safety",
+      difficulty: 3,
+      stem: "A phlebotomist finds an uncapped needle left on a counter by a colleague. What is the safest response?",
+      choices: {
+        a: "Carefully recap it with a one-handed scoop, then discard it",
+        b: "Bring a sharps container to the counter and dispose of the needle without recapping",
+        c: "Carry the needle to the nearest sharps container across the room",
+        d: "Leave it and tell the colleague who left it to deal with it",
+      },
+      correct: "b",
+      explanation:
+        "The container comes to the sharp, not the other way around. Bringing a " +
+        "sharps container to the counter removes the need to recap or to carry " +
+        "an exposed needle through a space where someone may turn a corner into " +
+        "it. The incident is then reported so the underlying practice is fixed.",
+      why: {
+        a: "Recapping adds an unnecessary handling step; the goal is to touch the needle as little as possible.",
+        c: "Walking with an unsheathed needle is one of the highest-risk moments in the whole procedure.",
+        d: "Leaving an exposed needle on a counter leaves the hazard live for whoever arrives next.",
+      },
+      tip: "Never carry, never recap. Move the container, not the needle.",
+      tags: ["sharps", "needlestick", "hazard-response"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-047",
+      subdomain: "Specimen transport safety",
+      difficulty: 2,
+      stem: "How are labeled tubes transported from an outpatient drawing station to the laboratory?",
+      choices: {
+        a: "Loose in a laboratory coat pocket",
+        b: "In a sealed, leak-proof biohazard bag, with the requisition in the outer pocket",
+        c: "In an open rack carried by hand",
+        d: "In a sealed biohazard bag together with the requisition",
+      },
+      correct: "b",
+      explanation:
+        "Specimens travel in a closed, leak-proof secondary container labeled " +
+        "with the biohazard symbol. The requisition rides in the separate outer " +
+        "pocket so that a leaking tube does not destroy the paperwork that " +
+        "identifies the specimen.",
+      why: {
+        a: "A pocket is neither leak-proof nor labeled, and tubes can break or fall out.",
+        c: "An open rack offers no containment if a tube tips, leaks, or breaks in transit.",
+        d: "Sealing the requisition in with the specimen risks losing it to a leak — that is what the outer pocket is for.",
+      },
+      tip: "Specimen inside, paperwork in the outside pocket. That separation is the whole reason the pocket exists.",
+      tags: ["transport", "biohazard-bag", "specimen-handling"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-048",
+      subdomain: "PPE",
+      difficulty: 2,
+      stem: "During a difficult draw a phlebotomist's glove tears. What should be done?",
+      choices: {
+        a: "Continue and change gloves after the draw is finished",
+        b: "Stop safely, remove the needle and dispose of it, perform hand hygiene, and re-glove",
+        c: "Pull a second glove over the torn one and continue",
+        d: "Continue if there is no visible blood on the hand",
+      },
+      correct: "b",
+      explanation:
+        "A torn glove is no longer a barrier. The draw is brought to a safe " +
+        "stop — needle out and disposed of — then gloves come off, hands are " +
+        "cleaned, and fresh gloves go on before the procedure is restarted.",
+      why: {
+        a: "Finishing the draw means continuing to work with blood while unprotected.",
+        c: "Layering a glove over a contaminated tear does not decontaminate the hand underneath.",
+        d: "Contamination is not always visible, which is the premise of standard precautions.",
+      },
+      tip: "A compromised barrier is no barrier. Stop, discard, clean hands, re-glove.",
+      tags: ["ppe", "gloves", "standard-precautions"],
+      sources: [SRC_CDC_STANDARD_PRECAUTIONS, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-049",
+      subdomain: "Exposure control plan",
+      difficulty: 2,
+      stem: "How often must an employer review and update the exposure control plan?",
+      choices: {
+        a: "Every three years",
+        b: "At least annually, and whenever tasks or procedures change",
+        c: "Only after an exposure incident occurs",
+        d: "Only when new employees are hired",
+      },
+      correct: "b",
+      explanation:
+        "The plan is reviewed and updated at least annually and whenever new or " +
+        "modified tasks and procedures affect exposure. The annual review must " +
+        "also document consideration of safer devices that have come onto the " +
+        "market since the last review.",
+      why: {
+        a: "A three-year cycle is too long; the requirement is annual at minimum.",
+        c: "Waiting for an incident makes the plan reactive, which is the opposite of its purpose.",
+        d: "Hiring triggers training, not the plan review cycle.",
+      },
+      tip: "Annually, plus whenever the work changes — and the review documents new safer devices considered.",
+      tags: ["exposure-control-plan", "osha", "compliance"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-050",
+      subdomain: "Sharps safety",
+      difficulty: 2,
+      stem: "What information must a sharps injury log record?",
+      choices: {
+        a: "The injured employee's full name and home address",
+        b: "The type and brand of device, the department where the incident occurred, and how it happened",
+        c: "The source patient's name and diagnosis",
+        d: "Only the total number of injuries each year",
+      },
+      correct: "b",
+      explanation:
+        "The log records the device type and brand, where the incident " +
+        "happened, and an explanation of how — the details that let a facility " +
+        "identify which devices and which settings are producing injuries. It " +
+        "is maintained so employee confidentiality is protected.",
+      why: {
+        a: "The log is kept in a way that protects the confidentiality of the injured employee.",
+        c: "Source patient identity is confidential medical information and is not logged here.",
+        d: "A bare count reveals nothing about which device or setting needs to change.",
+      },
+      tip: "The log exists to find patterns in devices and settings, not to name people.",
+      tags: ["sharps-injury-log", "osha", "needlestick"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-051",
+      subdomain: "PPE",
+      difficulty: 1,
+      stem: "When must a laboratory coat or gown worn during collections be removed?",
+      choices: {
+        a: "At the end of the week, when it goes for laundering",
+        b: "Before leaving the work area, and immediately if it becomes contaminated",
+        c: "Only if it is visibly soaked through",
+        d: "Only when the phlebotomist takes a break",
+      },
+      correct: "b",
+      explanation:
+        "Protective clothing stays in the work area. It comes off before " +
+        "leaving — so contamination is not carried to the cafeteria, the lift, " +
+        "or home — and comes off immediately if it is penetrated by blood or " +
+        "other potentially infectious material.",
+      why: {
+        a: "Wearing a potentially contaminated coat for a week and outside the work area defeats its purpose.",
+        c: "Contamination requiring removal does not have to soak through.",
+        d: "Break time is one occasion among many; the rule is leaving the work area.",
+      },
+      tip: "The coat protects the work area from you and you from it. It does not leave with you.",
+      tags: ["ppe", "laboratory-coat", "contamination"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-052",
+      subdomain: "Standard precautions",
+      difficulty: 2,
+      stem: "Under standard precautions, which body fluid is NOT automatically treated as potentially infectious?",
+      choices: {
+        a: "Sweat",
+        b: "Saliva",
+        c: "Cerebrospinal fluid",
+        d: "Any fluid visibly contaminated with blood",
+      },
+      correct: "a",
+      explanation:
+        "Standard precautions apply to blood, all body fluids, secretions and " +
+        "excretions except sweat, non-intact skin, and mucous membranes. Sweat " +
+        "is the single named exception, and any fluid with visible blood in it " +
+        "is treated as infectious regardless.",
+      why: {
+        b: "Saliva is included, and is specifically named in the context of dental procedures.",
+        c: "Cerebrospinal fluid is explicitly among the fluids covered.",
+        d: "Visible blood removes any doubt — that fluid is treated as infectious.",
+      },
+      tip: "Everything except sweat. That is the whole exception list.",
+      tags: ["standard-precautions", "body-fluids", "osha"],
+      sources: [SRC_CDC_STANDARD_PRECAUTIONS, SRC_OSHA_BBP],
+    },
+    {
+      id: "saf-053",
+      subdomain: "Isolation",
+      difficulty: 3,
+      stem: "A phlebotomist must collect from a patient in protective (reverse) isolation. What is the purpose of the PPE in this case?",
+      choices: {
+        a: "To protect the phlebotomist from the patient's infection",
+        b: "To protect an immunocompromised patient from organisms carried in",
+        c: "To prevent specimen contamination during transport",
+        d: "To satisfy a documentation requirement only",
+      },
+      correct: "b",
+      explanation:
+        "Protective isolation reverses the usual direction: the patient's " +
+        "immune system cannot defend against organisms that a healthy person " +
+        "shrugs off, so PPE keeps the outside world out. Supplies brought into " +
+        "the room are limited to what is needed, and anything shared is avoided.",
+      why: {
+        a: "That is the aim of transmission-based precautions, which run in the opposite direction.",
+        c: "Specimen integrity is handled by collection and transport practice, not by isolation type.",
+        d: "The requirement exists because the patient's safety genuinely depends on it.",
+      },
+      tip: "Standard and transmission-based precautions protect you. Protective isolation protects the patient.",
+      tags: ["protective-isolation", "immunocompromised", "ppe"],
+      sources: [SRC_CDC_STANDARD_PRECAUTIONS, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-054",
+      subdomain: "Equipment hygiene",
+      difficulty: 2,
+      stem: "A reusable tourniquet becomes contaminated with a drop of blood during a draw. What should happen to it?",
+      choices: {
+        a: "Wipe the visible drop off and continue using it",
+        b: "Discard it, and use a single-patient tourniquet for the rest of the encounter",
+        c: "Set it aside to be laundered at the end of the week",
+        d: "Use it only for patients in the same isolation category",
+      },
+      correct: "b",
+      explanation:
+        "A blood-contaminated tourniquet is discarded rather than wiped. " +
+        "Tourniquets are handled repeatedly, stretched, and pressed against " +
+        "skin, and many facilities now use single-patient-use tourniquets " +
+        "precisely because they are a documented vehicle for organisms between " +
+        "patients.",
+      why: {
+        a: "Wiping does not decontaminate a porous, stretched material that has absorbed blood.",
+        c: "A contaminated item is not kept in circulation for days awaiting laundering.",
+        d: "Grouping patients by isolation category is not a recognized substitute for disposing of contaminated equipment.",
+      },
+      tip: "Contaminated tourniquet = discarded tourniquet. It is the cheapest item in the tray and the most-handled.",
+      tags: ["tourniquet", "equipment-hygiene", "cross-contamination"],
+      sources: [SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-055",
+      subdomain: "Ergonomics and general safety",
+      difficulty: 1,
+      stem: "Which practice reduces the risk of injury when a phlebotomist must move a heavy specimen transport box?",
+      choices: {
+        a: "Bend at the waist and lift with a straight back",
+        b: "Bend the knees, keep the load close to the body, and lift with the legs",
+        c: "Twist while lifting to shorten the movement",
+        d: "Lift quickly to reduce the time under load",
+      },
+      correct: "b",
+      explanation:
+        "Safe lifting bends the knees rather than the back, keeps the load " +
+        "close to the body's center of gravity, and drives the movement with " +
+        "the large muscles of the legs. Twisting under load is a common cause " +
+        "of back injury and is avoided by turning the feet instead.",
+      why: {
+        a: "Bending at the waist puts the load on the lumbar spine, which is the injury pattern to avoid.",
+        c: "Twisting under load concentrates force on the spine and is a leading cause of back injury.",
+        d: "Speed adds momentum the body has to absorb; controlled movement is safer.",
+      },
+      tip: "Knees bent, load close, legs lift, feet turn.",
+      tags: ["ergonomics", "lifting", "general-safety"],
+      sources: [SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-056",
+      subdomain: "Sharps safety",
+      difficulty: 3,
+      stem: "Which situation best explains why a needle should never be removed from its holder before disposal?",
+      choices: {
+        a: "The holder is more expensive to replace than the needle",
+        b: "Removing the needle requires handling the contaminated hub, adding an injury opportunity",
+        c: "Detached needles cannot fit into a sharps container",
+        d: "The holder must be returned to the manufacturer intact",
+      },
+      correct: "b",
+      explanation:
+        "The needle and holder are discarded as a single unit because every " +
+        "additional handling step is an additional chance to be stuck. " +
+        "Unscrewing a used needle brings the fingers close to a contaminated " +
+        "hub, and the twisting motion is exactly where control is lost.",
+      why: {
+        a: "Cost is not the reasoning; injury risk is.",
+        c: "A detached needle physically fits, which is part of why the temptation exists.",
+        d: "Single-use holders are discarded, not returned.",
+      },
+      tip: "One unit in, one unit out. Every extra handling step is an extra chance to be stuck.",
+      tags: ["sharps", "needle-holder", "disposal"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-057",
+      subdomain: "Hand hygiene",
+      difficulty: 2,
+      stem: "Approximately how long should hands be rubbed together with soap during handwashing?",
+      choices: {
+        a: "About 5 seconds",
+        b: "At least 15 to 20 seconds",
+        c: "A full 2 minutes",
+        d: "Until the water runs clear",
+      },
+      correct: "b",
+      explanation:
+        "Friction for at least 15 to 20 seconds is what actually removes " +
+        "organisms — soap loosens them and rubbing lifts them off, covering " +
+        "the backs of the hands, between the fingers, the thumbs, and under " +
+        "the nails before rinsing.",
+      why: {
+        a: "Five seconds leaves most transient organisms in place.",
+        c: "A two-minute surgical-style scrub is not required for routine hand hygiene.",
+        d: "Water clarity says nothing about how long friction was applied.",
+      },
+      tip: "It's the friction and the time, not the water temperature, that does the work.",
+      tags: ["hand-hygiene", "technique"],
+      sources: [SRC_CDC_HAND_HYGIENE, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-058",
+      subdomain: "Bloodborne pathogens",
+      difficulty: 2,
+      stem: "How often must bloodborne pathogens training be provided to employees with occupational exposure?",
+      choices: {
+        a: "At hire only",
+        b: "At initial assignment and at least annually thereafter",
+        c: "Every two years",
+        d: "Only when an employee requests it",
+      },
+      correct: "b",
+      explanation:
+        "Training is provided at the time of initial assignment to tasks with " +
+        "occupational exposure and at least annually after that, with " +
+        "additional training whenever new tasks or procedures change exposure " +
+        "risk. It is provided during working hours at no cost.",
+      why: {
+        a: "One-time training does not keep pace with changing devices, procedures, or memory.",
+        c: "A two-year cycle is longer than the required annual minimum.",
+        d: "Training is an employer obligation, not something an employee has to ask for.",
+      },
+      tip: "At assignment, then annually — plus extra whenever the work changes.",
+      tags: ["training", "osha", "bloodborne-pathogens"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-059",
+      subdomain: "Transmission-based precautions",
+      difficulty: 3,
+      stem: "A patient on droplet precautions for pertussis needs a draw. What PPE is added to standard precautions?",
+      choices: {
+        a: "A fit-tested N95 respirator and a gown",
+        b: "A surgical mask, with eye protection if splashing is anticipated",
+        c: "A gown and gloves only",
+        d: "No additional PPE, because the patient is not coughing at the moment",
+      },
+      correct: "b",
+      explanation:
+        "Droplet precautions target large respiratory droplets that fall out of " +
+        "the air within a short distance, so a surgical mask worn on entry is " +
+        "the added protection, with eye protection when splashes or sprays are " +
+        "possible. Gloves and hand hygiene are already part of standard " +
+        "precautions for any draw.",
+      why: {
+        a: "An N95 is the airborne-precautions requirement; droplet precautions do not call for one.",
+        c: "A gown and gloves are the contact-precautions combination and do not protect mucous membranes from droplets.",
+        d: "Precautions are based on the patient's status, not on whether a cough happens while you are in the room.",
+      },
+      tip: "Droplet = surgical mask on entry. Airborne = fit-tested N95. Contact = gown and gloves.",
+      tags: ["droplet-precautions", "pertussis", "ppe"],
+      sources: [SRC_CDC_STANDARD_PRECAUTIONS, SRC_TEXTBOOK_CURRICULUM],
+    },
+    {
+      id: "saf-060",
+      subdomain: "Exposure response",
+      difficulty: 3,
+      stem: "Blood splashes into a phlebotomist's eye during a difficult draw. What is the immediate action?",
+      choices: {
+        a: "Blink repeatedly and continue, then report at the end of the shift",
+        b: "Flush the eye with water or saline at an eyewash station for an extended period, then report immediately",
+        c: "Rub the eye with a clean gauze pad and apply antiseptic",
+        d: "Instill an antibiotic eye drop before reporting",
+      },
+      correct: "b",
+      explanation:
+        "A mucous membrane exposure is flushed immediately and continuously " +
+        "with water or saline — an eyewash station is designed for exactly this " +
+        "— and then reported at once so post-exposure evaluation can begin. " +
+        "Prophylaxis is time-sensitive, so delay costs options.",
+      why: {
+        a: "Blinking does not flush the exposure, and deferring the report delays time-sensitive evaluation.",
+        c: "Rubbing drives material further into the conjunctiva, and antiseptics are not used in the eye.",
+        d: "Medication decisions belong to the evaluating clinician, after flushing and reporting.",
+      },
+      tip: "Mucous membrane exposure: flush long, report immediately. The clock on prophylaxis starts at the splash.",
+      tags: ["exposure-response", "mucous-membrane", "eyewash"],
+      sources: [SRC_OSHA_BBP, SRC_TEXTBOOK_CURRICULUM],
+    },
   ],
 );

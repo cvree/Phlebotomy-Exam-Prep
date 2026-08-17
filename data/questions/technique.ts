@@ -656,5 +656,755 @@ export const TECHNIQUE_QUESTIONS = buildQuestions(
       tip: "Brace, don't push or pull. The needle stays still — only the tubes move.",
       tags: ["equipment", "multi-tube", "technique"],
     },
+    {
+      id: "tec-026",
+      subdomain: "Needle selection",
+      difficulty: 2,
+      stem: "Which needle gauge is the usual choice for a routine adult antecubital venipuncture with an evacuated tube system?",
+      choices: {
+        a: "18 gauge",
+        b: "21 gauge",
+        c: "25 gauge",
+        d: "27 gauge",
+      },
+      correct: "b",
+      explanation:
+        "A 21 gauge needle is the routine default: wide enough that blood flows " +
+        "without shearing red cells, narrow enough to be comfortable in a " +
+        "typical antecubital vein. Smaller veins move to 22 or 23 gauge, usually " +
+        "with a winged set.",
+      why: {
+        a: "18 gauge is a large-bore needle used for donation and therapeutic collection, not routine draws.",
+        c: "25 gauge is too narrow for routine venipuncture and raises the risk of hemolysis.",
+        d: "27 gauge is a fine injection needle, not a blood collection needle.",
+      },
+      tip: "Remember gauge runs backwards: the bigger the number, the smaller the bore. 21 is the routine middle ground.",
+      tags: ["needle-gauge", "equipment", "venipuncture"],
+    },
+    {
+      id: "tec-027",
+      subdomain: "Needle selection",
+      difficulty: 3,
+      stem: "Why can too small a needle gauge cause hemolysis?",
+      choices: {
+        a: "The needle is too short to reach the vein",
+        b: "Red cells are forced through a narrow lumen under vacuum pressure and rupture",
+        c: "Small needles increase the tube's vacuum",
+        d: "Small needles cannot be attached to a holder",
+      },
+      correct: "b",
+      explanation:
+        "Vacuum pulling blood through a very narrow lumen subjects red cells to " +
+        "shear stress, and cells that rupture release potassium and hemoglobin " +
+        "into the plasma. The result is a specimen that can be rejected or, " +
+        "worse, produce a falsely elevated potassium.",
+      why: {
+        a: "Length and gauge are independent; a short needle causes a failed stick, not hemolysis.",
+        c: "The tube's vacuum is fixed at manufacture and is unaffected by needle choice.",
+        d: "Fine needles attach perfectly well; the problem is what happens to the cells passing through them.",
+      },
+      tip: "Too narrow a bore shears cells. Hemolysis shows up first as a falsely high potassium.",
+      tags: ["hemolysis", "needle-gauge", "specimen-quality"],
+    },
+    {
+      id: "tec-028",
+      subdomain: "Insertion",
+      difficulty: 1,
+      stem: "At approximately what angle is the needle inserted for a routine antecubital venipuncture?",
+      choices: {
+        a: "5 to 10 degrees",
+        b: "15 to 30 degrees",
+        c: "45 degrees",
+        d: "90 degrees",
+      },
+      correct: "b",
+      explanation:
+        "A shallow angle of roughly 15 to 30 degrees follows the line of a " +
+        "superficial vein, entering the lumen rather than passing through it. " +
+        "Steeper angles are the common cause of going straight through the far " +
+        "wall.",
+      why: {
+        a: "Too shallow an angle tends to skim under the skin without entering the vein.",
+        c: "Forty-five degrees is steep for a superficial vein and risks a through-and-through puncture.",
+        d: "Ninety degrees is the angle of a dermal puncture, not a venipuncture.",
+      },
+      tip: "Shallow — 15 to 30 degrees, bevel up. Steep angles go through the vein, not into it.",
+      tags: ["insertion-angle", "venipuncture", "technique"],
+    },
+    {
+      id: "tec-029",
+      subdomain: "Site preparation",
+      difficulty: 2,
+      stem: "Why must the alcohol be allowed to dry completely before the needle is inserted?",
+      choices: {
+        a: "Wet alcohol can cause a stinging sensation and can affect specimen quality",
+        b: "Wet alcohol makes the vein harder to see",
+        c: "Alcohol damages the needle's coating",
+        d: "Drying is only a comfort measure with no other effect",
+      },
+      correct: "a",
+      explanation:
+        "Alcohol needs its full contact time to work, and it does that while it " +
+        "is drying. Puncturing through wet alcohol stings, and alcohol carried " +
+        "into the specimen can interfere with results — a particular concern for " +
+        "blood alcohol testing, where the site is cleaned with a non-alcohol " +
+        "antiseptic instead.",
+      why: {
+        b: "Visibility is not the reason; antisepsis and specimen integrity are.",
+        c: "Alcohol does not degrade the needle.",
+        d: "Comfort matters, but the antiseptic action and specimen quality reasons are the substantive ones.",
+      },
+      tip: "Let it air dry — that's when the alcohol is actually working. Don't fan it, don't blot it.",
+      tags: ["site-preparation", "alcohol", "antisepsis"],
+    },
+    {
+      id: "tec-030",
+      subdomain: "Site preparation",
+      difficulty: 2,
+      stem: "In which pattern is the venipuncture site cleaned with alcohol?",
+      choices: {
+        a: "Back and forth across the site several times",
+        b: "In concentric circles moving outward from the intended puncture point",
+        c: "In a single downward stroke",
+        d: "Only over the visible vein itself",
+      },
+      correct: "b",
+      explanation:
+        "Cleaning from the center outward in widening circles moves organisms " +
+        "away from the puncture point rather than dragging them back across it. " +
+        "The cleaned area is larger than the puncture site so the surrounding " +
+        "skin does not recontaminate it.",
+      why: {
+        a: "Scrubbing back and forth carries organisms from the periphery back over the site.",
+        c: "One stroke covers too little area and does not provide friction over the whole field.",
+        d: "Cleaning only the vein line leaves contaminated skin immediately adjacent to the puncture.",
+      },
+      tip: "Center outward, widening circles. Never come back over where you have already cleaned.",
+      tags: ["site-preparation", "antisepsis", "technique"],
+    },
+    {
+      id: "tec-031",
+      subdomain: "Tourniquet",
+      difficulty: 2,
+      stem: "How far above the intended puncture site is the tourniquet applied?",
+      choices: {
+        a: "About 1 inch",
+        b: "About 3 to 4 inches",
+        c: "About 8 to 10 inches",
+        d: "Directly over the site",
+      },
+      correct: "b",
+      explanation:
+        "Three to four inches proximal to the site gives enough distance that " +
+        "the tourniquet is out of the way of the puncture and the antiseptic " +
+        "field, while still being close enough to distend the target vein " +
+        "effectively.",
+      why: {
+        a: "An inch puts the tourniquet in the working field and can contaminate the cleaned site.",
+        c: "Too far proximal reduces the distending effect on the target vein.",
+        d: "A tourniquet over the site makes the puncture impossible and would be released into it.",
+      },
+      tip: "Three to four inches up — far enough to be out of your way, close enough to still work.",
+      tags: ["tourniquet", "placement", "technique"],
+    },
+    {
+      id: "tec-032",
+      subdomain: "Tourniquet",
+      difficulty: 3,
+      stem: "When during the procedure is the tourniquet normally released?",
+      choices: {
+        a: "After the needle has been withdrawn and pressure applied",
+        b: "As soon as blood flow is established, or within about a minute of application",
+        c: "Only after all tubes have been filled, regardless of how long that takes",
+        d: "Before the needle is inserted",
+      },
+      correct: "b",
+      explanation:
+        "Once blood is flowing the tourniquet has done its job, and releasing it " +
+        "early limits hemoconcentration. If the draw is long, it comes off " +
+        "within about a minute regardless, and the withdrawal sequence is always " +
+        "tourniquet off, then needle out.",
+      why: {
+        a: "Withdrawing the needle against a still-applied tourniquet raises venous pressure and promotes hematoma.",
+        c: "Leaving it on through a long multi-tube draw exceeds the time limit and distorts results.",
+        d: "Releasing before insertion collapses the vein you were about to enter.",
+      },
+      tip: "Tourniquet off before the needle comes out — always. Under a minute total, ideally released once flow starts.",
+      tags: ["tourniquet", "hemoconcentration", "sequence"],
+    },
+    {
+      id: "tec-033",
+      subdomain: "Equipment",
+      difficulty: 2,
+      stem: "What is the correct way to transfer blood from a syringe into evacuated tubes?",
+      choices: {
+        a: "Remove the tube stopper and pour the blood in",
+        b: "Use a syringe transfer device, letting the tube's vacuum draw the blood",
+        c: "Push the plunger to force blood through the needle into the tube",
+        d: "Attach the collection needle to the tube and push",
+      },
+      correct: "b",
+      explanation:
+        "A transfer device is attached to the syringe and the tube is pushed " +
+        "onto it, letting the vacuum pull the correct volume at its own rate. " +
+        "That protects the phlebotomist from the needle and protects the " +
+        "specimen from the hemolysis that forced flow produces.",
+      why: {
+        a: "Uncapping a tube causes aerosols, breaks the vacuum, and destroys the additive-to-blood ratio.",
+        c: "Pushing the plunger forces cells through the needle and hemolyzes the specimen.",
+        d: "Holding a tube against a needle is a classic needlestick mechanism and defeats the safety design.",
+      },
+      tip: "Let the vacuum pull. Never push a plunger, never uncap a tube, never hold a tube against a needle.",
+      tags: ["syringe", "transfer-device", "safety"],
+    },
+    {
+      id: "tec-034",
+      subdomain: "Equipment",
+      difficulty: 3,
+      stem: "A winged infusion set is used to collect a light blue sodium citrate tube as the only tube ordered. What must be done first?",
+      choices: {
+        a: "Nothing — the citrate tube is drawn directly",
+        b: "Draw a discard tube first to fill the tubing's dead space",
+        c: "Draw a lavender tube first to prime the line",
+        d: "Prime the tubing with saline",
+      },
+      correct: "b",
+      explanation:
+        "The tubing of a winged set holds air, and that air would take up part " +
+        "of the citrate tube's fixed vacuum, leaving it underfilled and the " +
+        "9:1 blood-to-additive ratio wrong. A discard tube fills the dead space " +
+        "first so the citrate tube fills completely.",
+      why: {
+        a: "Drawing directly leaves the citrate tube short by roughly the volume of the tubing.",
+        c: "Any tube drawn before a citrate tube risks additive carryover; the discard tube is drawn and thrown away for a reason.",
+        d: "Saline priming would dilute the specimen and is not part of routine collection.",
+      },
+      tip: "Butterfly + coagulation tube first = discard tube first. The tubing's air has to go somewhere.",
+      tags: ["winged-set", "discard-tube", "sodium-citrate"],
+    },
+    {
+      id: "tec-035",
+      subdomain: "Vein entry",
+      difficulty: 2,
+      stem: "What is the purpose of anchoring the vein before insertion?",
+      choices: {
+        a: "It makes the vein larger",
+        b: "It holds the vein and skin taut so the vessel does not roll away from the needle",
+        c: "It replaces the need for a tourniquet",
+        d: "It reduces the volume of blood needed",
+      },
+      correct: "b",
+      explanation:
+        "Pulling the skin taut a couple of inches below the site with the thumb " +
+        "stabilizes a vessel that would otherwise slide sideways as the needle " +
+        "presses on it. Rolling veins are one of the most common reasons an " +
+        "otherwise good stick misses.",
+      why: {
+        a: "Anchoring stabilizes the vein; distension comes from the tourniquet.",
+        c: "The tourniquet distends the vein and is still required.",
+        d: "Volume requirements are set by the tests ordered, not by technique.",
+      },
+      tip: "Thumb below the site, skin pulled taut, and never anchor above the site with a finger in the needle's path.",
+      tags: ["anchoring", "rolling-veins", "technique"],
+    },
+    {
+      id: "tec-036",
+      subdomain: "Failed draws",
+      difficulty: 3,
+      stem: "Blood begins to flow and then stops with the tube only partly filled. What is a reasonable first adjustment?",
+      choices: {
+        a: "Probe laterally in search of the vein",
+        b: "Withdraw the needle slightly or rotate the bevel, since it may be against a vein wall or a valve",
+        c: "Remove the tube and squeeze the patient's arm",
+        d: "Push the needle in deeper until flow resumes",
+      },
+      correct: "b",
+      explanation:
+        "Flow that starts and stops usually means the bevel has come to rest " +
+        "against a wall or a valve. A slight withdrawal or a gentle rotation of " +
+        "the bevel can restore flow. Blind probing is not an option — it is " +
+        "painful and it is how nerves and arteries get hit.",
+      why: {
+        a: "Lateral probing is explicitly discouraged and is a leading cause of nerve injury.",
+        c: "Squeezing the arm hemoconcentrates the specimen and does not address the needle's position.",
+        d: "Advancing deeper is likely to pass through the far wall of the vein.",
+      },
+      tip: "Small, deliberate adjustment — never a search. Two attempts, then hand off.",
+      tags: ["failed-draw", "needle-position", "probing"],
+    },
+    {
+      id: "tec-037",
+      subdomain: "Failed draws",
+      difficulty: 2,
+      stem: "How many venipuncture attempts should one phlebotomist make before asking someone else to try?",
+      choices: {
+        a: "One",
+        b: "No more than two",
+        c: "Four",
+        d: "As many as needed until a specimen is obtained",
+      },
+      correct: "b",
+      explanation:
+        "Two attempts is the widely taught limit for one collector. Beyond that " +
+        "the patient's discomfort and tissue trauma keep rising while the odds " +
+        "of success fall, so the draw is handed to a colleague or escalated per " +
+        "policy.",
+      why: {
+        a: "A second attempt is normally reasonable after an unsuccessful first.",
+        c: "Four attempts by one person exceeds the accepted limit and is hard to justify to the patient.",
+        d: "Unlimited attempts prioritize the specimen over the patient, which inverts the priority.",
+      },
+      tip: "Two and through. Handing off is a professional judgment, not a failure.",
+      tags: ["failed-draw", "attempt-limit", "escalation"],
+    },
+    {
+      id: "tec-038",
+      subdomain: "Post-puncture care",
+      difficulty: 2,
+      stem: "After the needle is withdrawn, how is bleeding controlled?",
+      choices: {
+        a: "Bend the patient's arm at the elbow and hold gauze in place",
+        b: "Apply firm direct pressure to the site with the arm extended until bleeding stops",
+        c: "Apply a bandage immediately without pressure",
+        d: "Have the patient hold the site loosely while dressing",
+      },
+      correct: "b",
+      explanation:
+        "Direct pressure with the arm straight closes the puncture in the vein " +
+        "wall as well as the one in the skin. Bending the elbow lets the site " +
+        "reopen under the fold and is a well-known cause of hematoma, so the arm " +
+        "stays extended.",
+      why: {
+        a: "Bending the arm is specifically discouraged; it encourages bleeding into the tissue.",
+        c: "A bandage over an unsealed puncture soaks through and does not stop bleeding.",
+        d: "Loose pressure leaves the vein puncture open beneath intact skin — exactly how a hematoma forms.",
+      },
+      tip: "Straight arm, firm pressure, check before you bandage. Bending the elbow is the classic hematoma mistake.",
+      tags: ["post-puncture", "pressure", "hematoma-prevention"],
+    },
+    {
+      id: "tec-039",
+      subdomain: "Dermal puncture",
+      difficulty: 2,
+      stem: "Why is the first drop of blood wiped away during a capillary collection?",
+      choices: {
+        a: "It contains excess tissue fluid and residual alcohol that can affect results",
+        b: "It is always contaminated with bacteria",
+        c: "It clots faster than subsequent drops",
+        d: "Wiping it stimulates better blood flow",
+      },
+      correct: "a",
+      explanation:
+        "The first drop is diluted with interstitial fluid released by the " +
+        "puncture and may carry residual alcohol from site preparation. Wiping " +
+        "it with clean gauze and collecting from the drops that follow gives a " +
+        "more representative specimen.",
+      why: {
+        b: "Contamination is not the reason; tissue fluid dilution is.",
+        c: "Clotting behavior is not what makes the first drop unsuitable.",
+        d: "Wiping removes a compromised drop; it does not itself improve flow.",
+      },
+      tip: "Wipe the first drop. It's mostly tissue fluid and whatever alcohol was left behind.",
+      tags: ["dermal-puncture", "capillary-collection", "first-drop"],
+    },
+    {
+      id: "tec-040",
+      subdomain: "Dermal puncture",
+      difficulty: 2,
+      stem: "Which site is appropriate for a capillary puncture on an adult?",
+      choices: {
+        a: "The center of the fingertip pad",
+        b: "The side of the fleshy pad of the third or fourth finger, slightly off center",
+        c: "The tip of the thumb",
+        d: "The earlobe",
+      },
+      correct: "b",
+      explanation:
+        "The middle or ring finger is used, punctured slightly to the side of " +
+        "center on the fleshy pad and across the fingerprint lines so the drop " +
+        "forms rather than running along a groove. The central tip is more " +
+        "sensitive and the bone sits closer beneath it.",
+      why: {
+        a: "The dead center of the tip is the most sensitive area and closest to the bone.",
+        c: "The thumb has a pulse, thicker calluses, and is avoided; the index finger is more sensitive and callused too.",
+        d: "The earlobe is not a recommended routine site.",
+      },
+      tip: "Third or fourth finger, side of the pad, perpendicular to the fingerprint lines.",
+      tags: ["dermal-puncture", "finger-stick", "site-selection"],
+    },
+    {
+      id: "tec-041",
+      subdomain: "Dermal puncture",
+      difficulty: 3,
+      stem: "On an infant, which part of the heel is used for a dermal puncture?",
+      choices: {
+        a: "The center of the heel",
+        b: "The medial or lateral plantar surface, off the central curve of the heel",
+        c: "The back of the heel over the bone",
+        d: "The arch of the foot",
+      },
+      correct: "b",
+      explanation:
+        "The medial and lateral plantar surfaces keep the lancet away from the " +
+        "calcaneus. Puncturing the central posterior heel risks contacting bone, " +
+        "which can lead to osteomyelitis — the reason both the site and the " +
+        "depth are specified for infants.",
+      why: {
+        a: "The center of the heel sits directly over the bone.",
+        c: "The posterior curve is where the bone is closest to the surface.",
+        d: "The arch carries nerves and tendons and is not a collection site.",
+      },
+      tip: "Stay on the medial or lateral plantar surface, limit the depth, and never puncture the central or posterior heel.",
+      tags: ["heel-stick", "infant", "osteomyelitis"],
+    },
+    {
+      id: "tec-042",
+      subdomain: "Dermal puncture",
+      difficulty: 2,
+      stem: "Why should the site not be squeezed or \"milked\" during a capillary collection?",
+      choices: {
+        a: "It is uncomfortable but has no effect on the specimen",
+        b: "It forces tissue fluid into the specimen and can hemolyze it, distorting results",
+        c: "It reduces the total volume obtainable",
+        d: "It causes the puncture to close prematurely",
+      },
+      correct: "b",
+      explanation:
+        "Vigorous squeezing pushes interstitial fluid into the drop and damages " +
+        "red cells, producing a diluted, hemolyzed specimen — potassium in " +
+        "particular becomes unreliable. Gentle intermittent pressure well away " +
+        "from the puncture, plus a warmed site, is what actually improves flow.",
+      why: {
+        a: "The effect on the specimen is real and can change reported results.",
+        c: "Volume is not the problem; specimen quality is.",
+        d: "Squeezing does not close the puncture, but it does compromise what comes out of it.",
+      },
+      tip: "Warm the site instead of squeezing it. Milking gives you tissue fluid and a falsely high potassium.",
+      tags: ["dermal-puncture", "milking", "specimen-quality"],
+    },
+    {
+      id: "tec-043",
+      subdomain: "Dermal puncture",
+      difficulty: 2,
+      stem: "What is the benefit of warming a site before a capillary collection?",
+      choices: {
+        a: "It sterilizes the skin surface",
+        b: "It increases blood flow to the area, improving the yield",
+        c: "It thins the blood so it clots more slowly",
+        d: "It numbs the site",
+      },
+      correct: "b",
+      explanation:
+        "Warming the site for a few minutes with a warm cloth or commercial " +
+        "warmer can increase local blood flow substantially, which means a " +
+        "usable specimen without squeezing. It is routine before a newborn " +
+        "screening collection.",
+      why: {
+        a: "Warming has no antiseptic effect; alcohol cleaning is a separate step.",
+        c: "Warming does not alter the blood's clotting behavior.",
+        d: "It is not an anesthetic, though it does make collection quicker.",
+      },
+      tip: "Warm first, squeeze never. A warmed heel or finger gives up blood freely.",
+      tags: ["dermal-puncture", "warming", "capillary-collection"],
+    },
+    {
+      id: "tec-044",
+      subdomain: "Equipment",
+      difficulty: 2,
+      stem: "What are the three components of an evacuated tube collection system?",
+      choices: {
+        a: "Needle, syringe, and transfer device",
+        b: "Multi-sample needle, tube holder (adapter), and evacuated tube",
+        c: "Lancet, capillary tube, and sealant",
+        d: "Winged set, tourniquet, and gauze",
+      },
+      correct: "b",
+      explanation:
+        "The evacuated tube system is a double-ended multi-sample needle, a " +
+        "holder that the needle screws into, and the vacuum tube that pushes " +
+        "onto the back end. The rubber sleeve over the back end is what allows " +
+        "several tubes to be filled without blood leaking between them.",
+      why: {
+        a: "That describes syringe collection, a separate method.",
+        c: "Those are dermal puncture supplies.",
+        d: "A winged set is an alternative needle assembly, and the others are accessories rather than system components.",
+      },
+      tip: "Needle, holder, tube. The rubber sleeve on the back end is what makes multi-tube draws possible.",
+      tags: ["evacuated-tube-system", "equipment", "components"],
+    },
+    {
+      id: "tec-045",
+      subdomain: "Vein entry",
+      difficulty: 2,
+      stem: "In which orientation is the needle bevel positioned during insertion?",
+      choices: {
+        a: "Bevel down, to avoid the far wall",
+        b: "Bevel up, aligned with the vein",
+        c: "Bevel sideways, to widen the opening",
+        d: "Orientation makes no difference",
+      },
+      correct: "b",
+      explanation:
+        "Bevel up lets the sharpened point enter the skin and vessel cleanly, " +
+        "and keeps the opening clear of the vein's back wall once inside. It is " +
+        "also the more comfortable entry for the patient.",
+      why: {
+        a: "Bevel down turns the opening against the vein's floor and can occlude flow.",
+        c: "A sideways bevel gives a ragged entry and does not widen anything usefully.",
+        d: "Orientation affects both flow and comfort measurably.",
+      },
+      tip: "Bevel up, shallow angle, vein anchored. Those three go together.",
+      tags: ["bevel", "insertion", "technique"],
+    },
+    {
+      id: "tec-046",
+      subdomain: "Tube filling",
+      difficulty: 3,
+      stem: "A phlebotomist notices the light blue citrate tube is only two-thirds full. What must be done?",
+      choices: {
+        a: "Send it and note the volume on the requisition",
+        b: "Recollect the tube — coagulation testing requires the specified blood-to-additive ratio",
+        c: "Add blood from a second tube to top it up",
+        d: "Remove some of the citrate with a pipette",
+      },
+      correct: "b",
+      explanation:
+        "Sodium citrate tubes depend on a 9:1 blood-to-anticoagulant ratio. An " +
+        "underfilled tube has proportionally too much citrate, which binds more " +
+        "calcium and falsely prolongs clotting times — a result that could " +
+        "change a patient's anticoagulant dose.",
+      why: {
+        a: "A note does not correct a ratio error, and the result would be misleading if reported.",
+        c: "Combining tubes produces a specimen of unknown ratio and unknown age.",
+        d: "Altering a tube's additive is never acceptable.",
+      },
+      tip: "Blue tops must fill to the line. An underfilled citrate tube reads falsely prolonged.",
+      tags: ["sodium-citrate", "fill-volume", "coagulation"],
+    },
+    {
+      id: "tec-047",
+      subdomain: "Mixing",
+      difficulty: 2,
+      stem: "How are additive tubes mixed after collection?",
+      choices: {
+        a: "Shaken vigorously for several seconds",
+        b: "Inverted gently the number of times specified by the manufacturer, immediately after filling",
+        c: "Left to stand; the additive dissolves on its own",
+        d: "Rolled between the palms for a minute",
+      },
+      correct: "b",
+      explanation:
+        "Gentle, complete inversions — typically a small specified number per " +
+        "tube type — distribute the additive through the specimen without " +
+        "damaging cells. Mixing happens right after the tube is filled, because " +
+        "clotting starts immediately in an inadequately mixed anticoagulant tube.",
+      why: {
+        a: "Shaking hemolyzes the specimen and can activate platelets.",
+        c: "An unmixed anticoagulant tube clots, making it unusable for cell counts.",
+        d: "Rolling does not invert the tube and leaves the additive unevenly distributed.",
+      },
+      tip: "Invert gently, right away, the number of times the manufacturer specifies. Never shake.",
+      tags: ["mixing", "inversions", "additive"],
+    },
+    {
+      id: "tec-048",
+      subdomain: "Safety",
+      difficulty: 2,
+      stem: "When is the needle's safety device activated?",
+      choices: {
+        a: "After the needle has been placed in the sharps container",
+        b: "Immediately upon withdrawal from the patient, before anything else is done",
+        c: "After all tubes have been labeled",
+        d: "Only if the phlebotomist is interrupted",
+      },
+      correct: "b",
+      explanation:
+        "The device is engaged the moment the needle leaves the arm, one-handed " +
+        "and away from the body, before gauze, tubes, or anything else takes " +
+        "attention. The interval between withdrawal and containment is when most " +
+        "needlesticks occur.",
+      why: {
+        a: "Activating inside the container defeats the purpose and puts a hand near the opening.",
+        c: "Labeling comes after the sharp is contained, not before.",
+        d: "Activation is unconditional, not a response to a distraction.",
+      },
+      tip: "Out of the arm, safety engaged, into the container. No steps in between.",
+      tags: ["safety-device", "needlestick", "sharps"],
+    },
+    {
+      id: "tec-049",
+      subdomain: "Site selection",
+      difficulty: 3,
+      stem: "A phlebotomist cannot see a vein but feels a firm, bouncy, cord-like structure that does not pulse. What does this most likely indicate?",
+      choices: {
+        a: "An artery",
+        b: "A suitable vein — palpation matters more than visibility",
+        c: "A tendon",
+        d: "A nerve",
+      },
+      correct: "b",
+      explanation:
+        "Veins are found by feel, not by sight. A vessel that is soft, bouncy, " +
+        "and resilient under the fingertip and does not pulse is a vein, and it " +
+        "is often a better target than one that merely looks prominent.",
+      why: {
+        a: "An artery pulses under the finger and resists compression.",
+        c: "A tendon is hard, unyielding, and does not rebound when pressed.",
+        d: "A nerve is not palpable as a discrete cord in this way, and contact with one produces sharp pain.",
+      },
+      tip: "Palpate, don't just look. Bouncy and resilient is a vein; hard is a tendon; pulsing is an artery.",
+      tags: ["palpation", "site-selection", "vein-assessment"],
+    },
+    {
+      id: "tec-050",
+      subdomain: "Equipment",
+      difficulty: 2,
+      stem: "What is the main advantage of a winged infusion (butterfly) set?",
+      choices: {
+        a: "It draws blood faster than a straight needle",
+        b: "Its flexible tubing and shallow angle suit small, fragile, or awkwardly placed veins",
+        c: "It eliminates the need for a tourniquet",
+        d: "It allows tubes to be filled out of order",
+      },
+      correct: "b",
+      explanation:
+        "The wings give fine control at a very shallow angle and the flexible " +
+        "tubing decouples tube changes from the needle, which makes a winged set " +
+        "the tool of choice for hand veins, pediatric draws, and fragile " +
+        "vessels. Its dead space is the trade-off to remember.",
+      why: {
+        a: "Flow through the narrow tubing is generally slower, not faster.",
+        c: "A tourniquet is used with a winged set as with any other method.",
+        d: "The order of draw applies regardless of the collection device.",
+      },
+      tip: "Butterfly for small and awkward veins — just remember the tubing's dead space when a citrate tube is first.",
+      tags: ["winged-set", "equipment", "small-veins"],
+    },
+    {
+      id: "tec-051",
+      subdomain: "Post-puncture care",
+      difficulty: 2,
+      stem: "A patient on warfarin is still oozing from the site after the usual pressure. What should the phlebotomist do?",
+      choices: {
+        a: "Apply a pressure bandage and let the patient leave",
+        b: "Continue direct pressure until bleeding stops, and notify the nurse or provider if it does not",
+        c: "Apply a tourniquet above the site",
+        d: "Have the patient raise their arm above their head and leave",
+      },
+      correct: "b",
+      explanation:
+        "Anticoagulated patients take longer to seal a puncture, so pressure is " +
+        "simply continued until bleeding actually stops. A patient who keeps " +
+        "bleeding beyond a reasonable period is reported rather than sent away " +
+        "with a dressing over an active bleed.",
+      why: {
+        a: "A bandage over active bleeding hides it while a hematoma forms underneath.",
+        c: "A tourniquet obstructs venous return and makes bleeding from the site worse.",
+        d: "Elevation alone does not replace direct pressure, and the patient should not leave unobserved.",
+      },
+      tip: "Hold longer, check before bandaging, and escalate if it will not stop. Never send a bleeding patient away.",
+      tags: ["anticoagulant", "bleeding", "post-puncture"],
+    },
+    {
+      id: "tec-052",
+      subdomain: "Site selection",
+      difficulty: 2,
+      stem: "Which site should be avoided for routine venipuncture?",
+      choices: {
+        a: "The median cubital vein of the left arm",
+        b: "An area with extensive burns, scarring, or an active rash",
+        c: "The dorsal hand veins",
+        d: "The cephalic vein of the forearm",
+      },
+      correct: "b",
+      explanation:
+        "Burned, scarred, or inflamed skin is avoided: it is painful, it is more " +
+        "vulnerable to infection, the underlying vessels are often damaged, and " +
+        "the specimen quality suffers. An unaffected site is used, even if it is " +
+        "less convenient.",
+      why: {
+        a: "The median cubital is the preferred first-choice site.",
+        c: "Hand veins are the standard alternative when the antecubital area is unsuitable.",
+        d: "The cephalic vein is an accepted second-choice site.",
+      },
+      tip: "Damaged skin means damaged vessels and higher infection risk. Move to healthy tissue.",
+      tags: ["site-selection", "burns", "contraindications"],
+    },
+    {
+      id: "tec-053",
+      subdomain: "Order of tubes",
+      difficulty: 3,
+      stem: "A syringe draw yields blood for several tube types. In what order are the tubes filled from the syringe?",
+      choices: {
+        a: "In any order, since the blood is already collected",
+        b: "In the same order of draw used for evacuated tubes, using a transfer device",
+        c: "Largest volume tube first",
+        d: "Additive tubes last, so they are freshest",
+      },
+      correct: "b",
+      explanation:
+        "The order of draw still applies when filling from a syringe. Blood in " +
+        "the syringe begins clotting immediately, so the anticoagulated tubes " +
+        "that depend on intact, unclotted cells still need to be filled in " +
+        "sequence, and carryover between tubes is still possible at the transfer " +
+        "device.",
+      why: {
+        a: "Clotting starts the moment blood leaves the vein, so sequence still matters.",
+        c: "Volume has no bearing on the sequence.",
+        d: "Delaying additive tubes maximizes the chance they receive partly clotted blood.",
+      },
+      tip: "Syringe or evacuated tube, the order of draw is the same — and fill promptly, because the clock is running.",
+      tags: ["syringe", "order-of-draw", "transfer-device"],
+    },
+    {
+      id: "tec-054",
+      subdomain: "Vein entry",
+      difficulty: 3,
+      stem: "The phlebotomist inserts the needle and sees a small flash of blood, but no blood enters the tube. What is the most likely explanation?",
+      choices: {
+        a: "The tube has lost its vacuum, or the bevel is only partly in the lumen",
+        b: "The patient is dehydrated beyond the point of collection",
+        c: "The needle gauge is too large",
+        d: "The tourniquet was applied too loosely",
+      },
+      correct: "a",
+      explanation:
+        "A flash followed by nothing points to a bevel that is only partly " +
+        "inside the vessel, or to a tube that has lost its vacuum. Trying a " +
+        "fresh tube distinguishes the two before any needle adjustment is made, " +
+        "since it costs nothing and requires no movement in the arm.",
+      why: {
+        b: "Dehydration makes veins harder to find but does not typically produce a flash and then nothing.",
+        c: "An oversized needle causes different problems; it does not explain a flash without flow.",
+        d: "A loose tourniquet makes the vein hard to enter in the first place rather than stopping flow after entry.",
+      },
+      tip: "Flash but no fill? Change the tube first — it's free and it doesn't move the needle.",
+      tags: ["failed-draw", "vacuum", "troubleshooting"],
+    },
+    {
+      id: "tec-055",
+      subdomain: "Post-puncture care",
+      difficulty: 2,
+      stem: "What instruction should be given to a patient after a bandage is applied?",
+      choices: {
+        a: "Remove the bandage immediately upon leaving",
+        b: "Keep the bandage on for a short period, avoid heavy lifting with that arm, and report swelling or continued bleeding",
+        c: "Keep the bandage on for 24 hours regardless",
+        d: "No instructions are needed for a routine draw",
+      },
+      correct: "b",
+      explanation:
+        "The patient leaves knowing three things: leave the bandage for a while, " +
+        "do not stress the arm with heavy lifting, and get in touch if the site " +
+        "swells, bruises significantly, or bleeds again. That short handover " +
+        "prevents most post-draw calls.",
+      why: {
+        a: "Removing it immediately risks the site reopening before it has fully sealed.",
+        c: "A fixed 24-hour rule is unnecessary and, for patients with fragile skin, can itself cause injury.",
+        d: "Aftercare instruction is part of every collection, routine or not.",
+      },
+      tip: "Leave it a while, don't lift heavy, call if it swells. Three sentences, most problems avoided.",
+      tags: ["post-puncture", "patient-instructions", "aftercare"],
+    },
   ],
 );

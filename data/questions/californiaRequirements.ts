@@ -428,5 +428,458 @@ export const CALIFORNIA_QUESTIONS = buildQuestions(
       tags: ["california", "pathway", "planning"],
       sources: [SRC_CDPH_LFS, SRC_CA_BPC_1246, SRC_TEXTBOOK_CURRICULUM],
     },
+    {
+      id: "ca-019",
+      subdomain: "Certificate levels",
+      difficulty: 3,
+      stem: "California recognizes a Limited Phlebotomy Technician (LPT) category in addition to CPT1 and CPT2. What distinguishes it?",
+      choices: {
+        a: "It authorizes skin puncture only, not venipuncture or arterial puncture",
+        b: "It authorizes venipuncture but limits the number of daily draws",
+        c: "It is a temporary certificate that converts to CPT1 automatically",
+        d: "It authorizes arterial puncture in limited settings",
+      },
+      correct: "a",
+      explanation:
+        "The state's certificate levels are tiered by the procedures they " +
+        "authorize. The limited category covers skin puncture only, CPT1 adds " +
+        "venipuncture, and CPT2 adds arterial puncture on top of CPT1's scope. " +
+        "Each level has its own training and application requirements.",
+      why: {
+        b: "The distinction is which procedures are authorized, not how many draws are performed.",
+        c: "Moving between levels requires meeting that level's requirements and applying; nothing converts automatically.",
+        d: "Arterial puncture sits at the CPT2 level, the highest of the three.",
+      },
+      tip: "Three tiers by procedure: limited = skin only, CPT1 = skin + vein, CPT2 = skin + vein + artery.",
+      tags: ["california", "certificate-levels", "scope-of-practice"],
+    },
+    {
+      id: "ca-020",
+      subdomain: "Renewal",
+      difficulty: 2,
+      stem: "A California CPT certificate has lapsed because the holder missed the renewal. What is the effect on their ability to work?",
+      choices: {
+        a: "They may continue working while the renewal is processed",
+        b: "They are not authorized to perform certified phlebotomy duties until the certificate is current again",
+        c: "There is a statutory grace period during which practice is permitted",
+        d: "The employer may authorize continued practice in writing",
+      },
+      correct: "b",
+      explanation:
+        "Authorization comes from holding a current certificate. Once it lapses " +
+        "the authorization lapses with it, and the holder stops performing " +
+        "certified duties until CDPH restores it. Employers cannot grant " +
+        "authorization that only the state can issue.",
+      why: {
+        a: "A pending renewal is not the same as a current certificate.",
+        c: "Practicing on the assumption of a grace period is how people end up practicing without authorization.",
+        d: "An employer cannot substitute its own permission for a state certificate.",
+      },
+      tip: "Expired means stop. Track your renewal date the way you track your exam date.",
+      tags: ["california", "renewal", "compliance"],
+    },
+    {
+      id: "ca-021",
+      subdomain: "Scope of practice",
+      difficulty: 3,
+      stem: "A CPT1-certified technician is asked to start a peripheral intravenous line for fluid administration. Is this within their California scope?",
+      choices: {
+        a: "Yes, since it involves the same veins as venipuncture",
+        b: "No — the CPT certificate authorizes blood collection procedures, not therapeutic infusion",
+        c: "Yes, if a nurse observes",
+        d: "Yes, if the patient consents",
+      },
+      correct: "b",
+      explanation:
+        "The certificate authorizes collecting specimens at defined levels of " +
+        "invasiveness. Establishing access for therapy is a different activity " +
+        "governed by other licenses. Similar anatomy does not extend a scope of " +
+        "practice.",
+      why: {
+        a: "Using the same vessels does not make two different procedures the same scope.",
+        c: "Observation by another professional does not expand what a certificate authorizes.",
+        d: "A patient cannot consent someone into a scope of practice they do not hold.",
+      },
+      tip: "Same vein, different job. Collecting a specimen and delivering therapy are governed separately.",
+      tags: ["california", "scope-of-practice", "iv-therapy"],
+    },
+    {
+      id: "ca-022",
+      subdomain: "Working while pending",
+      difficulty: 3,
+      stem: "An applicant has completed training and passed a national exam, and their CDPH application is submitted but not yet approved. Can they perform venipuncture as a certified phlebotomy technician?",
+      choices: {
+        a: "Yes, the exam result is the operative credential",
+        b: "No — the certificate must be issued before performing certified duties, unless another lawful basis applies",
+        c: "Yes, if their employer keeps a copy of the application",
+        d: "Yes, for up to 90 days",
+      },
+      correct: "b",
+      explanation:
+        "The state certificate is what authorizes the work, and a submitted " +
+        "application is not a certificate. Some people draw blood on another " +
+        "lawful basis — a training program's supervised clinical practice, or a " +
+        "separate professional license — but a pending application is not one of " +
+        "them.",
+      why: {
+        a: "The national exam feeds into the application; it does not authorize practice in California by itself.",
+        c: "Documentation of an application is not authorization.",
+        d: "Inventing a provisional window is exactly the assumption that leads to unauthorized practice.",
+      },
+      tip: "Submitted is not issued. Confirm the certificate exists before the first independent draw.",
+      tags: ["california", "application", "compliance"],
+    },
+    {
+      id: "ca-023",
+      subdomain: "Training programs",
+      difficulty: 2,
+      stem: "Why does it matter whether a phlebotomy training program is approved by CDPH Laboratory Field Services?",
+      choices: {
+        a: "Approval affects only the program's tuition rates",
+        b: "Training from a non-approved program may not satisfy the state's requirements, leaving the graduate unable to certify",
+        c: "Approval determines which national exam a graduate may sit",
+        d: "Approval is a marketing designation with no regulatory effect",
+      },
+      correct: "b",
+      explanation:
+        "The application relies on training that meets the state's " +
+        "requirements. A program without that approval can leave a graduate with " +
+        "a certificate of completion that CDPH will not accept, which means " +
+        "paying for the training twice. Verifying approval before enrolling is " +
+        "the whole safeguard.",
+      why: {
+        a: "Tuition is set by the program and is unrelated to approval status.",
+        c: "National certifying agencies set their own eligibility routes.",
+        d: "Approval has direct regulatory consequences for an applicant.",
+      },
+      tip: "Check the approval list before you pay tuition, not after you graduate.",
+      tags: ["california", "training-programs", "cdph"],
+    },
+    {
+      id: "ca-024",
+      subdomain: "Documentation",
+      difficulty: 2,
+      stem: "Why should a California CPT applicant keep their own copies of training certificates, supervised procedure logs, and exam results?",
+      choices: {
+        a: "CDPH requires applicants to submit originals that are never returned",
+        b: "The applicant is responsible for documenting their own qualifications, and records from a closed program can be difficult to recover",
+        c: "Employers are prohibited from keeping such records",
+        d: "Copies substitute for the CDPH certificate itself",
+      },
+      correct: "b",
+      explanation:
+        "The burden of demonstrating qualifications sits with the applicant. " +
+        "Training programs close, employers change record systems, and " +
+        "reconstructing a supervised procedure log years later is often " +
+        "impossible — so the person who needs the records keeps them.",
+      why: {
+        a: "Submission requirements vary and are not the reason to keep personal copies.",
+        c: "Employers keep personnel records; that does not relieve the individual.",
+        d: "No copy substitutes for the certificate CDPH issues.",
+      },
+      tip: "Keep your own file. Programs close and employers change systems; your record should outlast both.",
+      tags: ["california", "documentation", "application"],
+    },
+    {
+      id: "ca-025",
+      subdomain: "Scope of practice",
+      difficulty: 3,
+      stem: "A patient asks a California CPT what their abnormal result means. What does scope of practice require?",
+      choices: {
+        a: "Explain the result, since the technician collected the specimen",
+        b: "Refer the question to the ordering provider — interpreting results is outside the certificate's scope",
+        c: "Read the reference range aloud and let the patient interpret it",
+        d: "Explain only results that appear normal",
+      },
+      correct: "b",
+      explanation:
+        "The certificate authorizes collection, not diagnosis or " +
+        "interpretation. Reading a value against a reference range without the " +
+        "clinical picture routinely misleads patients, so the question goes to " +
+        "the provider who ordered the test.",
+      why: {
+        a: "Collecting a specimen confers no authority to interpret what it shows.",
+        c: "Handing over a range without context is interpretation by another route.",
+        d: "Selective explanation still puts the technician in the interpreting role — and silence about abnormal results is its own message.",
+      },
+      tip: "Collect, don't interpret. That boundary holds in every state, and California is explicit about it.",
+      tags: ["california", "scope-of-practice", "communication"],
+    },
+    {
+      id: "ca-026",
+      subdomain: "Supervision",
+      difficulty: 3,
+      stem: "How does California's supervision requirement relate to a technician's competence?",
+      choices: {
+        a: "Supervision ends once a technician has been certified for one year",
+        b: "Supervision is an ongoing structural requirement, separate from how experienced the individual is",
+        c: "Supervision applies only to CPT2 holders",
+        d: "Supervision is satisfied by having a coworker in the building",
+      },
+      correct: "b",
+      explanation:
+        "The requirement is about the structure of the laboratory setting — a " +
+        "qualified licensed professional responsible for the work — rather than " +
+        "a training period a technician graduates out of. Experience does not " +
+        "remove it.",
+      why: {
+        a: "There is no experience threshold that ends the requirement.",
+        c: "It applies across the certificate levels, not only to CPT2.",
+        d: "Physical proximity of any coworker is not the same as designated professional supervision.",
+      },
+      tip: "Supervision is a feature of the setting, not a phase you graduate from.",
+      tags: ["california", "supervision", "compliance"],
+    },
+    {
+      id: "ca-027",
+      subdomain: "Regulatory landscape",
+      difficulty: 3,
+      stem: "A California CPT is expected to follow Cal/OSHA bloodborne pathogen requirements, CLSI collection standards, and CDPH certification rules. How do these relate?",
+      choices: {
+        a: "They are alternatives — following one satisfies the others",
+        b: "They govern different things and apply simultaneously: worker safety, collection practice, and who may perform the work",
+        c: "CDPH rules supersede Cal/OSHA in a laboratory",
+        d: "CLSI standards are legally binding and replace state regulation",
+      },
+      correct: "b",
+      explanation:
+        "Each answers a different question. Cal/OSHA governs how the worker is " +
+        "protected, CLSI describes how a collection should be performed, and " +
+        "CDPH certification governs who is authorized to perform it. All three " +
+        "apply to the same draw at the same time.",
+      why: {
+        a: "Compliance with one body of rules does not discharge obligations under another.",
+        c: "Occupational safety obligations are not displaced by certification rules.",
+        d: "CLSI publishes consensus standards; they are not themselves statutes.",
+      },
+      tip: "Safety rules, practice standards, and licensing law are three separate layers over the same procedure.",
+      tags: ["california", "regulation", "compliance"],
+    },
+    {
+      id: "ca-028",
+      subdomain: "Certificate levels",
+      difficulty: 2,
+      stem: "A CPT1 holder wants to move up to CPT2. What does that generally require?",
+      choices: {
+        a: "Only additional years of experience as a CPT1",
+        b: "Meeting CPT2's specific training and supervised arterial procedure requirements, then applying to CDPH",
+        c: "Passing a second national certification exam only",
+        d: "An employer's written attestation alone",
+      },
+      correct: "b",
+      explanation:
+        "CPT2 adds arterial puncture, so it adds arterial-specific training and " +
+        "a documented number of supervised arterial procedures, followed by an " +
+        "application to CDPH. Time served as a CPT1 does not by itself produce " +
+        "the upgrade.",
+      why: {
+        a: "Experience alone does not document arterial-specific training and procedures.",
+        c: "The national exam is one input; the state requirements for the higher level still apply.",
+        d: "An employer cannot attest someone into a higher state certificate level.",
+      },
+      tip: "Every level up means level-specific training, documented procedures, and a new application.",
+      tags: ["california", "cpt2", "arterial-puncture"],
+    },
+    {
+      id: "ca-029",
+      subdomain: "Verification",
+      difficulty: 2,
+      stem: "How can an employer confirm that a job applicant holds a current California CPT certificate?",
+      choices: {
+        a: "By accepting a photocopy of the certificate at face value",
+        b: "By verifying the certificate's status through CDPH Laboratory Field Services",
+        c: "By checking the national certifying agency's registry alone",
+        d: "By asking a previous employer",
+      },
+      correct: "b",
+      explanation:
+        "The issuing authority is the authoritative source for whether a " +
+        "certificate is current, suspended, or expired. A photocopy shows what " +
+        "was true on the day it was printed, and a national registry confirms a " +
+        "different credential entirely.",
+      why: {
+        a: "A copy cannot show a certificate's current status or any subsequent action against it.",
+        c: "National certification and the state certificate are separate credentials with separate statuses.",
+        d: "A previous employer knows what they were told, not the current state record.",
+      },
+      tip: "Verify with the issuer. A national certification and a state certificate are two different things.",
+      tags: ["california", "verification", "cdph"],
+    },
+    {
+      id: "ca-030",
+      subdomain: "Students",
+      difficulty: 3,
+      stem: "On what basis may a phlebotomy student perform venipunctures during their clinical externship in California?",
+      choices: {
+        a: "They may practice independently once classroom hours are complete",
+        b: "Under the structure of an approved training program, with the supervision that program and the clinical site require",
+        c: "They may not touch a patient until certified",
+        d: "Under a temporary certificate issued at enrollment",
+      },
+      correct: "b",
+      explanation:
+        "Supervised clinical practice within an approved program is how the " +
+        "required procedure counts are accumulated in the first place. The " +
+        "authority comes from the program's structure and the site's " +
+        "supervision, not from a credential the student does not yet hold.",
+      why: {
+        a: "Completing classroom hours does not authorize independent practice.",
+        c: "Supervised practice on patients is a required part of qualifying.",
+        d: "Enrollment does not produce a state-issued temporary certificate.",
+      },
+      tip: "Students practice under the program's supervision. That supervised practice is what the application counts.",
+      tags: ["california", "students", "externship"],
+    },
+    {
+      id: "ca-031",
+      subdomain: "Scope of practice",
+      difficulty: 3,
+      stem: "A CPT2 is asked to perform an arterial puncture at a site they have never been trained on, in a setting with no protocol for it. What is the appropriate response?",
+      choices: {
+        a: "Proceed — CPT2 authorizes arterial puncture generally",
+        b: "Decline until trained and competency-verified for that procedure and setting, and escalate the request",
+        c: "Proceed if a physician is nearby",
+        d: "Proceed and document the lack of training afterwards",
+      },
+      correct: "b",
+      explanation:
+        "A certificate defines the outer boundary of what may be authorized; " +
+        "individual competence and facility protocol define what should actually " +
+        "be performed. Being certified for a category of procedure is not the " +
+        "same as being trained and verified for this one.",
+      why: {
+        a: "Certification sets the ceiling, not a guarantee of competence for every variant.",
+        c: "Proximity of a physician does not substitute for training and competency verification.",
+        d: "Documenting a known deficiency after the fact does not make the act safe or defensible.",
+      },
+      tip: "Certified ≠ competent for everything in the category. Training and verification are separate.",
+      tags: ["california", "competency", "arterial-puncture"],
+    },
+    {
+      id: "ca-032",
+      subdomain: "Renewal",
+      difficulty: 2,
+      stem: "What is the certificate holder's responsibility when their legal name or mailing address changes?",
+      choices: {
+        a: "Nothing until the next renewal cycle",
+        b: "Notify CDPH according to its requirements, so records and renewal notices stay accurate",
+        c: "Notify only their employer",
+        d: "Obtain an entirely new certificate",
+      },
+      correct: "b",
+      explanation:
+        "Certificate holders keep their information current with the issuing " +
+        "agency. Renewal notices and correspondence go to the address on file, " +
+        "and a lapse caused by mail going to an old address still leaves the " +
+        "holder unauthorized to work.",
+      why: {
+        a: "Waiting can mean missing the renewal notice that prevents a lapse.",
+        c: "The employer's records do not update the state's.",
+        d: "An update is a record change, not a new certificate.",
+      },
+      tip: "A renewal notice sent to an old address still counts as sent. Keep CDPH current.",
+      tags: ["california", "renewal", "record-keeping"],
+    },
+    {
+      id: "ca-033",
+      subdomain: "Compliance",
+      difficulty: 3,
+      stem: "A supervisor asks an uncertified employee to perform venipunctures because the department is short-staffed. What is the correct response?",
+      choices: {
+        a: "Comply, since the supervisor is accountable for the decision",
+        b: "Decline and raise the issue, because authorization is a legal requirement that staffing pressure does not waive",
+        c: "Comply for a single shift only",
+        d: "Comply if the draws are documented as performed by a certified colleague",
+      },
+      correct: "b",
+      explanation:
+        "Staffing pressure does not create authorization. Performing certified " +
+        "duties without the certificate exposes the individual and the facility, " +
+        "and documenting the work under someone else's name compounds it with " +
+        "falsified records.",
+      why: {
+        a: "A supervisor's instruction does not transfer legal responsibility for practicing without authorization.",
+        c: "The requirement has no single-shift exception.",
+        d: "Recording work under another person's name is falsification of records.",
+      },
+      tip: "No one can delegate authorization they do not have the power to grant.",
+      tags: ["california", "compliance", "unauthorized-practice"],
+    },
+    {
+      id: "ca-034",
+      subdomain: "Continuing education",
+      difficulty: 2,
+      stem: "What is the purpose of the continuing education requirement attached to a California CPT certificate?",
+      choices: {
+        a: "To generate revenue for training providers",
+        b: "To keep certificate holders current with changing standards, safety requirements, and practice",
+        c: "To replace the need for employer competency verification",
+        d: "To determine seniority in the workplace",
+      },
+      correct: "b",
+      explanation:
+        "Collection standards, safety devices, and regulatory requirements all " +
+        "change over a career. Periodic education is the mechanism for keeping " +
+        "practice aligned with them, and it sits alongside — not instead of — an " +
+        "employer's competency verification.",
+      why: {
+        a: "The requirement exists for practice currency; provider revenue is incidental.",
+        c: "Employer competency verification is a separate and continuing obligation.",
+        d: "Continuing education has no bearing on workplace seniority.",
+      },
+      tip: "Standards move. Continuing education is how your practice moves with them.",
+      tags: ["california", "continuing-education", "renewal"],
+    },
+    {
+      id: "ca-035",
+      subdomain: "Regulatory landscape",
+      difficulty: 3,
+      stem: "Why is California's phlebotomy certificate requirement relevant to a student preparing for a national certification exam?",
+      choices: {
+        a: "The national exam includes a California law section for all candidates",
+        b: "National certification is a step toward practicing in California, but the state certificate is what authorizes the work there",
+        c: "California certification replaces the need for a national exam",
+        d: "The two credentials are issued by the same organization",
+      },
+      correct: "b",
+      explanation:
+        "The two credentials do different jobs. A national exam demonstrates " +
+        "competence to a certifying body and feeds the state application; the " +
+        "CDPH certificate is what makes the draw lawful in California. Planning " +
+        "for only one leaves a graduate unable to start work.",
+      why: {
+        a: "National exams are written for a national audience and do not carry a state-law section for every candidate.",
+        c: "The state pathway generally relies on a qualifying national exam rather than replacing it.",
+        d: "A national certifying agency and a state public health department are entirely separate bodies.",
+      },
+      tip: "Two finish lines: the national exam, then the state certificate. Budget time and money for both.",
+      tags: ["california", "national-certification", "planning"],
+    },
+    {
+      id: "ca-036",
+      subdomain: "Compliance",
+      difficulty: 2,
+      stem: "Where should a California phlebotomy student confirm current training hours, supervised procedure counts, and fees before applying?",
+      choices: {
+        a: "A study guide or exam prep resource",
+        b: "Current CDPH Laboratory Field Services publications, or by contacting LFS directly",
+        c: "A discussion forum for phlebotomy students",
+        d: "The employer's onboarding packet",
+      },
+      correct: "b",
+      explanation:
+        "These specifics are set by the state and can change. Study material " +
+        "captures a snapshot, and even a careful one goes out of date, so the " +
+        "issuing agency's current publications are the source to rely on for an " +
+        "actual application.",
+      why: {
+        a: "Prep resources describe the shape of the pathway; they are not maintained as an authoritative record of current numbers.",
+        c: "Peer discussion is often out of date and is not authoritative.",
+        d: "Employer materials describe that employer's process, not the state's current requirements.",
+      },
+      tip: "Learn the structure from study material; confirm every number with CDPH before you apply.",
+      tags: ["california", "verification", "application"],
+      sources: [SRC_CDPH_LFS, SRC_TEXTBOOK_CURRICULUM],
+    },
   ],
 );

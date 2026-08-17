@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { ActiveMockSession, MockResult } from "@/types/study";
 import { resolveQuestions } from "@/data/questions";
-import { NHA_CPT } from "@/data/certifications";
-import { buildMockExam } from "@/lib/scoring/selection";
+import { NHA_CPT, getMockExamForm } from "@/data/certifications";
+import { buildMockExam, recentMockQuestionIds } from "@/lib/scoring/selection";
 import { buildAttempts, scoreAnswers } from "@/lib/scoring/score";
 import { track } from "@/lib/analytics";
 import { useStudyProgress } from "@/components/progress/StudyProgressProvider";
@@ -24,16 +24,21 @@ type Phase = "loading" | "active" | "none";
  *                so refreshing the page you started from does not wipe it.
  * @param restart Discard any exam in progress and start a fresh one. Only ever
  *                set by the explicit "Start over instead" action.
+ * @param formId  Which mock exam form to build. Unknown or missing ids fall
+ *                back to the certification's default form.
  */
 export function MockRunner({
   start,
   restart,
+  formId,
 }: {
   start: boolean;
   restart: boolean;
+  formId?: string;
 }) {
   const router = useRouter();
-  const { ready, repository, saveAttempts, saveMockResult } = useStudyProgress();
+  const { ready, repository, progress, saveAttempts, saveMockResult } =
+    useStudyProgress();
 
   const [session, setSession] = useState<ActiveMockSession | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
@@ -78,21 +83,25 @@ export function MockRunner({
       return;
     }
 
+    const form = getMockExamForm(NHA_CPT, formId);
     const questions = buildMockExam(
       NHA_CPT.id,
-      NHA_CPT.mockExamFormat.questionCount,
+      form.questionCount,
       Date.now(),
+      { recentQuestionIds: recentMockQuestionIds(progress) },
     );
+    const seconds = form.timeLimitMinutes * 60;
     const fresh: ActiveMockSession = {
       id: `mock-${Date.now()}`,
       certificationId: NHA_CPT.id,
+      formId: form.id,
       questionIds: questions.map((question) => question.id),
       index: 0,
       answers: {},
       flagged: [],
       startedAt: new Date().toISOString(),
-      durationSeconds: NHA_CPT.mockExamFormat.timeLimitMinutes * 60,
-      secondsRemaining: NHA_CPT.mockExamFormat.timeLimitMinutes * 60,
+      durationSeconds: seconds,
+      secondsRemaining: seconds,
       lastTickAt: new Date().toISOString(),
       submitted: false,
     };
@@ -107,7 +116,9 @@ export function MockRunner({
     window.history.replaceState(null, "", window.location.pathname);
 
     track("mock_exam_started", { questions: fresh.questionIds.length });
-  }, [ready, repository, start, restart]);
+    // `progress` is read to keep recent papers out of this one. It is not a
+    // trigger — `started` makes this effect run once per mount either way.
+  }, [ready, repository, progress, start, restart, formId]);
 
   const questions = useMemo(
     () => (session ? resolveQuestions(session.questionIds) : []),
@@ -145,6 +156,7 @@ export function MockRunner({
     const result: MockResult = {
       id: session.id,
       certificationId: session.certificationId,
+      formId: session.formId,
       questionIds: session.questionIds,
       answers: session.answers,
       flagged: session.flagged,

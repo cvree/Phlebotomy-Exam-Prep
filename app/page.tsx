@@ -99,8 +99,10 @@ const TOOLS: readonly Tool[] = [
     href: "/mock-exam",
     name: "Mock exam",
     description:
-      "A full-length timed paper with no correctness feedback until you submit. Autosaves if your tab closes.",
-    meta: `${NHA_CPT.mockExamFormat.questionCount} questions · ${NHA_CPT.mockExamFormat.timeLimitMinutes} min`,
+      "Timed papers with no correctness feedback until you submit, in three lengths up to a full two hours. Autosaves if your tab closes.",
+    meta: `${NHA_CPT.mockExam.forms
+      .map((form) => form.questionCount)
+      .join(" · ")} questions`,
     action: "Set up the exam",
   },
   {

@@ -632,5 +632,669 @@ export const PATIENT_ID_QUESTIONS = buildQuestions(
       tip: "An unlabeled tube has no identity. When in doubt, or when the patient has left, discard and redraw.",
       tags: ["unlabeled-specimen", "specimen-rejection", "redraw"],
     },
+    {
+      id: "pid-025",
+      subdomain: "Active identification",
+      difficulty: 2,
+      stem: "Which question best demonstrates active identification of an alert outpatient?",
+      choices: {
+        a: "\"Are you Mr. Alvarez?\"",
+        b: "\"Please state your full name and date of birth.\"",
+        c: "\"You're the ten o'clock appointment, correct?\"",
+        d: "\"Is this your chart?\"",
+      },
+      correct: "b",
+      explanation:
+        "Active identification makes the patient supply the information rather " +
+        "than confirm it. An open request produces an answer that can be " +
+        "compared against the requisition; a yes/no question can be answered " +
+        "correctly by a patient who is hard of hearing, medicated, anxious, or " +
+        "simply being agreeable.",
+      why: {
+        a: "A patient who mishears or wants to be helpful will say yes to a name that is not theirs.",
+        c: "Appointment time is not a patient identifier and invites the same reflexive agreement.",
+        d: "Confirming ownership of a document is not identification of the person.",
+      },
+      tip: "Make them tell you, don't ask them to agree. \"State your name\" beats \"Are you…?\" every time.",
+      tags: ["active-identification", "two-identifiers", "outpatient"],
+    },
+    {
+      id: "pid-026",
+      subdomain: "Inpatient identification",
+      difficulty: 2,
+      stem: "An inpatient's armband is not on their wrist — it is taped to the bed rail. What should the phlebotomist do?",
+      choices: {
+        a: "Use the armband on the rail, since it belongs to this bed",
+        b: "Ask the nurse to place a verified armband on the patient before collecting",
+        c: "Ask the patient to hold the armband while it is read",
+        d: "Collect the specimen and note the armband's location on the requisition",
+      },
+      correct: "b",
+      explanation:
+        "An armband is only an identifier while it is attached to the patient. " +
+        "One taped to a rail, a nightstand, or a chart could belong to a " +
+        "previous occupant or have been removed for any number of reasons. The " +
+        "nurse re-verifies identity and applies a band before collection " +
+        "proceeds.",
+      why: {
+        a: "Beds get reassigned, and a band on the furniture proves nothing about the person in it.",
+        c: "A patient holding a detached band is no more verified than a band on the rail.",
+        d: "Documenting a broken identification process does not repair it.",
+      },
+      tip: "On the patient or it does not count. A detached band identifies furniture.",
+      tags: ["armband", "inpatient", "verification"],
+    },
+    {
+      id: "pid-027",
+      subdomain: "Unidentified patients",
+      difficulty: 3,
+      stem: "An unconscious trauma patient in the emergency department has a temporary identification band reading \"Doe, John — MR 4471902.\" How is the specimen identified?",
+      choices: {
+        a: "By the temporary designation and number on the band, matched to the requisition",
+        b: "By the bed number, until a legal name is established",
+        c: "By whatever name the accompanying paramedic supplies",
+        d: "Collection is deferred until the patient's identity is known",
+      },
+      correct: "a",
+      explanation:
+        "A temporary identifier is a real identifier. The assigned designation " +
+        "and unique number on the band are matched to the requisition and " +
+        "carried onto the labels, so results stay attached to this patient " +
+        "throughout, and the record is reconciled when the legal name is " +
+        "established.",
+      why: {
+        b: "Bed and room numbers change and are never patient identifiers.",
+        c: "A verbal report is not a verified identifier and cannot be reconciled with the record later.",
+        d: "Emergency care cannot wait on a name, which is exactly why temporary identification systems exist.",
+      },
+      tip: "Temporary identifiers are still identifiers. The number on the band is what ties everything together.",
+      tags: ["unidentified-patient", "emergency", "temporary-id"],
+    },
+    {
+      id: "pid-028",
+      subdomain: "Pediatric identification",
+      difficulty: 2,
+      stem: "A four-year-old is brought to an outpatient draw station by a parent. How should identification be performed?",
+      choices: {
+        a: "Ask the child to state their own name and date of birth",
+        b: "Ask the parent or guardian to state the child's full name and date of birth, and verify against the requisition",
+        c: "Accept the appointment list as confirmation",
+        d: "Use the parent's name and the child's first name",
+      },
+      correct: "b",
+      explanation:
+        "When a patient cannot reliably identify themselves, the parent, " +
+        "guardian, or caregiver supplies the identifiers and those are verified " +
+        "against the requisition. In an inpatient setting the child's armband " +
+        "is checked as well, and who supplied the identification is documented " +
+        "where policy requires it.",
+      why: {
+        a: "A four-year-old may not know their date of birth and may answer to any name offered.",
+        c: "A schedule is a list of expectations, not a verification of who is in front of you.",
+        d: "The specimen belongs to the child, so the child's own full identifiers are what must match.",
+      },
+      tip: "Patient can't identify themselves? A caregiver identifies them — and you record who did.",
+      tags: ["pediatric", "caregiver", "two-identifiers"],
+    },
+    {
+      id: "pid-029",
+      subdomain: "Requisition matching",
+      difficulty: 2,
+      stem: "The requisition lists a middle initial that does not appear on the patient's armband, but the last name, first name, and date of birth match. What is the correct action?",
+      choices: {
+        a: "Proceed — three of four elements match",
+        b: "Resolve the discrepancy with the nurse or ordering area before collecting",
+        c: "Correct the armband to match the requisition",
+        d: "Correct the requisition to match the armband",
+      },
+      correct: "b",
+      explanation:
+        "A discrepancy between the requisition and the patient's identification " +
+        "is resolved before collection, not judged at the bedside. It may be a " +
+        "harmless clerical difference or it may be two patients with similar " +
+        "names, and the only way to tell them apart is to check rather than " +
+        "assume.",
+      why: {
+        a: "Partial matching is precisely the reasoning behind wrong-patient errors.",
+        c: "A phlebotomist does not alter a patient's identification band.",
+        d: "Editing the requisition to fit hides the discrepancy rather than resolving it.",
+      },
+      tip: "Any mismatch is a stop-and-verify, not a judgment call about how close is close enough.",
+      tags: ["requisition", "discrepancy", "verification"],
+    },
+    {
+      id: "pid-030",
+      subdomain: "Labeling",
+      difficulty: 1,
+      stem: "Which set of elements belongs on a specimen label at the bedside?",
+      choices: {
+        a: "Patient name, unique identification number, date and time of collection, and collector's identification",
+        b: "Patient name and room number",
+        c: "Patient name, diagnosis, and ordering physician",
+        d: "Unique identification number and test name only",
+      },
+      correct: "a",
+      explanation:
+        "The label carries the patient's full name, a unique identifier such as " +
+        "a medical record number, the date and time the specimen was collected, " +
+        "and the identity of the person who collected it. Those four elements " +
+        "let the laboratory tie the specimen to a patient, judge whether it was " +
+        "collected at the right time, and reach the collector with questions.",
+      why: {
+        b: "A room number is not a patient identifier and changes with a transfer.",
+        c: "Diagnosis and physician do not identify the specimen or when it was taken.",
+        d: "Without the patient's name, collection time, and collector, the specimen cannot be verified or queried.",
+      },
+      tip: "Name, unique number, date and time, collector initials. Four elements, written at the bedside.",
+      tags: ["labeling", "label-elements", "documentation"],
+    },
+    {
+      id: "pid-031",
+      subdomain: "Labeling",
+      difficulty: 2,
+      stem: "Why are tubes labeled after collection rather than before the draw?",
+      choices: {
+        a: "Pre-printed labels do not adhere to a cold tube",
+        b: "A pre-labeled tube that is not used, or is used for a different patient, becomes a mislabeled specimen",
+        c: "Labels interfere with the vacuum inside the tube",
+        d: "Facility policy requires labels to be applied in the laboratory",
+      },
+      correct: "b",
+      explanation:
+        "Labeling after the draw, in the patient's presence, ties the label to " +
+        "a specimen that actually came from that patient. Pre-labeled tubes " +
+        "drift: one gets set down, another patient's draw goes into it, or an " +
+        "unused labeled tube ends up back in the tray waiting to cause harm.",
+      why: {
+        a: "Adhesion is not the concern, and tubes are at room temperature at collection.",
+        c: "A label on the outside has no effect on the tube's vacuum.",
+        d: "Labeling happens at the bedside, not in the laboratory — that is the whole point.",
+      },
+      tip: "Draw, then label, in front of the patient, before you leave. Never before, never later, never elsewhere.",
+      tags: ["labeling", "bedside", "mislabeling"],
+    },
+    {
+      id: "pid-032",
+      subdomain: "Blood bank identification",
+      difficulty: 3,
+      stem: "What additional identification requirement typically applies to a type and crossmatch specimen?",
+      choices: {
+        a: "The specimen must be labeled in the laboratory rather than at the bedside",
+        b: "A blood bank identification band or system number is assigned and recorded on both the patient and the specimen",
+        c: "Two phlebotomists must sign the requisition",
+        d: "The patient's photograph must be attached to the tube",
+      },
+      correct: "b",
+      explanation:
+        "Transfusion carries the highest consequence for a wrong-patient " +
+        "specimen, so blood bank identification adds a dedicated band or system " +
+        "number linking the patient to their specimen and, later, to the unit " +
+        "issued for them. The number is recorded on the band, the tube, and the " +
+        "paperwork.",
+      why: {
+        a: "Blood bank specimens are labeled at the bedside like every other specimen, with an additional identifier.",
+        c: "Some facilities require a second verifier, but a signature on a requisition is not the defining requirement.",
+        d: "Photographs are not part of standard transfusion identification systems.",
+      },
+      tip: "Blood bank adds a number that links patient, specimen, and unit. Break that chain and someone gets the wrong blood.",
+      tags: ["blood-bank", "type-and-crossmatch", "identification-band"],
+    },
+    {
+      id: "pid-033",
+      subdomain: "Two identifiers",
+      difficulty: 3,
+      stem: "Two patients on the same unit share the name \"Maria Garcia.\" What most reliably distinguishes them?",
+      choices: {
+        a: "Room and bed assignment",
+        b: "The unique medical record number, verified against the armband and requisition",
+        c: "Physical appearance and approximate age",
+        d: "The order in which the requisitions were printed",
+      },
+      correct: "b",
+      explanation:
+        "The unique identification number exists for exactly this situation. " +
+        "Names repeat, and dates of birth can coincide, but the medical record " +
+        "number is assigned to one person. Facilities often flag same-name " +
+        "patients specifically so staff slow down and check the number.",
+      why: {
+        a: "Room assignments change, and patients are moved without paperwork catching up immediately.",
+        c: "Appearance and estimated age are not identifiers and cannot be verified against a record.",
+        d: "Print order says nothing about which patient a requisition belongs to.",
+      },
+      tip: "When names collide, the unique number is the tiebreaker. Never the room.",
+      tags: ["same-name", "medical-record-number", "two-identifiers"],
+    },
+    {
+      id: "pid-034",
+      subdomain: "Communication barriers",
+      difficulty: 2,
+      stem: "A patient speaks little English and no armband is present in an outpatient setting. What is the appropriate approach to identification?",
+      choices: {
+        a: "Use a family member's summary of who the patient is and proceed",
+        b: "Use a qualified interpreter or the facility's language service to obtain the identifiers directly from the patient",
+        c: "Ask the patient to nod when their name is read aloud",
+        d: "Skip verbal identification and rely on the appointment record",
+      },
+      correct: "b",
+      explanation:
+        "The identifiers still have to come from the patient, so the language " +
+        "barrier is bridged rather than worked around. A qualified interpreter " +
+        "or language line lets the patient state their own name and date of " +
+        "birth, and photo identification may be used as an additional check " +
+        "where policy allows.",
+      why: {
+        a: "An informal summary from a relative is not verified identification, and family members mishear too.",
+        c: "Nodding to a name read aloud is passive identification, and even more error-prone across a language barrier.",
+        d: "A schedule records who was expected, not who arrived.",
+      },
+      tip: "A language barrier changes how you ask, not whether you ask.",
+      tags: ["language-barrier", "interpreter", "active-identification"],
+    },
+    {
+      id: "pid-035",
+      subdomain: "Inpatient identification",
+      difficulty: 2,
+      stem: "A phlebotomist enters a room for an early morning draw and the patient is asleep. What is the correct approach?",
+      choices: {
+        a: "Draw quietly without waking the patient, then verify the armband",
+        b: "Wake the patient gently, introduce yourself, and complete identification before drawing",
+        c: "Verify the armband only and let the patient sleep",
+        d: "Skip the patient and return at the end of rounds",
+      },
+      correct: "b",
+      explanation:
+        "A sleeping patient is woken gently and identified like any other. " +
+        "Beyond the identification requirement, a startled patient can move " +
+        "unpredictably with a needle in their arm, so waking them is a safety " +
+        "measure as much as a procedural one.",
+      why: {
+        a: "Verifying identity after the specimen exists reverses the whole safeguard.",
+        c: "The armband alone omits the patient's own statement of their identifiers when they are able to give it.",
+        d: "Timed morning collections have a reason for their timing; skipping the patient is not the default.",
+      },
+      tip: "Never draw on a sleeping patient. Wake gently, identify fully, then proceed.",
+      tags: ["sleeping-patient", "inpatient", "safety"],
+    },
+    {
+      id: "pid-036",
+      subdomain: "Barcode systems",
+      difficulty: 2,
+      stem: "A facility uses barcode scanning of the patient's armband at the bedside. Does this replace asking the patient to state their identifiers?",
+      choices: {
+        a: "Yes, scanning is more accurate than a verbal exchange",
+        b: "No — scanning supplements the verbal verification and the requisition match, it does not replace them",
+        c: "Yes, provided the scanner prints the labels at the bedside",
+        d: "Only for outpatients, who can be trusted to correct an error",
+      },
+      correct: "b",
+      explanation:
+        "Scanning confirms that the band and the order agree; it cannot confirm " +
+        "that the band is on the right patient. The verbal exchange with an " +
+        "alert patient catches the error a scanner cannot see, which is why " +
+        "electronic systems are layered on top of verification rather than " +
+        "substituted for it.",
+      why: {
+        a: "A scanner reads a band accurately even when the band is on the wrong wrist.",
+        c: "Bedside label printing improves labeling accuracy but still cannot verify who is wearing the band.",
+        d: "The layering applies to every setting; outpatients are not a special case for skipping steps.",
+      },
+      tip: "A scanner verifies the band. Only the patient can verify the band is theirs.",
+      tags: ["barcode", "technology", "verification"],
+    },
+    {
+      id: "pid-037",
+      subdomain: "Discrepancy handling",
+      difficulty: 3,
+      stem: "After collecting, a phlebotomist notices the labels printed for a different patient than the one just drawn. What must happen?",
+      choices: {
+        a: "Cross out the printed name and hand-write the correct one",
+        b: "Discard the specimens and recollect with correct labels after re-verifying the patient",
+        c: "Send the specimens with a note explaining the error",
+        d: "Apply correct labels over the incorrect ones and send them",
+      },
+      correct: "b",
+      explanation:
+        "The specimens can no longer be tied to a verified identity at the " +
+        "moment of collection, so they are discarded and recollected. Altering " +
+        "or over-labeling produces a specimen whose history cannot be " +
+        "reconstructed, and any of those work-arounds risks attaching results " +
+        "to the wrong medical record.",
+      why: {
+        a: "Altered labels destroy the audit trail and are grounds for rejection.",
+        c: "A note does not restore verified identity to a specimen that never had it.",
+        d: "Layering labels hides an error rather than correcting it, and the tube underneath still carries the wrong name.",
+      },
+      tip: "A specimen that cannot be traced to a verified patient is not salvageable. Redraw.",
+      tags: ["mislabeling", "recollection", "error-handling"],
+    },
+    {
+      id: "pid-038",
+      subdomain: "Patient rights",
+      difficulty: 2,
+      stem: "An alert inpatient refuses the draw after identification is complete. What is the correct response?",
+      choices: {
+        a: "Proceed, since the physician has ordered the test",
+        b: "Stop, respect the refusal, and notify the nurse and document per policy",
+        c: "Have a family member persuade the patient",
+        d: "Return in ten minutes and try again without discussion",
+      },
+      correct: "b",
+      explanation:
+        "A competent patient may refuse any procedure. The phlebotomist stops, " +
+        "reports the refusal to the nurse or ordering clinician so the care team " +
+        "can respond, and documents it as policy requires. Proceeding against a " +
+        "refusal can constitute battery.",
+      why: {
+        a: "An order authorizes a test; it does not override the patient's consent.",
+        c: "Recruiting family to pressure a competent patient is coercive, not consent.",
+        d: "Repeating the attempt without addressing the refusal disregards the patient's decision.",
+      },
+      tip: "Consent is ongoing. A patient can withdraw it at any point, including after you've identified them.",
+      tags: ["consent", "refusal", "patient-rights"],
+    },
+    {
+      id: "pid-039",
+      subdomain: "Two identifiers",
+      difficulty: 1,
+      stem: "Which of the following can serve as the second identifier alongside the patient's full name?",
+      choices: {
+        a: "The patient's room number",
+        b: "The patient's date of birth or unique medical record number",
+        c: "The name of the ordering physician",
+        d: "The patient's telephone number as listed on the schedule",
+      },
+      correct: "b",
+      explanation:
+        "Acceptable identifiers are specific to the person and independent of " +
+        "where they happen to be: full name, date of birth, medical record " +
+        "number, or another unique assigned identifier. Location-based " +
+        "information changes with a transfer and never qualifies.",
+      why: {
+        a: "Room and bed numbers are location, not identity, and change without notice.",
+        c: "One physician has many patients, so their name distinguishes nobody.",
+        d: "A number from a scheduling list is not a verified patient identifier and may be shared by a household.",
+      },
+      tip: "An identifier travels with the patient. If it changes when they move beds, it is not one.",
+      tags: ["two-identifiers", "acceptable-identifiers"],
+    },
+    {
+      id: "pid-040",
+      subdomain: "Outpatient identification",
+      difficulty: 2,
+      stem: "An outpatient arrives without any identification documents. Can the draw proceed?",
+      choices: {
+        a: "No — a government photo ID is universally required before any collection",
+        b: "Yes, if the patient can state the identifiers that match the requisition and facility policy allows it",
+        c: "Yes, provided a staff member recognizes them",
+        d: "Only if a relative vouches for the patient in writing",
+      },
+      correct: "b",
+      explanation:
+        "The requirement is two identifiers verified against the requisition, " +
+        "usually obtained by having the patient state them. Photo " +
+        "identification strengthens verification and some facilities require it " +
+        "for particular tests, but a patient who can correctly state their own " +
+        "identifiers has met the standard where policy permits.",
+      why: {
+        a: "Photo ID is a policy-level requirement in some settings, not a universal precondition for collection.",
+        c: "Recognition by staff is memory, not verification, and is not a recognized identification method.",
+        d: "A relative's statement is not a substitute for the patient's own verified identifiers when the patient is able to give them.",
+      },
+      tip: "Two identifiers, stated by the patient, matched to the requisition. Photo ID adds confidence where policy asks for it.",
+      tags: ["outpatient", "photo-id", "two-identifiers"],
+    },
+    {
+      id: "pid-041",
+      subdomain: "Documentation",
+      difficulty: 2,
+      stem: "Why is the collection time recorded on the specimen label?",
+      choices: {
+        a: "It documents how long the phlebotomist spent with the patient",
+        b: "Results for many analytes depend on when the specimen was taken relative to doses, meals, or symptoms",
+        c: "It determines the order in which the laboratory tests specimens",
+        d: "It is used for billing purposes only",
+      },
+      correct: "b",
+      explanation:
+        "Timing changes the meaning of a result. A drug level is interpreted " +
+        "against the dose time, a glucose against the meal, a cardiac marker " +
+        "against the onset of symptoms, and a timed collection against its " +
+        "scheduled point. Without the collection time the number floats free of " +
+        "its context.",
+      why: {
+        a: "The label records when the specimen was obtained, not how long the encounter lasted.",
+        c: "Testing priority comes from the order's urgency, not from the label time.",
+        d: "Billing is a downstream use; clinical interpretation is the reason the field exists.",
+      },
+      tip: "A result without a collection time is a number without a context — especially for drug levels and timed tests.",
+      tags: ["labeling", "collection-time", "timed-tests"],
+    },
+    {
+      id: "pid-042",
+      subdomain: "Inpatient identification",
+      difficulty: 3,
+      stem: "A nurse offers to identify a confused inpatient whose armband is missing. What is the correct sequence?",
+      choices: {
+        a: "Accept the nurse's identification and collect immediately",
+        b: "Have the nurse verify identity and apply a new armband, then verify that band before collecting",
+        c: "Collect now and ask the nurse to band the patient afterwards",
+        d: "Ask the patient's roommate to confirm the patient's name",
+      },
+      correct: "b",
+      explanation:
+        "A caregiver's identification of a confused patient is valid, but the " +
+        "armband is what carries that verification forward for everyone who " +
+        "comes next. The nurse identifies the patient and applies the band, and " +
+        "the phlebotomist then verifies against the band as usual.",
+      why: {
+        a: "Skipping the band leaves the next person without any verification and no record of this one.",
+        c: "Banding after the fact cannot confirm who the specimen came from.",
+        d: "A roommate is not a source of verified patient identification.",
+      },
+      tip: "The nurse verifies, the band records it, you check the band. All three, in that order.",
+      tags: ["armband", "confused-patient", "nurse-verification"],
+    },
+    {
+      id: "pid-043",
+      subdomain: "Requisition matching",
+      difficulty: 2,
+      stem: "What should a phlebotomist confirm on the requisition before beginning a collection?",
+      choices: {
+        a: "Only the patient's name",
+        b: "Patient identifiers, tests ordered, any special requirements such as fasting or timing, and the ordering provider",
+        c: "Only the tests ordered",
+        d: "The patient's insurance information",
+      },
+      correct: "b",
+      explanation:
+        "The requisition is read completely before the tray is opened: who the " +
+        "patient is, what was ordered, what the order requires — fasting, a " +
+        "timed draw, chilling, a specific site — and who ordered it. Catching a " +
+        "requirement at the bedside prevents a redraw an hour later.",
+      why: {
+        a: "A name alone tells you nothing about what to collect or what the specimen needs.",
+        c: "Tests without verified identifiers are a wrong-patient error waiting to happen.",
+        d: "Insurance details are administrative and do not affect collection.",
+      },
+      tip: "Read the whole requisition before you touch a tube. Special requirements are the ones that cause redraws.",
+      tags: ["requisition", "special-requirements", "preparation"],
+    },
+    {
+      id: "pid-044",
+      subdomain: "Labeling",
+      difficulty: 3,
+      stem: "A phlebotomist collects from two patients in a shared room in quick succession. What practice most reliably prevents a mix-up?",
+      choices: {
+        a: "Labeling both sets of tubes at the nurses' station immediately afterwards",
+        b: "Completing each patient fully — draw, label, verify — before approaching the second patient",
+        c: "Using different colored pens for each patient",
+        d: "Drawing both patients first, then labeling in the order the draws were performed",
+      },
+      correct: "b",
+      explanation:
+        "One patient at a time, start to finish, is the practice that removes " +
+        "the opportunity for a mix-up. Any workflow that has two patients' " +
+        "unlabeled tubes in hand at once depends on memory, and memory is the " +
+        "failure mode that identification procedures exist to eliminate.",
+      why: {
+        a: "Labeling away from the bedside breaks the link between the patient and the specimen.",
+        c: "Ink color is not an identifier and does not survive relabeling or handling.",
+        d: "Relying on remembering the sequence is exactly the vulnerability being avoided.",
+      },
+      tip: "Finish one patient completely before starting the next. Never hold two patients' unlabeled tubes.",
+      tags: ["mislabeling", "workflow", "shared-room"],
+    },
+    {
+      id: "pid-045",
+      subdomain: "Two identifiers",
+      difficulty: 2,
+      stem: "A patient states a date of birth that differs by one digit from the requisition. What is the appropriate action?",
+      choices: {
+        a: "Accept it as a transposition and proceed",
+        b: "Treat it as a discrepancy and resolve it before collecting",
+        c: "Ask the patient to try again and accept the second answer",
+        d: "Use the name match alone and proceed",
+      },
+      correct: "b",
+      explanation:
+        "A one-digit difference is a mismatch. It may be a data-entry " +
+        "transposition, or it may be a different patient with a similar record, " +
+        "and the difference between those two possibilities is a verification " +
+        "step, not an assumption made at the bedside.",
+      why: {
+        a: "Assuming a transposition is a guess about which record is right.",
+        c: "Prompting until the answer matches coaches the patient toward the expected response.",
+        d: "Falling back on one identifier abandons the two-identifier requirement at the exact moment it matters.",
+      },
+      tip: "One digit off is a mismatch, not a typo you get to overlook.",
+      tags: ["discrepancy", "date-of-birth", "verification"],
+    },
+    {
+      id: "pid-046",
+      subdomain: "Long-term care",
+      difficulty: 2,
+      stem: "In a long-term care facility, residents may not wear identification bands. How is identification handled?",
+      choices: {
+        a: "By recognizing residents from previous visits",
+        b: "By following the facility's identification policy, typically identification by a caregiver who knows the resident, documented as required",
+        c: "By using the room number posted on the door",
+        d: "By asking another resident to confirm",
+      },
+      correct: "b",
+      explanation:
+        "Settings without routine banding rely on a defined policy, usually " +
+        "identification by a staff member who knows the resident, combined with " +
+        "whatever identifiers the resident can supply. Who provided the " +
+        "identification is documented so the verification can be traced later.",
+      why: {
+        a: "Familiarity is not verification, and residents with similar names or appearances are commonly confused.",
+        c: "A name on a door is not attached to the person and does not follow a room change.",
+        d: "Another resident is not a verified source of identification.",
+      },
+      tip: "No band does not mean no verification. It means the policy names who verifies, and you record it.",
+      tags: ["long-term-care", "caregiver-identification", "documentation"],
+    },
+    {
+      id: "pid-047",
+      subdomain: "Documentation",
+      difficulty: 2,
+      stem: "Why does the collector's identification appear on the specimen label?",
+      choices: {
+        a: "So the collector can be paid for the collection",
+        b: "So the laboratory can contact the person who performed the collection with questions about it",
+        c: "So the laboratory can rank collectors by volume",
+        d: "It is a courtesy with no operational purpose",
+      },
+      correct: "b",
+      explanation:
+        "When a result looks wrong, a specimen arrives hemolyzed, or a question " +
+        "arises about how a collection was performed, the laboratory needs to " +
+        "reach the person who was actually there. It also makes the chain of " +
+        "responsibility for that specimen traceable.",
+      why: {
+        a: "Payroll does not depend on tube labels.",
+        c: "Volume statistics come from the laboratory information system, not from label initials.",
+        d: "Traceability is an operational requirement, not a courtesy.",
+      },
+      tip: "Your initials on the tube say: I collected this, and I can answer questions about it.",
+      tags: ["labeling", "traceability", "documentation"],
+    },
+    {
+      id: "pid-048",
+      subdomain: "Active identification",
+      difficulty: 3,
+      stem: "A patient with dementia confidently states a name that does not match the requisition. What should the phlebotomist do?",
+      choices: {
+        a: "Accept the stated name and cancel the collection",
+        b: "Stop and verify identity through the armband and the nurse before proceeding",
+        c: "Proceed on the basis of the requisition, since the patient is unreliable",
+        d: "Ask the question again more slowly and accept whichever answer comes second",
+      },
+      correct: "b",
+      explanation:
+        "When a patient cannot reliably identify themselves, the verification " +
+        "shifts to the armband and a caregiver who knows the patient — it does " +
+        "not disappear. Proceeding on the requisition alone assumes the paper " +
+        "reached the right bed, which is the assumption identification exists " +
+        "to test.",
+      why: {
+        a: "Cancelling on the basis of an unreliable statement leaves ordered testing undone without addressing the question.",
+        c: "The requisition is one half of a comparison; it cannot confirm itself.",
+        d: "Repeating the question until an acceptable answer appears is not verification.",
+      },
+      tip: "When the patient can't verify, someone else must — never nobody.",
+      tags: ["dementia", "verification", "armband"],
+    },
+    {
+      id: "pid-049",
+      subdomain: "Labeling",
+      difficulty: 2,
+      stem: "Where should a label be positioned on a blood collection tube?",
+      choices: {
+        a: "Over the cap, so it cannot be removed",
+        b: "Lengthwise on the tube body, leaving a window of the specimen visible where required",
+        c: "Wrapped around the tube several times to secure it",
+        d: "On the bottom of the tube",
+      },
+      correct: "b",
+      explanation:
+        "The label goes on the body of the tube, applied so the specimen can " +
+        "still be assessed — checking volume, clot formation, hemolysis, or the " +
+        "plasma layer. Covering the tube completely forces the laboratory to " +
+        "peel a label off to see what it received.",
+      why: {
+        a: "Labeling the cap risks losing the identity the moment the tube is opened.",
+        c: "Multiple wraps obscure the specimen and can jam analyzer racks.",
+        d: "The base is not readable in a rack and is the least visible surface on the tube.",
+      },
+      tip: "Label the body lengthwise, never the cap, and leave the laboratory a view of what is inside.",
+      tags: ["labeling", "tube-handling", "laboratory-processing"],
+    },
+    {
+      id: "pid-050",
+      subdomain: "Discrepancy handling",
+      difficulty: 3,
+      stem: "A phlebotomist realizes mid-draw that they never verified the patient's identifiers. What is the correct action?",
+      choices: {
+        a: "Complete the draw and verify identifiers immediately afterwards, before labeling",
+        b: "Stop the draw immediately, discard the specimen, verify identity, and start over",
+        c: "Ask the patient their name while the needle is still in place and continue",
+        d: "Complete the draw and label it from the requisition",
+      },
+      correct: "b",
+      explanation:
+        "Identification is a precondition for the collection, not a step that " +
+        "can be back-filled. A specimen drawn without verified identity has no " +
+        "reliable identity, so the safe course is to end the procedure, verify " +
+        "properly, and recollect — one extra stick against a wrong-patient " +
+        "result.",
+      why: {
+        a: "Verifying afterwards confirms who is in the chair, but not that the blood already in the tube came from a verified patient.",
+        c: "Continuing the procedure while the needle is in the arm removes the option to stop if the answer does not match.",
+        d: "Labeling from the requisition assumes the requisition matches the patient — which is the unverified assumption.",
+      },
+      tip: "Identity comes before the needle. If it didn't, the specimen doesn't count.",
+      tags: ["error-handling", "verification", "recollection"],
+    },
   ],
 );

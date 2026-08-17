@@ -103,6 +103,22 @@ export type DomainConfig = {
   practiceWeight: number;
 };
 
+/**
+ * One sittable mock exam paper shape.
+ *
+ * These are *our* practice formats. None of them is presented as a replica of
+ * a certifying body's exam — see `CertificationConfig.official`.
+ */
+export type MockExamForm = {
+  id: string;
+  /** Short name shown on the form picker, e.g. "Full-length paper". */
+  name: string;
+  questionCount: number;
+  timeLimitMinutes: number;
+  /** One sentence on when a student would choose this form. */
+  description: string;
+};
+
 export type CertificationConfig = {
   id: CertificationId;
   /** Full name, e.g. "Certified Phlebotomy Technician (CPT)". */
@@ -127,10 +143,11 @@ export type CertificationConfig = {
     /** What a human needs to confirm, shown in the UI while unverified. */
     verificationChecklist: string[];
   };
-  /** Our practice-format mock exam. Explicitly ours, never "the real thing". */
-  mockExamFormat: {
-    questionCount: number;
-    timeLimitMinutes: number;
+  /** Our practice-format mock exams. Explicitly ours, never "the real thing". */
+  mockExam: {
+    forms: MockExamForm[];
+    /** Id of the form offered by default. Must exist in `forms`. */
+    defaultFormId: string;
     note: string;
   };
   domains: DomainConfig[];
